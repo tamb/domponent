@@ -3,7 +3,7 @@ __Make components with the HTML you already have__
 
 
 ## How To:
-1. Drop a few `data` attributes into your existing HTML
+1. Drop a few `data` attributes into your existing HTML 🖮
 ```html
 
 <div data-component="Counter">
@@ -18,7 +18,7 @@ __Make components with the HTML you already have__
 
 
 ```
-2. Write a JavaScript `class` component
+2. Write a JavaScript `class` component 🔌
 ```js
 import { Component } from 'domponent';
 
@@ -37,7 +37,7 @@ export default class Counter extends Component{
 }
 
 ```
-3. Initialize the App
+3. Initialize the App ⚡
 ```js
 import Init from 'domponent';
 import Counter from './Counter.js';
@@ -54,19 +54,22 @@ new Init(config);
 ```
 __And you're good to go!!__
 
-## `data` API
+------
+## Docs 📖
 
-### `data-component`
+### `data` API 🖴
+
+#### `data-component`
 We use this bad boy to match the component name to its corresponding `class` in the `Init` configuration object
 
 example: if your HTML is `data-component="Counter"` | you must have a component in your config called `Counter`
 
-### `data-bind`
+#### `data-bind`
 Binds `state` or `props` to the `textContent` of an element
 First you specify if you want to bind `state` or  `props` `data-bind="state:count"` or `data-bind="props:count"`
 The left half of the `:` tells the component what object to bind to (state or props), the right half tells the component what key within the state or props to read from
 
-### `data-action`
+#### `data-action`
 Binds a DOM event with a component method.
 Consider the following:
 ```html
@@ -83,7 +86,7 @@ example:
 +1
 </button>
  ```
-### `data-state`
+#### `data-state`
 If you want to instantiate your component with a particular state __in memory__ you must attach a `data-state` attribute to the __root element__ of the component
 example:
 ```
@@ -94,7 +97,7 @@ example:
 
 For multiple keys within the state, use a pipe `|` like so: `count:24|isEven:true`
 
-### `data-key`
+#### `data-key`
 This is totally optional.  It's a _unique_ string for _each_ component instance.  
 ```html
 <div data-component="Counter" data-key="aUniqueKey">
@@ -113,13 +116,13 @@ If you don't use this attribute, a unique key will be assigned to each component
 <!-- 
 
 
-### `data-props`
+#### `data-props`
 
 
 
 -->
 
-## Extending the `Component` class
+### Extending the `Component` class 📏
 Let's continue with Counter.  The minimum js needed to create a component is below:
 ```js
 class Counter extends Component{
@@ -130,11 +133,11 @@ class Counter extends Component{
 ```
 `super` adds the base methods and properties your component needs.
 
-## Managing Component State
+### Managing Component State 🕹️
 `setState(stateObject, callbackFunction)`
 This follows React's setState = - although it's implemented differently. 
 
-## LifeCycle Methods
+### LifeCycle Methods 🧬
 The following are methods you can use to access components at various points in their lifecycle
 * `componentMade`
 * `stateWillUpdate`
@@ -142,30 +145,30 @@ The following are methods you can use to access components at various points in 
 * `propsWillUpdate`
 * `propsDidUpdate`
 
-## Dynamically adding and removing components
+### Dynamically adding and removing components 🤼
 
-### Adding components
-#### `createComponent`
+#### Adding components
+##### `createComponent`
   @params:  
   * {Element} a DOM element to create the component instance
   * {Function} optional callback function
-#### `register`
+##### `register`
   @params 
   * {Component} a component definition
   * {Function} optional callback function
 
-### Deleting components
-#### `deleteComponent`
+#### Deleting components
+##### `deleteComponent`
 @params: 
 * {String} - key of the component _instance_ you want to delete, can be assigned via `data-key` or accessed inside component via `this.key`
 * {Function} optional callback function
 
-#### `unregister`
+##### `unregister`
 @params: 
 * {String} - key of the component _defintion_ you want to delete, can be assigned via `data-key` or accessed inside component via `this.key`
 * {Function} optional callback function
 
-## An overview of application lifecycle
+### An overview of application lifecycle 🕵️‍♂️
 
 ![mounting a component](./domponent-mounting-lifecycle.jpg)
 --------
