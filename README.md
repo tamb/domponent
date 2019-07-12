@@ -130,3 +130,7 @@ class Counter extends Component{
 #### `unregister`
 
 ## An overview of application lifecycle
+
+![mounting a component](./domponent-mounting-lifecycle.jpg)
+--------
+![updating component](./domponent-lifecycle.jpg)
