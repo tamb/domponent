@@ -94,9 +94,14 @@ example:
 
 For multiple keys within the state, use a pipe `|` like so: `count:24|isEven:true`
 
+<!-- 
+
+
 ### `data-props`
 
 ### `data-key`
+
+-->
 
 ## Extending the `Component` class
 Let's continue with Counter.  The minimum js needed to create a component is below:
