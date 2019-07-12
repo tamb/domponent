@@ -3,8 +3,7 @@ __Make components with the HTML you already have__
 
 
 ## How To:
-1. Take some server-side rendered HTML
-   * Drop in a few `data` attributes
+1. Drop a few `data` attributes into your existing HTML
 ```html
 
 <div data-component="Counter">
