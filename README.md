@@ -54,3 +54,23 @@ new Init(config);
 
 ```
 __And you're good to go!!__
+
+## `data` API
+
+### `data-component`
+We use this bad boy to match the component name to its corresponding `class` in the `Init` configuration object
+
+example: if `data-component="Counter"` | you must have a component in your config called `Counter`
+
+### `data-bind`
+
+### `data-action`
+
+### `data-state`
+
+### `data-props`
+
+## Extending the `Component` class
+
+## Managing Component State
+## LifeCycle Methods
