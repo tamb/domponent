@@ -102,4 +102,23 @@ For multiple keys within the state, use a pipe `|` like so: `count:24|isEven:tru
 ## Extending the `Component` class
 
 ## Managing Component State
+### `setState`
+
 ## LifeCycle Methods
+### `componentMade`
+### `stateWillUpdate`
+### `stateDidUpdate`
+### `propsWillUpdate`
+### `propsDidUpdate`
+
+## Dynamically adding and removing components
+
+### Adding components
+#### `createComponent`
+#### `register`
+
+### Deleting components
+#### `deleteComponent`
+#### `unregister`
+
+
