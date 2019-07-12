@@ -100,6 +100,15 @@ For multiple keys within the state, use a pipe `|` like so: `count:24|isEven:tru
 ### `data-key`
 
 ## Extending the `Component` class
+Let's continue with Counter.  The minimum js needed to create a component is below:
+```js
+class Counter extends Component{
+  constructor(el){
+    super(el)
+  }
+}
+```
+`super` adds the base methods and properties your component needs.
 
 ## Managing Component State
 ### `setState`
