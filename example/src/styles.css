@@ -1,0 +1,12 @@
+[data-component] {
+  border: 1px solid;
+  margin-top: 5px;
+  background-color: white;
+}
+
+body {
+  background-color: aliceblue;
+}
+h2 {
+  margin: 1px;
+}

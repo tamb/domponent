@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <div id="root">
+      <div data-component="Counter" data-state="count:24">
+        <h2 data-action="mousedown:goBlue|mouseup:goGreen">Counter 1</h2>
+        <div>count: <span data-bind="state:count"></span></div>
+        <button
+          type="button"
+          data-action="click:increment|mouseover:goBlue|mouseout:goGreen"
+          class="increment"
+        >
+          +1
+        </button>
+        <button type="button" data-action="click:decrement" class="decrement">
+          -1
+        </button>
+      </div>
+
+      <div data-component="CurrentTime">
+        <h2>Current Time:</h2>
+        <span data-bind="state:hours">n/a</span>:
+        <span data-bind="state:minutes">n/a</span>:
+        <span data-bind="state:seconds">n/a</span>
+      </div>
+
+      <div
+        data-component="Counter"
+        data-key="parentCounter"
+        data-state="count:5|ofFive:true"
+      >
+        <h2 data-action="mousedown:goBlue|mouseup:goGreen">Counter 2</h2>
+        <div>count: <span data-bind="state:count"></span></div>
+        <button type="button" data-action="click:increment" class="increment">
+          +1
+        </button>
+        <button type="button" data-action="click:decrement" class="decrement">
+          -1
+        </button>
+        <div
+          data-props="goBold->parentCounter:ofFive"
+          data-component="DisplayAnything"
+        >
+          <p><strong>This is a child component with no state</strong></p>
+          <p>props are bound in memory</p>
+          <code class="code"></code>
+        </div>
+      </div>
+
+      <div data-component="Name" data-state="name:thomas">
+        <h2>Write Your Name</h2>
+        <div>
+          <label>
+            controls text after this input
+            <input type="text" value="thomas" data-action="input:handleInput" />
+          </label>
+          <code data-bind="state:name"></code>
+        </div>
+        <div>
+          <label>
+            controlled from above
+            <input type="text" class="above-controlled" />
+          </label>
+        </div>
+      </div>
+    </div>
+    <h2>To Do:</h2>
+    <ul>
+      <li>
+        <del
+          >props are only from parent component/other immutable data should be
+          passed via data attributes</del
+        >
+      </li>
+
+      <li>
+        <del>come up with efficient prop updating for child components</del>
+      </li>
+      <li>
+        <del>stick with super(el)</del>
+      </li>
+      <li><del>clean up register and unregister methods</del></li>
+      <li>
+        <del
+          >register should add Component to the list of useable components,
+          createComponent should create the component instance, unregister
+          removes the Component from memory, deleteComponent should delete
+          component instance</del
+        >
+      </li>
+      <li>bind to separate attributes?? or to textContent only?</li>
+      <li>
+        <del
+          >pass props in through memory and not just for strict textContent</del
+        >
+      </li>
+    </ul>
+    <script src="src/index.js"></script>
+  </body>
+</html>

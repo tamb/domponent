@@ -1,0 +1,19 @@
+[data-component="Counter"].yellow {
+  background-color: yellow;
+}
+
+[data-component] {
+  border: 1px solid;
+  margin-top: 5px;
+  background-color: white;
+}
+
+body {
+  background-color: aliceblue;
+}
+h2 {
+  margin: 1px;
+}
+
+
+/*# sourceMappingURL=/src.a2b27638.css.map */
