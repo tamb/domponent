@@ -115,16 +115,19 @@ class Counter extends Component{
 `super` adds the base methods and properties your component needs.
 
 ## Managing Component State
-### `setState`
+`setState(stateObject, callbackFunction)`
+This follows React's setState = - although it's implemented differently. 
 
 ## LifeCycle Methods
-### `componentMade`
-### `stateWillUpdate`
-### `stateDidUpdate`
-### `propsWillUpdate`
-### `propsDidUpdate`
+The following are methods you can use to access components at various points in their lifecycle
+* `componentMade`
+* `stateWillUpdate`
+* `stateDidUpdate`
+* `propsWillUpdate`
+* `propsDidUpdate`
 
 ## Dynamically adding and removing components
+🚧 This section is under construction
 
 ### Adding components
 #### `createComponent`
