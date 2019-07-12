@@ -129,4 +129,4 @@ class Counter extends Component{
 #### `deleteComponent`
 #### `unregister`
 
-
+## An in-depth look at application lifecycle
