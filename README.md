@@ -94,12 +94,28 @@ example:
 
 For multiple keys within the state, use a pipe `|` like so: `count:24|isEven:true`
 
+### `data-key`
+This is totally optional.  It's a _unique_ string for _each_ component instance.  
+```html
+<div data-component="Counter" data-key="aUniqueKey">
+  ...
+</div>
+```
+Let's say you're looping over this in your templating language.  You should ensure your keys are unique.
+```html
+  # for (let i=0; i<10; i++){
+    <div data-component="Counter" key=`aUniqueKey${i}`>...</div>
+  }
+```
+If you don't use this attribute, a unique key will be assigned to each component instance automatically.  It can be accessed via `this.key`
+
+
 <!-- 
 
 
 ### `data-props`
 
-### `data-key`
+
 
 -->
 
@@ -127,15 +143,27 @@ The following are methods you can use to access components at various points in 
 * `propsDidUpdate`
 
 ## Dynamically adding and removing components
-🚧 This section is under construction
 
 ### Adding components
 #### `createComponent`
+  @params:  
+  * {Element} a DOM element to create the component instance
+  * {Function} optional callback function
 #### `register`
+  @params 
+  * {Component} a component definition
+  * {Function} optional callback function
 
 ### Deleting components
 #### `deleteComponent`
+@params: 
+* {String} - key of the component _instance_ you want to delete, can be assigned via `data-key` or accessed inside component via `this.key`
+* {Function} optional callback function
+
 #### `unregister`
+@params: 
+* {String} - key of the component _defintion_ you want to delete, can be assigned via `data-key` or accessed inside component via `this.key`
+* {Function} optional callback function
 
 ## An overview of application lifecycle
 
