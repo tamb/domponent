@@ -60,15 +60,44 @@ __And you're good to go!!__
 ### `data-component`
 We use this bad boy to match the component name to its corresponding `class` in the `Init` configuration object
 
-example: if `data-component="Counter"` | you must have a component in your config called `Counter`
+example: if your HTML is `data-component="Counter"` | you must have a component in your config called `Counter`
 
 ### `data-bind`
+Binds `state` or `props` to the `textContent` of an element
+First you specify if you want to bind `state` or  `props` `data-bind="state:count"` or `data-bind="props:count"`
+The left half of the `:` tells the component what object to bind to (state or props), the right half tells the component what key within the state or props to read from
 
 ### `data-action`
+Binds a DOM event with a component method.
+Consider the following:
+```html
+<button data-action="click:increment">
++1
+</button>
+```
+The left half of the `:` represents the literal string for the DOM event to listen for.  The right half corresponds to the component method
 
+Note: You can add multiple listeners with a pipe `|`
+example:
+```html
+<button data-action="click:increment|mouseover:anotherMethod">
++1
+</button>
+ ```
 ### `data-state`
+If you want to instantiate your component with a particular state __in memory__ you must attach a `data-state` attribute to the __root element__ of the component
+example:
+```
+<div data-component="Counter" data-state="count:24">
+  ...
+</div>
+```
+
+For multiple keys within the state, use a pipe `|` like so: `count:24|isEven:true`
 
 ### `data-props`
+
+### `data-key`
 
 ## Extending the `Component` class
 
