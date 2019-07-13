@@ -58,6 +58,11 @@ __And you're good to go!!__
 ------
 ## Docs 📖
 
+### Install
+```js
+npm install --save domponent
+```
+
 ### `data` API 💽
 
 #### `data-component`
