@@ -1,9 +1,9 @@
 # 🔌\<DOMponent />
-__Make components with the HTML you already have__
+__Make components with the HTML you already have.__
 
 
 ## How To:
-1. Drop a few `data` attributes into your existing HTML 🖮
+1. Drop a few `data` attributes into your existing HTML 💻
 ```html
 
 <div data-component="Counter">
@@ -43,10 +43,11 @@ import Init from 'domponent';
 import Counter from './Counter.js';
 
 const config = {
-  selector: document.getElementById('root),
+  selector: document.getElementById('root'),
   components: {
     Counter
-  }
+  },
+  appCreated: callbackFunction
 };
 
 new Init(config);
@@ -57,7 +58,7 @@ __And you're good to go!!__
 ------
 ## Docs 📖
 
-### `data` API 🖴
+### `data` API 💽
 
 #### `data-component`
 We use this bad boy to match the component name to its corresponding `class` in the `Init` configuration object
@@ -144,6 +145,23 @@ The following are methods you can use to access components at various points in 
 * `stateDidUpdate`
 * `propsWillUpdate`
 * `propsDidUpdate`
+
+### `Init` function
+This function creates the app and registers all the components.  This takes a `config` object as required argument:
+```js
+const config = {
+  selector: document.getElementById('root'),
+  components: Counter,
+  appCreated: callbackFunction
+};
+
+const App = new Init(config);
+```
+It then exposes the following methods:
+* createComponent
+* deleteComponent
+* register
+* unregister
 
 ### Dynamically adding and removing components 🤼
 
