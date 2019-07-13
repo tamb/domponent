@@ -168,6 +168,9 @@ The following are methods you can use to access components at various points in 
 * {String} - key of the component _defintion_ you want to delete, can be assigned via `data-key` or accessed inside component via `this.key`
 * {Function} optional callback function
 
+### Demo
+https://codesandbox.io/embed/domponent-1oqdt?fontsize=14
+
 ### An overview of application lifecycle 🕵️‍♂️
 
 ![mounting a component](./domponent-mounting-lifecycle.jpg)
