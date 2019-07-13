@@ -118,15 +118,19 @@ Let's say you're looping over this in your templating language.  You should ensu
 ```
 If you don't use this attribute, a unique key will be assigned to each component instance automatically.  It can be accessed via `this.key`
 
-
-<!-- 
-
-
 #### `data-props`
+You can share state from a parent component as `props` in a child component.
+The markup would look like this
+```html
+<div data-component="Counter" key="parentCounter">
+   <div data-props="myAwesomeProp->parentCounter:ofFive" data-component="DisplayAnything">
+</div>
+```
+The left side of the arrow `->` is the name of the prop in the `DisplayAnything` component.
+The Right side of the arrow is `key` of the parent component, a colon `:` and the name of the piece of `state` to inherit.
 
+You can then use the lifecycle methods `propsWillUpdate` and `propsDidUpdate` to make changes within your child component.
 
-
--->
 
 ### Extending the `Component` class 📏
 Let's continue with Counter.  The minimum js needed to create a component is below:
