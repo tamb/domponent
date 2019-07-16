@@ -831,7 +831,8 @@ exports.default = _default;
 function _default(id) {
   console.log("inserting into dom");
   var root = document.getElementById("root");
-  var component = "\n  <div id=\"".concat(id, "\" data-component=\"Counter\" data-state=\"count:").concat(Math.floor(Math.random() * 100), "\">\n  <h2 data-action=\"mousedown:goBlue|mouseup:goGreen\">Async Counter</h2>\n  <div>count: <span data-bind=\"state:count\"></span></div>\n  <button\n    type=\"button\"\n    data-action=\"click:increment|mouseover:goBlue|mouseout:goGreen\"\n    class=\"increment\"\n  >\n    +1\n  </button>\n  <button type=\"button\" data-action=\"click:decrement\" class=\"decrement\">\n    -1\n  </button>\n</div>\n  ");
+  var number = Math.floor(Math.random() * 100);
+  var component = "\n  <div id=\"".concat(id, "\" data-component=\"Counter\" data-state=\"count:").concat(number, "|").concat(number % 5 === 0 ? 'ofFive:true' : null, "\">\n  <h2 data-action=\"mousedown:goBlue|mouseup:goGreen\">Async Counter</h2>\n  <div>count: <span data-bind=\"state:count\"></span></div>\n  <button\n    type=\"button\"\n    data-action=\"click:increment|mouseover:goBlue|mouseout:goGreen\"\n    class=\"increment\"\n  >\n    +1\n  </button>\n  <button type=\"button\" data-action=\"click:decrement\" class=\"decrement\">\n    -1\n  </button>\n</div>\n  ");
   root.insertAdjacentHTML("beforeend", component);
 }
 },{}],"src/styles.css":[function(require,module,exports) {
@@ -908,7 +909,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "32777" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34127" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
