@@ -200,6 +200,6 @@ https://codesandbox.io/embed/domponent-1oqdt?fontsize=14
 
 ### An overview of application lifecycle 🕵️‍♂️
 
-![mounting a component](https://github.com/tamb/domponent/blob/master/domponent-lifecycle.jpg)
+![mounting a component](https://github.com/tamb/domponent/blob/master/domponent-mounting-lifecycle.jpg)
 --------
 ![updating component](https://raw.githubusercontent.com/tamb/domponent/master/domponent-lifecycle.jpg)
