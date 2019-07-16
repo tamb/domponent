@@ -2,7 +2,7 @@ export default function(id) {
   console.log("inserting into dom");
   const root = document.getElementById("root");
   const component = `
-  <div id="${id}" data-component="Counter" data-state="count:24">
+  <div id="${id}" data-component="Counter" data-state="count:${Math.floor(Math.random()*100)}">
   <h2 data-action="mousedown:goBlue|mouseup:goGreen">Async Counter</h2>
   <div>count: <span data-bind="state:count"></span></div>
   <button

@@ -6,6 +6,7 @@ export default class DisplayAnything extends Component {
   }
   componentMade() {
     this.code = this.root.querySelector(".code");
+    this.objects = this.root.querySelector(".propObjects");
     this.displayProps();
   }
   propsDidUpdate(oldProps) {
@@ -14,6 +15,7 @@ export default class DisplayAnything extends Component {
     }
   }
   displayProps() {
-    this.code.textContent = JSON.stringify(this.props, undefined, 2);
+    this.code.textContent = JSON.stringify(this.props, undefined, 4);
+    this.objects.textContent = JSON.stringify(this.propObjects.goBold.parentComponentKey, undefined, 4);
   }
 }

@@ -603,6 +603,7 @@ function (_Component) {
   }, {
     key: "stateDidUpdate",
     value: function stateDidUpdate() {
+      console.log('state did update', this);
       this.setYellow();
     }
   }, {
@@ -729,6 +730,7 @@ function (_Component) {
     key: "componentMade",
     value: function componentMade() {
       this.code = this.root.querySelector(".code");
+      this.objects = this.root.querySelector(".propObjects");
       this.displayProps();
     }
   }, {
@@ -741,7 +743,8 @@ function (_Component) {
   }, {
     key: "displayProps",
     value: function displayProps() {
-      this.code.textContent = JSON.stringify(this.props, undefined, 2);
+      this.code.textContent = JSON.stringify(this.props, undefined, 4);
+      this.objects.textContent = JSON.stringify(this.propObjects.goBold.parentComponentKey, undefined, 4);
     }
   }]);
 
@@ -828,7 +831,7 @@ exports.default = _default;
 function _default(id) {
   console.log("inserting into dom");
   var root = document.getElementById("root");
-  var component = "\n  <div id=\"".concat(id, "\" data-component=\"Counter\" data-state=\"count:24\">\n  <h2 data-action=\"mousedown:goBlue|mouseup:goGreen\">Async Counter</h2>\n  <div>count: <span data-bind=\"state:count\"></span></div>\n  <button\n    type=\"button\"\n    data-action=\"click:increment|mouseover:goBlue|mouseout:goGreen\"\n    class=\"increment\"\n  >\n    +1\n  </button>\n  <button type=\"button\" data-action=\"click:decrement\" class=\"decrement\">\n    -1\n  </button>\n</div>\n  ");
+  var component = "\n  <div id=\"".concat(id, "\" data-component=\"Counter\" data-state=\"count:").concat(Math.floor(Math.random() * 100), "\">\n  <h2 data-action=\"mousedown:goBlue|mouseup:goGreen\">Async Counter</h2>\n  <div>count: <span data-bind=\"state:count\"></span></div>\n  <button\n    type=\"button\"\n    data-action=\"click:increment|mouseover:goBlue|mouseout:goGreen\"\n    class=\"increment\"\n  >\n    +1\n  </button>\n  <button type=\"button\" data-action=\"click:decrement\" class=\"decrement\">\n    -1\n  </button>\n</div>\n  ");
   root.insertAdjacentHTML("beforeend", component);
 }
 },{}],"src/styles.css":[function(require,module,exports) {
@@ -905,7 +908,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40197" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "32777" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
