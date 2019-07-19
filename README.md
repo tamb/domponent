@@ -1,5 +1,7 @@
 # 🔌\<DOMponent />
 __Make components with the HTML you already have.__
+<br/>
+__<1.3kb gzipped and <3.3kb minified! 👌__
 
 
 ## How To:
