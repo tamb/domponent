@@ -123,7 +123,7 @@ You can share state from a parent component as `props` in a child component.
 The markup would look like this
 ```html
 <div data-component="Counter" key="parentCounter">
-   <div data-props="myAwesomeProp->parentCounter:ofFive" data-component="DisplayAnything">
+   <div data-props="myAwesomeProp<-parentCounter:ofFive" data-component="DisplayAnything">
 </div>
 ```
 The left side of the arrow `->` is the name of the prop in the `DisplayAnything` component.

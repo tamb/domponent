@@ -20,11 +20,9 @@ const App = new Init({
 setTimeout(() => {
   domInsert("id2");
   App.createComponent(document.getElementById("id2"));
-  console.log("Async #1 added to App", App);
 }, 1000);
 
 setTimeout(() => {
   domInsert("id3");
   App.createComponent(document.getElementById("id3"));
-  console.log("Async #2 added to App", App);
 }, 3000);

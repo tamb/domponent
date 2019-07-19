@@ -34,11 +34,13 @@
         <button type="button" data-action="click:decrement" class="decrement">
           -1
         </button>
-        <div data-props="goBold->parentCounter:ofFive" data-component="DisplayAnything">
+        <div data-props="goBold<-parentCounter:ofFive" data-component="DisplayAnything">
           <p><strong>This is a child component with no state</strong></p>
           <p>props are bound in memory</p>
           <code class="code"></code>
+          <br>
           <code class="propObjects"></code>
+          <p>prop bound to textContent <span data-bind="props:goBold<-parentCounter"></span></p>
         </div>
       </div>
 

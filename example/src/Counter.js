@@ -36,7 +36,6 @@ export default class Counter extends Component {
   }
 
   stateDidUpdate() {
-    console.log('state did update', this)
     this.setYellow();
   }
 

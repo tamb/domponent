@@ -13,7 +13,7 @@ function splitPipe(string) {
   return string.trim().split("|");
 }
 function splitArrow(string) {
-  return string.trim().split("->");
+  return string.trim().split("<-");
 }
 function splitComma(string) {
   return string.trim().split(",");
@@ -63,10 +63,12 @@ export class Component {
         const parentComponentKey = parentComponentValues[1];
         parentComponent.dependents.add(this.key);
 
+        const els = [...this.root.querySelectorAll(`[data-bind^="props:${propName}"]`)];
         this.props[propName] = parentComponent.state[parentComponentKey];
         propObjects[propName] = {
           parentComponent,
-          parentComponentKey
+          parentComponentKey,
+          els: els.length > 0? els : null
         };
       }, this);
       return propObjects;
@@ -134,6 +136,11 @@ export class Component {
       const obj = this.propObjects[key];
       if (updatedProps.includes(this.propObjects[key].parentComponentKey)) {
         this.props[key] = obj.parentComponent.state[obj.parentComponentKey];
+        if(this.propObjects[key].els){
+          this.propObjects[key].els.forEach(el=>{
+            this._updateDOM(el, this.props[key]);
+          });
+        }
       }
     }
     this.propsDidUpdate(oldProps);

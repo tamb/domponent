@@ -157,7 +157,7 @@ function splitPipe(string) {
 }
 
 function splitArrow(string) {
-  return string.trim().split("->");
+  return string.trim().split("<-");
 }
 
 function splitComma(string) {
@@ -227,10 +227,14 @@ function () {
           var parentComponent = _this2.__app.registeredComponents[parentComponentValues[0]];
           var parentComponentKey = parentComponentValues[1];
           parentComponent.dependents.add(_this2.key);
+
+          var els = _toConsumableArray(_this2.root.querySelectorAll("[data-bind^=\"props:".concat(propName, "\"]")));
+
           _this2.props[propName] = parentComponent.state[parentComponentKey];
           propObjects[propName] = {
             parentComponent: parentComponent,
-            parentComponentKey: parentComponentKey
+            parentComponentKey: parentComponentKey,
+            els: els.length > 0 ? els : null
           };
         }, this);
         return propObjects;
@@ -313,15 +317,27 @@ function () {
   }, {
     key: "_updateProps",
     value: function _updateProps(updatedProps) {
+      var _this5 = this;
+
       this.propsWillUpdate();
       var oldProps = Object.assign({}, this.props);
 
-      for (var key in this.propObjects) {
-        var obj = this.propObjects[key];
+      var _loop = function _loop(key) {
+        var obj = _this5.propObjects[key];
 
-        if (updatedProps.includes(this.propObjects[key].parentComponentKey)) {
-          this.props[key] = obj.parentComponent.state[obj.parentComponentKey];
+        if (updatedProps.includes(_this5.propObjects[key].parentComponentKey)) {
+          _this5.props[key] = obj.parentComponent.state[obj.parentComponentKey];
+
+          if (_this5.propObjects[key].els) {
+            _this5.propObjects[key].els.forEach(function (el) {
+              _this5._updateDOM(el, _this5.props[key]);
+            });
+          }
         }
+      };
+
+      for (var key in this.propObjects) {
+        _loop(key);
       }
 
       this.propsDidUpdate(oldProps);
@@ -346,30 +362,30 @@ function () {
   }, {
     key: "setState",
     value: function setState() {
-      var _this5 = this;
+      var _this6 = this;
 
       var newState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.state;
       var fn = arguments.length > 1 ? arguments[1] : undefined;
       this.stateWillUpdate();
       var propsToUpdate = [];
 
-      var _loop = function _loop(stateKey) {
-        if (newState[stateKey] !== _this5.state[stateKey]) {
+      var _loop2 = function _loop2(stateKey) {
+        if (newState[stateKey] !== _this6.state[stateKey]) {
           propsToUpdate.push(stateKey);
-          _this5.state[stateKey] = newState[stateKey];
+          _this6.state[stateKey] = newState[stateKey];
 
-          var els = _toConsumableArray(_this5.root.querySelectorAll("[data-bind=\"state:".concat(stateKey, "\"]")));
+          var els = _toConsumableArray(_this6.root.querySelectorAll("[data-bind=\"state:".concat(stateKey, "\"]")));
 
           if (els.length > 0) {
             els.forEach(function (el) {
-              _this5._updateDOM(el, newState[stateKey]);
+              _this6._updateDOM(el, newState[stateKey]);
             });
           }
         }
       };
 
       for (var stateKey in newState) {
-        _loop(stateKey);
+        _loop2(stateKey);
       }
 
       if (this.dependents.size > 0) {
@@ -388,7 +404,7 @@ function () {
 exports.Component = Component;
 
 function InitApp(config) {
-  var _this6 = this;
+  var _this7 = this;
 
   // components and their instances
   this.components = config.components;
@@ -397,51 +413,51 @@ function InitApp(config) {
 
   this._cc = function (el, cb) {
     var key = el.getAttribute("data-key") || createKey();
-    _this6.registeredComponents[key] = new config.components[el.getAttribute("data-component")]({
+    _this7.registeredComponents[key] = new config.components[el.getAttribute("data-component")]({
       rootEl: el,
       key: key,
-      app: _this6
+      app: _this7
     });
     cb ? cb() : null;
   }; // delete component
 
 
   this._dc = function (key, cb) {
-    delete _this6.registeredComponents[key];
+    delete _this7.registeredComponents[key];
     cb ? cb() : null;
   }; // register component
 
 
   this._rc = function (name, C, cb) {
-    _this6.components[name] = C;
+    _this7.components[name] = C;
     cb ? cb() : null;
   }; // unregister component
 
 
   this._urc = function (name, cb) {
-    delete _this6.component[name];
+    delete _this7.component[name];
     cb ? cb() : null;
   }; // creating the components initially
 
 
   _toConsumableArray(config.selector.querySelectorAll("[data-component]")).forEach(function (componentEl) {
-    _this6._cc(componentEl);
+    _this7._cc(componentEl);
   }, this);
 
   config.appCreated ? config.appCreated() : null; // exposing methods
 
   return {
     createComponent: function createComponent(el, cb) {
-      return _this6._cc(el, cb);
+      return _this7._cc(el, cb);
     },
     deleteComponent: function deleteComponent(el, cb) {
-      return _this6._dc(el, cb);
+      return _this7._dc(el, cb);
     },
     register: function register(name, C, cb) {
-      return _this6._rc(name, C, cb);
+      return _this7._rc(name, C, cb);
     },
     unregister: function unregister(name, cb) {
-      return _this6._urc(name, cb);
+      return _this7._urc(name, cb);
     }
   };
 } // generates the app
@@ -603,7 +619,6 @@ function (_Component) {
   }, {
     key: "stateDidUpdate",
     value: function stateDidUpdate() {
-      console.log('state did update', this);
       this.setYellow();
     }
   }, {
@@ -874,12 +889,10 @@ var App = new _Framework.default({
 setTimeout(function () {
   (0, _domInsert.default)("id2");
   App.createComponent(document.getElementById("id2"));
-  console.log("Async #1 added to App", App);
 }, 1000);
 setTimeout(function () {
   (0, _domInsert.default)("id3");
   App.createComponent(document.getElementById("id3"));
-  console.log("Async #2 added to App", App);
 }, 3000);
 },{"./Counter":"src/Counter.js","./CurrentTime":"src/CurrentTime.js","./DisplayAnything":"src/DisplayAnything.js","./Name":"src/Name.js","./Framework":"src/Framework.js","./domInsert":"src/domInsert.js","./styles.css":"src/styles.css"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -909,7 +922,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34127" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38343" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
