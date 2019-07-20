@@ -2,3 +2,4 @@
 /example/node_modules
 .cache
 /example/.cache
+/dist
