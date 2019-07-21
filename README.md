@@ -149,7 +149,7 @@ class Counter extends Component{
 `setState(stateObject, callbackFunction)`
 This follows React's setState = - although it's implemented differently. 
 
-### LifeCycle Methods 🧬
+### LifeCycle Methods 🌳
 The following are methods you can use to access components at various points in their lifecycle
 * `componentMade`
 * `stateWillUpdate`
