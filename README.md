@@ -194,7 +194,7 @@ It then exposes the following methods:
 
 ##### `unregister`
 @params: 
-* {String} - key of the component _defintion_ you want to delete, can be assigned via `data-key` or accessed inside component via `this.key`
+* {String} - The name of the key you used to register your component on app Init.
 * {Function} optional callback function
 
 ### Demo
