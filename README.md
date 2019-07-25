@@ -1,7 +1,7 @@
 # 🔌\<DOMponent />
 __Make components with the HTML you already have.__
 <br/>
-__<1.3kb gzipped and <3.5kb minified! 👌__
+__<1.5kb gzipped and <3.7kb minified! 👌__
 
 ## This is ALPHA
 ### todo
@@ -9,6 +9,10 @@ __<1.3kb gzipped and <3.5kb minified! 👌__
 * prefix component name to binding attribute values
 * optional config field for changing attribute names to avoid clashing with 3rd party libraries
 * export a stateless component as well
+* * #### Smallest to Largest Components
+* * * Exponent (just props and presentation - stateless)
+* * * Component (props AND state)
+* test deeply nested state
 * remove helper methods on component initialization from class definition into a utility so it can be mangled/minified
 
 ## How To:
