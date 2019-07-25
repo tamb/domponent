@@ -3,6 +3,13 @@ __Make components with the HTML you already have.__
 <br/>
 __<1.3kb gzipped and <3.5kb minified! 👌__
 
+## This is ALPHA
+### todo
+* prefix component name to methods in `data-action`
+* prefix component name to binding attribute values
+* optional config field for changing attribute names to avoid clashing with 3rd party libraries
+* export a stateless component as well
+* remove helper methods on component initialization from class definition into a utility so it can be mangled/minified
 
 ## How To:
 1. Drop a few `data` attributes into your existing HTML 💻
