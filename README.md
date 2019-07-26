@@ -7,6 +7,7 @@ __<1.5kb gzipped and <3.7kb minified! 👌__
 ### todo
 * prefix component name to methods in `data-action`
 * prefix component name to binding attribute values
+* use `JSON.parse` for `data-state`
 * optional config field for changing attribute names to avoid clashing with 3rd party libraries
 * export a stateless component as well
 * * #### Smallest to Largest Components
