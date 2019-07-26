@@ -1,23 +1,5 @@
 // utils
-function createKey() {
-  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
-    var r = (Math.random() * 16) | 0,
-      v = c == "x" ? r : (r & 0x3) | 0x8;
-    return v.toString(16);
-  });
-}
-function splitColon(string) {
-  return string.trim().split(":");
-}
-function splitPipe(string) {
-  return string.trim().split("|");
-}
-function splitArrow(string) {
-  return string.trim().split("<-");
-}
-function splitComma(string) {
-  return string.trim().split(",");
-}
+
 
 export class Component {
   constructor(conf) {
@@ -120,15 +102,9 @@ export class Component {
       this.__app.registeredComponents[key]._updateProps(updatedProps);
     });
   }
-  _updateDOM(el, value, attrs) {
-    if (attrs) {
-      splitComma(attrs).forEach(attr => {
-        this.updateAttr(el, attr, value);
-      });
-      return;
-    }
-    el.textContent = value;
-  }
+  // _updateDOM(el, value) {
+  //   el.textContent = value;
+  // }
   _updateProps(updatedProps) {
     this.propsWillUpdate();
     const oldProps = Object.assign({}, this.props);
@@ -179,54 +155,3 @@ export class Component {
     this.stateDidUpdate();
   }
 }
-
-// generates the App
-function InitApp(config) {
-  // components and their instances
-  this.components = config.components;
-  this.registeredComponents = {};
-
-  // methods to expose
-  // create component
-  this._cc = (el, cb) => {
-    const key = el.getAttribute("data-key") || createKey();
-    this.registeredComponents[key] = new config.components[
-      (el.getAttribute("data-component"))
-    ]({ rootEl: el, key, app: this });
-    cb ? cb() : null;
-  };
-  // delete component
-  this._dc = (key, cb) => {
-    delete this.registeredComponents[key];
-    cb ? cb() : null;
-  };
-  // register component
-  this._rc = (name, C, cb) => {
-    this.components[name] = C;
-    cb ? cb() : null;
-  };
-  // unregister component
-  this._urc = (name, cb) => {
-    delete this.component[name];
-    cb ? cb() : null;
-  };
-
-  // creating the components initially
-  [...config.selector.querySelectorAll("[data-component]")].forEach(
-    componentEl => {
-      this._cc(componentEl);
-    },
-    this
-  );
-  config.appCreated ? config.appCreated() : null;
-
-  // exposing methods
-  return {
-    createComponent: (el, cb) => this._cc(el, cb),
-    deleteComponent: (el, cb) => this._dc(el, cb),
-    register: (name, C, cb) => this._rc(name, C, cb),
-    unregister: (name, cb) => this._urc(name, cb)
-  };
-}
-// generates the app
-export default InitApp;

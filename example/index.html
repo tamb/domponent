@@ -8,16 +8,16 @@
   <body>
     <div id="root">
       <div data-component="Counter" data-state="count:24">
-        <h2 data-action="mousedown:goBlue|mouseup:goGreen">Counter 1</h2>
-        <div>count: <span data-bind="state:count"></span></div>
+        <h2 data-action="mousedown->Counter#goBlue|mouseup->Counter#goGreen">Counter 1</h2>
+        <div>count: <span data-bind="state:Counter.count"></span></div>
         <button
           type="button"
-          data-action="click:increment|mouseover:goBlue|mouseout:goGreen"
+          data-action="click->Counter#increment|Counter->mouseover:goBlue|mouseout->Counter#goGreen"
           class="increment"
         >
           +1
         </button>
-        <button type="button" data-action="click:decrement" class="decrement">
+        <button type="button" data-action="click->Counter#decrement" class="decrement">
           -1
         </button>
       </div>
