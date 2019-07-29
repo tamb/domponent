@@ -1,9 +1,11 @@
+import { datasetEnum } from '../enums';
+
 // generates the App
 function InitApp(config) {
     // components and their instances
     this.components = config.components;
     this.registeredComponents = {};
-  
+
     // methods to expose
     // create component
     this._cc = (el, cb) => {
