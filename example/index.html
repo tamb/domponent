@@ -8,18 +8,44 @@
   <body>
     <div id="root">
       <div data-component="Counter" data-state="count:24">
-        <h2 data-action="mousedown->Counter#goBlue|mouseup->Counter#goGreen">Counter 1</h2>
+        <h2 data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen">
+          Counter 1
+        </h2>
         <div>count: <span data-bind="state:Counter.count"></span></div>
         <button
           type="button"
-          data-action="click->Counter#increment|Counter->mouseover:goBlue|mouseout->Counter#goGreen"
+          data-action="click->Counter.increment|mouseover=>Counter.goBlue|mouseout->Counter.goGreen"
           class="increment"
         >
           +1
         </button>
-        <button type="button" data-action="click->Counter#decrement" class="decrement">
+        <button
+          type="button"
+          data-action="click->Counter.decrement"
+          class="decrement"
+        >
           -1
         </button>
+        <div data-component="Counter" data-state="count:18">
+          <h2 data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen">
+            Counter 1
+          </h2>
+          <div>count: <span data-bind="state:Counter.count"></span></div>
+          <button
+            type="button"
+            data-action="click->Counter.increment|mouseover->Counter.goBlue|mouseout->Counter.goGreen"
+            class="increment"
+          >
+            +1
+          </button>
+          <button
+            type="button"
+            data-action="click->Counter.decrement"
+            class="decrement"
+          >
+            -1
+          </button>
+        </div>
       </div>
 
       <div data-component="CurrentTime">
@@ -49,9 +75,12 @@
           <p><strong>This is a child component with no state</strong></p>
           <p>props are bound in memory</p>
           <code class="code"></code>
-          <br/>
+          <br />
           <code class="propObjects"></code>
-          <p>prop bound to textContent <span data-bind="props:goBold<-parentCounter"></span></p>
+          <p>
+            prop bound to textContent
+            <span data-bind="props:goBold<-parentCounter"></span>
+          </p>
         </div>
       </div>
 

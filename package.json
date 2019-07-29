@@ -1,6 +1,6 @@
 {
   "name": "domponent",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.5",
   "description": "Make components with the HTML you already have.",
   "homepage": "https://github.com/tamb/domponent",
   "main": "dist/index.js",
