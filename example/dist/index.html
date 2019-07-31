@@ -32,14 +32,18 @@
         </div>
       </div>
 
-      <div data-component="CurrentTime">
+      <!-- <div data-component="CurrentTime">
         <h2>Current Time:</h2>
         <span data-bind="state:hours">n/a</span>:
         <span data-bind="state:minutes">n/a</span>:
         <span data-bind="state:seconds">n/a</span>
       </div>
 
-      <div data-component="Counter" data-key="parentCounter" data-state="count:5|ofFive:true">
+      <div
+        data-component="Counter"
+        data-key="parentCounter"
+        data-state="count:5|ofFive:true"
+      >
         <h2 data-action="mousedown:goBlue|mouseup:goGreen">Counter 2</h2>
         <div>count: <span data-bind="state:count"></span></div>
         <button type="button" data-action="click:increment" class="increment">
@@ -48,11 +52,14 @@
         <button type="button" data-action="click:decrement" class="decrement">
           -1
         </button>
-        <div data-props="goBold<-parentCounter:ofFive" data-component="DisplayAnything">
+        <div
+          data-props="goBold<-parentCounter:ofFive"
+          data-component="DisplayAnything"
+        >
           <p><strong>This is a child component with no state</strong></p>
           <p>props are bound in memory</p>
           <code class="code"></code>
-          <br>
+          <br />
           <code class="propObjects"></code>
           <p>
             prop bound to textContent
@@ -66,17 +73,17 @@
         <div>
           <label>
             controls text after this input
-            <input type="text" value="thomas" data-action="input:handleInput">
+            <input type="text" value="thomas" data-action="input:handleInput" />
           </label>
           <code data-bind="state:name"></code>
         </div>
         <div>
           <label>
             controlled from above
-            <input type="text" class="above-controlled">
+            <input type="text" class="above-controlled" />
           </label>
         </div>
-      </div>
+      </div> -->
     </div>
     <h2>To Do:</h2>
     <ul>
