@@ -1,14 +1,19 @@
 import Exponent from './Exponent';
 
+import {
+  splitMultipleValues,
+  splitKeyValuePairs
+} from './utils'
+
 function createStateObjects() {
-  const nodes = this.root.querySelectorAll('[data-bind^="state:"]');
+  const nodes = this.$root.querySelectorAll('[data-bind^="state:"]');
   if (nodes.length > 0) {
     const stateObjects = {};
     nodes.forEach(el => {
       const newStateObject = {};
-      const states = splitPipe(el.getAttribute("data-bind"));
+      const states = splitMultipleValues(el.getAttribute("data-bind"));
       states.forEach(state => {
-        const parts = splitColon(state);
+        const parts = splitKeyValuePairs(state);
         const stateKey = parts[1];        
         newStateObject.el = el;
         if (!stateObjects[stateKey]) {
@@ -23,12 +28,12 @@ function createStateObjects() {
 }
 
 function initState() {
-  const stateAttr = this.root.getAttribute("data-state");
+  const stateAttr = this.$root.getAttribute("data-state");
   if (stateAttr) {
-    const fields = splitPipe(stateAttr);
+    const fields = splitMultipleValues(stateAttr);
     const state = {};
     fields.forEach(field => {
-      const splitField = splitColon(field);
+      const splitField = splitKeyValuePairs(field);
       state[splitField[0]] = splitField[1];
     });
     this.setState(state);
@@ -36,9 +41,9 @@ function initState() {
 }
 
 
-export class Component extends Exponent{
-    constructor(el) {
-      super(el);
+export default class Component extends Exponent{
+    constructor(config) {
+      super(config);
       this.state = {};
       this.stateObjects = createStateObjects.call(this);
       initState.call(this);
@@ -58,7 +63,7 @@ export class Component extends Exponent{
           propsToUpdate.push(stateKey);
           this.state[stateKey] = newState[stateKey];
           const els = [
-            ...this.root.querySelectorAll(`[data-bind="state:${stateKey}"]`)
+            ...this.$root.querySelectorAll(`[data-bind="state:${stateKey}"]`)
           ];
   
           if (els.length > 0) {

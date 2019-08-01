@@ -14,7 +14,7 @@
         <div>count: <span data-bind="state:Counter.count"></span></div>
         <button
           type="button"
-          data-action="click->Counter.increment|mouseover=>Counter.goBlue|mouseout->Counter.goGreen"
+          data-action="click->Counter.increment|mouseover->Counter.goBlue|mouseout->Counter.goGreen"
           class="increment"
         >
           +1
@@ -27,20 +27,20 @@
           -1
         </button>
         <div data-component="Counter" data-state="count:18">
-          <h2 data-action="mousedown-Counter.goBlue|mouseup->Counter.goGreen">
+          <h2 data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen">
             Counter 1
           </h2>
           <div>count: <span data-bind="state:Counter.count"></span></div>
           <button
             type="button"
-            data-action="click-Counter.increment|mouseover-Counter.goBlue|mouseout-Counter.goGreen"
+            data-action="click->Counter.increment|mouseover->Counter.goBlue|mouseout->Counter.goGreen"
             class="increment"
           >
             +1
           </button>
           <button
             type="button"
-            data-action="click-Counter.decrement"
+            data-action="click->Counter.decrement"
             class="decrement"
           >
             -1

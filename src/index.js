@@ -1,7 +1,9 @@
 import { datasetEnum } from './enums';
 
-import Exponent from './Exponent';
-import Component from './Component';
+import Exp from './Exponent';
+import Comp from './Component';
+
+import { createKey } from './utils';
 
 // generates the App
 function InitApp(config) {
@@ -24,9 +26,11 @@ function InitApp(config) {
     // create component
     this._cc = (el, cb) => {
       const key = el.getAttribute(`data-${this.$datasets.key}`) || createKey();
+      console.log(el, key, this.$datasets);
+      console.log(el.getAttribute(`data-${this.$datasets.component}`));
       this.registeredComponents[key] = new config.components[
-        (el.getAttribute(`data=${this.$datasets.component}`))
-      ]({ rootEl: el, key, app: this });
+        (el.getAttribute(`data-${this.$datasets.component}`))
+      ]({ element: el, key, app: this });
       cb ? cb() : null;
     };
     // delete component
@@ -63,9 +67,10 @@ function InitApp(config) {
     };
   }
 
-  export {
-    Component,
-    Exponent
-  }
+  export const Init = InitApp;
+  export const Component = Comp;
+  export const Exponent = Exp;
+
+
   // generates the app
-  export default InitApp;
+  // export default Init;

@@ -301,8 +301,9 @@ function bindListeners() {
     var actions = (0, _utils.splitMultipleValues)(el.getAttribute("data-".concat(_this.$app.$datasets.action)));
     actions.forEach(function (action) {
       var parts = (0, _utils.splitMethodCalls)(action);
+      console.log('parts', parts);
       var event = parts[0];
-      var cbFunc = splitFromComponent(parts[1]);
+      var cbFunc = (0, _utils.splitFromComponent)(parts[1]);
 
       if (cbFunc[0] === _this.$name) {
         el.addEventListener(event, function (e) {
@@ -426,6 +427,8 @@ exports.default = void 0;
 
 var _Exponent2 = _interopRequireDefault(require("./Exponent"));
 
+var _utils = require("./utils");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -455,15 +458,15 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function createStateObjects() {
-  var nodes = this.root.querySelectorAll('[data-bind^="state:"]');
+  var nodes = this.$root.querySelectorAll('[data-bind^="state:"]');
 
   if (nodes.length > 0) {
     var stateObjects = {};
     nodes.forEach(function (el) {
       var newStateObject = {};
-      var states = splitPipe(el.getAttribute("data-bind"));
+      var states = (0, _utils.splitMultipleValues)(el.getAttribute("data-bind"));
       states.forEach(function (state) {
-        var parts = splitColon(state);
+        var parts = (0, _utils.splitKeyValuePairs)(state);
         var stateKey = parts[1];
         newStateObject.el = el;
 
@@ -481,13 +484,13 @@ function createStateObjects() {
 }
 
 function initState() {
-  var stateAttr = this.root.getAttribute("data-state");
+  var stateAttr = this.$root.getAttribute("data-state");
 
   if (stateAttr) {
-    var fields = splitPipe(stateAttr);
+    var fields = (0, _utils.splitMultipleValues)(stateAttr);
     var state = {};
     fields.forEach(function (field) {
-      var splitField = splitColon(field);
+      var splitField = (0, _utils.splitKeyValuePairs)(field);
       state[splitField[0]] = splitField[1];
     });
     this.setState(state);
@@ -535,7 +538,7 @@ function (_Exponent) {
           propsToUpdate.push(stateKey);
           _this2.state[stateKey] = newState[stateKey];
 
-          var els = _toConsumableArray(_this2.root.querySelectorAll("[data-bind=\"state:".concat(stateKey, "\"]")));
+          var els = _toConsumableArray(_this2.$root.querySelectorAll("[data-bind=\"state:".concat(stateKey, "\"]")));
 
           if (els.length > 0) {
             els.forEach(function (el) {
@@ -562,7 +565,7 @@ function (_Exponent) {
 }(_Exponent2.default);
 
 exports.default = Component;
-},{"./Exponent":"src/Framework/Exponent.js"}],"src/Framework/index.js":[function(require,module,exports) {
+},{"./Exponent":"src/Framework/Exponent.js","./utils":"src/Framework/utils.js"}],"src/Framework/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -834,9 +837,9 @@ function (_Component) {
     key: "setYellow",
     value: function setYellow() {
       if (this.state.ofFive) {
-        this.root.classList.add("yellow");
+        this.$root.classList.add("yellow");
       } else {
-        this.root.classList.remove("yellow");
+        this.$root.classList.remove("yellow");
       }
     }
   }]);
@@ -866,6 +869,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // import Name from "./Name";
 // import domInsert from "./domInsert";
 console.log('This is the init function', _index.Init);
+console.time('appCreation');
 var App = new _index.Init({
   selector: document.getElementById("root"),
   components: {
@@ -877,7 +881,8 @@ var App = new _index.Init({
   appCreated: function appCreated() {
     return console.log("app created");
   }
-}); // setTimeout(() => {
+});
+console.timeEnd('appCreation'); // setTimeout(() => {
 //   domInsert("id2");
 //   App.createComponent(document.getElementById("id2"));
 // }, 1000);
@@ -913,7 +918,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34487" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40727" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
