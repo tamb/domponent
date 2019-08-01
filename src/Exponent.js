@@ -1,19 +1,21 @@
-import "./Scope";
+import Scope from "./Scope";
 
 import {
   splitPropsPassedIn,
   splitKeyValuePairs,
   splitMultipleValues,
-  splitMethodCalls
+  splitMethodCalls,
+  splitFromComponent
 } from "./utils";
 
 function bindListeners() {
-  this.scopeElements(`[data-${this.$app.$dataset.action}]`).forEach(el => {
+  this.scopeElements(`[data-${this.$app.$datasets.action}]`).forEach(el => {
     const actions = splitMultipleValues(
-      el.getAttribute(`[data-${this.$app.$dataset.action}]`)
+      el.getAttribute(`data-${this.$app.$datasets.action}`)
     );
     actions.forEach(action => {
       const parts = splitMethodCalls(action);
+      console.log('parts', parts)
       const event = parts[0];
       const cbFunc = splitFromComponent(parts[1]);
       if (cbFunc[0] === this.$name) {
@@ -24,7 +26,7 @@ function bindListeners() {
 }
 
 function createPropObjects() {
-  const attr = this.root.getAttribute(`data-${this.$app.$dataset.props}`);
+  const attr = this.$root.getAttribute(`data-${this.$app.$datasets.props}`);
   if (attr) {
     const propObjects = {};
     const props = splitPipe(attr);
@@ -39,8 +41,8 @@ function createPropObjects() {
       parentComponent.dependents.add(this.key);
 
       const els = [
-        ...this.root.querySelectorAll(
-          `[${this.$app.$dataset.bind}^="props:${propName}"]`
+        ...this.$root.querySelectorAll(
+          `[${this.$app.$datasets.bind}^="props:${propName}"]`
         )
       ];
       this.props[propName] = parentComponent.state[parentComponentKey];
@@ -56,9 +58,11 @@ function createPropObjects() {
   }
 }
 
-class Exponent extends Scope {
-  constructor() {
-    super(el);
+export default class Exponent extends Scope {
+  constructor(config) {
+    super(config);
+    console.log('in exponent')
+
     this.props = {};
     this.propObjects = createPropObjects.call(this);
     bindListeners.call(this);
@@ -95,5 +99,3 @@ class Exponent extends Scope {
 
   propsDidUpdate() {}
 }
-
-export default Exponent;

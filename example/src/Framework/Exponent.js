@@ -4,7 +4,8 @@ import {
   splitPropsPassedIn,
   splitKeyValuePairs,
   splitMultipleValues,
-  splitMethodCalls
+  splitMethodCalls,
+  splitFromComponent
 } from "./utils";
 
 function bindListeners() {
@@ -14,6 +15,7 @@ function bindListeners() {
     );
     actions.forEach(action => {
       const parts = splitMethodCalls(action);
+      console.log('parts', parts)
       const event = parts[0];
       const cbFunc = splitFromComponent(parts[1]);
       if (cbFunc[0] === this.$name) {

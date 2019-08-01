@@ -44,9 +44,9 @@ export default class Counter extends Component {
 
   setYellow() {
     if (this.state.ofFive) {
-      this.root.classList.add("yellow");
+      this.$root.classList.add("yellow");
     } else {
-      this.root.classList.remove("yellow");
+      this.$root.classList.remove("yellow");
     }
   }
 }

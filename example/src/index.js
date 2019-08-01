@@ -7,7 +7,7 @@ import { Init } from "./Framework/index";
 import "./styles.css";
 
 console.log('This is the init function', Init)
-
+console.time('appCreation');
 const App = new Init({
   selector: document.getElementById("root"),
   components: {
@@ -18,6 +18,7 @@ const App = new Init({
   },
   appCreated: () => console.log("app created")
 });
+console.timeEnd('appCreation');
 
 // setTimeout(() => {
 //   domInsert("id2");
