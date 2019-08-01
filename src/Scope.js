@@ -1,5 +1,5 @@
 export default class Scope {
-  constructor(element, app, key) {
+  constructor(element, key, app) {
     this.$root = element;
     this.$app = app;
     this.$key = key;

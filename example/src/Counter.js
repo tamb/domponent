@@ -1,9 +1,12 @@
-import { Component } from "./Framework";
+import { Component } from "./Framework/index"
 import "./Counter.css";
+
+console.log(Component)
 
 export default class Counter extends Component {
   constructor(el) {
     super(el);
+    console.log('in counter')
     this.state = {
       count: parseInt(this.state.count) || 0,
       ofFive: this.state.ofFive || false
