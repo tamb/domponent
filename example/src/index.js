@@ -1,3 +1,4 @@
+// import { Init } from 'domponent'
 import Counter from "./Counter";
 import CurrentTime from "./CurrentTime";
 import DisplayAnything from "./DisplayAnything";
@@ -12,7 +13,7 @@ const App = new Init({
   components: {
     Counter,
     CurrentTime,
-    DisplayAnything,
+    DisplayAnything
     // Name
   },
   appCreated: () => console.log("app created")

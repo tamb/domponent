@@ -8,6 +8,7 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
+    "dom": "0.0.3",
     "domponent": "file:../domponent-1.0.0-alpha.5.tgz"
   },
   "devDependencies": {

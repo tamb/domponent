@@ -3,6 +3,6 @@ export default class Scope {
     this.$root = config.element;
     this.$app = config.app;
     this.$key = config.key;
-    this.$name = config.element.dataset[this.$app.$datasets.component];
+    this.$name = config.element.getAttribute(`data-${this.$app.$datasets.component}`);
   }
 }
