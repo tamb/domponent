@@ -1,82 +1,51 @@
-import Exponent from './Exponent';
+import Exponent from "./Exponent";
 
+import { updateDOM } from "./utils";
 import {
-  splitMultipleValues,
-  splitKeyValuePairs
-} from './utils'
+  scopeElements,
+  createStateObjects,
+  bindListeners,
+  initState
+} from "./componentUtils";
 
-function createStateObjects() {
-  const nodes = this.$root.querySelectorAll('[data-bind^="state:"]');
-  if (nodes.length > 0) {
-    const stateObjects = {};
-    nodes.forEach(el => {
-      const newStateObject = {};
-      const states = splitMultipleValues(el.getAttribute("data-bind"));
-      states.forEach(state => {
-        const parts = splitKeyValuePairs(state);
-        const stateKey = parts[1];        
-        newStateObject.el = el;
-        if (!stateObjects[stateKey]) {
-          stateObjects[stateKey] = [];
-        }
-        stateObjects[stateKey].push(newStateObject);
-      });
-    }, this);
-    return stateObjects;
+export default class Component extends Exponent {
+  constructor(config) {
+    super(config);
+    this.state = {};
+    this.stateObjects = createStateObjects.call(this);
+    bindListeners.call(this);
+    initState.call(this);
+    this.constructor.name == "Component" ? this.created() : null;
   }
-  return null;
-}
 
-function initState() {
-  const stateAttr = this.$root.getAttribute("data-state");
-  if (stateAttr) {
-    const fields = splitMultipleValues(stateAttr);
-    const state = {};
-    fields.forEach(field => {
-      const splitField = splitKeyValuePairs(field);
-      state[splitField[0]] = splitField[1];
-    });
-    this.setState(state);
-  }
-}
+  // lifecycle methods
+  stateWillUpdate() {}
+  stateDidUpdate() {}
 
-
-export default class Component extends Exponent{
-    constructor(config) {
-      super(config);
-      this.state = {};
-      this.stateObjects = createStateObjects.call(this);
-      initState.call(this);
-      this.constructor.name == 'Component'? this.created(): null;
-    }
-  
-    // lifecycle methods
-    stateWillUpdate() {}
-    stateDidUpdate() {}
-  
-    // public setters
-    setState(newState = this.state, fn) {
-      this.stateWillUpdate();
-      const propsToUpdate = [];
-      for (let stateKey in newState) {
-        if (newState[stateKey] !== this.state[stateKey]) {
-          propsToUpdate.push(stateKey);
-          this.state[stateKey] = newState[stateKey];
-          const els = [
-            ...this.$root.querySelectorAll(`[data-bind="state:${stateKey}"]`)
-          ];
-  
-          if (els.length > 0) {
-            els.forEach(el => {
-              this._updateDOM(el, newState[stateKey]);
-            });
-          }
+  // public setters
+  setState(newState = this.state, fn) {
+    console.log("setting state");
+    this.stateWillUpdate();
+    const propsToUpdate = [];
+    for (let stateKey in newState) {
+      if (newState[stateKey] !== this.state[stateKey]) {
+        propsToUpdate.push(stateKey);
+        this.state[stateKey] = newState[stateKey];
+        const els = [
+          ...scopeElements.call(this, `[data-bind="state:${this.$name}.${stateKey}"]`) // TODO remove selector from setState.  this should already exist.
+        ];
+        console.log('scoped state')
+        if (els.length > 0) {
+          els.forEach(el => {
+            updateDOM(el, newState[stateKey]);
+          });
         }
       }
-      if (this.dependents.size > 0) {
-        this._updateDependents(propsToUpdate);
-      }
-      fn ? fn() : null;
-      this.stateDidUpdate();
     }
+    if (this.dependents.size > 0) {
+      updateDependents.call(this, propsToUpdate);
+    }
+    fn ? fn() : null;
+    this.stateDidUpdate();
   }
+}
