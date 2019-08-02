@@ -1,12 +1,9 @@
 import { Component } from "./Framework/index"
 import "./Counter.css";
 
-console.log(Component)
-
 export default class Counter extends Component {
   constructor(el) {
     super(el);
-    console.log('in counter')
     this.state = {
       count: parseInt(this.state.count) || 0,
       ofFive: this.state.ofFive || false
@@ -14,12 +11,7 @@ export default class Counter extends Component {
     this.setState();
   }
 
-  stateWillUpdate(){
-    console.log('Inside state WILL update');
-  }
-
   increment(e) {
-    console.log('Gonna increment');
     const newState = {};
     const largerCount = parseInt(this.state.count + 1, 10);
     newState.count = largerCount;

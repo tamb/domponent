@@ -26,8 +26,6 @@ function InitApp(config) {
     // create component
     this._cc = (el, cb) => {
       const key = el.getAttribute(`data-${this.$datasets.key}`) || createKey();
-      console.log(el, key, this.$datasets);
-      console.log(el.getAttribute(`data-${this.$datasets.component}`));
       this.registeredComponents[key] = new config.components[
         (el.getAttribute(`data-${this.$datasets.component}`))
       ]({ element: el, key, app: this });

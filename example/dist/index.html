@@ -7,7 +7,7 @@
 
   <body>
     <div id="root">
-      <div data-component="Counter" data-state="count:24">
+      <div data-component="Counter" data-state="count:24" data-key="parentCounter">
         <h2 data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen">
           Counter 1
         </h2>
@@ -29,6 +29,17 @@
           <button type="button" data-action="click->Counter.decrement" class="decrement">
             -1
           </button>
+          <div data-props="goBold<-parentCounter:ofFive" data-component="DisplayAnything">
+          <p><strong>This is a child component with no state</strong></p>
+          <p>props are bound in memory</p>
+          <code class="code"></code>
+          <br>
+          <code class="propObjects"></code>
+          <!-- <p>
+            prop bound to textContent
+            <span data-bind="props:goBold<-parentCounter"></span>
+          </p> -->
+        </div>
           <div data-component="Counter" data-state="count:0">
             <h2 data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen">
               Nested Counter 2
@@ -70,20 +81,6 @@
         <button type="button" data-action="click:decrement" class="decrement">
           -1
         </button>
-        <div
-          data-props="goBold<-parentCounter:ofFive"
-          data-component="DisplayAnything"
-        >
-          <p><strong>This is a child component with no state</strong></p>
-          <p>props are bound in memory</p>
-          <code class="code"></code>
-          <br />
-          <code class="propObjects"></code>
-          <p>
-            prop bound to textContent
-            <span data-bind="props:goBold<-parentCounter"></span>
-          </p>
-        </div>
       </div>
 
       <div data-component="Name" data-state="name:thomas">
@@ -107,7 +104,7 @@
     <ul>
       <li>Bind props to textContent??</li>
       <li>stateDidUpdate is firing twice</li>
-      <li>bind to separate attributes?? or to textContent only?</li>
+      <li><del>bind to separate attributes?? or to textContent only?</del></li>
       <li>
         <del>props are only from parent component/other immutable data should be
           passed via data attributes</del>

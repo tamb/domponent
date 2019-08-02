@@ -21,7 +21,7 @@ export function createStateObjects() {
       const states = splitMultipleValues(el.getAttribute("data-bind"));
       states.forEach(state => {
         const parts = splitKeyValuePairs(state);
-        const stateKey = parts[1];
+        const stateKey = splitFromComponent(parts[1])[1];
         newStateObject.el = el;
         if (!stateObjects[stateKey]) {
           stateObjects[stateKey] = [];
@@ -57,7 +57,6 @@ export function bindListeners() {
       const event = parts[0];
       const cbFunc = splitFromComponent(parts[1]);
       if (cbFunc[0] === this.$name) {
-        console.log("for ", this.$key, " on ", event, " do ", cbFunc[1]);
         el.addEventListener(event, e => this[cbFunc[1]](e));
       }
     }, this);
@@ -91,16 +90,16 @@ export function createPropObjects() {
     const attr = this.$root.getAttribute(`data-${this.$app.$datasets.props}`);
     if (attr) {
       const propObjects = {};
-      const props = splitPipe(attr);
+      const props = splitMultipleValues(attr);
       props.forEach(prop => {
         const propStringValues = splitPropsPassedIn(prop);
         const parentComponentValues = splitKeyValuePairs(propStringValues[1]);
         const propName = propStringValues[0];
-        const parentComponent = this.__app.registeredComponents[
+        const parentComponent = this.$app.registeredComponents[
           parentComponentValues[0]
         ];
         const parentComponentKey = parentComponentValues[1];
-        parentComponent.dependents.add(this.key);
+        parentComponent.dependents.add(this.$key);
   
         const els = [
           ...scopeElements.call(this, 

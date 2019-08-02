@@ -1,19 +1,18 @@
 import Counter from "./Counter";
 import CurrentTime from "./CurrentTime";
-// import DisplayAnything from "./DisplayAnything";
+import DisplayAnything from "./DisplayAnything";
 // import Name from "./Name";
 import { Init } from "./Framework/index";
 // import domInsert from "./domInsert";
 import "./styles.css";
 
-console.log('This is the init function', Init)
 console.time('appCreation');
 const App = new Init({
   selector: document.getElementById("root"),
   components: {
     Counter,
     CurrentTime,
-    // DisplayAnything,
+    DisplayAnything,
     // Name
   },
   appCreated: () => console.log("app created")

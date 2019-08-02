@@ -163,7 +163,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var Scope = function Scope(config) {
   _classCallCheck(this, Scope);
 
-  console.log('in Scope constructor ', config);
   this.$root = config.element;
   this.$app = config.app;
   this.$key = config.key;
@@ -266,7 +265,7 @@ function createStateObjects() {
       var states = (0, _utils.splitMultipleValues)(el.getAttribute("data-bind"));
       states.forEach(function (state) {
         var parts = (0, _utils.splitKeyValuePairs)(state);
-        var stateKey = parts[1];
+        var stateKey = (0, _utils.splitFromComponent)(parts[1])[1];
         newStateObject.el = el;
 
         if (!stateObjects[stateKey]) {
@@ -307,7 +306,6 @@ function bindListeners() {
       var cbFunc = (0, _utils.splitFromComponent)(parts[1]);
 
       if (cbFunc[0] === _this2.$name) {
-        console.log("for ", _this2.$key, " on ", event, " do ", cbFunc[1]);
         el.addEventListener(event, function (e) {
           return _this2[cbFunc[1]](e);
         });
@@ -358,14 +356,14 @@ function createPropObjects() {
 
   if (attr) {
     var propObjects = {};
-    var props = splitPipe(attr);
+    var props = (0, _utils.splitMultipleValues)(attr);
     props.forEach(function (prop) {
       var propStringValues = (0, _utils.splitPropsPassedIn)(prop);
       var parentComponentValues = (0, _utils.splitKeyValuePairs)(propStringValues[1]);
       var propName = propStringValues[0];
-      var parentComponent = _this5.__app.registeredComponents[parentComponentValues[0]];
+      var parentComponent = _this5.$app.registeredComponents[parentComponentValues[0]];
       var parentComponentKey = parentComponentValues[1];
-      parentComponent.dependents.add(_this5.key);
+      parentComponent.dependents.add(_this5.$key);
 
       var els = _toConsumableArray(scopeElements.call(_this5, "[".concat(_this5.$app.$datasets.bind, "^=\"props:").concat(propName, "\"]")));
 
@@ -461,14 +459,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -530,11 +520,9 @@ function (_Exponent) {
           propsToUpdate.push(stateKey);
           _this2.state[stateKey] = newState[stateKey];
 
-          var els = _toConsumableArray(_componentUtils.scopeElements.call(_this2, "[data-bind=\"state:".concat(_this2.$name, ".").concat(stateKey, "\"]")));
-
-          if (els.length > 0) {
-            els.forEach(function (el) {
-              (0, _utils.updateDOM)(el, newState[stateKey]);
+          if (_this2.stateObjects[stateKey]) {
+            _this2.stateObjects[stateKey].forEach(function (stateObj) {
+              (0, _utils.updateDOM)(stateObj.el, newState[stateKey]);
             });
           }
         }
@@ -545,7 +533,7 @@ function (_Exponent) {
       }
 
       if (this.dependents.size > 0) {
-        updateDependents.call(this, propsToUpdate);
+        _componentUtils.updateDependents.call(this, propsToUpdate);
       }
 
       (0, _utils.hasCallback)(fn);
@@ -607,8 +595,6 @@ function InitApp(config) {
 
   this._cc = function (el, cb) {
     var key = el.getAttribute("data-".concat(_this.$datasets.key)) || (0, _utils.createKey)();
-    console.log(el, key, _this.$datasets);
-    console.log(el.getAttribute("data-".concat(_this.$datasets.component)));
     _this.registeredComponents[key] = new config.components[el.getAttribute("data-".concat(_this.$datasets.component))]({
       element: el,
       key: key,
@@ -768,8 +754,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-console.log(_index.Component);
-
 var Counter =
 /*#__PURE__*/
 function (_Component) {
@@ -781,7 +765,6 @@ function (_Component) {
     _classCallCheck(this, Counter);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Counter).call(this, el));
-    console.log('in counter');
     _this.state = {
       count: parseInt(_this.state.count) || 0,
       ofFive: _this.state.ofFive || false
@@ -793,16 +776,10 @@ function (_Component) {
   }
 
   _createClass(Counter, [{
-    key: "stateWillUpdate",
-    value: function stateWillUpdate() {
-      console.log('Inside state WILL update');
-    }
-  }, {
     key: "increment",
     value: function increment(e) {
       var _this2 = this;
 
-      console.log('Gonna increment');
       var newState = {};
       var largerCount = parseInt(this.state.count + 1, 10);
       newState.count = largerCount;
@@ -916,6 +893,72 @@ function (_Component) {
 }(_index.Component);
 
 exports.default = CurrentTime;
+},{"./Framework/index":"src/Framework/index.js"}],"src/DisplayAnything.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _index = require("./Framework/index");
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var DisplayAnything =
+/*#__PURE__*/
+function (_Exponent) {
+  _inherits(DisplayAnything, _Exponent);
+
+  function DisplayAnything(el) {
+    var _this;
+
+    _classCallCheck(this, DisplayAnything);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(DisplayAnything).call(this, el));
+    _this.code = _this.$root.querySelector(".code");
+    _this.objects = _this.$root.querySelector(".propObjects");
+
+    _this.displayProps();
+
+    return _this;
+  }
+
+  _createClass(DisplayAnything, [{
+    key: "propsDidUpdate",
+    value: function propsDidUpdate(oldProps) {
+      if (oldProps.goBold !== this.props.goBold) {
+        this.displayProps();
+      }
+    }
+  }, {
+    key: "displayProps",
+    value: function displayProps() {
+      this.code.textContent = JSON.stringify(this.props, undefined, 4);
+      this.objects.textContent = JSON.stringify(this.propObjects.goBold.parentComponentKey, undefined, 4);
+    }
+  }]);
+
+  return DisplayAnything;
+}(_index.Exponent);
+
+exports.default = DisplayAnything;
 },{"./Framework/index":"src/Framework/index.js"}],"src/styles.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
@@ -928,23 +971,23 @@ var _Counter = _interopRequireDefault(require("./Counter"));
 
 var _CurrentTime = _interopRequireDefault(require("./CurrentTime"));
 
+var _DisplayAnything = _interopRequireDefault(require("./DisplayAnything"));
+
 var _index = require("./Framework/index");
 
 require("./styles.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import DisplayAnything from "./DisplayAnything";
 // import Name from "./Name";
 // import domInsert from "./domInsert";
-console.log('This is the init function', _index.Init);
 console.time('appCreation');
 var App = new _index.Init({
   selector: document.getElementById("root"),
   components: {
     Counter: _Counter.default,
-    CurrentTime: _CurrentTime.default // DisplayAnything,
-    // Name
+    CurrentTime: _CurrentTime.default,
+    DisplayAnything: _DisplayAnything.default // Name
 
   },
   appCreated: function appCreated() {
@@ -976,7 +1019,7 @@ console.timeEnd('appCreation'); // const mills = document.getElementById('mills'
 //   domInsert("id3");
 //   App.createComponent(document.getElementById("id3"));
 // }, 3000);
-},{"./Counter":"src/Counter.js","./CurrentTime":"src/CurrentTime.js","./Framework/index":"src/Framework/index.js","./styles.css":"src/styles.css"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./Counter":"src/Counter.js","./CurrentTime":"src/CurrentTime.js","./DisplayAnything":"src/DisplayAnything.js","./Framework/index":"src/Framework/index.js","./styles.css":"src/styles.css"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -1004,7 +1047,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39353" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33997" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
