@@ -251,7 +251,6 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 function scopeElements(selector) {
   var _this = this;
 
-  console.log("scoping element", this);
   return _toConsumableArray(this.$root.querySelectorAll(selector)).filter(function (el) {
     return el.closest("[data-".concat(_this.$app.$datasets.component, "]")) === _this.$root;
   });
@@ -523,7 +522,6 @@ function (_Exponent) {
 
       var newState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.state;
       var fn = arguments.length > 1 ? arguments[1] : undefined;
-      console.log("setting state");
       this.stateWillUpdate();
       var propsToUpdate = [];
 
@@ -533,8 +531,6 @@ function (_Exponent) {
           _this2.state[stateKey] = newState[stateKey];
 
           var els = _toConsumableArray(_componentUtils.scopeElements.call(_this2, "[data-bind=\"state:".concat(_this2.$name, ".").concat(stateKey, "\"]")));
-
-          console.log('scoped state');
 
           if (els.length > 0) {
             els.forEach(function (el) {
@@ -552,7 +548,7 @@ function (_Exponent) {
         updateDependents.call(this, propsToUpdate);
       }
 
-      fn ? fn() : null;
+      (0, _utils.hasCallback)(fn);
       this.stateDidUpdate();
     }
   }]);
@@ -797,14 +793,23 @@ function (_Component) {
   }
 
   _createClass(Counter, [{
+    key: "stateWillUpdate",
+    value: function stateWillUpdate() {
+      console.log('Inside state WILL update');
+    }
+  }, {
     key: "increment",
     value: function increment(e) {
+      var _this2 = this;
+
       console.log('Gonna increment');
       var newState = {};
       var largerCount = parseInt(this.state.count + 1, 10);
       newState.count = largerCount;
       newState.ofFive = largerCount % 5 === 0;
-      this.setState(newState);
+      this.setState(newState, function () {
+        return console.log('Single Callback', _this2);
+      });
     }
   }, {
     key: "decrement",
@@ -999,7 +1004,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33595" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39353" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

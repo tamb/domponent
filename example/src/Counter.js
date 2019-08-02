@@ -14,13 +14,17 @@ export default class Counter extends Component {
     this.setState();
   }
 
+  stateWillUpdate(){
+    console.log('Inside state WILL update');
+  }
+
   increment(e) {
     console.log('Gonna increment');
     const newState = {};
     const largerCount = parseInt(this.state.count + 1, 10);
     newState.count = largerCount;
     newState.ofFive = largerCount % 5 === 0;
-    this.setState(newState);
+    this.setState(newState, ()=>console.log('Single Callback', this));
   }
 
   decrement(e) {

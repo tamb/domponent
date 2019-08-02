@@ -1,6 +1,6 @@
 import Exponent from "./Exponent";
 
-import { updateDOM } from "./utils";
+import { updateDOM, hasCallback } from "./utils";
 import {
   scopeElements,
   createStateObjects,
@@ -19,12 +19,13 @@ export default class Component extends Exponent {
   }
 
   // lifecycle methods
-  stateWillUpdate() {}
-  stateDidUpdate() {}
+  stateWillUpdate(){
+  }
+  stateDidUpdate(){
+  }
 
   // public setters
   setState(newState = this.state, fn) {
-    console.log("setting state");
     this.stateWillUpdate();
     const propsToUpdate = [];
     for (let stateKey in newState) {
@@ -34,7 +35,6 @@ export default class Component extends Exponent {
         const els = [
           ...scopeElements.call(this, `[data-bind="state:${this.$name}.${stateKey}"]`) // TODO remove selector from setState.  this should already exist.
         ];
-        console.log('scoped state')
         if (els.length > 0) {
           els.forEach(el => {
             updateDOM(el, newState[stateKey]);
@@ -45,7 +45,7 @@ export default class Component extends Exponent {
     if (this.dependents.size > 0) {
       updateDependents.call(this, propsToUpdate);
     }
-    fn ? fn() : null;
+    hasCallback(fn);
     this.stateDidUpdate();
   }
 }
