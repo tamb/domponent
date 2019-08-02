@@ -15,6 +15,7 @@ export default class Component extends Exponent {
     this.stateObjects = createStateObjects.call(this);
     bindListeners.call(this);
     initState.call(this);
+    this.constructor.name == "Component" ? this.created() : null;
   }
 
   // lifecycle methods

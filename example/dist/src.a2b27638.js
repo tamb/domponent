@@ -166,7 +166,7 @@ var Scope = function Scope(config) {
   this.$root = config.element;
   this.$app = config.app;
   this.$key = config.key;
-  this.$name = config.element.dataset[this.$app.$datasets.component];
+  this.$name = config.element.getAttribute("data-".concat(this.$app.$datasets.component));
 };
 
 exports.default = Scope;
@@ -493,7 +493,6 @@ function (_Exponent) {
 
     _componentUtils.initState.call(_assertThisInitialized(_this));
 
-    _this.constructor.name == "Component" ? _this.created() : null;
     return _this;
   } // lifecycle methods
 
@@ -855,6 +854,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+// import { Component } from 'domponent';
 var CurrentTime =
 /*#__PURE__*/
 function (_Component) {
@@ -921,6 +921,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+// import { Exponent } from 'domponent';
 var DisplayAnything =
 /*#__PURE__*/
 function (_Exponent) {
@@ -979,6 +980,7 @@ require("./styles.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// import { Init } from 'domponent'
 // import Name from "./Name";
 // import domInsert from "./domInsert";
 console.time('appCreation');
@@ -1047,7 +1049,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33997" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33511" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
