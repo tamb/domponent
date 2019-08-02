@@ -11,7 +11,7 @@
         <h2 data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen">
           Counter 1
         </h2>
-        <div>count: <span data-bind="state:Counter.count">24</span></div>
+        <div>count: <span data-bind="state:Counter.count"></span></div>
         <button
           type="button"
           data-action="click->Counter.increment|mouseover->Counter.goBlue|mouseout->Counter.goGreen"
@@ -45,6 +45,26 @@
           >
             -1
           </button>
+          <div data-component="Counter" data-state="count:0">
+            <h2 data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen">
+              Nested Counter 2
+            </h2>
+            <div>count: <span data-bind="state:Counter.count"></span></div>
+            <button
+              type="button"
+              data-action="click->Counter.increment|mouseover->Counter.goBlue|mouseout->Counter.goGreen"
+              class="increment"
+            >
+              +1
+            </button>
+            <button
+              type="button"
+              data-action="click->Counter.decrement"
+              class="decrement"
+            >
+              -1
+            </button>
+          </div>
         </div>
       </div>
       <p id="mills"></p>

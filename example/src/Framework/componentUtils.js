@@ -7,7 +7,6 @@ import {
 } from './utils';
 
 export function scopeElements(selector) {
-  console.log("scoping element", this);
   return [...this.$root.querySelectorAll(selector)].filter(el => {
     return el.closest(`[data-${this.$app.$datasets.component}]`) === this.$root;
   });
