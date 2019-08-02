@@ -16,5 +16,22 @@ h2 {
   margin: 1px;
 }
 
+#examples{
+  display: flex;
+  height: 90px;
+  border: 1px solid;
+  
+}
+
+#examples #up{
+  background-color: blue;
+  width: 30px;
+}
+
+#examples #down{
+  background-color: red;
+  width: 30px;
+}
+
 
 /*# sourceMappingURL=/src.a2b27638.css.map */

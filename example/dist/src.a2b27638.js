@@ -158,47 +158,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+var Scope = function Scope(config) {
+  _classCallCheck(this, Scope);
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var Scope =
-/*#__PURE__*/
-function () {
-  function Scope(config) {
-    _classCallCheck(this, Scope);
-
-    console.log('in Scope constructor ', config);
-    this.$root = config.element;
-    this.$app = config.app;
-    this.$key = config.key;
-    this.$name = config.element.dataset[this.$app.$datasets.component];
-  }
-
-  _createClass(Scope, [{
-    key: "scopeElements",
-    value: function scopeElements(selector) {
-      var _this = this;
-
-      console.log('scoping element', this);
-      return _toConsumableArray(this.$root.querySelectorAll(selector)).filter(function (el) {
-        return el.closest("[data-".concat(_this.$app.$datasets.component, "]")) === _this.$root;
-      });
-    }
-  }]);
-
-  return Scope;
-}();
+  console.log('in Scope constructor ', config);
+  this.$root = config.element;
+  this.$app = config.app;
+  this.$key = config.key;
+  this.$name = config.element.dataset[this.$app.$datasets.component];
+};
 
 exports.default = Scope;
 },{}],"src/Framework/utils.js":[function(require,module,exports) {
@@ -254,37 +224,21 @@ function splitMethodCalls(string) {
 function splitFromComponent(string) {
   return string.trim().split(_enums.relationalStringEnum.FROM_COMPONENT);
 }
-},{"./enums":"src/Framework/enums.js"}],"src/Framework/Exponent.js":[function(require,module,exports) {
+},{"./enums":"src/Framework/enums.js"}],"src/Framework/componentUtils.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
-
-var _Scope2 = _interopRequireDefault(require("./Scope"));
+exports.scopeElements = scopeElements;
+exports.createStateObjects = createStateObjects;
+exports.initState = initState;
+exports.bindListeners = bindListeners;
+exports.updateDependents = updateDependents;
+exports.updateProps = updateProps;
+exports.createPropObjects = createPropObjects;
 
 var _utils = require("./utils");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -294,171 +248,17 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-function bindListeners() {
+function scopeElements(selector) {
   var _this = this;
 
-  this.scopeElements("[data-".concat(this.$app.$datasets.action, "]")).forEach(function (el) {
-    var actions = (0, _utils.splitMultipleValues)(el.getAttribute("data-".concat(_this.$app.$datasets.action)));
-    actions.forEach(function (action) {
-      var parts = (0, _utils.splitMethodCalls)(action);
-      console.log('parts', parts);
-      var event = parts[0];
-      var cbFunc = (0, _utils.splitFromComponent)(parts[1]);
-
-      if (cbFunc[0] === _this.$name) {
-        el.addEventListener(event, function (e) {
-          return _this[cbFunc[1]](e);
-        });
-      }
-    }, _this);
-  }, this);
+  console.log("scoping element", this);
+  return _toConsumableArray(this.$root.querySelectorAll(selector)).filter(function (el) {
+    return el.closest("[data-".concat(_this.$app.$datasets.component, "]")) === _this.$root;
+  });
 }
-
-function createPropObjects() {
-  var _this2 = this;
-
-  var attr = this.$root.getAttribute("data-".concat(this.$app.$datasets.props));
-
-  if (attr) {
-    var propObjects = {};
-    var props = splitPipe(attr);
-    props.forEach(function (prop) {
-      var propStringValues = (0, _utils.splitPropsPassedIn)(prop);
-      var parentComponentValues = (0, _utils.splitKeyValuePairs)(propStringValues[1]);
-      var propName = propStringValues[0];
-      var parentComponent = _this2.__app.registeredComponents[parentComponentValues[0]];
-      var parentComponentKey = parentComponentValues[1];
-      parentComponent.dependents.add(_this2.key);
-
-      var els = _toConsumableArray(_this2.$root.querySelectorAll("[".concat(_this2.$app.$datasets.bind, "^=\"props:").concat(propName, "\"]")));
-
-      _this2.props[propName] = parentComponent.state[parentComponentKey];
-      propObjects[propName] = {
-        parentComponent: parentComponent,
-        parentComponentKey: parentComponentKey,
-        els: els.length > 0 ? els : null
-      };
-    }, this);
-    return propObjects;
-  } else {
-    return null;
-  }
-}
-
-var Exponent =
-/*#__PURE__*/
-function (_Scope) {
-  _inherits(Exponent, _Scope);
-
-  function Exponent(config) {
-    var _this3;
-
-    _classCallCheck(this, Exponent);
-
-    _this3 = _possibleConstructorReturn(this, _getPrototypeOf(Exponent).call(this, config));
-    console.log('in exponent');
-    _this3.props = {};
-    _this3.propObjects = createPropObjects.call(_assertThisInitialized(_this3));
-    bindListeners.call(_assertThisInitialized(_this3));
-    _this3.constructor.name == 'Exponent' ? _this3.created() : null;
-    _this3.dependents = new Set();
-    return _this3;
-  }
-
-  _createClass(Exponent, [{
-    key: "created",
-    value: function created() {}
-  }, {
-    key: "_updateDependents",
-    value: function _updateDependents(updatedProps) {
-      var _this4 = this;
-
-      this.dependents.forEach(function (key) {
-        _this4.__app.registeredComponents[key]._updateProps(updatedProps);
-      });
-    }
-  }, {
-    key: "updateProps",
-    value: function updateProps(updatedProps) {
-      var _this5 = this;
-
-      this.propsWillUpdate();
-      var oldProps = Object.assign({}, this.props);
-
-      var _loop = function _loop(key) {
-        var obj = _this5.propObjects[key];
-
-        if (updatedProps.includes(_this5.propObjects[key].parentComponentKey)) {
-          _this5.props[key] = obj.parentComponent.state[obj.parentComponentKey];
-
-          if (_this5.propObjects[key].els) {
-            _this5.propObjects[key].els.forEach(function (el) {
-              _this5._updateDOM(el, _this5.props[key]);
-            });
-          }
-        }
-      };
-
-      for (var key in this.propObjects) {
-        _loop(key);
-      }
-
-      this.propsDidUpdate(oldProps);
-    }
-  }, {
-    key: "propsWillUpdate",
-    value: function propsWillUpdate() {}
-  }, {
-    key: "propsDidUpdate",
-    value: function propsDidUpdate() {}
-  }]);
-
-  return Exponent;
-}(_Scope2.default);
-
-exports.default = Exponent;
-},{"./Scope":"src/Framework/Scope.js","./utils":"src/Framework/utils.js"}],"src/Framework/Component.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _Exponent2 = _interopRequireDefault(require("./Exponent"));
-
-var _utils = require("./utils");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function createStateObjects() {
-  var nodes = this.$root.querySelectorAll('[data-bind^="state:"]');
+  var nodes = scopeElements.call(this, '[data-bind^="state:"]');
 
   if (nodes.length > 0) {
     var stateObjects = {};
@@ -497,6 +297,195 @@ function initState() {
   }
 }
 
+function bindListeners() {
+  var _this2 = this;
+
+  scopeElements.call(this, "[data-".concat(this.$app.$datasets.action, "]")).forEach(function (el) {
+    var actions = (0, _utils.splitMultipleValues)(el.getAttribute("data-".concat(_this2.$app.$datasets.action)));
+    actions.forEach(function (action) {
+      var parts = (0, _utils.splitMethodCalls)(action);
+      var event = parts[0];
+      var cbFunc = (0, _utils.splitFromComponent)(parts[1]);
+
+      if (cbFunc[0] === _this2.$name) {
+        console.log("for ", _this2.$key, " on ", event, " do ", cbFunc[1]);
+        el.addEventListener(event, function (e) {
+          return _this2[cbFunc[1]](e);
+        });
+      }
+    }, _this2);
+  }, this);
+}
+
+function updateDependents(updatedProps) {
+  var _this3 = this;
+
+  this.dependents.forEach(function (key) {
+    updateProps.call(_this3.$app.registeredComponents[key], updatedProps);
+  });
+}
+
+function updateProps(updatedProps) {
+  var _this4 = this;
+
+  this.propsWillUpdate();
+  var oldProps = Object.assign({}, this.props);
+
+  var _loop = function _loop(key) {
+    var obj = _this4.propObjects[key];
+
+    if (updatedProps.includes(_this4.propObjects[key].parentComponentKey)) {
+      _this4.props[key] = obj.parentComponent.state[obj.parentComponentKey];
+
+      if (_this4.propObjects[key].els) {
+        _this4.propObjects[key].els.forEach(function (el) {
+          updateDOM(el, _this4.props[key]);
+        });
+      }
+    }
+  };
+
+  for (var key in this.propObjects) {
+    _loop(key);
+  }
+
+  this.propsDidUpdate(oldProps);
+}
+
+function createPropObjects() {
+  var _this5 = this;
+
+  var attr = this.$root.getAttribute("data-".concat(this.$app.$datasets.props));
+
+  if (attr) {
+    var propObjects = {};
+    var props = splitPipe(attr);
+    props.forEach(function (prop) {
+      var propStringValues = (0, _utils.splitPropsPassedIn)(prop);
+      var parentComponentValues = (0, _utils.splitKeyValuePairs)(propStringValues[1]);
+      var propName = propStringValues[0];
+      var parentComponent = _this5.__app.registeredComponents[parentComponentValues[0]];
+      var parentComponentKey = parentComponentValues[1];
+      parentComponent.dependents.add(_this5.key);
+
+      var els = _toConsumableArray(scopeElements.call(_this5, "[".concat(_this5.$app.$datasets.bind, "^=\"props:").concat(propName, "\"]")));
+
+      _this5.props[propName] = parentComponent.state[parentComponentKey];
+      propObjects[propName] = {
+        parentComponent: parentComponent,
+        parentComponentKey: parentComponentKey,
+        els: els.length > 0 ? els : null
+      };
+    }, this);
+    return propObjects;
+  } else {
+    return null;
+  }
+}
+},{"./utils":"src/Framework/utils.js"}],"src/Framework/Exponent.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _Scope2 = _interopRequireDefault(require("./Scope"));
+
+var _componentUtils = require("./componentUtils");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var Exponent =
+/*#__PURE__*/
+function (_Scope) {
+  _inherits(Exponent, _Scope);
+
+  function Exponent(config) {
+    var _this;
+
+    _classCallCheck(this, Exponent);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Exponent).call(this, config));
+    _this.props = {};
+    _this.dependents = new Set();
+    _this.propObjects = _componentUtils.createPropObjects.call(_assertThisInitialized(_this));
+    return _this;
+  } // lifecycle methods
+
+
+  _createClass(Exponent, [{
+    key: "propsWillUpdate",
+    value: function propsWillUpdate() {}
+  }, {
+    key: "propsDidUpdate",
+    value: function propsDidUpdate() {}
+  }]);
+
+  return Exponent;
+}(_Scope2.default);
+
+exports.default = Exponent;
+},{"./Scope":"src/Framework/Scope.js","./componentUtils":"src/Framework/componentUtils.js"}],"src/Framework/Component.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _Exponent2 = _interopRequireDefault(require("./Exponent"));
+
+var _utils = require("./utils");
+
+var _componentUtils = require("./componentUtils");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 var Component =
 /*#__PURE__*/
 function (_Exponent) {
@@ -509,9 +498,13 @@ function (_Exponent) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Component).call(this, config));
     _this.state = {};
-    _this.stateObjects = createStateObjects.call(_assertThisInitialized(_this));
-    initState.call(_assertThisInitialized(_this));
-    _this.constructor.name == 'Component' ? _this.created() : null;
+    _this.stateObjects = _componentUtils.createStateObjects.call(_assertThisInitialized(_this));
+
+    _componentUtils.bindListeners.call(_assertThisInitialized(_this));
+
+    _componentUtils.initState.call(_assertThisInitialized(_this));
+
+    _this.constructor.name == "Component" ? _this.created() : null;
     return _this;
   } // lifecycle methods
 
@@ -530,6 +523,7 @@ function (_Exponent) {
 
       var newState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.state;
       var fn = arguments.length > 1 ? arguments[1] : undefined;
+      console.log("setting state");
       this.stateWillUpdate();
       var propsToUpdate = [];
 
@@ -538,11 +532,13 @@ function (_Exponent) {
           propsToUpdate.push(stateKey);
           _this2.state[stateKey] = newState[stateKey];
 
-          var els = _toConsumableArray(_this2.$root.querySelectorAll("[data-bind=\"state:".concat(stateKey, "\"]")));
+          var els = _toConsumableArray(_componentUtils.scopeElements.call(_this2, "[data-bind=\"state:".concat(_this2.$name, ".").concat(stateKey, "\"]")));
+
+          console.log('scoped state');
 
           if (els.length > 0) {
             els.forEach(function (el) {
-              _this2._updateDOM(el, newState[stateKey]);
+              (0, _utils.updateDOM)(el, newState[stateKey]);
             });
           }
         }
@@ -553,7 +549,7 @@ function (_Exponent) {
       }
 
       if (this.dependents.size > 0) {
-        this._updateDependents(propsToUpdate);
+        updateDependents.call(this, propsToUpdate);
       }
 
       fn ? fn() : null;
@@ -565,7 +561,7 @@ function (_Exponent) {
 }(_Exponent2.default);
 
 exports.default = Component;
-},{"./Exponent":"src/Framework/Exponent.js","./utils":"src/Framework/utils.js"}],"src/Framework/index.js":[function(require,module,exports) {
+},{"./Exponent":"src/Framework/Exponent.js","./utils":"src/Framework/utils.js","./componentUtils":"src/Framework/componentUtils.js"}],"src/Framework/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -803,6 +799,7 @@ function (_Component) {
   _createClass(Counter, [{
     key: "increment",
     value: function increment(e) {
+      console.log('Gonna increment');
       var newState = {};
       var largerCount = parseInt(this.state.count + 1, 10);
       newState.count = largerCount;
@@ -848,7 +845,73 @@ function (_Component) {
 }(_index.Component);
 
 exports.default = Counter;
-},{"./Framework/index":"src/Framework/index.js","./Counter.css":"src/Counter.css"}],"src/styles.css":[function(require,module,exports) {
+},{"./Framework/index":"src/Framework/index.js","./Counter.css":"src/Counter.css"}],"src/CurrentTime.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _index = require("./Framework/index");
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var CurrentTime =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(CurrentTime, _Component);
+
+  function CurrentTime(el) {
+    var _this;
+
+    _classCallCheck(this, CurrentTime);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CurrentTime).call(this, el));
+    _this.state = {
+      hours: "",
+      seconds: "",
+      minutes: ""
+    };
+    setInterval(function () {
+      _this.changeTime();
+    }, 1000);
+    return _this;
+  }
+
+  _createClass(CurrentTime, [{
+    key: "changeTime",
+    value: function changeTime() {
+      var date = new Date();
+      this.setState({
+        seconds: date.getSeconds(),
+        hours: date.getHours(),
+        minutes: date.getMinutes()
+      });
+    }
+  }]);
+
+  return CurrentTime;
+}(_index.Component);
+
+exports.default = CurrentTime;
+},{"./Framework/index":"src/Framework/index.js"}],"src/styles.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -858,13 +921,14 @@ module.hot.accept(reloadCSS);
 
 var _Counter = _interopRequireDefault(require("./Counter"));
 
+var _CurrentTime = _interopRequireDefault(require("./CurrentTime"));
+
 var _index = require("./Framework/index");
 
 require("./styles.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import CurrentTime from "./CurrentTime";
 // import DisplayAnything from "./DisplayAnything";
 // import Name from "./Name";
 // import domInsert from "./domInsert";
@@ -873,8 +937,8 @@ console.time('appCreation');
 var App = new _index.Init({
   selector: document.getElementById("root"),
   components: {
-    Counter: _Counter.default // CurrentTime,
-    // DisplayAnything,
+    Counter: _Counter.default,
+    CurrentTime: _CurrentTime.default // DisplayAnything,
     // Name
 
   },
@@ -882,7 +946,24 @@ var App = new _index.Init({
     return console.log("app created");
   }
 });
-console.timeEnd('appCreation'); // setTimeout(() => {
+console.timeEnd('appCreation'); // const mills = document.getElementById('mills');
+// const up = document.getElementById('up');
+// const down = document.getElementById('down');
+// let grow = 1;
+// let shrink = 60;
+// setInterval(()=>{
+//   --shrink;
+//   mills.textContent = ++grow;
+//   if(grow === 30){
+//     grow = 0;
+//   }
+//   if(shrink === 0){
+//     shrink = 30;
+//   }
+//   up.style.height = grow * 3+'px';
+//   down.style.height = shrink * 3+'px';
+// },1);
+// setTimeout(() => {
 //   domInsert("id2");
 //   App.createComponent(document.getElementById("id2"));
 // }, 1000);
@@ -890,7 +971,7 @@ console.timeEnd('appCreation'); // setTimeout(() => {
 //   domInsert("id3");
 //   App.createComponent(document.getElementById("id3"));
 // }, 3000);
-},{"./Counter":"src/Counter.js","./Framework/index":"src/Framework/index.js","./styles.css":"src/styles.css"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./Counter":"src/Counter.js","./CurrentTime":"src/CurrentTime.js","./Framework/index":"src/Framework/index.js","./styles.css":"src/styles.css"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -918,7 +999,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40727" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33595" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

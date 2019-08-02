@@ -15,6 +15,7 @@ export default class Counter extends Component {
   }
 
   increment(e) {
+    console.log('Gonna increment');
     const newState = {};
     const largerCount = parseInt(this.state.count + 1, 10);
     newState.count = largerCount;

@@ -1,4 +1,4 @@
-import { Component } from "./Framework";
+import { Component } from "./Framework/index";
 
 export default class CurrentTime extends Component {
   constructor(el) {
