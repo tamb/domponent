@@ -1,14 +1,13 @@
-import { Component } from "./Framework";
+import { Exponent } from "./Framework/index";
 
-export default class DisplayAnything extends Component {
+export default class DisplayAnything extends Exponent {
   constructor(el) {
     super(el);
-  }
-  componentMade() {
-    this.code = this.root.querySelector(".code");
-    this.objects = this.root.querySelector(".propObjects");
+    this.code = this.$root.querySelector(".code");
+    this.objects = this.$root.querySelector(".propObjects");
     this.displayProps();
   }
+
   propsDidUpdate(oldProps) {
     if (oldProps.goBold !== this.props.goBold) {
       this.displayProps();
