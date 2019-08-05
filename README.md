@@ -167,7 +167,7 @@ The following are methods you can use to access components at various points in 
 * `propsWillUpdate`
 * `propsDidUpdate`
 
-### Stateless Components
+### Stateless Components 😐
 Extend the `Exponent` class to has a component that purely has props
 ```
 import { Exponent } from 'domponent'
