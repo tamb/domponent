@@ -1,5 +1,5 @@
-// import { Exponent } from "./Framework/index";
-import { Exponent } from 'domponent';
+import { Exponent } from "./Framework/index";
+// import { Exponent } from 'domponent';
 
 export default class DisplayAnything extends Exponent {
   constructor(el) {

@@ -117,210 +117,541 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"node_modules/domponent/dist/index.js":[function(require,module,exports) {
+})({"src/Framework/enums.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.relationalStringEnum = exports.datasetEnum = exports.attributeEnum = void 0;
+var attributeEnum = {
+  COMPONENT: 'data-component',
+  ACTION: 'data-action',
+  BIND: 'data-bind',
+  INITIALSTATE: 'data-state',
+  INITIALPROPS: 'data-props',
+  KEY: 'data-key'
+};
+exports.attributeEnum = attributeEnum;
+var datasetEnum = {
+  component: 'component',
+  key: 'key',
+  props: 'props',
+  action: 'action',
+  state: 'state',
+  bind: 'bind'
+};
+exports.datasetEnum = datasetEnum;
+var relationalStringEnum = {
+  INHERITS_FROM: '<-',
+  FROM_COMPONENT: '.',
+  KEY_VALUE: ':',
+  MULTIPLE_VALUES: "|",
+  METHOD_CALL: "->"
+};
+exports.relationalStringEnum = relationalStringEnum;
+},{}],"src/Framework/Scope.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-const t = {
-  component: "component",
-  key: "key",
-  props: "props",
-  action: "action",
-  state: "state",
-  bind: "bind"
-},
-      e = {
-  INHERITS_FROM: "<-",
-  FROM_COMPONENT: ".",
-  KEY_VALUE: ":",
-  MULTIPLE_VALUES: "|",
-  METHOD_CALL: "->"
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Scope = function Scope(config) {
+  _classCallCheck(this, Scope);
+
+  this.$root = config.element;
+  this.$app = config.app;
+  this.$key = config.key;
+  this.$name = config.element.getAttribute("data-".concat(this.$app.$datasets.component));
 };
 
-class s {
-  constructor(t) {
-    this.$root = t.element, this.$app = t.app, this.$key = t.key, this.$name = t.element.getAttribute(`data-${this.$app.$datasets.component}`);
-  }
+exports.default = Scope;
+},{}],"src/Framework/utils.js":[function(require,module,exports) {
+"use strict";
 
-}
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.createKey = createKey;
+exports.updateDOM = updateDOM;
+exports.hasCallback = hasCallback;
+exports.splitKeyValuePairs = splitKeyValuePairs;
+exports.splitMultipleValues = splitMultipleValues;
+exports.splitPropsPassedIn = splitPropsPassedIn;
+exports.splitMethodCalls = splitMethodCalls;
+exports.splitFromComponent = splitFromComponent;
 
-function n(t, e) {
-  t.textContent = e;
-}
+var _enums = require("./enums");
 
-function i(t) {
-  return t.trim().split(e.KEY_VALUE);
-}
-
-function o(t) {
-  return t.trim().split(e.MULTIPLE_VALUES);
-}
-
-function a(t) {
-  return t.trim().split(e.FROM_COMPONENT);
-}
-
-function r(t) {
-  return [...this.$root.querySelectorAll(t)].filter(t => t.closest(`[data-${this.$app.$datasets.component}]`) === this.$root);
-}
-
-function p() {
-  r.call(this, `[data-${this.$app.$datasets.action}]`).forEach(t => {
-    o(t.getAttribute(`data-${this.$app.$datasets.action}`)).forEach(s => {
-      const n = function (t) {
-        return t.trim().split(e.METHOD_CALL);
-      }(s),
-            i = n[0],
-            o = a(n[1]);
-
-      o[0] === this.$name && t.addEventListener(i, t => this[o[1]](t));
-    }, this);
-  }, this);
-}
-
-function c(t) {
-  this.dependents.forEach(e => {
-    (function (t) {
-      this.propsWillUpdate();
-      const e = Object.assign({}, this.props);
-
-      for (let e in this.propObjects) {
-        const s = this.propObjects[e];
-        t.includes(this.propObjects[e].parentComponentKey) && (this.props[e] = s.parentComponent.state[s.parentComponentKey], this.propObjects[e].els && this.propObjects[e].els.forEach(t => {
-          updateDOM(t, this.props[e]);
-        }));
-      }
-
-      this.propsDidUpdate(e);
-    }).call(this.$app.registeredComponents[e], t);
+function createKey() {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+    var r = Math.random() * 16 | 0,
+        v = c == "x" ? r : r & 0x3 | 0x8;
+    return v.toString(16);
   });
 }
 
-function h() {
-  const t = this.$root.getAttribute(`data-${this.$app.$datasets.props}`);
+function updateDOM(el, value) {
+  el.textContent = value;
+}
 
-  if (t) {
-    const s = {};
-    return o(t).forEach(t => {
-      const n = function (t) {
-        return t.trim().split(e.INHERITS_FROM);
-      }(t),
-            o = i(n[1]),
-            a = n[0],
-            p = this.$app.registeredComponents[o[0]],
-            c = o[1];
+function hasCallback(cb) {
+  cb ? cb() : null;
+} // string parsing
 
-      p.dependents.add(this.$key);
-      const h = [...r.call(this, `[${this.$app.$datasets.bind}^="props:${a}"]`)];
-      this.props[a] = p.state[c], s[a] = {
-        parentComponent: p,
-        parentComponentKey: c,
-        els: h.length > 0 ? h : null
-      };
-    }, this), s;
+
+function splitKeyValuePairs(string) {
+  return string.trim().split(_enums.relationalStringEnum.KEY_VALUE);
+}
+
+function splitMultipleValues(string) {
+  return string.trim().split(_enums.relationalStringEnum.MULTIPLE_VALUES);
+}
+
+function splitPropsPassedIn(string) {
+  return string.trim().split(_enums.relationalStringEnum.INHERITS_FROM);
+}
+
+function splitMethodCalls(string) {
+  return string.trim().split(_enums.relationalStringEnum.METHOD_CALL);
+}
+
+function splitFromComponent(string) {
+  return string.trim().split(_enums.relationalStringEnum.FROM_COMPONENT);
+}
+},{"./enums":"src/Framework/enums.js"}],"src/Framework/componentUtils.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.scopeElements = scopeElements;
+exports.createStateObjects = createStateObjects;
+exports.initState = initState;
+exports.bindListeners = bindListeners;
+exports.updateDependents = updateDependents;
+exports.updateProps = updateProps;
+exports.createPropObjects = createPropObjects;
+
+var _utils = require("./utils");
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function scopeElements(selector) {
+  var _this = this;
+
+  return _toConsumableArray(this.$root.querySelectorAll(selector)).filter(function (el) {
+    return el.closest("[data-".concat(_this.$app.$datasets.component, "]")) === _this.$root;
+  });
+}
+
+function createStateObjects() {
+  var nodes = scopeElements.call(this, '[data-bind^="state:"]');
+
+  if (nodes.length > 0) {
+    var stateObjects = {};
+    nodes.forEach(function (el) {
+      var newStateObject = {};
+      var states = (0, _utils.splitMultipleValues)(el.getAttribute("data-bind"));
+      states.forEach(function (state) {
+        var parts = (0, _utils.splitKeyValuePairs)(state);
+        var stateKey = (0, _utils.splitFromComponent)(parts[1])[1];
+        newStateObject.el = el;
+
+        if (!stateObjects[stateKey]) {
+          stateObjects[stateKey] = [];
+        }
+
+        stateObjects[stateKey].push(newStateObject);
+      });
+    }, this);
+    return stateObjects;
   }
 
   return null;
 }
 
-class d extends s {
-  constructor(t) {
-    super(t), this.props = {}, this.dependents = new Set(), this.propObjects = h.call(this);
+function initState() {
+  var stateAttr = this.$root.getAttribute("data-state");
+
+  if (stateAttr) {
+    var fields = (0, _utils.splitMultipleValues)(stateAttr);
+    var state = {};
+    fields.forEach(function (field) {
+      var splitField = (0, _utils.splitKeyValuePairs)(field);
+      state[splitField[0]] = splitField[1];
+    });
+    this.setState(state);
   }
-
-  propsWillUpdate() {}
-
-  propsDidUpdate() {}
-
 }
 
-var l = {
-  Init: function (e) {
-    return this.components = e.components, this.registeredComponents = {}, this.$datasets = (() => {
-      const s = t;
-      if (e.dataAttributes) for (let t in e.dataAttributes) s[t] = e.dataAttributes[t];
-      return s;
-    })(), this._cc = (t, s) => {
-      const n = t.getAttribute(`data-${this.$datasets.key}`) || "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (t) {
-        var e = 16 * Math.random() | 0;
-        return ("x" == t ? e : 3 & e | 8).toString(16);
-      });
-      this.registeredComponents[n] = new e.components[t.getAttribute(`data-${this.$datasets.component}`)]({
-        element: t,
-        key: n,
-        app: this
-      }), s && s();
-    }, this._dc = (t, e) => {
-      delete this.registeredComponents[t], e && e();
-    }, this._rc = (t, e, s) => {
-      this.components[t] = e, s && s();
-    }, this._urc = (t, e) => {
-      delete this.component[t], e && e();
-    }, [...e.selector.querySelectorAll(`[data-${this.$datasets.component}]`)].forEach(t => {
-      this._cc(t);
-    }, this), e.appCreated && e.appCreated(), {
-      createComponent: (t, e) => this._cc(t, e),
-      deleteComponent: (t, e) => this._dc(t, e),
-      register: (t, e, s) => this._rc(t, e, s),
-      unregister: (t, e) => this._urc(t, e)
-    };
-  },
-  Exponent: d,
-  Component: class extends d {
-    constructor(t) {
-      super(t), this.state = {}, this.stateObjects = function () {
-        const t = r.call(this, '[data-bind^="state:"]');
+function bindListeners() {
+  var _this2 = this;
 
-        if (t.length > 0) {
-          const e = {};
-          return t.forEach(t => {
-            const s = {};
-            o(t.getAttribute("data-bind")).forEach(n => {
-              const o = a(i(n)[1])[1];
-              s.el = t, e[o] || (e[o] = []), e[o].push(s);
-            });
-          }, this), e;
-        }
+  scopeElements.call(this, "[data-".concat(this.$app.$datasets.action, "]")).forEach(function (el) {
+    var actions = (0, _utils.splitMultipleValues)(el.getAttribute("data-".concat(_this2.$app.$datasets.action)));
+    actions.forEach(function (action) {
+      var parts = (0, _utils.splitMethodCalls)(action);
+      var event = parts[0];
+      var cbFunc = (0, _utils.splitFromComponent)(parts[1]);
 
-        return null;
-      }.call(this), p.call(this), function () {
-        const t = this.$root.getAttribute("data-state");
+      if (cbFunc[0] === _this2.$name) {
+        el.addEventListener(event, function (e) {
+          return _this2[cbFunc[1]](e);
+        });
+      }
+    }, _this2);
+  }, this);
+}
 
-        if (t) {
-          const e = o(t),
-                s = {};
-          e.forEach(t => {
-            const e = i(t);
-            s[e[0]] = e[1];
-          }), this.setState(s);
-        }
-      }.call(this);
+function updateDependents(updatedProps) {
+  var _this3 = this;
+
+  this.dependents.forEach(function (key) {
+    updateProps.call(_this3.$app.registeredComponents[key], updatedProps);
+  });
+}
+
+function updateProps(updatedProps) {
+  var _this4 = this;
+
+  this.propsWillUpdate();
+  var oldProps = Object.assign({}, this.props);
+
+  var _loop = function _loop(key) {
+    var obj = _this4.propObjects[key];
+
+    if (updatedProps.includes(_this4.propObjects[key].parentComponentKey)) {
+      _this4.props[key] = obj.parentComponent.state[obj.parentComponentKey];
+
+      if (_this4.propObjects[key].els) {
+        _this4.propObjects[key].els.forEach(function (el) {
+          updateDOM(el, _this4.props[key]);
+        });
+      }
     }
+  };
 
-    stateWillUpdate() {}
-
-    stateDidUpdate() {}
-
-    setState(t = this.state, e) {
-      this.stateWillUpdate();
-      const s = [];
-
-      for (let e in t) t[e] !== this.state[e] && (s.push(e), this.state[e] = t[e], this.stateObjects[e] && this.stateObjects[e].forEach(s => {
-        n(s.el, t[e]);
-      }));
-
-      var i;
-      this.dependents.size > 0 && c.call(this, s), (i = e) && i(), this.stateDidUpdate();
-    }
-
+  for (var key in this.propObjects) {
+    _loop(key);
   }
-};
-var _default = l;
-exports.default = _default;
-},{}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+
+  this.propsDidUpdate(oldProps);
+}
+
+function createPropObjects() {
+  var _this5 = this;
+
+  var attr = this.$root.getAttribute("data-".concat(this.$app.$datasets.props));
+
+  if (attr) {
+    var propObjects = {};
+    var props = (0, _utils.splitMultipleValues)(attr);
+    props.forEach(function (prop) {
+      var propStringValues = (0, _utils.splitPropsPassedIn)(prop);
+      var parentComponentValues = (0, _utils.splitKeyValuePairs)(propStringValues[1]);
+      var propName = propStringValues[0];
+      var parentComponent = _this5.$app.registeredComponents[parentComponentValues[0]];
+      var parentComponentKey = parentComponentValues[1];
+      parentComponent.dependents.add(_this5.$key);
+
+      var els = _toConsumableArray(scopeElements.call(_this5, "[".concat(_this5.$app.$datasets.bind, "^=\"props:").concat(propName, "\"]")));
+
+      _this5.props[propName] = parentComponent.state[parentComponentKey];
+      propObjects[propName] = {
+        parentComponent: parentComponent,
+        parentComponentKey: parentComponentKey,
+        els: els.length > 0 ? els : null
+      };
+    }, this);
+    return propObjects;
+  } else {
+    return null;
+  }
+}
+},{"./utils":"src/Framework/utils.js"}],"src/Framework/Exponent.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _Scope2 = _interopRequireDefault(require("./Scope"));
+
+var _componentUtils = require("./componentUtils");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var Exponent =
+/*#__PURE__*/
+function (_Scope) {
+  _inherits(Exponent, _Scope);
+
+  function Exponent(config) {
+    var _this;
+
+    _classCallCheck(this, Exponent);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Exponent).call(this, config));
+    _this.props = {};
+    _this.dependents = new Set();
+    _this.propObjects = _componentUtils.createPropObjects.call(_assertThisInitialized(_this));
+    return _this;
+  } // lifecycle methods
+
+
+  _createClass(Exponent, [{
+    key: "propsWillUpdate",
+    value: function propsWillUpdate() {}
+  }, {
+    key: "propsDidUpdate",
+    value: function propsDidUpdate() {}
+  }]);
+
+  return Exponent;
+}(_Scope2.default);
+
+exports.default = Exponent;
+},{"./Scope":"src/Framework/Scope.js","./componentUtils":"src/Framework/componentUtils.js"}],"src/Framework/Component.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _Exponent2 = _interopRequireDefault(require("./Exponent"));
+
+var _utils = require("./utils");
+
+var _componentUtils = require("./componentUtils");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var Component =
+/*#__PURE__*/
+function (_Exponent) {
+  _inherits(Component, _Exponent);
+
+  function Component(config) {
+    var _this;
+
+    _classCallCheck(this, Component);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Component).call(this, config));
+    _this.state = {};
+    _this.stateObjects = _componentUtils.createStateObjects.call(_assertThisInitialized(_this));
+
+    _componentUtils.bindListeners.call(_assertThisInitialized(_this));
+
+    _componentUtils.initState.call(_assertThisInitialized(_this));
+
+    return _this;
+  } // lifecycle methods
+
+
+  _createClass(Component, [{
+    key: "stateWillUpdate",
+    value: function stateWillUpdate() {}
+  }, {
+    key: "stateDidUpdate",
+    value: function stateDidUpdate() {} // public setters
+
+  }, {
+    key: "setState",
+    value: function setState() {
+      var _this2 = this;
+
+      var newState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.state;
+      var fn = arguments.length > 1 ? arguments[1] : undefined;
+      this.stateWillUpdate();
+      var propsToUpdate = [];
+
+      var _loop = function _loop(stateKey) {
+        if (newState[stateKey] !== _this2.state[stateKey]) {
+          propsToUpdate.push(stateKey);
+          _this2.state[stateKey] = newState[stateKey];
+
+          if (_this2.stateObjects[stateKey]) {
+            _this2.stateObjects[stateKey].forEach(function (stateObj) {
+              (0, _utils.updateDOM)(stateObj.el, newState[stateKey]);
+            });
+          }
+        }
+      };
+
+      for (var stateKey in newState) {
+        _loop(stateKey);
+      }
+
+      if (this.dependents.size > 0) {
+        _componentUtils.updateDependents.call(this, propsToUpdate);
+      }
+
+      (0, _utils.hasCallback)(fn);
+      this.stateDidUpdate();
+    }
+  }]);
+
+  return Component;
+}(_Exponent2.default);
+
+exports.default = Component;
+},{"./Exponent":"src/Framework/Exponent.js","./utils":"src/Framework/utils.js","./componentUtils":"src/Framework/componentUtils.js"}],"src/Framework/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Exponent = exports.Component = exports.Init = void 0;
+
+var _enums = require("./enums");
+
+var _Exponent = _interopRequireDefault(require("./Exponent"));
+
+var _Component = _interopRequireDefault(require("./Component"));
+
+var _utils = require("./utils");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+// generates the App
+function InitApp(config) {
+  var _this = this;
+
+  // components and their instances
+  this.components = config.components;
+  this.registeredComponents = {}; // renaming data attributes to avoid collisions
+
+  this.$datasets = function () {
+    var dataSet = _enums.datasetEnum;
+
+    if (config.dataAttributes) {
+      for (var key in config.dataAttributes) {
+        dataSet[key] = config.dataAttributes[key];
+      }
+    }
+
+    return dataSet;
+  }(); // methods to expose
+  // create component
+
+
+  this._cc = function (el, cb) {
+    var key = el.getAttribute("data-".concat(_this.$datasets.key)) || (0, _utils.createKey)();
+    _this.registeredComponents[key] = new config.components[el.getAttribute("data-".concat(_this.$datasets.component))]({
+      element: el,
+      key: key,
+      app: _this
+    });
+    cb ? cb() : null;
+  }; // delete component
+
+
+  this._dc = function (key, cb) {
+    delete _this.registeredComponents[key];
+    cb ? cb() : null;
+  }; // register component
+
+
+  this._rc = function (name, C, cb) {
+    _this.components[name] = C;
+    cb ? cb() : null;
+  }; // unregister component
+
+
+  this._urc = function (name, cb) {
+    delete _this.component[name];
+    cb ? cb() : null;
+  }; // creating the components initially
+
+
+  _toConsumableArray(config.selector.querySelectorAll("[data-".concat(this.$datasets.component, "]"))).forEach(function (componentEl) {
+    _this._cc(componentEl);
+  }, this);
+
+  config.appCreated ? config.appCreated() : null; // exposing methods
+
+  return {
+    createComponent: function createComponent(el, cb) {
+      return _this._cc(el, cb);
+    },
+    deleteComponent: function deleteComponent(el, cb) {
+      return _this._dc(el, cb);
+    },
+    register: function register(name, C, cb) {
+      return _this._rc(name, C, cb);
+    },
+    unregister: function unregister(name, cb) {
+      return _this._urc(name, cb);
+    }
+  };
+}
+
+var Init = InitApp;
+exports.Init = Init;
+var Component = _Component.default;
+exports.Component = Component;
+var Exponent = _Exponent.default; // generates the app
+// export default Init;
+
+exports.Exponent = Exponent;
+},{"./enums":"src/Framework/enums.js","./Exponent":"src/Framework/Exponent.js","./Component":"src/Framework/Component.js","./utils":"src/Framework/utils.js"}],"../../../../../usr/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -352,7 +683,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+},{}],"../../../../../usr/lib/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -387,12 +718,12 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"src/Counter.css":[function(require,module,exports) {
+},{"./bundle-url":"../../../../../usr/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"src/Counter.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/Counter.js":[function(require,module,exports) {
+},{"_css_loader":"../../../../../usr/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/Counter.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -400,7 +731,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _domponent = require("domponent");
+var _index = require("./Framework/index");
 
 require("./Counter.css");
 
@@ -492,10 +823,10 @@ function (_Component) {
   }]);
 
   return Counter;
-}(_domponent.Component);
+}(_index.Component);
 
 exports.default = Counter;
-},{"domponent":"node_modules/domponent/dist/index.js","./Counter.css":"src/Counter.css"}],"src/CurrentTime.js":[function(require,module,exports) {
+},{"./Framework/index":"src/Framework/index.js","./Counter.css":"src/Counter.css"}],"src/CurrentTime.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -503,7 +834,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _domponent = require("domponent");
+var _index = require("./Framework/index");
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -523,6 +854,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+// import { Component } from 'domponent';
 var CurrentTime =
 /*#__PURE__*/
 function (_Component) {
@@ -558,10 +890,10 @@ function (_Component) {
   }]);
 
   return CurrentTime;
-}(_domponent.Component);
+}(_index.Component);
 
 exports.default = CurrentTime;
-},{"domponent":"node_modules/domponent/dist/index.js"}],"src/DisplayAnything.js":[function(require,module,exports) {
+},{"./Framework/index":"src/Framework/index.js"}],"src/DisplayAnything.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -569,7 +901,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _domponent = require("domponent");
+var _index = require("./Framework/index");
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -589,6 +921,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+// import { Exponent } from 'domponent';
 var DisplayAnything =
 /*#__PURE__*/
 function (_Exponent) {
@@ -624,18 +957,16 @@ function (_Exponent) {
   }]);
 
   return DisplayAnything;
-}(_domponent.Exponent);
+}(_index.Exponent);
 
 exports.default = DisplayAnything;
-},{"domponent":"node_modules/domponent/dist/index.js"}],"src/styles.css":[function(require,module,exports) {
+},{"./Framework/index":"src/Framework/index.js"}],"src/styles.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/index.js":[function(require,module,exports) {
+},{"_css_loader":"../../../../../usr/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/index.js":[function(require,module,exports) {
 "use strict";
-
-var _domponent = require("domponent");
 
 var _Counter = _interopRequireDefault(require("./Counter"));
 
@@ -643,15 +974,17 @@ var _CurrentTime = _interopRequireDefault(require("./CurrentTime"));
 
 var _DisplayAnything = _interopRequireDefault(require("./DisplayAnything"));
 
+var _index = require("./Framework/index");
+
 require("./styles.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// import { Init } from 'domponent'
 // import Name from "./Name";
-// import { Init } from "./Framework/index";
 // import domInsert from "./domInsert";
 console.time('appCreation');
-var App = new _domponent.Init({
+var App = new _index.Init({
   selector: document.getElementById("root"),
   components: {
     Counter: _Counter.default,
@@ -688,7 +1021,7 @@ console.timeEnd('appCreation'); // const mills = document.getElementById('mills'
 //   domInsert("id3");
 //   App.createComponent(document.getElementById("id3"));
 // }, 3000);
-},{"domponent":"node_modules/domponent/dist/index.js","./Counter":"src/Counter.js","./CurrentTime":"src/CurrentTime.js","./DisplayAnything":"src/DisplayAnything.js","./styles.css":"src/styles.css"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./Counter":"src/Counter.js","./CurrentTime":"src/CurrentTime.js","./DisplayAnything":"src/DisplayAnything.js","./Framework/index":"src/Framework/index.js","./styles.css":"src/styles.css"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -716,7 +1049,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35539" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40093" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
