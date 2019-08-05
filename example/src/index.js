@@ -1,9 +1,9 @@
-import { Init } from 'domponent'
+// import { Init } from 'domponent'
 import Counter from "./Counter";
 import CurrentTime from "./CurrentTime";
 import DisplayAnything from "./DisplayAnything";
 // import Name from "./Name";
-// import { Init } from "./Framework/index";
+import { Init } from "./Framework/index";
 // import domInsert from "./domInsert";
 import "./styles.css";
 

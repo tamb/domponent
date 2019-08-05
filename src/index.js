@@ -65,11 +65,9 @@ function InitApp(config) {
     };
   }
 
-export default {
-  Init: InitApp,
-  Exponent: Exp,
-  Component: Comp
-}
+  export const Init = InitApp;
+  export const Component = Comp;
+  export const Exponent = Exp;
 
 
   // generates the app
