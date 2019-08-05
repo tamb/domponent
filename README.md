@@ -168,14 +168,21 @@ The following are methods you can use to access components at various points in 
 * `propsDidUpdate`
 
 ### Stateless Components
-Extends the `Exponent` class to has a component that purely has props
+Extend the `Exponent` class to has a component that purely has props
 ```
+import { Exponent } from 'domponent'
+
 class StatelessThing extends Exponent{
   constructor(el){
     super(el);
   }
 }
 ```
+You will then only have access to:
+* `propsWillUpdate`
+* `propsDidUpdate`
+
+__why `Exponent`??  Because it simply expounds or interprets the data that it is given.  And it sounds like Component.
 
 ### `Init` function
 This function creates the app and registers all the components.  This takes a `config` object as required argument:
