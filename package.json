@@ -5,13 +5,17 @@
   "homepage": "https://github.com/tamb/domponent",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "rollup": "rollup -c rollup.config.js"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "webpack": "^4.35.3",
-    "webpack-cli": "^3.3.5"
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "rollup": "^1.18.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-terser": "^5.1.1"
   }
 }
