@@ -162,11 +162,20 @@ This follows React's setState = - although it's implemented differently.
 
 ### LifeCycle Methods 🌳
 The following are methods you can use to access components at various points in their lifecycle
-* `componentMade`
 * `stateWillUpdate`
 * `stateDidUpdate`
 * `propsWillUpdate`
 * `propsDidUpdate`
+
+### Stateless Components
+Extends the `Exponent` class to has a component that purely has props
+```
+class StatelessThing extends Exponent{
+  constructor(el){
+    super(el);
+  }
+}
+```
 
 ### `Init` function
 This function creates the app and registers all the components.  This takes a `config` object as required argument:
