@@ -5,7 +5,7 @@ import DisplayAnything from "./DisplayAnything";
 // import Name from "./Name";
 // import { Init } from "./Framework/index";
 // import domInsert from "./domInsert";
-import "./styles.css";
+// import "./styles.css";
 
 console.time('appCreation');
 const App = new Init({

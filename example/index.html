@@ -3,11 +3,49 @@
   <head>
     <title>Parcel Sandbox</title>
     <meta charset="UTF-8" />
+    <style>
+      [data-component="Counter"].yellow {
+        background-color: yellow;
+      }
+      [data-component] {
+          border: 1px solid;
+          margin-top: 5px;
+          background-color: white;
+          padding: 15px;
+        }
+
+        body {
+          background-color: aliceblue;
+        }
+        h2 {
+          margin: 1px;
+        }
+
+        #examples {
+          display: flex;
+          height: 90px;
+          border: 1px solid;
+        }
+
+        #examples #up {
+          background-color: blue;
+          width: 30px;
+        }
+
+        #examples #down {
+          background-color: red;
+          width: 30px;
+        }
+    </style>
   </head>
 
   <body>
     <div id="root">
-      <div data-component="Counter" data-state="count:24" data-key="parentCounter">
+      <div
+        data-component="Counter"
+        data-state="count:24"
+        data-key="parentCounter"
+      >
         <h2 data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen">
           Counter 1
         </h2>
@@ -46,21 +84,23 @@
             -1
           </button>
           <div
-          data-props="goBold<-parentCounter:ofFive"
-          data-component="DisplayAnything"
-        >
-          <p><strong>This is a child component with no state</strong></p>
-          <p>props are bound in memory</p>
-          <code class="code"></code>
-          <br />
-          <code class="propObjects"></code>
-          <!-- <p>
+            data-props="goBold<-parentCounter:ofFive"
+            data-component="DisplayAnything"
+          >
+            <p><strong>This is a child component with no state</strong></p>
+            <p>props are bound in memory</p>
+            <code class="code"></code>
+            <br />
+            <code class="propObjects"></code>
+            <!-- <p>
             prop bound to textContent
             <span data-bind="props:goBold<-parentCounter"></span>
           </p> -->
-        </div>
+          </div>
           <div data-component="Counter" data-state="count:0">
-            <h2 data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen">
+            <h2
+              data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen"
+            >
               Nested Counter 2
             </h2>
             <div>count: <span data-bind="state:Counter.count"></span></div>
@@ -159,6 +199,6 @@
         >
       </li>
     </ul>
-    <script src="src/index.js"></script>
+    <script src="dist/main.js"></script>
   </body>
 </html>

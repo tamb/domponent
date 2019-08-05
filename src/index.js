@@ -1,12 +1,12 @@
 import { datasetEnum } from './enums';
 
-import Exp from './Exponent';
-import Comp from './Component';
+import Exponent from './Exponent';
+import Component from './Component';
 
 import { createKey } from './utils';
 
 // generates the App
-function InitApp(config) {
+function Init(config) {
     // components and their instances
     this.components = config.components;
     this.registeredComponents = {};
@@ -65,10 +65,8 @@ function InitApp(config) {
     };
   }
 
-  export const Init = InitApp;
-  export const Component = Comp;
-  export const Exponent = Exp;
-
-
-  // generates the app
-  // export default Init;
+export {
+  Init,
+  Component,
+  Exponent
+}

@@ -7,7 +7,8 @@ export default [{
       file: 'dist/index.js',
       format: 'es'
     },
-    plugins: [terser({
+    plugins: [
+      terser({
         compress: true,
         ecma: 8,
         mangle: {
