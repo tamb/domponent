@@ -182,9 +182,11 @@ You will then only have access to:
 * `propsWillUpdate`
 * `propsDidUpdate`
 
-__why `Exponent`??  Because it simply expounds or interprets the data that it is given.  And it sounds like Component.
+__Why `Exponent`??__  
+<br/>
+Because it simply expounds or interprets the data that it is given.  And it sounds like Component.
 
-### `Init` function
+### `Init` function 🏇
 This function creates the app and registers all the components.  This takes a `config` object as required argument:
 ```js
 const config = {
