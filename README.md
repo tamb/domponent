@@ -68,7 +68,7 @@ __And you're good to go!!__
 - [Dynamically Adding and Removing Components](#dynamically-adding-and-removing-components-)
 - [Namespacing Data Attributes](#namespacing-data-attributes)
 - [Demo](#demo)
-- [An Overview of the Component Lifecycle](#an-overview-of-the-component-lifecycle-)
+- [An Overview of the Component Lifecycle](#an-overview-of-the-component-lifecycle)
 
 ### Install
 ```js
