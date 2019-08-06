@@ -58,7 +58,17 @@ __And you're good to go!!__
 
 ------
 ## Docs 📖
-- [data API](#data-API-)
+- [Install](#install)
+- [Data API](#data-API-)
+- [Extending the Component class](#extending-the-component-class-)
+- [Manage Component State](#managing-component-state-)
+- [Lifecycle Methods](#lifecycle-methods-)
+- [Stateless Components](#stateless-components-)
+- [Init Function](#init-function-)
+- [Dynamically Adding and Removing Components](#dynamically-adding-and-removing-components-)
+- [Namespacing Data Attributes](#namespacing-data-attributes)
+- [Demo](#demo)
+- [An Overview of the Component Lifecycle](#an-overview-of-the-component-lifecycle-)
 
 ### Install
 ```js
