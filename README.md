@@ -221,6 +221,26 @@ It then exposes the following methods:
 * {Function} optional callback function
 <hr/>
 
+### Namespacing data attributes
+To avoid `data-` attributes clashing with other selectors, libraries, etc. you can override the default attribute names in the app config object:
+```js
+Init({
+  selector: getElementById('root),
+  components: { Counter },
+  dataAttributes: {
+    component: 'mynamespace-component',
+    state: 'cool-state',
+  }
+});
+```
+
+This means that your HTML will look like this:
+```html
+<div data-mynamespace-component="Counter" data-cool-state="count:12">
+...
+```
+<hr/>
+
 ### Demo
 https://codesandbox.io/embed/domponent-1oqdt?fontsize=14
 <hr/>
