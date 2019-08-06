@@ -225,5 +225,5 @@ It then exposes the following methods:
 https://codesandbox.io/embed/domponent-1oqdt?fontsize=14
 <hr/>
 
-### An overview of application lifecycle 🕵️‍♂️
+### An Overview of the Component Lifecycle 🕵️‍♂️
 ![updating component](https://raw.githubusercontent.com/tamb/domponent/master/domponent-lifecycle.jpg)
