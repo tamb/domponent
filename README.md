@@ -3,18 +3,6 @@ __Make components with the HTML you already have.__
 <br/>
 __1.5kb gzipped and 4kb minified! 👌__
 
-
-### todo
-* prefix component name to methods in `data-action`
-* prefix component name to binding attribute values
-* optional config field for changing attribute names to avoid clashing with 3rd party libraries
-* export a stateless component as well
-* * #### Smallest to Largest Components
-* * * Exponent (just props and presentation - stateless)
-* * * Component (props AND state)
-* test deeply nested state
-* remove helper methods on component initialization from class definition into a utility so it can be mangled/minified
-
 ## How To:
 1. Drop a few `data` attributes into your existing HTML 💻
 ```html
@@ -75,7 +63,7 @@ __And you're good to go!!__
 ```js
 npm install --save domponent
 ```
-
+<hr/>
 ### `data` API 💽
 
 #### `data-component`
@@ -143,7 +131,7 @@ The left side of the arrow `<-` is the name of the prop in the `DisplayAnything`
 The Right side of the arrow is `key` of the parent component, a colon `:` and the name of the piece of `state` to inherit.
 
 You can then use the lifecycle methods `propsWillUpdate` and `propsDidUpdate` to make changes within your child component.
-
+<hr/>
 
 ### Extending the `Component` class 📏
 Let's continue with Counter.  The minimum js needed to create a component is below:
@@ -155,10 +143,12 @@ class Counter extends Component{
 }
 ```
 `super` adds the base methods and properties your component needs.
+<hr/>
 
 ### Managing Component State 🕹️
 `setState(stateObject, callbackFunction)`
 This follows React's setState = - although it's implemented differently. 
+<hr/>
 
 ### LifeCycle Methods 🌳
 The following are methods you can use to access components at various points in their lifecycle
@@ -166,6 +156,7 @@ The following are methods you can use to access components at various points in 
 * `stateDidUpdate`
 * `propsWillUpdate`
 * `propsDidUpdate`
+<hr/>
 
 ### Stateless Components 😐
 Extend the `Exponent` class to has a component that purely has props
@@ -185,6 +176,7 @@ You will then only have access to:
 __Why `Exponent`??__  
 <br/>
 Because it simply expounds or interprets the data that it is given.  And it sounds like Component.
+<hr/>
 
 ### `Init` function 🏇
 This function creates the app and registers all the components.  This takes a `config` object as required argument:
@@ -202,6 +194,7 @@ It then exposes the following methods:
 * deleteComponent
 * register
 * unregister
+<hr/>
 
 ### Dynamically adding and removing components 🤼
 
@@ -225,9 +218,11 @@ It then exposes the following methods:
 @params: 
 * {String} - The name of the key you used to register your component on app Init.
 * {Function} optional callback function
+<hr/>
 
 ### Demo
 https://codesandbox.io/embed/domponent-1oqdt?fontsize=14
+<hr/>
 
 ### An overview of application lifecycle 🕵️‍♂️
 
