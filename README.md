@@ -74,14 +74,14 @@ example: if your HTML is `data-component="Counter"` | you must have a component 
 
 #### `data-bind`
 Binds `state` or `props` to the `textContent` of an element
-First you specify if you want to bind `state` or  `props` `data-bind="state:count"` or `data-bind="props:count"`
+First you specify if you want to bind `state` or  `props` `data-bind="state:Counter.count"` or `data-bind="props:Counter.count"`
 The left half of the `:` tells the component what object to bind to (state or props), the right half tells the component what key within the state or props to read from
 
 #### `data-action`
 Binds a DOM event with a component method.
 Consider the following:
 ```html
-<button data-action="click:increment">
+<button data-action="click->Counter.increment">
 +1
 </button>
 ```
@@ -90,7 +90,7 @@ The left half of the `:` represents the literal string for the DOM event to list
 Note: You can add multiple listeners with a pipe `|`
 example:
 ```html
-<button data-action="click:increment|mouseover:anotherMethod">
+<button data-action="click->Counter.increment|mouseover->Counter.anotherMethod">
 +1
 </button>
  ```
@@ -160,7 +160,7 @@ The following are methods you can use to access components at various points in 
 <hr/>
 
 ### Stateless Components 😐
-Extend the `Exponent` class to has a component that purely has props
+Extend the `Exponent` class to create a component with _only_ `props`
 ```
 import { Exponent } from 'domponent'
 
@@ -176,7 +176,7 @@ You will then only have access to:
 
 __Why `Exponent`??__  
 <br/>
-Because it simply expounds or interprets the data that it is given.  And it sounds like Component.
+Because it simply interprets or _expounds_ the data that it is given...  and it sounds like Component.
 <hr/>
 
 ### `Init` function 🏇
