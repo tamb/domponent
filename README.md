@@ -66,9 +66,9 @@ __And you're good to go!!__
 - [Stateless Components](#stateless-components-)
 - [Init Function](#init-function-)
 - [Dynamically Adding and Removing Components](#dynamically-adding-and-removing-components-)
-- [Namespacing Data Attributes](#namespacing-data-attributes)
-- [Demo](#demo)
-- [An Overview of the Component Lifecycle](#an-overview-of-the-component-lifecycle)
+- [Namespacing Data Attributes](#namespacing-data-attributes-)
+- [Demo](#demo-)
+- [An Overview of the Component Lifecycle](#an-overview-of-the-component-lifecycle-)
 
 ### Install
 ```js
@@ -232,7 +232,7 @@ It then exposes the following methods:
 * {Function} optional callback function
 <hr/>
 
-### Namespacing data attributes
+### Namespacing data attributes 📇
 To avoid `data-` attributes clashing with other selectors, libraries, etc. you can override the default attribute names in the app config object:
 ```js
 Init({
@@ -252,7 +252,7 @@ This means that your HTML will look like this:
 ```
 <hr/>
 
-### Demo
+### Demo 🤖
 https://codesandbox.io/embed/domponent-1oqdt?fontsize=14
 <hr/>
 
