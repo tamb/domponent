@@ -20,11 +20,11 @@ __1.5kb gzipped and 4kb minified! 👌__
 ```html
 
 <div data-component="Counter">
-  <p data-bind="state:count">0</p>
-  <button data-action="click:increment">
+  <p data-bind="state:Counter.count">0</p>
+  <button data-action="click->Counter.increment">
   +1
   </button>
-  <button data-action="click:decrement">
+  <button data-action="click->Counter.decrement">
   -1
   </button>
 <div>
@@ -191,7 +191,7 @@ This function creates the app and registers all the components.  This takes a `c
 ```js
 const config = {
   selector: document.getElementById('root'),
-  components: Counter,
+  components: { Counter },
   appCreated: callbackFunction
 };
 
