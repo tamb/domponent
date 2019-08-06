@@ -64,6 +64,7 @@ __And you're good to go!!__
 npm install --save domponent
 ```
 <hr/>
+
 ### `data` API 💽
 
 #### `data-component`
