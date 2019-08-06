@@ -58,6 +58,7 @@ __And you're good to go!!__
 
 ------
 ## Docs 📖
+- [data API](#data-API-)
 
 ### Install
 ```js
@@ -65,7 +66,7 @@ npm install --save domponent
 ```
 <hr/>
 
-### `data` API 💽
+### data API 💽
 
 #### `data-component`
 We use this bad boy to match the component name to its corresponding `class` in the `Init` configuration object
