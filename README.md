@@ -68,7 +68,7 @@ __And you're good to go!!__
 - [Dynamically Adding and Removing Components](#dynamically-adding-and-removing-components-)
 - [Namespacing Data Attributes](#namespacing-data-attributes-)
 - [Demo](#demo-)
-- [An Overview of the Component Lifecycle](#an-overview-of-the-component-lifecycle-)
+- [Component Lifecycle](#component-lifecycle-)
 
 ### Install
 ```js
@@ -256,5 +256,5 @@ This means that your HTML will look like this:
 https://codesandbox.io/embed/domponent-1oqdt?fontsize=14
 <hr/>
 
-### An Overview of the Component Lifecycle 🕵️‍♂️
+### Component Lifecycle 🕵️‍♂️
 ![updating component](https://raw.githubusercontent.com/tamb/domponent/master/domponent-lifecycle.jpg)
