@@ -4,16 +4,16 @@ export default function(id) {
   const number = Math.floor(Math.random()*100);
   const component = `
   <div id="${id}" data-component="Counter" data-state="count:${number}|${number % 5 === 0? 'ofFive:true' : null}">
-  <h2 data-action="mousedown:goBlue|mouseup:goGreen">Async Counter</h2>
-  <div>count: <span data-bind="state:count"></span></div>
+  <h2 data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen">Async Counter</h2>
+  <div>count: <span data-bind="state:Counter.count"></span></div>
   <button
     type="button"
-    data-action="click:increment|mouseover:goBlue|mouseout:goGreen"
+    data-action="click->Counter.increment|mouseover->Counter.goBlue|mouseout->Counter.goGreen"
     class="increment"
   >
     +1
   </button>
-  <button type="button" data-action="click:decrement" class="decrement">
+  <button type="button" data-action="click->Counter.decrement" class="decrement">
     -1
   </button>
 </div>

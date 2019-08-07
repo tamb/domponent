@@ -1,45 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Parcel Sandbox</title>
+    <title>Domponent Sandbox</title>
     <meta charset="UTF-8" />
     <style>
       [data-component="Counter"].yellow {
         background-color: yellow;
       }
       [data-component] {
-          border: 1px solid;
-          margin-top: 5px;
-          background-color: white;
-          padding: 15px;
-        }
+        border: 1px solid;
+        margin-top: 5px;
+        background-color: white;
+        padding: 15px;
+      }
 
-        body {
-          background-color: aliceblue;
-        }
-        h2 {
-          margin: 1px;
-        }
+      body {
+        background-color: aliceblue;
+      }
+      h2 {
+        margin: 1px;
+      }
 
-        #examples {
-          display: flex;
-          height: 90px;
-          border: 1px solid;
-        }
+      #root {
+        display: flex;
+        flex-wrap: wrap;
+      }
 
-        #examples #up {
-          background-color: blue;
-          width: 30px;
-        }
+      /* #examples {
+        display: flex;
+        height: 90px;
+        border: 1px solid;
+      } */
 
-        #examples #down {
-          background-color: red;
-          width: 30px;
-        }
+      /* #examples #up {
+        background-color: blue;
+        width: 30px;
+      }
+
+      #examples #down {
+        background-color: red;
+        width: 30px;
+      }
+      .wrapper{
+        display: flex;
+      } */
     </style>
   </head>
 
   <body>
+    <!-- <div class="wrapper"> -->
     <div id="root">
       <div
         data-component="Counter"
@@ -92,10 +101,6 @@
             <code class="code"></code>
             <br />
             <code class="propObjects"></code>
-            <!-- <p>
-            prop bound to textContent
-            <span data-bind="props:goBold<-parentCounter"></span>
-          </p> -->
           </div>
           <div data-component="Counter" data-state="count:0">
             <h2
@@ -121,11 +126,6 @@
           </div>
         </div>
       </div>
-      <p id="mills"></p>
-      <div id="examples">
-        <div id="up"></div>
-        <div id="down"></div>
-      </div>
 
       <div data-component="CurrentTime">
         <h2>Current Time:</h2>
@@ -134,30 +134,18 @@
         <span data-bind="state:CurrentTime.seconds">n/a</span>
       </div>
 
-      <!--
-      <div
-        data-component="Counter"
-        data-key="parentCounter"
-        data-state="count:5|ofFive:true"
-      >
-        <h2 data-action="mousedown:goBlue|mouseup:goGreen">Counter 2</h2>
-        <div>count: <span data-bind="state:count"></span></div>
-        <button type="button" data-action="click:increment" class="increment">
-          +1
-        </button>
-        <button type="button" data-action="click:decrement" class="decrement">
-          -1
-        </button>
-      </div>
-
       <div data-component="Name" data-state="name:thomas">
         <h2>Write Your Name</h2>
         <div>
           <label>
             controls text after this input
-            <input type="text" value="thomas" data-action="input:handleInput" />
+            <input
+              type="text"
+              value="thomas"
+              data-action="input->Name.handleInput"
+            />
           </label>
-          <code data-bind="state:name"></code>
+          <code data-bind="state:Name.name"></code>
         </div>
         <div>
           <label>
@@ -165,8 +153,21 @@
             <input type="text" class="above-controlled" />
           </label>
         </div>
-      </div> -->
+      </div>
     </div>
+    <!-- <div>
+        <p>
+          These component are created in about 15ms. Below is what 15ms looks
+          like. Slightly faster than 60fps.
+        </p>
+        <p>Approx apps rendered since page load: <span id="total"></span></p>
+        <p id="mills"></p>
+        <div id="examples">
+          <div id="up"></div>
+          <div id="down"></div>
+        </div>
+      </div> -->
+    <!-- </div> -->
     <h2>To Do:</h2>
     <ul>
       <li>stateDidUpdate is firing twice</li>

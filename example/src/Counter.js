@@ -1,6 +1,4 @@
-// import { Component } from "./Framework/index"
 import { Component } from 'domponent';
-// import "./Counter.css";
 
 export default class Counter extends Component {
   constructor(conf) {

@@ -1,4 +1,4 @@
-import { Component } from "./Framework";
+import { Component } from "domponent";
 
 export default class Name extends Component {
   constructor(el) {
@@ -13,7 +13,7 @@ export default class Name extends Component {
   }
 
   stateWillUpdate() {
-    this.secondInput = this.root.querySelector(".above-controlled");
+    this.secondInput = this.$root.querySelector(".above-controlled");
   }
 
   stateDidUpdate() {
