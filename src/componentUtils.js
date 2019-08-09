@@ -47,7 +47,8 @@ export function initState() {
   }
 }
 
-export function bindListeners() {
+export function bindListeners(component) {
+  console.log('This is ithe component', component);
   scopeElements.call(this,`[data-${this.$app.$datasets.action}]`).forEach(el => {
     const actions = splitMultipleValues(
       el.getAttribute(`data-${this.$app.$datasets.action}`)
@@ -57,13 +58,15 @@ export function bindListeners() {
       const event = parts[0];
       const cbFunc = splitFromComponent(parts[1]);
       if (cbFunc[0] === this.$name) {
-        const self = this;
-        // el.addEventListener(event, e => this[cbFunc[1]](e));
-        console.log('Showing this ', this);
-        // el.addEventListener(event, this[cbFunc[1]]);
-        el.addEventListener(event, self[cbFunc[1]]);
-        console.log('Added event with SELF');
         
+        // const self = this;
+        // el.addEventListener(event, e => this[cbFunc[1]](e));
+        // const func =this[cbFunc[1]];
+        // el.addEventListener(event, func.bind(this)); 
+        // el.addEventListener(event, func); // this combo works with below AA
+        // el.addEventListener(event, self[cbFunc[1]]);
+        el.addEventListener(event, component[cbFunc[1]]);
+        // el.addEventListener(event, this[cbFunc[1]].bind(this));        
       }
     }, this);
   }, this);
@@ -80,11 +83,13 @@ export function unbindListeners() {
       const event = parts[0];
       const cbFunc = splitFromComponent(parts[1]);
       if (cbFunc[0] === this.$name) {
-        const self = this;
+        const func = this[cbFunc[1]];
+        el.removeEventListener(event, func);// this removes! AA
+        // const self = this;
         // el.removeEventListener(event, e => this[cbFunc[1]](e));
         // el.removeEventListener(event, this[cbFunc[1]]);
-        el.removeEventListener(event, self[cbFunc[1]]);
-        console.error('removing listener using self', event);
+        // el.removeEventListener(event, this[cbFunc[1]].bind(this));
+        console.error('removing listener using func', event);
       }
     }, this);
   }, this);
