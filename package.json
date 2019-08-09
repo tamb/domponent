@@ -6,7 +6,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "rollup": "rollup -c rollup.config.js"
+    "build-all": "node clean.js && rollup -c rollup.config.js && npm pack && cd example && npm install --force && webpack && firefox index.html"
   },
   "files": [
     "dist"
@@ -17,6 +17,7 @@
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
+    "rimraf": "^2.6.3",
     "rollup": "^1.18.0",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-terser": "^5.1.1"
