@@ -27,7 +27,6 @@ export default class Counter extends Component {
   }
 
   goBlue(e) {
-    console.log(this);
     e.target.style.color = "blue";
   }
 

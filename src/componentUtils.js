@@ -47,8 +47,7 @@ export function initState() {
   }
 }
 
-export function bindListeners(component) {
-  console.log('This is ithe component', component);
+export function bindListeners() {
   scopeElements.call(this,`[data-${this.$app.$datasets.action}]`).forEach(el => {
     const actions = splitMultipleValues(
       el.getAttribute(`data-${this.$app.$datasets.action}`)
@@ -58,14 +57,19 @@ export function bindListeners(component) {
       const event = parts[0];
       const cbFunc = splitFromComponent(parts[1]);
       if (cbFunc[0] === this.$name) {
+       
+        el.addEventListener(event, e => this[cbFunc[1]](e)); 
+        // TODO: unbinding wont work with anonymous callback. 
+        // Name the callback and store it in component object
+        // when removing event listeners, use this object??
+
         
-        // const self = this;
-        // el.addEventListener(event, e => this[cbFunc[1]](e));
+        
         // const func =this[cbFunc[1]];
         // el.addEventListener(event, func.bind(this)); 
         // el.addEventListener(event, func); // this combo works with below AA
         // el.addEventListener(event, self[cbFunc[1]]);
-        el.addEventListener(event, component[cbFunc[1]]);
+        // el.addEventListener(event, component[cbFunc[1]]);
         // el.addEventListener(event, this[cbFunc[1]].bind(this));        
       }
     }, this);
