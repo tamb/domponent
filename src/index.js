@@ -4,6 +4,7 @@ import Exponent from './Exponent';
 import Component from './Component';
 
 import { createKey } from './utils';
+import { unbindListeners } from './componentUtils';
 
 // generates the App
 function Init(config) {
@@ -33,6 +34,8 @@ function Init(config) {
     };
     // delete component
     this._dc = (key, cb) => {
+      this.registeredComponents[key].disconnecting();
+      unbindListeners.call(this.registeredComponents[key]);
       delete this.registeredComponents[key];
       cb ? cb() : null;
     };

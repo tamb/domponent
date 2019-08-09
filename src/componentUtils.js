@@ -57,7 +57,34 @@ export function bindListeners() {
       const event = parts[0];
       const cbFunc = splitFromComponent(parts[1]);
       if (cbFunc[0] === this.$name) {
-        el.addEventListener(event, e => this[cbFunc[1]](e));
+        const self = this;
+        // el.addEventListener(event, e => this[cbFunc[1]](e));
+        console.log('Showing this ', this);
+        // el.addEventListener(event, this[cbFunc[1]]);
+        el.addEventListener(event, self[cbFunc[1]]);
+        console.log('Added event with SELF');
+        
+      }
+    }, this);
+  }, this);
+}
+
+export function unbindListeners() {
+  console.warn('unbinding?', this);
+  scopeElements.call(this,`[data-${this.$app.$datasets.action}]`).forEach(el => {
+    const actions = splitMultipleValues(
+      el.getAttribute(`data-${this.$app.$datasets.action}`)
+    );
+    actions.forEach(action => {
+      const parts = splitMethodCalls(action);
+      const event = parts[0];
+      const cbFunc = splitFromComponent(parts[1]);
+      if (cbFunc[0] === this.$name) {
+        const self = this;
+        // el.removeEventListener(event, e => this[cbFunc[1]](e));
+        // el.removeEventListener(event, this[cbFunc[1]]);
+        el.removeEventListener(event, self[cbFunc[1]]);
+        console.error('removing listener using self', event);
       }
     }, this);
   }, this);
