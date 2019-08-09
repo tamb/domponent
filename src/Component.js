@@ -3,18 +3,18 @@ import Exponent from "./Exponent";
 import { updateDOM, hasCallback } from "./utils";
 import {
   createStateObjects,
-  bindListeners,
+  // bindListeners,
   initState,
   updateDependents
 } from "./componentUtils";
 
 export default class Component extends Exponent {
   constructor(config) {
-    super(config);
+    super(config, true);
     this.state = {};
     this.stateObjects = createStateObjects.call(this);
-    bindListeners.call(this);
     initState.call(this);
+    this.connected();
   }
 
   // lifecycle methods
