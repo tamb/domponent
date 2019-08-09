@@ -43,6 +43,8 @@ console.timeEnd('appCreation');
 
 // },1);
 
+window.DomponentApp = App;
+
 setTimeout(() => {
   domInsert("id2");
   App.createComponent(document.getElementById("id2"));
