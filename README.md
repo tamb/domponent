@@ -280,7 +280,10 @@ This means that your HTML will look like this:
 <hr/>
 
 ### Demo 🤖
-https://codesandbox.io/embed/domponent-1oqdt?fontsize=14
+1. `git clone` this repo
+2. `npm install`
+3. _make sure you have FireFox_ 🦊
+4. `npm run build-all`
 <hr/>
 
 ### Component Lifecycle 🕵️‍♂️
