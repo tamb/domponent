@@ -18,7 +18,7 @@ export function scopeElements(selector) {
 export function createStateObjects() {
   const nodes = scopeElements.call(this, '[data-bind^="state:"]');
   if (nodes.length > 0) {
-    const stateObjects = {};
+    const $stateObjs = {};
     nodes.forEach(el => {
       const newStateObject = {};
       const states = splitMultipleValues(el.getAttribute("data-bind"));
@@ -26,13 +26,13 @@ export function createStateObjects() {
         const parts = splitKeyValuePairs(state);
         const stateKey = splitFromComponent(parts[1])[1];
         newStateObject.el = el;
-        if (!stateObjects[stateKey]) {
-          stateObjects[stateKey] = [];
+        if (!$stateObjs[stateKey]) {
+          $stateObjs[stateKey] = [];
         }
-        stateObjects[stateKey].push(newStateObject);
+        $stateObjs[stateKey].push(newStateObject);
       });
     }, this);
-    return stateObjects;
+    return $stateObjs;
   }
   return null;
 }
@@ -96,7 +96,7 @@ export function unbindListeners() {
 }
 
 export function updateDependents(updatedProps) {
-  this.dependents.forEach(key => {
+  this.$dependents.forEach(key => {
     updateProps.call(this.$app.registeredComponents[key], updatedProps);
   });
 }
@@ -104,12 +104,12 @@ export function updateDependents(updatedProps) {
 export function updateProps(updatedProps) {
   this.propsWillUpdate();
   const oldProps = Object.assign({}, this.props);
-  for (let key in this.propObjects) {
-    const obj = this.propObjects[key];
-    if (updatedProps.includes(this.propObjects[key].parentComponentKey)) {
+  for (let key in this.$propObjs) {
+    const obj = this.$propObjs[key];
+    if (updatedProps.includes(this.$propObjs[key].parentComponentKey)) {
       this.props[key] = obj.parentComponent.state[obj.parentComponentKey];
-      if (this.propObjects[key].els) {
-        this.propObjects[key].els.forEach(el => {
+      if (this.$propObjs[key].els) {
+        this.$propObjs[key].els.forEach(el => {
           updateDOM(el, this.props[key]);
         });
       }
@@ -121,7 +121,7 @@ export function updateProps(updatedProps) {
 export function createPropObjects() {
     const attr = this.$root.getAttribute(`data-${this.$app.$datasets.props}`);
     if (attr) {
-      const propObjects = {};
+      const $propObjs = {};
       const props = splitMultipleValues(attr);
       props.forEach(prop => {
         const propStringValues = splitPropsPassedIn(prop);
@@ -131,7 +131,7 @@ export function createPropObjects() {
           parentComponentValues[0]
         ];
         const parentComponentKey = parentComponentValues[1];
-        parentComponent.dependents.add(this.$key);
+        parentComponent.$dependents.add(this.$key);
   
         const els = [
           ...scopeElements.call(this, 
@@ -139,13 +139,13 @@ export function createPropObjects() {
           )
         ];
         this.props[propName] = parentComponent.state[parentComponentKey];
-        propObjects[propName] = {
+        $propObjs[propName] = {
           parentComponent,
           parentComponentKey,
           els: els.length > 0 ? els : null
         };
       }, this);
-      return propObjects;
+      return $propObjs;
     } else {
       return null;
     }
