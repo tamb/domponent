@@ -167,8 +167,12 @@ class Counter extends Component{
 <hr/>
 
 ### Managing Component State 🕹️
-`setState(stateObject, callbackFunction)`
-This follows React's setState = - although it's implemented differently. 
+Don't mutate the state directly. Call `this.setState`
+
+```js
+setState(stateObject, callbackFunction)
+```
+This follows React's setState - although it's implemented differently. 
 <hr/>
 
 ### LifeCycle Methods 🌳
