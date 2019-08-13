@@ -1,7 +1,7 @@
 # 🔌\<DOMponent />
 __Build components with the HTML you already have.__
 <br/>
-__1.5kb gzipped and 4kb minified! 👌__
+__<2kb gzipped and <5kb minified! 👌__
 
 ## How To:
 1. Drop a few `data` attributes into your existing HTML 💻
