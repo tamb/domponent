@@ -64,7 +64,7 @@ __And you're good to go!!__
 - [Manage Component State](#managing-component-state-)
 - [Lifecycle Methods](#lifecycle-methods-)
 - [Stateless Components](#stateless-components-)
-- [Component Fields](#component-fields)
+- [Component Fields](#component-fields-)
 - [Init Function](#init-function-)
 - [Dynamically Adding and Removing Components](#dynamically-adding-and-removing-components-)
 - [Namespacing Data Attributes](#namespacing-data-attributes-)
