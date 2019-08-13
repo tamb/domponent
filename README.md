@@ -282,7 +282,7 @@ This means that your HTML will look like this:
 ### Demo 🤖
 1. `git clone` this repo
 2. `npm install`
-3. _make sure you have FireFox_ 🦊
+3. _make sure you have FireFox_ 🔥🦊🔥
 4. `npm run build-all`
 <hr/>
 
