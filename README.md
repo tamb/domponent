@@ -138,7 +138,7 @@ Let's say you're looping over this in your templating language.  You should ensu
     <div data-component="Counter" key=`aUniqueKey${i}`>...</div>
   }
 ```
-If you don't use this attribute, a unique key will be assigned to each component instance automatically.  It can be accessed via `this.key`
+If you don't use this attribute, a unique key will be assigned to each component instance automatically.  It can be accessed via `this.$key`
 
 #### `data-props`
 You can share state from a parent component as `props` in a child component.
@@ -158,8 +158,8 @@ You can then use the lifecycle methods `propsWillUpdate` and `propsDidUpdate` to
 Let's continue with Counter.  The minimum js needed to create a component is below:
 ```js
 class Counter extends Component{
-  constructor(el){
-    super(el)
+  constructor(conf){
+    super(conf)
   }
 }
 ```
@@ -185,8 +185,8 @@ Extend the `Exponent` class to create a component with _only_ `props`
 import { Exponent } from 'domponent'
 
 class StatelessThing extends Exponent{
-  constructor(el){
-    super(el);
+  constructor(conf){
+    super(conf);
   }
 }
 ```
@@ -250,7 +250,7 @@ It then exposes the following methods:
 #### Deleting components
 ##### `deleteComponent`
 @params: 
-* {String} - key of the component _instance_ you want to delete, can be assigned via `data-key` or accessed inside component via `this.key`
+* {String} - key of the component _instance_ you want to delete, can be assigned via `data-key` or accessed inside component via `this.$key`
 * {Function} optional callback function
 
 ##### `unregister`
