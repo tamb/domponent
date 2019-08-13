@@ -61,16 +61,7 @@ export function bindListeners() {
         el.addEventListener(event, e => this[cbFunc[1]](e)); 
         // TODO: unbinding wont work with anonymous callback. 
         // Name the callback and store it in component object
-        // when removing event listeners, use this object??
-
-        
-        
-        // const func =this[cbFunc[1]];
-        // el.addEventListener(event, func.bind(this)); 
-        // el.addEventListener(event, func); // this combo works with below AA
-        // el.addEventListener(event, self[cbFunc[1]]);
-        // el.addEventListener(event, component[cbFunc[1]]);
-        // el.addEventListener(event, this[cbFunc[1]].bind(this));        
+        // when removing event listeners, use this object??    
       }
     }, this);
   }, this);
