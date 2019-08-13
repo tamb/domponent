@@ -11,7 +11,7 @@ export default class Component extends Exponent {
   constructor(config) {
     super(config, true);
     this.state = {};
-    this.$stateObjs = createStateObjects.call(this);
+    this.$s = createStateObjects.call(this);
     initState.call(this);
     this.connected();
   }
@@ -28,14 +28,14 @@ export default class Component extends Exponent {
       if (newState[stateKey] !== this.state[stateKey]) {
         propsToUpdate.push(stateKey);
         this.state[stateKey] = newState[stateKey];
-        if (this.$stateObjs[stateKey]) {
-          this.$stateObjs[stateKey].forEach(stateObj => {
+        if (this.$s[stateKey]) {
+          this.$s[stateKey].forEach(stateObj => {
             updateDOM(stateObj.el, newState[stateKey]);
           });
         }
       }
     }
-    if (this.$dependents.size > 0) {
+    if (this.$d.size > 0) {
       updateDependents.call(this, propsToUpdate);
     }
     hasCallback(fn);

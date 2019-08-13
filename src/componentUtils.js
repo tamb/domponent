@@ -18,7 +18,7 @@ export function scopeElements(selector) {
 export function createStateObjects() {
   const nodes = scopeElements.call(this, '[data-bind^="state:"]');
   if (nodes.length > 0) {
-    const $stateObjs = {};
+    const $s = {};
     nodes.forEach(el => {
       const newStateObject = {};
       const states = splitMultipleValues(el.getAttribute("data-bind"));
@@ -26,13 +26,13 @@ export function createStateObjects() {
         const parts = splitKeyValuePairs(state);
         const stateKey = splitFromComponent(parts[1])[1];
         newStateObject.el = el;
-        if (!$stateObjs[stateKey]) {
-          $stateObjs[stateKey] = [];
+        if (!$s[stateKey]) {
+          $s[stateKey] = [];
         }
-        $stateObjs[stateKey].push(newStateObject);
+        $s[stateKey].push(newStateObject);
       });
     }, this);
-    return $stateObjs;
+    return $s;
   }
   return null;
 }
@@ -51,7 +51,7 @@ export function initState() {
 }
 
 export function bindListeners() {
-  this.$bindings = [];
+  this.$b = [];
   scopeElements.call(this,`[data-${this.$app.$datasets.action}]`).forEach(el => {
     const actions = splitMultipleValues(
       el.getAttribute(`data-${this.$app.$datasets.action}`)
@@ -81,13 +81,13 @@ export function bindListeners() {
         });
       }
     }, this);
-    this.$bindings.push(binding);
+    this.$b.push(binding);
   }, this);
 }
 
 export function unbindListeners() {
   console.log('REMOVING:', this);
-  this.$bindings.forEach(binding => {
+  this.$b.forEach(binding => {
     console.log('binding', binding);
     binding.actions.forEach(action => {
       binding.el.removeEventListener(action.event, action.handler, action.options);
@@ -96,7 +96,7 @@ export function unbindListeners() {
 }
 
 export function updateDependents(updatedProps) {
-  this.$dependents.forEach(key => {
+  this.$d.forEach(key => {
     updateProps.call(this.$app.registeredComponents[key], updatedProps);
   });
 }
@@ -104,12 +104,12 @@ export function updateDependents(updatedProps) {
 export function updateProps(updatedProps) {
   this.propsWillUpdate();
   const oldProps = Object.assign({}, this.props);
-  for (let key in this.$propObjs) {
-    const obj = this.$propObjs[key];
-    if (updatedProps.includes(this.$propObjs[key].parentComponentKey)) {
+  for (let key in this.$p) {
+    const obj = this.$p[key];
+    if (updatedProps.includes(this.$p[key].parentComponentKey)) {
       this.props[key] = obj.parentComponent.state[obj.parentComponentKey];
-      if (this.$propObjs[key].els) {
-        this.$propObjs[key].els.forEach(el => {
+      if (this.$p[key].els) {
+        this.$p[key].els.forEach(el => {
           updateDOM(el, this.props[key]);
         });
       }
@@ -121,7 +121,7 @@ export function updateProps(updatedProps) {
 export function createPropObjects() {
     const attr = this.$root.getAttribute(`data-${this.$app.$datasets.props}`);
     if (attr) {
-      const $propObjs = {};
+      const $p = {};
       const props = splitMultipleValues(attr);
       props.forEach(prop => {
         const propStringValues = splitPropsPassedIn(prop);
@@ -131,7 +131,7 @@ export function createPropObjects() {
           parentComponentValues[0]
         ];
         const parentComponentKey = parentComponentValues[1];
-        parentComponent.$dependents.add(this.$key);
+        parentComponent.$d.add(this.$key);
   
         const els = [
           ...scopeElements.call(this, 
@@ -139,13 +139,13 @@ export function createPropObjects() {
           )
         ];
         this.props[propName] = parentComponent.state[parentComponentKey];
-        $propObjs[propName] = {
+        $p[propName] = {
           parentComponent,
           parentComponentKey,
           els: els.length > 0 ? els : null
         };
       }, this);
-      return $propObjs;
+      return $p;
     } else {
       return null;
     }

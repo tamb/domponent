@@ -205,13 +205,13 @@ Components or Exponents will be given the following fields.
 | Field Name  | Type    | Access  | Context            | Description                                         |
 |-------------|---------|---------|--------------------|-----------------------------------------------------|
 | $app        | object  | public  | Component/Exponent | The entire Domponent application                    |
-| $bindings   | array   | private | Component/Exponent | eventListener bindings for internal use             |
-| $dependents | object  | private | Component          | The parent components references to its children    |
+| $b   | array   | private | Component/Exponent | eventListener bindings for internal use             |
+| $d | object  | private | Component          | The parent components references to its children    |
 | $key        | string  | public  | Component/Exponent | Unique identifier for the component instance        |
 | $name       | string  | public  | Component/Exponent | The name of the component type                      |
 | $root       | element | public  | Component/Exponent | The root DOM Node of the component                  |
-| $propObjs   | object  | private | Component/Exponent | Internal collection of props and its DOM references |
-| $stateObjs  | object  | private | Component          | Internal collection of state and its DOM references |
+| $p   | object  | private | Component/Exponent | Internal collection of props and its DOM references |
+| $s  | object  | private | Component          | Internal collection of state and its DOM references |
 | props       | object  | public  | Component/Exponent | Key/Value pairs of data passed                      |
 | state       | object  | public  | Component          | Key/Value pairs of data which can be updated        |
 
