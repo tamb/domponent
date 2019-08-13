@@ -15,6 +15,6 @@ export default class DisplayAnything extends Exponent {
   }
   displayProps() {
     this.code.textContent = JSON.stringify(this.props, undefined, 4);
-    this.objects.textContent = JSON.stringify(this.$propObjs.goBold.parentComponentKey, undefined, 4);
+    this.objects.textContent = JSON.stringify(this.$p.goBold.parentComponentKey, undefined, 4);
   }
 }

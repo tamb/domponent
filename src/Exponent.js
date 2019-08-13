@@ -7,8 +7,8 @@ export default class Exponent extends Scope {
     super(config);
     this.connecting();
     this.props = {};
-    this.$dependents = new Set();
-    this.$propObjs = createPropObjects.call(this);
+    this.$d = new Set();
+    this.$p = createPropObjects.call(this);
     bindListeners.call(this);
     wait? null : this.connected();
   }
