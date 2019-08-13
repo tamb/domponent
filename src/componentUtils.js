@@ -3,8 +3,11 @@ import {
   splitKeyValuePairs,
   splitMethodCalls,
   splitMultipleValues,
-  splitPropsPassedIn
+  splitPropsPassedIn,
+  splitList
 } from './utils';
+
+import { eventOptions } from './enums';
 
 export function scopeElements(selector) {
   return [...this.$root.querySelectorAll(selector)].filter(el => {
@@ -63,8 +66,11 @@ export function bindListeners() {
       const cbFunc = splitFromComponent(parts[1]);
       if (cbFunc[0] === this.$name) {
         let options = {};
-        if(parts[2]){
-          options = JSON.parse(parts[2]);
+        if(cbFunc[2]){
+          const arr = splitList(cbFunc[2]);
+          for(let key in eventOptions){
+            options[eventOptions[key]] = arr.includes(eventOptions[key]);
+          }
         }
         const handler = this[cbFunc[1]].bind(this);
         el.addEventListener(event, handler, options);  
@@ -80,7 +86,9 @@ export function bindListeners() {
 }
 
 export function unbindListeners() {
+  console.log('REMOVING:', this);
   this.$bindings.forEach(binding => {
+    console.log('binding', binding);
     binding.actions.forEach(action => {
       binding.el.removeEventListener(action.event, action.handler, action.options);
     }, this);

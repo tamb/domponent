@@ -21,5 +21,12 @@ export const relationalStringEnum = {
     FROM_COMPONENT: '.',
     KEY_VALUE: ':',
     MULTIPLE_VALUES: "|",
-    METHOD_CALL: "->"
+    METHOD_CALL: "->",
+    LIST: ","
 }
+
+export const eventOptions = {
+    ONCE: 'once',
+    PASSIVE: 'passive',
+    CAPTURE: 'capture'
+};
