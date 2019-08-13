@@ -48,44 +48,41 @@ export function initState() {
 }
 
 export function bindListeners() {
+  this.$bindings = [];
   scopeElements.call(this,`[data-${this.$app.$datasets.action}]`).forEach(el => {
     const actions = splitMultipleValues(
       el.getAttribute(`data-${this.$app.$datasets.action}`)
     );
+    const binding = {
+      el: el,
+      actions: [],
+    };
     actions.forEach(action => {
       const parts = splitMethodCalls(action);
       const event = parts[0];
       const cbFunc = splitFromComponent(parts[1]);
       if (cbFunc[0] === this.$name) {
-       
-        el.addEventListener(event, e => this[cbFunc[1]](e)); 
-        // TODO: unbinding wont work with anonymous callback. 
-        // Name the callback and store it in component object
-        // when removing event listeners, use this object??    
+        let options = {};
+        if(parts[2]){
+          options = JSON.parse(parts[2]);
+        }
+        const handler = this[cbFunc[1]].bind(this);
+        el.addEventListener(event, handler, options);  
+        binding.actions.push({
+          event,
+          handler,
+          options
+        });
       }
     }, this);
+    this.$bindings.push(binding);
   }, this);
 }
 
 export function unbindListeners() {
-  console.warn('unbinding?', this);
-  scopeElements.call(this,`[data-${this.$app.$datasets.action}]`).forEach(el => {
-    const actions = splitMultipleValues(
-      el.getAttribute(`data-${this.$app.$datasets.action}`)
-    );
-    actions.forEach(action => {
-      const parts = splitMethodCalls(action);
-      const event = parts[0];
-      const cbFunc = splitFromComponent(parts[1]);
-      if (cbFunc[0] === this.$name) {
-        const func = this[cbFunc[1]];
-        el.removeEventListener(event, func);// this removes! AA
-        // const self = this;
-        // el.removeEventListener(event, e => this[cbFunc[1]](e));
-        // el.removeEventListener(event, this[cbFunc[1]]);
-        // el.removeEventListener(event, this[cbFunc[1]].bind(this));
-        console.error('removing listener using func', event);
-      }
+  this.$bindings.forEach(binding => {
+    binding.actions.forEach(action => {
+      binding.el.removeEventListener(action.event, action.handler, action.options);
     }, this);
   }, this);
 }
