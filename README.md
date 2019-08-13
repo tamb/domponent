@@ -64,6 +64,7 @@ __And you're good to go!!__
 - [Manage Component State](#managing-component-state-)
 - [Lifecycle Methods](#lifecycle-methods-)
 - [Stateless Components](#stateless-components-)
+- [Component Fields](#component-fields)
 - [Init Function](#init-function-)
 - [Dynamically Adding and Removing Components](#dynamically-adding-and-removing-components-)
 - [Namespacing Data Attributes](#namespacing-data-attributes-)
@@ -105,6 +106,14 @@ example:
 +1
 </button>
  ```
+ 
+ You can pass `eventListener` options in as well separated by a comma.
+```html
+<button data-action="click->Counter.increment.passive,capture|mouseover->Counter.anotherMethod.once,passive">
++1
+</button>
+```
+ 
 #### `data-state`
 If you want to instantiate your component with a particular state __in memory__ you must attach a `data-state` attribute to the __root element__ of the component
 example:
@@ -188,6 +197,24 @@ You will then only have access to:
 __Why `Exponent`??__  
 <br/>
 Because it simply interprets or _expounds_ the data that it is given...  and it sounds like Component.
+<hr/>
+
+### Component Fields 🌵
+Components or Exponents will be given the following fields.
+
+| Field Name  | Type    | Access  | Context            | Description                                         |
+|-------------|---------|---------|--------------------|-----------------------------------------------------|
+| $app        | object  | public  | Component/Exponent | The entire Domponent application                    |
+| $bindings   | array   | private | Component/Exponent | eventListener bindings for internal use             |
+| $dependents | object  | private | Component          | The parent components references to its children    |
+| $key        | string  | public  | Component/Exponent | Unique identifier for the component instance        |
+| $name       | string  | public  | Component/Exponent | The name of the component type                      |
+| $root       | element | public  | Component/Exponent | The root DOM Node of the component                  |
+| $propObjs   | object  | private | Component/Exponent | Internal collection of props and its DOM references |
+| $stateObjs  | object  | private | Component          | Internal collection of state and its DOM references |
+| props       | object  | public  | Component/Exponent | Key/Value pairs of data passed                      |
+| state       | object  | public  | Component          | Key/Value pairs of data which can be updated        |
+
 <hr/>
 
 ### `Init` function 🏇
