@@ -32,3 +32,6 @@ export function splitMethodCalls(string) {
 export function splitFromComponent(string) {
   return string.trim().split(relationalStringEnum.FROM_COMPONENT);
 }
+export function splitList(string){
+  return string.trim().split(relationalStringEnum.LIST);
+}

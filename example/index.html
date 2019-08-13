@@ -127,6 +127,59 @@
         </div>
       </div>
 
+      <div data-component="Counter" data-state="count:18">
+        <h2 data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen">
+          Nested Counter 2
+        </h2>
+        <div>count: <span data-bind="state:Counter.count"></span></div>
+        <button
+          type="button"
+          data-action="click->Counter.increment|mouseover->Counter.goBlue|mouseout->Counter.goGreen"
+          class="increment"
+        >
+          +1
+        </button>
+        <button
+          type="button"
+          data-action="click->Counter.decrement"
+          class="decrement"
+        >
+          -1
+        </button>
+        <div
+          data-props="goBold<-parentCounter:ofFive"
+          data-component="DisplayAnything"
+        >
+          <p><strong>This is a child component with no state</strong></p>
+          <p>props are bound in memory</p>
+          <code class="code"></code>
+          <br />
+          <code class="propObjects"></code>
+        </div>
+        <div data-component="Counter" data-state="count:0">
+          <h2
+            data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen"
+          >
+            Counter where buttons are bound once!
+          </h2>
+          <div>count: <span data-bind="state:Counter.count"></span></div>
+          <button
+            type="button"
+            data-action="click->Counter.increment.once,passive|mouseover->Counter.goBlue|mouseout->Counter.goGreen"
+            class="increment"
+          >
+            +1
+          </button>
+          <button
+            type="button"
+            data-action="click->Counter.decrement"
+            class="decrement"
+          >
+            -1
+          </button>
+        </div>
+      </div>
+
       <div data-component="CurrentTime">
         <h2>Current Time:</h2>
         <span data-bind="state:CurrentTime.hours">n/a</span>:
