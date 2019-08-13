@@ -107,7 +107,7 @@ example:
 </button>
  ```
  
- You can pass `eventListener` options in as well separated by a comma.
+ You can pass `eventListener` options in as well separated by a comma `,`.
 ```html
 <button data-action="click->Counter.increment.passive,capture|mouseover->Counter.anotherMethod.once,passive">
 +1
