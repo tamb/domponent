@@ -61,7 +61,7 @@ __And you're good to go!!__
 - [Install](#install)
 - [Data API](#data-API-)
 - [Extending the Component class](#extending-the-component-class-)
-- [Manage Component State](#managing-component-state-)
+- [Manage Component State](#managing-component-state-%EF%B8%8F)
 - [Lifecycle Methods](#lifecycle-methods-)
 - [Stateless Components](#stateless-components-)
 - [Component Fields](#component-fields-)
