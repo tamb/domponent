@@ -166,7 +166,7 @@ class Counter extends Component{
 `super` adds the base methods and properties your component needs.
 <hr/>
 
-### Managing Component State 🕹️
+### Managing Component State  🕹️
 Don't mutate the state directly. Call `this.setState`
 
 ```js
