@@ -177,15 +177,18 @@ This follows React's setState - although it's implemented differently.
 
 ### LifeCycle Methods 🌳
 The following are methods you can use to access components at various points in their lifecycle
-| Lifecycle Method | Context            | Description                                                                                                                    |
-|------------------|--------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| connecting       | Component/Exponent | Before the library wires up any of your Component/Exponent and you have access to other methods                                |
-| connected        | Component/Exponent | After your Component/Exponent is wired up and all eventListeners are in place                                                  |
-| disconnecting    | Component/Exponent | Before removing eventListeners and deleting Component/Exponent from memory                                                     |
-| propsWillUpdate  | Component/Exponent | Before the props are updated within your component, no DOM mutations have happened                                             |
-| propsDidUpdate   | Component/Exponent | After the props have updated and the DOM has changed                                                                           |
-| stateWillUpdate  | Component          | Before the state of the component has changed and before any of its dependents change or any DOM is updated from state changes |
-| stateDidUpdate   | Component          | Child components with inherited props have done their DOM manipulations and state and props have changed                       |
+
+| Lifecycle Method | Context            | Description                                                                                              |
+|------------------|--------------------|----------------------------------------------------------------------------------------------------------|
+| connecting       | Component/Exponent | Before the library wires up any of your Component/Exponent and you have access to other methods          |
+| connected        | Component/Exponent | After your Component/Exponent is wired up and all eventListeners are in place                            |
+| disconnecting    | Component/Exponent | Before removing eventListeners and deleting Component/Exponent from memory                               |
+| propsWillUpdate  | Component/Exponent | Before the props are updated within your component, no DOM mutations have happened                       |
+| propsDidUpdate   | Component/Exponent | After the props have updated and the DOM has changed                                                     |
+| stateWillUpdate  | Component          | Before the state of the current component or any of its dependents' props have changed                   |
+| stateDidUpdate   | Component          | Child components with inherited props have done their DOM manipulations and state and props have changed |
+
+
 <hr/>
 
 ### Stateless Components 😐
