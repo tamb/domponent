@@ -72,7 +72,7 @@ __And you're good to go!!__
 - [Stateless Components](#stateless-components-)
 - [Component Fields](#component-fields-)
 - [Init Function](#init-function-)
-- [Dynamically Adding and Removing Components](#dynamically-adding-and-removing-components-)
+- [Adding and Removing Components](#adding-and-removing-components-)
 - [Namespacing Data Attributes](#namespacing-data-attributes-)
 - [Demo](#demo-)
 - [Component Lifecycle](#component-lifecycle-)
@@ -253,7 +253,7 @@ It then exposes the following methods:
 * unregister
 <hr/>
 
-### Dynamically adding and removing components 🤼
+### Adding and removing components 🤼
 
 #### Adding components
 ##### `createComponent`
