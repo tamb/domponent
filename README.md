@@ -60,6 +60,12 @@ __And you're good to go!!__
 ## Docs 📖
 - [Install](#install)
 - [Data API](#data-API-)
+  - [data-component](#data-component)
+  - [data-bind](#data-bind)
+  - [data-action](#data-action)
+  - [data-state](#data-state)
+  - [data-key](#data-key)
+  - [data-props](#data-props)
 - [Extending the Component class](#extending-the-component-class-)
 - [Manage Component State](#managing-component-state-)
 - [Lifecycle Methods](#lifecycle-methods-)
