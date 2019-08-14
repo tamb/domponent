@@ -61,7 +61,7 @@ __And you're good to go!!__
 - [Install](#install)
 - [Data API](#data-API-)
 - [Extending the Component class](#extending-the-component-class-)
-- [Manage Component State](#managing-component-state-%EF%B8%8F)
+- [Manage Component State](#managing-component-state-)
 - [Lifecycle Methods](#lifecycle-methods-)
 - [Stateless Components](#stateless-components-)
 - [Component Fields](#component-fields-)
@@ -166,7 +166,7 @@ class Counter extends Component{
 `super` adds the base methods and properties your component needs.
 <hr/>
 
-### Managing Component State  🕹️
+### Managing Component State 🕹️
 Don't mutate the state directly. Call `this.setState`
 
 ```js
