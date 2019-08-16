@@ -155,7 +155,7 @@ The markup would look like this
 </div>
 ```
 The left side of the arrow `<-` is the name of the prop in the `DisplayAnything` component.
-The Right side of the arrow is `key` of the parent component, a colon `:` and the name of the piece of `state` to inherit.
+The Right side of the arrow is `$key` of the parent component, a colon `:` and the name of the piece of `state` to inherit.
 
 You can then use the lifecycle methods `propsWillUpdate` and `propsDidUpdate` to make changes within your child component.
 <hr/>
