@@ -16,12 +16,12 @@ export function scopeElements(selector) {
 }
 
 export function createStateObjects() {
-  const nodes = scopeElements.call(this, '[data-bind^="state:"]');
+  const nodes = scopeElements.call(this, `[data-${this.$app.$datasets.bind}^="state:"]`);
   if (nodes.length > 0) {
     const $s = {};
     nodes.forEach(el => {
       const newStateObject = {};
-      const states = splitMultipleValues(el.getAttribute("data-bind"));
+      const states = splitMultipleValues(el.getAttribute(`data-${this.$app.$datasets.bind}`));
       states.forEach(state => {
         const parts = splitKeyValuePairs(state);
         const stateKey = splitFromComponent(parts[1])[1];
@@ -38,7 +38,7 @@ export function createStateObjects() {
 }
 
 export function initState() {
-  const stateAttr = this.$root.getAttribute("data-state");
+  const stateAttr = this.$root.getAttribute(`data-${this.$app.$datasets.state}`);
   if (stateAttr) {
     const fields = splitMultipleValues(stateAttr);
     const state = {};
