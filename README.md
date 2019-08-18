@@ -87,7 +87,7 @@ npm install --save domponent
 ### CDN
 ```html
 <!-- JsDelvr -->
-<script type="javascript/text" src="https://cdn.jsdelivr.net/npm/domponent@1.0.0-alpha.14/dist/domponent.min.js"></script>
+<script type="javascript/text" src="https://cdn.jsdelivr.net/npm/domponent@{VERSION}/dist/domponent.min.js"></script>
 
 ```
 <hr/>
@@ -313,7 +313,7 @@ __Download__
 
 __Basic HTML__ 😉
 1. _make sure you have FireFox_ 🔥🦊🔥
-2. `npm run build-html`
+2. `npm run build:html`
 
 __Pug Example__ 🐶
 coming soon...

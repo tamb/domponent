@@ -1,6 +1,6 @@
 {
   "name": "domponent",
-  "version": "1.0.0-alpha.15",
+  "version": "1.0.0-alpha.16",
   "description": "Build components with the HTML you already have.",
   "keywords": [
     "component",
@@ -12,16 +12,19 @@
     "html",
     "data"
   ],
+  "private": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/tamb/domponent.git"
   },
   "homepage": "https://github.com/tamb/domponent",
-  "main": "dist/index.js",
-  "browser": "dist/index.js",
+  "main": "dist/domponent.es.js",
+  "umd:main": "dist/domponent.min.js",
+  "unpkg": "dist/domponent.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-html": "node clean.js && rollup -c rollup.config.js && npm pack && cd example/html && npm install --force && webpack && firefox index.html"
+    "build": "rollup -c rollup.config.js",
+    "build:html": "node clean.js && rollup -c rollup.config.js && npm pack && cd example/html && npm install --force && webpack && firefox index.html"
   },
   "files": [
     "dist"
