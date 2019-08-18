@@ -6,7 +6,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-all": "node clean.js && rollup -c rollup.config.js && npm pack && cd example && npm install --force && webpack && firefox index.html"
+    "build-html": "node clean.js && rollup -c rollup.config.js && npm pack && cd example/html && npm install --force && webpack && firefox index.html"
   },
   "files": [
     "dist"
