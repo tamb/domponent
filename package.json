@@ -1,9 +1,12 @@
 {
   "name": "domponent",
-  "version": "1.0.0-alpha.13",
+  "version": "1.0.0-alpha.14",
   "description": "Build components with the HTML you already have.",
+  "keywords": ["component","ui", "react", "reactive", "lifecyle", "server-side", "html", "data"],
   "homepage": "https://github.com/tamb/domponent",
   "main": "dist/index.js",
+  "browser": "dist/domponent.min.js",
+  "module": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-html": "node clean.js && rollup -c rollup.config.js && npm pack && cd example/html && npm install --force && webpack && firefox index.html"
