@@ -3,6 +3,8 @@ __Build components with the HTML you already have.__
 <br/>
 __<2kb gzipped and <5kb minified! 👌__
 
+[![](https://data.jsdelivr.com/v1/package/npm/domponent/badge)](https://www.jsdelivr.com/package/npm/domponent)
+
 ## How To:
 1. Drop a few `data` attributes into your existing HTML 💻
 ```html
@@ -78,8 +80,15 @@ __And you're good to go!!__
 - [Component Lifecycle](#component-lifecycle-)
 
 ### Install
+#### npm
 ```js
 npm install --save domponent
+```
+### CDN
+```html
+<!-- JsDelvr -->
+<script type="javascript/text" src="https://cdn.jsdelivr.net/npm/domponent@1.0.0-alpha.14/dist/domponent.min.js"></script>
+
 ```
 <hr/>
 
