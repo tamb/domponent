@@ -2,7 +2,20 @@
   "name": "domponent",
   "version": "1.0.0-alpha.14",
   "description": "Build components with the HTML you already have.",
-  "keywords": ["component","ui", "react", "reactive", "lifecyle", "server-side", "html", "data"],
+  "keywords": [
+    "component",
+    "ui",
+    "react",
+    "reactive",
+    "lifecyle",
+    "server-side",
+    "html",
+    "data"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tamb/domponent.git"
+  },
   "homepage": "https://github.com/tamb/domponent",
   "main": "dist/index.js",
   "browser": "dist/domponent.min.js",
