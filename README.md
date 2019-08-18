@@ -307,10 +307,22 @@ This means that your HTML will look like this:
 <hr/>
 
 ### Demo 🤖
+__Download__
 1. `git clone` this repo
 2. `npm install`
-3. _make sure you have FireFox_ 🔥🦊🔥
-4. `npm run build-all`
+
+__Basic HTML__ 😉
+1. _make sure you have FireFox_ 🔥🦊🔥
+2. `npm run build-html`
+
+__Pug Example__ 🐶
+coming soon...
+
+__Thymeleaf Example__ 🍃
+coming soon...
+
+__Ruby on Rails Example__ 💎
+coming soon...
 <hr/>
 
 ### Component Lifecycle 🕵️‍♂️
