@@ -8,7 +8,7 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "domponent": "file:../../domponent-1.0.0-alpha.14.tgz"
+    "domponent": "file:../../domponent-1.0.0-alpha.15.tgz"
   },
   "devDependencies": {
     "@babel/core": "7.2.0",
