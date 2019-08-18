@@ -1,6 +1,6 @@
 {
   "name": "domponent",
-  "version": "1.0.0-alpha.16",
+  "version": "1.0.0-alpha.17",
   "description": "Build components with the HTML you already have.",
   "keywords": [
     "component",
@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/tamb/domponent",
   "main": "dist/domponent.es.js",
-  "umd:main": "dist/domponent.min.js",
   "unpkg": "dist/domponent.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
