@@ -1,12 +1,12 @@
 import { terser } from "rollup-plugin-terser";
-import babel from "rollup-plugin-babel";
 
 export default [
-  { // for webpack consumption - 
+  {
     input: "src/index.js",
     output: {
-      file: "dist/domponent.es.js",
-      format: "es"
+      file: "dist/domponent.umd.js",
+      format: "umd",
+      name: "Domponent"
     },
     plugins: [
       terser({
@@ -15,23 +15,6 @@ export default [
         mangle: {
           keep_classnames: true
         }
-      })
-    ]
-  },
-  { // for CDN consumption
-    input: "src/index.js",
-    output: {
-      file: "dist/domponent.min.js",
-      format: "iife",
-      name: "Domponent"
-    },
-    plugins: [
-      terser({
-        compress: true,
-        ie8: true
-      }),
-      babel({
-        exclude: "node_modules/**"
       })
     ]
   }
