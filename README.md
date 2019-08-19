@@ -84,12 +84,6 @@ __And you're good to go!!__
 ```js
 npm install --save domponent
 ```
-### CDN
-```html
-<!-- JsDelvr -->
-<script type="javascript/text" src="https://cdn.jsdelivr.net/npm/domponent@{VERSION}/dist/domponent.min.js"></script>
-
-```
 <hr/>
 
 ### data API 💽
