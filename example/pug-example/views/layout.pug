@@ -2,6 +2,15 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    style.
+      #root {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      [data-component]{
+        display: flex;
+        flex-direction: column;
+        border: 1px solid;
+      }
   body
     block content
