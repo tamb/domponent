@@ -6,8 +6,19 @@ import Component from './Component';
 import { createKey } from './utils';
 import { unbindListeners } from './componentUtils';
 
+/* START.DEV */
+console.warn(`🤓 -- "Excuse me there. I am Dominic, call me Dom.
+You are using a DEVELOPMENT build of Domponent.  
+This will create performance issues within your app.  
+The use of domponent.dev is to provide better debugging.
+And to here from me, Dom.
+Please swap out to domponent.production.min.js for production code.
+See ya soon!"`);
+/* END.DEV */
+
 // generates the App
 function Init(config) {
+
     // components and their instances
     this.components = config.components;
     this.registeredComponents = {};
@@ -20,6 +31,11 @@ function Init(config) {
           dataSet[key] = config.dataAttributes[key];
         }
       }
+      /* START.DEV */
+      console.log(`🤓 -- "Dom here. Your data attribute suffixes are: 
+      ${JSON.stringify(dataSet, null, 2)}
+      Coolio.  We should hang out some time!"`);
+      /* END.DEV */
       return dataSet;
     })();
 
@@ -27,9 +43,20 @@ function Init(config) {
     // create component
     this._cc = (el, cb) => {
       const key = el.getAttribute(`data-${this.$datasets.key}`) || createKey();
-      this.registeredComponents[key] = new config.components[
-        (el.getAttribute(`data-${this.$datasets.component}`))
-      ]({ element: el, key, app: this });
+      /* START.DEV */
+      try{
+      /* END.DEV */
+        this.registeredComponents[key] = new config.components[
+          (el.getAttribute(`data-${this.$datasets.component}`))
+          ]({ element: el, key, app: this });
+      /* START.DEV */
+        } catch (err) {
+          console.error(`🤓 -- "You messed up creating a component instance for component 
+          ${key} 
+          on $root 
+          ${el}"`);
+      }
+      /* END.DEV */
       cb ? cb() : null;
     };
     // delete component
@@ -41,6 +68,14 @@ function Init(config) {
     };
     // register component
     this._rc = (name, C, cb) => {
+      
+      /* START.DEV */
+      if(typeof C.constructor !== 'function'){
+        console.error(`🤓 -- "Hey, buddy.  You can't register something that's not a class.
+        Also, wanna play Catan or something later?  ...No pressure."`);
+      }
+      /* END.DEV */
+
       this.components[name] = C;
       cb ? cb() : null;
     };

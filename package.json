@@ -18,8 +18,8 @@
     "url": "https://github.com/tamb/domponent.git"
   },
   "homepage": "https://github.com/tamb/domponent",
-  "main": "dist/domponent.umd.js",
-  "unpkg": "dist/domponent.umd.js",
+  "main": "dist/domponent.production.min.js",
+  "unpkg": "dist/domponent.production.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c rollup.config.js",
