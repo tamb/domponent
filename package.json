@@ -34,6 +34,7 @@
   "devDependencies": {
     "rimraf": "^2.6.3",
     "rollup": "^1.18.0",
+    "rollup-plugin-strip-code": "^0.2.7",
     "rollup-plugin-terser": "^5.1.1"
   }
 }
