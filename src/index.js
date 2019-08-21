@@ -92,6 +92,11 @@ function Init(config) {
       this
     );
     config.appCreated ? config.appCreated() : null;
+
+    /* START.DEV */
+    const me = this;
+    console.log(`🤓 -- "Here's the app you created: "`, me);
+    /* END.DEV */
   
     // exposing methods
     return {
