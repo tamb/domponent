@@ -5,9 +5,9 @@ import {
   splitMultipleValues,
   splitPropsPassedIn,
   splitList
-} from './utils';
+} from "./utils";
 
-import { eventOptions } from './enums';
+import { eventOptions } from "./enums";
 
 export function scopeElements(selector) {
   return [...this.$root.querySelectorAll(selector)].filter(el => {
@@ -16,16 +16,21 @@ export function scopeElements(selector) {
 }
 
 export function createStateObjects() {
-  const nodes = scopeElements.call(this, `[data-${this.$app.$datasets.bind}^="state:"]`);
+  const nodes = scopeElements.call(
+    this,
+    `[data-${this.$app.$datasets.bind}^="state:"]`
+  );
   if (nodes.length > 0) {
     const $s = {};
     nodes.forEach(el => {
       const newStateObject = {};
       /* START.DEV */
-      try{
-      /* END.DEV */
-        var states = splitMultipleValues(el.getAttribute(`data-${this.$app.$datasets.bind}`));
-      /* START.DEV */
+      try {
+        /* END.DEV */
+        var states = splitMultipleValues(
+          el.getAttribute(`data-${this.$app.$datasets.bind}`)
+        );
+        /* START.DEV */
       } catch (err) {
         console.error(`🤓 -- "There's a problem creating the state.
         You have a syntax error splitting multiple values on element: 
@@ -34,10 +39,10 @@ export function createStateObjects() {
       /* END.DEV */
       states.forEach(state => {
         /* START.DEV */
-        try{
-        /* END.DEV */
+        try {
+          /* END.DEV */
           var parts = splitKeyValuePairs(state);
-        /* START.DEV */
+          /* START.DEV */
         } catch (err) {
           console.error(`🤓 -- "There's a problem creating the state.
           You have a syntax error splitting key/value pairs on element: 
@@ -45,10 +50,10 @@ export function createStateObjects() {
         }
         /* END.DEV */
         /* START.DEV */
-        try{
-        /* END.DEV */
-        var stateKey = splitFromComponent(parts[1])[1];
-         /* START.DEV */
+        try {
+          /* END.DEV */
+          var stateKey = splitFromComponent(parts[1])[1];
+          /* START.DEV */
         } catch (err) {
           console.error(`🤓 -- "There's a problem creating the state.
           You have a syntax error splitting fields from components on element: 
@@ -68,7 +73,9 @@ export function createStateObjects() {
 }
 
 export function initState() {
-  const stateAttr = this.$root.getAttribute(`data-${this.$app.$datasets.state}`);
+  const stateAttr = this.$root.getAttribute(
+    `data-${this.$app.$datasets.state}`
+  );
   if (stateAttr) {
     const fields = splitMultipleValues(stateAttr);
     const state = {};
@@ -82,53 +89,84 @@ export function initState() {
 
 export function bindListeners() {
   this.$b = [];
-  scopeElements.call(this,`[data-${this.$app.$datasets.action}]`).forEach(el => {
-    const actions = splitMultipleValues(
-      el.getAttribute(`data-${this.$app.$datasets.action}`)
-    );
-    const binding = {
-      el: el,
-      actions: [],
-    };
-    actions.forEach(action => {
-      const parts = splitMethodCalls(action);
-      const event = parts[0];
-      const cbFunc = splitFromComponent(parts[1]);
-      if (cbFunc[0] === this.$name) {
-        let options = {};
-        if(cbFunc[2]){
-          const arr = splitList(cbFunc[2]);
-          for(let key in eventOptions){
-            options[eventOptions[key]] = arr.includes(eventOptions[key]);
+  scopeElements
+    .call(this, `[data-${this.$app.$datasets.action}]`)
+    .forEach(el => {
+      const actions = splitMultipleValues(
+        el.getAttribute(`data-${this.$app.$datasets.action}`)
+      );
+      const binding = {
+        el: el,
+        actions: []
+      };
+      actions.forEach(action => {
+        const parts = splitMethodCalls(action);
+        const event = parts[0];
+        const cbFunc = splitFromComponent(parts[1]);
+        if (cbFunc[0] === this.$name) {
+          let options = {};
+          if (cbFunc[2]) {
+            const arr = splitList(cbFunc[2]);
+            for (let key in eventOptions) {
+              options[eventOptions[key]] = arr.includes(eventOptions[key]);
+            }
           }
+          const handler = this[cbFunc[1]].bind(this);
+          el.addEventListener(event, handler, options);
+          binding.actions.push({
+            event,
+            handler,
+            options
+          });
         }
-        const handler = this[cbFunc[1]].bind(this);
-        el.addEventListener(event, handler, options);  
-        binding.actions.push({
-          event,
-          handler,
-          options
-        });
-      }
+      }, this);
+      this.$b.push(binding);
     }, this);
-    this.$b.push(binding);
-  }, this);
 }
 
 export function unbindListeners() {
-  console.log('REMOVING:', this);
-  this.$b.forEach(binding => {
-    console.log('binding', binding);
-    binding.actions.forEach(action => {
-      binding.el.removeEventListener(action.event, action.handler, action.options);
+  /* START.DEV */
+  const me = this;
+  try {
+    /* END.DEV */
+    this.$b.forEach(binding => {
+      console.log("binding", binding);
+      binding.actions.forEach(action => {
+        binding.el.removeEventListener(
+          action.event,
+          action.handler,
+          action.options
+        );
+      }, this);
     }, this);
-  }, this);
+    /* START.DEV */
+  } catch (err) {
+    console.error(`🤓 -- "You had this issue:
+  ${err}
+  removing eventListeners while deleting this component:  
+  ${me}
+  ... You'll still listen to me though? Right?? I love our chats.`);
+  }
+  /* END.DEV */
 }
 
 export function updateDependents(updatedProps) {
-  this.$d.forEach(key => {
-    updateProps.call(this.$app.registeredComponents[key], updatedProps);
-  });
+  /* START.DEV */
+  const me = this;
+  try {
+    /* END.DEV */
+    this.$d.forEach(key => {
+      updateProps.call(this.$app.registeredComponents[key], updatedProps);
+    });
+    /* START.DEV */
+  } catch (err) {
+    console.error(`🤓 -- "You had this issue:
+    ${err} 
+    updating the dependents of this component: 
+    ${me}...
+    Can I DEPEND on your for a ride to the airport?... Friend??"`);
+  }
+  /* END.DEV */
 }
 
 export function updateProps(updatedProps) {
@@ -149,34 +187,35 @@ export function updateProps(updatedProps) {
 }
 
 export function createPropObjects() {
-    const attr = this.$root.getAttribute(`data-${this.$app.$datasets.props}`);
-    if (attr) {
-      const $p = {};
-      const props = splitMultipleValues(attr);
-      props.forEach(prop => {
-        const propStringValues = splitPropsPassedIn(prop);
-        const parentComponentValues = splitKeyValuePairs(propStringValues[1]);
-        const propName = propStringValues[0];
-        const parentComponent = this.$app.registeredComponents[
-          parentComponentValues[0]
-        ];
-        const parentComponentKey = parentComponentValues[1];
-        parentComponent.$d.add(this.$key);
-  
-        const els = [
-          ...scopeElements.call(this, 
-            `[${this.$app.$datasets.bind}^="props:${propName}"]`
-          )
-        ];
-        this.props[propName] = parentComponent.state[parentComponentKey];
-        $p[propName] = {
-          parentComponent,
-          parentComponentKey,
-          els: els.length > 0 ? els : null
-        };
-      }, this);
-      return $p;
-    } else {
-      return null;
-    }
+  const attr = this.$root.getAttribute(`data-${this.$app.$datasets.props}`);
+  if (attr) {
+    const $p = {};
+    const props = splitMultipleValues(attr);
+    props.forEach(prop => {
+      const propStringValues = splitPropsPassedIn(prop);
+      const parentComponentValues = splitKeyValuePairs(propStringValues[1]);
+      const propName = propStringValues[0];
+      const parentComponent = this.$app.registeredComponents[
+        parentComponentValues[0]
+      ];
+      const parentComponentKey = parentComponentValues[1];
+      parentComponent.$d.add(this.$key);
+
+      const els = [
+        ...scopeElements.call(
+          this,
+          `[${this.$app.$datasets.bind}^="props:${propName}"]`
+        )
+      ];
+      this.props[propName] = parentComponent.state[parentComponentKey];
+      $p[propName] = {
+        parentComponent,
+        parentComponentKey,
+        els: els.length > 0 ? els : null
+      };
+    }, this);
+    return $p;
+  } else {
+    return null;
   }
+}
