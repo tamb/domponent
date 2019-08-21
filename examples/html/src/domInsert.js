@@ -1,5 +1,4 @@
 export default function(id) {
-  console.log("inserting into dom");
   const root = document.getElementById("root");
   const number = Math.floor(Math.random()*100);
   const component = `
