@@ -10,8 +10,7 @@ import { unbindListeners } from './componentUtils';
 console.warn(`🤓 -- "Excuse me there. I am Dominic, call me Dom.
 You are using a DEVELOPMENT build of Domponent.  
 This will create performance issues within your app.  
-The use of domponent.dev is to provide better debugging.
-And to here from me, Dom.
+The use of domponent.development.js is to provide better debugging... and to hang with me... Dom.
 Please swap out to domponent.production.min.js for production code.
 See ya soon!"`);
 /* END.DEV */

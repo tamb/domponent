@@ -21,10 +21,40 @@ export function createStateObjects() {
     const $s = {};
     nodes.forEach(el => {
       const newStateObject = {};
-      const states = splitMultipleValues(el.getAttribute(`data-${this.$app.$datasets.bind}`));
+      /* START.DEV */
+      try{
+      /* END.DEV */
+        var states = splitMultipleValues(el.getAttribute(`data-${this.$app.$datasets.bind}`));
+      /* START.DEV */
+      } catch (err) {
+        console.error(`🤓 -- "There's a problem creating the state.
+        You have a syntax error splitting multiple values on element: 
+        ${el} with error: ${err}"`);
+      }
+      /* END.DEV */
       states.forEach(state => {
-        const parts = splitKeyValuePairs(state);
-        const stateKey = splitFromComponent(parts[1])[1];
+        /* START.DEV */
+        try{
+        /* END.DEV */
+          var parts = splitKeyValuePairs(state);
+        /* START.DEV */
+        } catch (err) {
+          console.error(`🤓 -- "There's a problem creating the state.
+          You have a syntax error splitting key/value pairs on element: 
+          ${el} with error: ${err}"`);
+        }
+        /* END.DEV */
+        /* START.DEV */
+        try{
+        /* END.DEV */
+        var stateKey = splitFromComponent(parts[1])[1];
+         /* START.DEV */
+        } catch (err) {
+          console.error(`🤓 -- "There's a problem creating the state.
+          You have a syntax error splitting fields from components on element: 
+          ${el} with error: ${err}"`);
+        }
+        /* END.DEV */
         newStateObject.el = el;
         if (!$s[stateKey]) {
           $s[stateKey] = [];

@@ -24,17 +24,27 @@ export default class Component extends Exponent {
   setState(newState = this.state, fn) {
     this.stateWillUpdate();
     const propsToUpdate = [];
-    for (let stateKey in newState) {
-      if (newState[stateKey] !== this.state[stateKey]) {
-        propsToUpdate.push(stateKey);
-        this.state[stateKey] = newState[stateKey];
-        if (this.$s[stateKey]) {
-          this.$s[stateKey].forEach(stateObj => {
-            updateDOM(stateObj.el, newState[stateKey]);
-          });
+    /* START.DEV */
+    try{
+    /* END.DEV */
+      for (let stateKey in newState) {
+        if (newState[stateKey] !== this.state[stateKey]) {
+          propsToUpdate.push(stateKey);
+          this.state[stateKey] = newState[stateKey];
+          if (this.$s[stateKey]) {
+            this.$s[stateKey].forEach(stateObj => {
+              updateDOM(stateObj.el, newState[stateKey]);
+            });
+          }
         }
       }
+    /* START.DEV */  
+    } catch (err) {
+      console.error(`🤓 -- "Whoops, pal!  You ran into this error
+      while updating state: 
+      ${err}`);
     }
+    /* END.DEV */
     if (this.$d.size > 0) {
       updateDependents.call(this, propsToUpdate);
     }
