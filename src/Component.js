@@ -42,7 +42,7 @@ export default class Component extends Exponent {
     } catch (err) {
       console.error(`🤓 -- "Whoops, pal!  You ran into this error
       while updating state: 
-      ${err}`);
+      `, err);
     }
     /* END.DEV */
     if (this.$d.size > 0) {
