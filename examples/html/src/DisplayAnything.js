@@ -1,4 +1,4 @@
-import { Exponent } from 'domponent';
+import { Exponent } from 'domponent/dist/domponent.development';
 
 export default class DisplayAnything extends Exponent {
   constructor(el) {

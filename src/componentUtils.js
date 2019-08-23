@@ -69,6 +69,12 @@ export function createStateObjects() {
     }, this);
     return $s;
   }
+  /* START.DEV */
+  if(nodes.length === 0){
+    console.warn(`🤓 -- "You are creating state but not binding it to any DOM elements.  Is this intended? 
+    If not, check your binding syntax from within this root element `, this.$root);
+  }
+  /* END.DEV */
   return null;
 }
 

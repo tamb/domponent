@@ -1,4 +1,4 @@
-import { Component } from 'domponent';
+import { Component } from 'domponent/dist/domponent.development';
 
 export default class CurrentTime extends Component {
   constructor(el) {
