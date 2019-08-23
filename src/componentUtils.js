@@ -83,13 +83,7 @@ export function initState() {
     `data-${this.$app.$datasets.state}`
   );
   if (stateAttr) {
-    const fields = splitMultipleValues(stateAttr);
-    const state = {};
-    fields.forEach(field => {
-      const splitField = splitKeyValuePairs(field);
-      state[splitField[0]] = splitField[1];
-    });
-    this.setState(state);
+    this.setState(JSON.parse(stateAttr));
   }
 }
 

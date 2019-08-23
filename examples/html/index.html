@@ -52,13 +52,13 @@
     <div id="root">
       <div
         data-component="Counter"
-        data-state="count:24"
+        data-state='{"count":24}'
         data-key="parentCounter"
       >
         <h2 data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen">
           Counter 1
         </h2>
-        <div>count: <span data-bind="state.Counter.count"></span></div>
+        <div>count: <span data-bind="state:Counter.count"></span></div>
         <button
           type="button"
           data-action="click->Counter.increment|mouseover->Counter.goBlue|mouseout->Counter.goGreen"
@@ -73,7 +73,7 @@
         >
           -1
         </button>
-        <div data-component="Counter" data-state="count:18">
+        <div data-component="Counter" data-state='{"count": 18}'>
           <h2 data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen">
             Nested Counter 2
           </h2>
@@ -102,7 +102,7 @@
             <br />
             <code class="propObjects"></code>
           </div>
-          <div data-component="Counter" data-state="count:0">
+          <div data-component="Counter" data-state='{"count": 18, "ofFive": false}'>
             <h2
               data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen"
             >
@@ -127,7 +127,7 @@
         </div>
       </div>
 
-      <div data-component="Counter" data-state="count:18">
+      <div data-component="Counter" data-state='{"count":18}'>
         <h2 data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen">
           Nested Counter 2
         </h2>
@@ -156,7 +156,7 @@
           <br />
           <code class="propObjects"></code>
         </div>
-        <div data-component="Counter" data-state="count:0">
+        <div data-component="Counter" data-state='{"count":0}'>
           <h2
             data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen"
           >
@@ -187,7 +187,7 @@
         <span data-bind="state:CurrentTime.seconds">n/a</span>
       </div>
 
-      <div data-component="Name" data-state="name:thomas">
+      <div data-component="Name" data-state='{"name":"thomas"}'>
         <h2>Write Your Name</h2>
         <div>
           <label>
