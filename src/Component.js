@@ -31,18 +31,19 @@ export default class Component extends Exponent {
         if (newState[stateKey] !== this.state[stateKey]) {
           propsToUpdate.push(stateKey);
           this.state[stateKey] = newState[stateKey];
-          if (this.$s[stateKey]) {
-            this.$s[stateKey].forEach(stateObj => {
-              updateDOM(stateObj.el, newState[stateKey]);
-            });
+          if(this.$s){
+            if (this.$s[stateKey]) {
+              this.$s[stateKey].forEach(stateObj => {
+                updateDOM(stateObj.el, newState[stateKey]);
+              });
+            }
           }
         }
       }
     /* START.DEV */  
     } catch (err) {
-      console.error(`🤓 -- "Whoops, pal!  You ran into this error
-      while updating state: 
-      `, err);
+      console.error(`🤓 -- "Whoops, pal!  You ran into this error while updating state: 
+      `, err, ` within this root element `, this.$root);
     }
     /* END.DEV */
     if (this.$d.size > 0) {

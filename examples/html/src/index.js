@@ -1,4 +1,4 @@
-import { Init } from 'domponent'
+import { Init } from 'domponent/dist/domponent.development'
 import Counter from "./Counter";
 import CurrentTime from "./CurrentTime";
 import DisplayAnything from "./DisplayAnything";
