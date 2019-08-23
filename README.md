@@ -127,12 +127,12 @@ example:
 If you want to instantiate your component with a particular state __in memory__ you must attach a `data-state` attribute to the __root element__ of the component
 example:
 ```
-<div data-component="Counter" data-state="count:24">
+<div data-component="Counter" data-state='{"count":24, "isEven": true}'>
   ...
 </div>
 ```
 
-For multiple keys within the state, use a pipe `|` like so: `count:24|isEven:true`
+That's right.  `data-state` takes any valid JSON object.
 
 #### `data-key`
 This is totally optional.  It's a _unique_ string for _each_ component instance.  
