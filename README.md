@@ -296,7 +296,7 @@ Init({
 
 This means that your HTML will look like this:
 ```html
-<div data-mynamespace-component="Counter" data-cool-state="count:12">
+<div data-mynamespace-component="Counter" data-cool-state='{"count":12}'>
 ...
 ```
 <hr/>
