@@ -1,6 +1,6 @@
 {
   "name": "domponent",
-  "version": "1.0.0-alpha.20",
+  "version": "1.0.0-beta.1",
   "description": "Build components with the HTML you already have.",
   "keywords": [
     "component",
@@ -23,8 +23,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c rollup.config.js",
-    "build:html": "node clean.js && rollup -c rollup.config.js && npm pack && cd examples/html && npm install --force && webpack && firefox index.html",
-    "build:dev-example": "node clean.js && rollup -c rollup.config.js && npm pack && cd examples/dev-build-errors && npm install --force && webpack && firefox index.html"
+    "build:html-prod": "node clean.js && rollup -c rollup.config.js && npm pack && cd examples/html-prod && npm install --force && webpack && firefox index.html",
+    "build:html-dev": "node clean.js && rollup -c rollup.config.js && npm pack && cd examples/html-dev && npm install --force && webpack && firefox index.html"
   },
   "files": [
     "dist"
