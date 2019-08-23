@@ -136,6 +136,7 @@ For multiple keys within the state, use a pipe `|` like so: `count:24|isEven:tru
 
 #### `data-key`
 This is totally optional.  It's a _unique_ string for _each_ component instance.  
+This is internally to bind props.  Therefore you must know the `$key` of the component you are receiving props from.
 ```html
 <div data-component="Counter" data-key="aUniqueKey">
   ...
