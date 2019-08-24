@@ -4,6 +4,10 @@ __Build components with the HTML you already have.__
 __<2kb gzipped and <5kb minified! 👌__
 
 [![](https://data.jsdelivr.com/v1/package/npm/domponent/badge)](https://www.jsdelivr.com/package/npm/domponent)
+[![](https://img.shields.io/npm/dw/domponent)](https://www.npmjs.com/package/domponent)
+[![](https://img.shields.io/bundlephobia/minzip/domponent?color=green)](https://www.npmjs.com/package/domponent)
+[![](https://img.shields.io/github/license/tamb/domponent?color=informational)](https://www.github.com/tamb/domponent)
+[![](https://img.shields.io/npm/v/domponent)](https://www.npmjs.com/package/domponent)
 
 ## How To:
 1. Drop a few `data` attributes into your existing HTML 💻
