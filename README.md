@@ -308,7 +308,7 @@ __Download__
 
 __Basic HTML__ 😉
 1. _make sure you have FireFox_ 🔥🦊🔥
-2. `npm run build:html-dev` or `npm run build:html-dev`
+2. `npm run build:html-dev` or `npm run build:html-prod`
 
 __Pug Example__ 🐶
 coming soon...
