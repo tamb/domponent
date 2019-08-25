@@ -3,7 +3,7 @@ export default function(id) {
   const number = Math.floor(Math.random() * 100);
   const isEven = number % 2 === 0;
   const component = `
-    <div class="col-md-3">
+    <div class="col-md-6">
     <div id="${id}" data-component="Counter" class="card" data-state='{"count":${number},"isEven":${isEven}}'>
     <div class="card-body">
     <strong class="card-title" data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen">Async Counter</strong>

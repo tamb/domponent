@@ -81,6 +81,7 @@
       <strong>Build components with the HTML you already have.</strong>
       </header>
       <div class="row">
+        <!-- COUNTERS and EXPONENT -->
         <div class="col-md-6">
           <div
             class="card"
@@ -190,70 +191,84 @@
         </div>
 
         <div class="col-md-6">
-          <div
-            data-component="Counter"
-            class="card"
-            data-state='{"count":0, "isEven": true}'
-          >
-            <div class="card-body">
-              <strong
-                class="card-title"
-                data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen"
-              >
-                Counter where the increment button is bound just once.
-              </strong>
-              <div>count: <span data-bind="state:Counter.count"></span></div>
-              <button
-                type="button"
-                data-action="click->Counter.decrement"
-                class="btn btn-danger"
-              >
-               <i aria-label="subtract" data-feather="minus-circle"></i>
-              </button>
-              <button
-                type="button"
-                data-action="click->Counter.increment.once,passive|mouseover->Counter.goBlue|mouseout->Counter.goGreen"
-                class="btn btn-success"
-              >
-                <i aria-label="add" data-feather="plus-circle"></i>
-              </button>
-            </div>
-          </div>
 
-          <div class="card" data-component="CurrentTime">
-            <div class="card-body">
-              <strong class="card-title">Current Time:</strong>
-              <span data-bind="state:CurrentTime.hours">n/a</span>:
-              <span data-bind="state:CurrentTime.minutes">n/a</span>:
-              <span data-bind="state:CurrentTime.seconds">n/a</span>
-            </div>
-          </div>
-
-          <div
-            data-component="Name"
-            class="card"
-            data-state='{"name":"Regular Show"}'
-          >
-            <div class="card-body">
-              <strong class="card-title">What's Your Favorite Show?</strong>
-              <div>
-                <label>
-                  controls text after this input
-                  <textarea data-action="input->Name.handleInput">Regular Show</textarea>
-                </label>
-                <code data-bind="state:Name.name"></code>
+          <!-- COUNTER -->
+          <div class="row">
+            <div class="col-md-6">
+              <div
+                data-component="Counter"
+                class="card"
+                data-state='{"count":0, "isEven": true}'
+              >
+                <div class="card-body">
+                  <strong
+                    class="card-title"
+                    data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen"
+                  >
+                    Counter where the increment button is bound just once.
+                  </strong>
+                  <div>count: <span data-bind="state:Counter.count"></span></div>
+                  <button
+                    type="button"
+                    data-action="click->Counter.decrement"
+                    class="btn btn-danger"
+                  >
+                   <i aria-label="subtract" data-feather="minus-circle"></i>
+                  </button>
+                  <button
+                    type="button"
+                    data-action="click->Counter.increment.once,passive|mouseover->Counter.goBlue|mouseout->Counter.goGreen"
+                    class="btn btn-success"
+                  >
+                    <i aria-label="add" data-feather="plus-circle"></i>
+                  </button>
+                </div>
               </div>
-              <div>
-                <label>
-                  controlled from above
-                  <textarea class="above-controlled"></textarea>
-                </label>
+    
+            </div>
+            <div class="col-md-6">
+              <div class="card" data-component="CurrentTime">
+                <div class="card-body">
+                  <strong class="card-title">Current Time:</strong>
+                  <span data-bind="state:CurrentTime.hours">n/a</span>:
+                  <span data-bind="state:CurrentTime.minutes">n/a</span>:
+                  <span data-bind="state:CurrentTime.seconds">n/a</span>
+                </div>
               </div>
             </div>
+              
+            <!-- NAME COMPONENT -->
+            <div class="col-12">
+              <div
+                data-component="Name"
+                class="card"
+                data-state='{"name":"Regular Show"}'
+              >
+                <div class="card-body">
+                  <strong class="card-title">What's Your Favorite Show?</strong>
+                  <div class="form-group">
+                    <label for="show">
+                      controls text after this input
+                    </label>
+                      <textarea id="show" class="form-control" data-action="input->Name.handleInput">Regular Show</textarea>
+                  </div>
+                  <code data-bind="state:Name.name"></code>
+                  <div class="form-group">
+                    <label for="controlled">
+                      controlled from above
+                    </label>
+                      <textarea id="controlled" class="form-control above-controlled"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+          
+          <!-- ASYNC COMPONENT -->
+          <div class="row" id="async"></div>
         </div>
       </div>
-      <div class="row" id="async"></div>
+      
     </div>
 
     <a class="github-link" aria-label="github" href="https://github.com/tamb/domponent">
