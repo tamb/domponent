@@ -21,7 +21,7 @@
   "main": "dist/domponent.production.min.js",
   "unpkg": "dist/domponent.production.min.js",
   "scripts": {
-    "deploy": "gh-pages -d examples/html-prod",
+    "deploy": "node clean.js && rollup -c rollup.config.js && npm pack && cd examples/html-prod && npm install --force && webpack && cd ../../ && gh-pages -d examples/html-prod",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c rollup.config.js",
     "build:html-prod": "node clean.js && rollup -c rollup.config.js && npm pack && cd examples/html-prod && npm install --force && webpack && firefox index.html",
