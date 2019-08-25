@@ -19,6 +19,9 @@
         background-color: #009DDC;
         color:#2A2D34
       }
+      .dark{
+        color:#2A2D34;
+      }
       [data-component="Counter"].even {
         background-color: #e9ecef;
         color: #2A2D34;
@@ -77,7 +80,9 @@
   <body>
     <div class="container" id="root">
       <header class="text-center">
-        <h1>🔌&lt;DOMponent /&gt;</h1>
+        <h1 data-component="HoverLetter">
+          🔌&lt;<span data-ref="letters">DOMponent</span> /&gt;
+        </h1>
       <strong>Build components with the HTML you already have.</strong>
       </header>
       <div class="row">
@@ -266,6 +271,14 @@
           
           <!-- ASYNC COMPONENT -->
           <div class="row" id="async"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <p class="text-center dark">by <a class="dark" href="https://tamb.github.io" target="_blank" rel="nofollow noreferrer">
+            Tamb
+          </a></p>
         </div>
       </div>
       

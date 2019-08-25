@@ -3,6 +3,7 @@ import Counter from "./Counter";
 import CurrentTime from "./CurrentTime";
 import DisplayAnything from "./DisplayAnything";
 import Name from "./Name";
+import HoverLetter from './HoverLetter';
 import domInsert from "./domInsert";
 
 feather.replace();
@@ -14,7 +15,8 @@ const App = new Init({
     Counter,
     CurrentTime,
     DisplayAnything,
-    Name
+    Name,
+    HoverLetter
   },
   appCreated: () => console.log("app created")
 });
