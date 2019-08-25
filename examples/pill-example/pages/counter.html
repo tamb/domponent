@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Domponent Sandbox</title>
+    <meta charset="UTF-8" />
+    <style>
+      [data-component="Counter"].yellow {
+        background-color: yellow;
+      }
+      [data-component] {
+        border: 1px solid;
+        margin-top: 5px;
+        background-color: white;
+        padding: 15px;
+      }
+    </style>
+    <script src="dist/main.js" defer></script>
+  </head>
+
+  <body>
+    <div>
+      <style>
+        body{
+          background: red !important;
+        }
+      </style>
+      <h1>Domponent with Pill</h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="/">
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="/pages/counter.html">
+              Counter
+            </a>
+          </li>
+          <li>
+            <a href="/pages/timer.html">
+              Timer
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div id="content">
+        Here is page TWO
+      </div>
+      <script src="../dist/counter.js"></script>
+    </div>
+  </body>
+</html>
