@@ -21,6 +21,7 @@
   "main": "dist/domponent.production.min.js",
   "unpkg": "dist/domponent.production.min.js",
   "scripts": {
+    "deploy": "gh-pages -d examples/html-prod",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c rollup.config.js",
     "build:html-prod": "node clean.js && rollup -c rollup.config.js && npm pack && cd examples/html-prod && npm install --force && webpack && firefox index.html",
@@ -33,6 +34,7 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
+    "gh-pages": "^2.1.1",
     "rimraf": "^2.6.3",
     "rollup": "^1.18.0",
     "rollup-plugin-strip-code": "^0.2.7",

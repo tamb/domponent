@@ -5,16 +5,17 @@ export default class Counter extends Component {
     super(conf);
     this.state = {
       count: parseInt(this.state.count) || 0,
-      ofFive: this.state.ofFive || false
+      isEven: this.state.isEven
     };
-    this.setState();
+    this.setState(this.state);
+    this.setYellow();
   }
 
   increment(e) {
     const newState = {};
     const largerCount = parseInt(this.state.count + 1, 10);
     newState.count = largerCount;
-    newState.ofFive = largerCount % 5 === 0;
+    newState.isEven = largerCount % 2 === 0;
     this.setState(newState, ()=>console.log('Single Callback', this));
   }
 
@@ -22,7 +23,7 @@ export default class Counter extends Component {
     const newState = {};
     const fewerCount = parseInt(this.state.count - 1, 10);
     newState.count = fewerCount;
-    newState.ofFive = fewerCount % 5 === 0;
+    newState.isEven = fewerCount % 2 === 0;
     this.setState(newState);
   }
 
@@ -39,7 +40,7 @@ export default class Counter extends Component {
   }
 
   setYellow() {
-    if (this.state.ofFive) {
+    if (this.state.isEven) {
       this.$root.classList.add("yellow");
     } else {
       this.$root.classList.remove("yellow");
