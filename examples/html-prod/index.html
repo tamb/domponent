@@ -5,115 +5,184 @@
     <meta charset="utf-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      content="width=device-width, initial-scale=, shrink-to-fit=no"
     />
     <title>Domponent</title>
     <meta charset="UTF-8" />
-    <style>
-      [data-component="Counter"].yellow {
-        background-color: yellow;
-      }
-    </style>
 
     <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+      body{
+        background-color: #009DDC;
+        color:#2A2D34
+      }
+      [data-component="Counter"].even {
+        background-color: #e9ecef;
+        color: #2A2D34;
+      }
+
+      .btn{
+        margin-bottom: .5rem;
+      }
+
+      .card {
+        background-color: gray;
+        color: #e9ecef;
+        margin-bottom: 1rem;
+      }
+
+      header{
+        margin: 1rem 0;
+      }
+      h1{
+        font-size: 1.8rem;
+      }
+
+      code {
+        background-color: #e9ecef;
+        padding: 0.5rem;
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      .github-link{
+        position: fixed;
+        bottom: .5rem;
+        right: .5rem;
+        height: 3rem;
+        width: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #e9e9e9;
+        border-radius: 50%;
+        box-shadow: -2px 3px 5px black;
+      }
+
+      @media screen and (min-width: 768px){
+        h1{
+          font-size: 2.4rem;
+        }
+
+        .github-link{
+          bottom: none;
+          top: .5rem;
+        }
+      }
+    </style>
   </head>
   <body>
     <div class="container" id="root">
-      <h1>🔌&lt;DOMponent /&gt;</h1>
+      <header class="text-center">
+        <h1>🔌&lt;DOMponent /&gt;</h1>
       <strong>Build components with the HTML you already have.</strong>
+      </header>
       <div class="row">
         <div class="col-md-6">
           <div
             class="card"
             data-component="Counter"
-            data-state='{"count":24}'
+            data-state='{"count":19, "isEven": false}'
             data-key="parentCounter"
           >
             <div class="card-body">
-                <h2 class="card-title"
+              <strong
+                class="card-title"
                 data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen"
               >
                 Simple Counter
-              </h2>
+              </strong>
               <div>count: <span data-bind="state:Counter.count"></span></div>
               <button
                 type="button"
                 data-action="click->Counter.decrement"
                 class="btn btn-danger"
               >
-                -1
+               <i aria-label="subtract" data-feather="minus-circle"></i>
               </button>
               <button
                 type="button"
                 data-action="click->Counter.increment|mouseover->Counter.goBlue|mouseout->Counter.goGreen"
                 class="btn btn-success"
               >
-                +1
+                <i aria-label="add" data-feather="plus-circle"></i>
               </button>
-              <div data-component="Counter" class="card" data-state='{"count": 18}'>
+              <div
+                data-component="Counter"
+                class="card"
+                data-state='{"count": 6, "isEven":true}'
+              >
                 <div class="card-body">
-                    <h2 class="card-title"
+                  <strong
+                    class="card-title"
                     data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen"
                   >
                     Another Simple Counter
-                  </h2>
-                  <p>I retain my scope.  No memory leaks.  ;)</p>
-                  <div>count: <span data-bind="state:Counter.count"></span></div>
+                  </strong>
+                  <p>I retain my scope. No memory leaks. ;)</p>
+                  <div>
+                    count: <span data-bind="state:Counter.count"></span>
+                  </div>
                   <button
                     type="button"
                     data-action="click->Counter.decrement"
                     class="btn btn-danger"
                   >
-                    -1
+                   <i aria-label="subtract" data-feather="minus-circle"></i>
                   </button>
                   <button
                     type="button"
                     data-action="click->Counter.increment|mouseover->Counter.goBlue|mouseout->Counter.goGreen"
                     class="btn btn-success"
                   >
-                    +1
+                    <i aria-label="add" data-feather="plus-circle"></i>
                   </button>
 
-                  <div class="card"
-                  data-props="isTopCounterEven<-parentCounter:isEven"
-                  data-component="DisplayAnything"
-                >
-                  <p>This is a child exponent.  There is not state.</p>
-                  <p>props: <span class="propObjects"></span></p>
-                </div>
-
-                </div>
-
-                <div
-                  data-component="Counter"
-                  data-state='{"count": 18, "isEven": false}'
-                >
-                  <h2
-                    data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen"
+                  <div
+                    class="card"
+                    data-props="isTopCounterEven<-parentCounter:isEven"
+                    data-component="DisplayAnything"
                   >
-                    Nested Counter 2
-                  </h2>
-                  <div>count: <span data-bind="state:Counter.count"></span></div>
-                  <button
-                    type="button"
-                    data-action="click->Counter.decrement"
-                    class="btn btn-danger"
+                    <div class="card-body">
+                      <p>This is a child exponent. There is not state.</p>
+                      <p>props:</p>
+                      <p class="propObjects"></p>
+                    </div>
+                  </div>
+                  <div
+                    data-component="Counter"
+                    data-state='{"count": 10000, "isEven": false}'
+                    class="card"
                   >
-                    -1
-                  </button>
-                  <button
-                    type="button"
-                    data-action="click->Counter.increment|mouseover->Counter.goBlue|mouseout->Counter.goGreen"
-                    class="btn btn-success"
-                  >
-                    +1
-                  </button>
+                    <div class="card-body">
+                      <strong
+                        class="card-title"
+                        data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen"
+                      >
+                        Another Counter
+                      </strong>
+                      <div>
+                        count: <span data-bind="state:Counter.count"></span>
+                      </div>
+                      <button
+                        type="button"
+                        data-action="click->Counter.decrement"
+                        class="btn btn-danger"
+                      >
+                       <i aria-label="subtract" data-feather="minus-circle"></i>
+                      </button>
+                      <button
+                        type="button"
+                        data-action="click->Counter.increment|mouseover->Counter.goBlue|mouseout->Counter.goGreen"
+                        class="btn btn-success"
+                      >
+                        <i aria-label="add" data-feather="plus-circle"></i>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -121,104 +190,75 @@
         </div>
 
         <div class="col-md-6">
-          <div data-component="Counter" data-state='{"count":18}'>
-            <h2
-              data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen"
-            >
-              Nested Counter 2
-            </h2>
-            <div>count: <span data-bind="state:Counter.count"></span></div>
-            <button
-              type="button"
-              data-action="click->Counter.decrement"
-              class="btn btn-danger"
-            >
-              -1
-            </button>
-            <button
-              type="button"
-              data-action="click->Counter.increment|mouseover->Counter.goBlue|mouseout->Counter.goGreen"
-              class="btn btn-success"
-            >
-              +1
-            </button>
-            <div
-              data-props="goBold<-parentCounter:isEven"
-              data-component="DisplayAnything"
-            >
-              <p><strong>This is a child component with no state</strong></p>
-              <p>props are bound in memory</p>
-              <code class="code"></code>
-              <br />
-              <code class="propObjects"></code>
-            </div>
-            <div data-component="Counter" data-state='{"count":0}'>
-              <h2
+          <div
+            data-component="Counter"
+            class="card"
+            data-state='{"count":0, "isEven": true}'
+          >
+            <div class="card-body">
+              <strong
+                class="card-title"
                 data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen"
               >
                 Counter where the increment button is bound just once.
-              </h2>
+              </strong>
               <div>count: <span data-bind="state:Counter.count"></span></div>
               <button
                 type="button"
                 data-action="click->Counter.decrement"
                 class="btn btn-danger"
               >
-                -1
+               <i aria-label="subtract" data-feather="minus-circle"></i>
               </button>
               <button
                 type="button"
                 data-action="click->Counter.increment.once,passive|mouseover->Counter.goBlue|mouseout->Counter.goGreen"
                 class="btn btn-success"
               >
-                +1
+                <i aria-label="add" data-feather="plus-circle"></i>
               </button>
+            </div>
+          </div>
+
+          <div class="card" data-component="CurrentTime">
+            <div class="card-body">
+              <strong class="card-title">Current Time:</strong>
+              <span data-bind="state:CurrentTime.hours">n/a</span>:
+              <span data-bind="state:CurrentTime.minutes">n/a</span>:
+              <span data-bind="state:CurrentTime.seconds">n/a</span>
+            </div>
+          </div>
+
+          <div
+            data-component="Name"
+            class="card"
+            data-state='{"name":"Regular Show"}'
+          >
+            <div class="card-body">
+              <strong class="card-title">What's Your Favorite Show?</strong>
+              <div>
+                <label>
+                  controls text after this input
+                  <textarea data-action="input->Name.handleInput">Regular Show</textarea>
+                </label>
+                <code data-bind="state:Name.name"></code>
+              </div>
+              <div>
+                <label>
+                  controlled from above
+                  <textarea class="above-controlled"></textarea>
+                </label>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="row">
-        <div class="col-md-3">
-            <div data-component="CurrentTime">
-                <h2>Current Time:</h2>
-                <span data-bind="state:CurrentTime.hours">n/a</span>:
-                <span data-bind="state:CurrentTime.minutes">n/a</span>:
-                <span data-bind="state:CurrentTime.seconds">n/a</span>
-              </div>
-        </div>
-        <div class="col-md-5">
-            <div data-component="Name" data-state='{"name":"thomas"}'>
-                <h2>Write Your Name</h2>
-                <div>
-                  <label>
-                    controls text after this input
-                    <input
-                      type="text"
-                      value="thomas"
-                      data-action="input->Name.handleInput"
-                    />
-                  </label>
-                  <code data-bind="state:Name.name"></code>
-                </div>
-                <div>
-                  <label>
-                    controlled from above
-                    <input type="text" class="above-controlled" />
-                  </label>
-                </div>
-              </div>
-        </div>
-      </div>
-
-      <div class="row" id="async">
-        
-      </div>
-
-     
-
-      
+      <div class="row" id="async"></div>
     </div>
+
+    <a class="github-link" aria-label="github" href="https://github.com/tamb/domponent">
+      <i aria-hidden="true" data-feather="github"></i>
+    </a>
 
     <script src="dist/main.js"></script>
   </body>
