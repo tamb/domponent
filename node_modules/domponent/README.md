@@ -306,6 +306,8 @@ This means that your HTML will look like this:
 <hr/>
 
 ### Demo 🤖
+[https://tamb.github.io/domponent/](https://tamb.github.io/domponent/)
+
 __Download__
 1. `git clone` this repo
 2. `npm install`
