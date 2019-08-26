@@ -65,6 +65,15 @@
         box-shadow: -2px 3px 5px black;
       }
 
+      .custom-nav{
+        background-color: #2A2D34;
+        color: #e9ecef;
+      }
+
+      .custom-nav svg{
+        color: #e9ecef;
+      }
+
       @media screen and (min-width: 768px){
         h1{
           font-size: 2.4rem;
@@ -77,8 +86,27 @@
       }
     </style>
   </head>
-  <body>
-    <div class="container" id="root">
+  <body id="root">
+    <div class="custom-nav" data-component="Navigation" data-state='{"opened": false}'>
+      <button class="btn btn-lg" data-action="click->Navigation.toggle">
+        <span data-ref="open">
+            <i data-feather="menu"></i>
+        </span>
+        <span data-ref="close" style="display:none;">
+          <i data-feather="x"></i>
+        </span>
+      </button>
+      <div class="fold" data-ref="menu">
+        <ul>
+          <li>Thing</li>
+          <li>Thing</li>
+          <li>Thing</li>
+          <li>Thing</li>
+          <li>Thing</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
       <header class="text-center">
         <h1 data-component="HoverLetter">
           🔌&lt;<span data-ref="letters">DOMponent</span> /&gt;
