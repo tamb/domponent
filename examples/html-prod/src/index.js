@@ -7,6 +7,8 @@ import HoverLetter from './HoverLetter';
 import Navigation from './Navigation';
 import domInsert from "./domInsert";
 
+import './app.scss';
+
 feather.replace();
 
 console.time('appCreation');

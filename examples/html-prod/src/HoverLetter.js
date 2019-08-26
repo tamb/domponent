@@ -9,7 +9,7 @@ export default class HoverLetter extends Exponent {
   }
 
   splitWord() {
-    let html = this.letters.innerText
+    let html = this.letters.textContent
       .toString()
       .split("")
       .map(item => {
@@ -19,7 +19,7 @@ export default class HoverLetter extends Exponent {
     let htmlString = "";
     html.forEach(item => (htmlString += item));
     this.letters.innerHTML = "";
-    this.letters.insertAdjacentHTML("afterbegin", htmlString);
+    this.letters.innerHTML = htmlString;
 
     if (!document.getElementById(this.styleID)) {
       this.placeStyles();
