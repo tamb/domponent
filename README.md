@@ -64,6 +64,7 @@ __And you're good to go!!__
 
 ------
 ## Docs 📖
+- [Purpose](#purpose-)
 - [Install](#install)
 - [Data API](#data-API-)
   - [data-component](#data-component)
@@ -83,7 +84,15 @@ __And you're good to go!!__
 - [Demo](#demo-)
 - [Component Lifecycle](#component-lifecycle-)
 
-### Install
+### Purpose ✔️
+#### What does this do?
+This library sets up a clean and modern way to turn prerendered HTML into UI components.  You can easily implement some data-binding, handle scope, pass data around, and create components by using some of the conventions in this script.  It's meant to be a very _very_ lightweight alternative to StimulusJS with a bit of a React flavor (lifecycle methods, props and component state).
+
+#### What does this library _not_ do?
+DOMponent does not handle client-side rendering out of the box, does not create virtual DOM, does not diff DOM (though it does diff state and props).
+It's not meant to handle routing or entire application state.  It's meant to take HTML fragments (Thymeleaf, Rails, Pug, whatever template engine you use) and create reusable functionality in the form of Components.  
+
+### Install 📥
 #### npm
 ```js
 npm install --save domponent
