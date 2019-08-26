@@ -92,6 +92,8 @@ This library sets up a clean and modern way to turn prerendered HTML into UI com
 DOMponent does not handle client-side rendering out of the box, does not create virtual DOM, does not diff DOM (though it does diff state and props).
 It's not meant to handle routing or entire application state.  It's meant to take HTML fragments (Thymeleaf, Rails, Pug, whatever template engine you use) and create reusable functionality in the form of Components.  
 
+<hr/>
+
 ### Install 📥
 #### npm
 ```js
