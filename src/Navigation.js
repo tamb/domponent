@@ -12,9 +12,6 @@ export default class Navigation extends Component {
     console.log()
     if (!document.getElementById(this.styleID)) {
       const style = `<style id="${this.styleID}">
-            *, ::after, ::before {
-                box-sizing: border-box;
-            }
             .fold {
               display: block;
               max-height: 0px;
