@@ -65,7 +65,7 @@ __And you're good to go!!__
 ------
 ## Docs 📖
 - [Purpose](#purpose-)
-- [Install](#install)
+- [Install](#install-)
 - [Data API](#data-API-)
   - [data-component](#data-component)
   - [data-bind](#data-bind)
