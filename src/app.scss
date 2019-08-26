@@ -1,0 +1,83 @@
+$body: #009DDC;
+$belly: #cee8f5;
+$dark: #2A2D34; 
+$beak: #5e5e61; 
+$light-stripes: #fefefe;
+$eye: #ffffff; 
+
+body{
+    background-color: $body;
+    color: $dark;
+  }
+  .dark{
+    color:$dark;
+  }
+  [data-component="Counter"].even {
+    background-color: $light-stripes;
+    color: $dark;
+  }
+
+  .btn{
+    margin-bottom: .5rem;
+  }
+
+  .custom-nav__body{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+  }
+
+  .card {
+    background-color: $beak;
+    color: $eye;
+    margin-bottom: 1rem;
+  }
+
+  header{
+    margin: 1rem 0;
+  }
+  h1{
+    font-size: 1.8rem;
+  }
+
+  code {
+    background-color: $light-stripes;
+    padding: 0.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .github-link{
+    position: fixed;
+    bottom: .5rem;
+    right: .5rem;
+    height: 3rem;
+    width: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $light-stripes;
+    border-radius: 50%;
+    box-shadow: -2px 3px 5px black;
+  }
+
+  .custom-nav{
+    background-color: $dark;
+    color: $light-stripes;
+  }
+
+  .custom-nav svg{
+    color: $light-stripes;
+  }
+
+  @media screen and (min-width: 768px){
+    h1{
+      font-size: 2.4rem;
+    }
+
+    .github-link{
+      bottom: none;
+      top: .5rem;
+    }
+  }

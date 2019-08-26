@@ -1,87 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=, shrink-to-fit=no"
+    />
+    <title>Domponent</title>
+    <meta charset="UTF-8" />
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="dist/main.css">
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <style>
-      body{
-        background-color: #009DDC;
-        color:#2A2D34
-      }
-      .dark{
-        color:#2A2D34;
-      }
-      [data-component="Counter"].even {
-        background-color: #e9ecef;
-        color: #2A2D34;
-      }
-
-      .btn{
-        margin-bottom: .5rem;
-      }
-
-      .card {
-        background-color: gray;
-        color: #e9ecef;
-        margin-bottom: 1rem;
-      }
-
-      header{
-        margin: 1rem 0;
-      }
-      h1{
-        font-size: 1.8rem;
-      }
-
-      code {
-        background-color: #e9ecef;
-        padding: 0.5rem;
-        display: block;
-        margin-bottom: 0.5rem;
-      }
-
-      .github-link{
-        position: fixed;
-        bottom: .5rem;
-        right: .5rem;
-        height: 3rem;
-        width: 3rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #e9e9e9;
-        border-radius: 50%;
-        box-shadow: -2px 3px 5px black;
-      }
-
-      .custom-nav{
-        background-color: #2A2D34;
-        color: #e9ecef;
-      }
-
-      .custom-nav svg{
-        color: #e9ecef;
-      }
-
-      @media screen and (min-width: 768px){
-        h1{
-          font-size: 2.4rem;
-        }
-
-        .github-link{
-          bottom: none;
-          top: .5rem;
-        }
-      }
-    </style>
-            <title>Domponent</title>
+    
   </head>
   <body id="root">
     <div class="custom-nav" data-component="Navigation" data-state='{"opened": false}'>
@@ -93,14 +26,15 @@
           <i data-feather="x"></i>
         </span>
       </button>
-      <div class="fold" data-ref="menu">
-        <ul>
-          <li>Thing</li>
-          <li>Thing</li>
-          <li>Thing</li>
-          <li>Thing</li>
-          <li>Thing</li>
-        </ul>
+      <div class="custom-nav__body">
+          <div class="fold" data-ref="menu">
+              <figure>
+                  <img src="https://media.giphy.com/media/HSSr7JbPxLJfO/giphy.gif" alt="rock out!"/>
+                <figcaption class="text-center text-bold">
+                  Regular Show rocks!
+                </figcaption>
+              </figure>
+            </div>
       </div>
     </div>
     <div class="container">
