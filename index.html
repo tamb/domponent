@@ -28,7 +28,7 @@
               <figure>
                   <img src="https://media.giphy.com/media/HSSr7JbPxLJfO/giphy.gif" alt="rock out!"/>
                 <figcaption class="text-center text-bold">
-                  Regular Show rocks!
+                  Domponent rocks!
                 </figcaption>
               </figure>
             </div>
@@ -55,7 +55,7 @@
                 class="card-title"
                 data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen"
               >
-                Simple Counter
+                Regular Counter
               </strong>
               <div>count: <span data-bind="state:Counter.count"></span></div>
               <button
@@ -67,7 +67,7 @@
               </button>
               <button
                 type="button"
-                data-action="click->Counter.increment|mouseover->Counter.goBlue|mouseout->Counter.goGreen"
+                data-action="click->Counter.increment"
                 class="btn btn-success"
               >
                 <i aria-label="add" data-feather="plus-circle"></i>
@@ -82,7 +82,7 @@
                     class="card-title"
                     data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen"
                   >
-                    Another Simple Counter
+                    Another Regular Counter
                   </strong>
                   <p>I retain my scope. No memory leaks. ;)</p>
                   <div>
@@ -97,7 +97,7 @@
                   </button>
                   <button
                     type="button"
-                    data-action="click->Counter.increment|mouseover->Counter.goBlue|mouseout->Counter.goGreen"
+                    data-action="click->Counter.increment"
                     class="btn btn-success"
                   >
                     <i aria-label="add" data-feather="plus-circle"></i>
@@ -111,52 +111,13 @@
                     <div class="card-body">
                       <p>This is a child exponent. There is not state.</p>
                       <p>props:</p>
-                      <p class="propObjects"></p>
+                      <code>
+                        <pre class="propObjects"></pre>
+                      </code>
                     </div>
                   </div>
+
                   <div
-                    data-component="Counter"
-                    data-state='{"count": 10000, "isEven": false}'
-                    class="card"
-                  >
-                    <div class="card-body">
-                      <strong
-                        class="card-title"
-                        data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen"
-                      >
-                        Another Counter
-                      </strong>
-                      <div>
-                        count: <span data-bind="state:Counter.count"></span>
-                      </div>
-                      <button
-                        type="button"
-                        data-action="click->Counter.decrement"
-                        class="btn btn-danger"
-                      >
-                       <i aria-label="subtract" data-feather="minus-circle"></i>
-                      </button>
-                      <button
-                        type="button"
-                        data-action="click->Counter.increment|mouseover->Counter.goBlue|mouseout->Counter.goGreen"
-                        class="btn btn-success"
-                      >
-                        <i aria-label="add" data-feather="plus-circle"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-
-          <!-- COUNTER -->
-          <div class="row">
-            <div class="col-md-6">
-              <div
                 data-component="Counter"
                 class="card"
                 data-state='{"count":0, "isEven": true}'
@@ -178,17 +139,25 @@
                   </button>
                   <button
                     type="button"
-                    data-action="click->Counter.increment.once,passive|mouseover->Counter.goBlue|mouseout->Counter.goGreen"
+                    data-action="click->Counter.increment.once,passive"
                     class="btn btn-success"
                   >
                     <i aria-label="add" data-feather="plus-circle"></i>
                   </button>
                 </div>
               </div>
-    
+              
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+
+          <div class="row">
             <div class="col-md-6">
-              <div class="card" data-component="CurrentTime">
+              <div class="card" data-component="CurrentTime" data-key="Time">
                 <div class="card-body">
                   <strong class="card-title">Current Time:</strong>
                   <span data-bind="state:CurrentTime.hours">n/a</span>:
@@ -196,6 +165,26 @@
                   <span data-bind="state:CurrentTime.seconds">n/a</span>
                 </div>
               </div>
+            </div>
+
+            <div class="col-md-6">
+              
+              <div
+              class="card"
+              data-props="theSecond<-Time:seconds|theMinute<-Time:minutes|theHour<-Time:hours"
+              data-component="DisplayAnything"
+            >
+              <div class="card-body">
+                <p class="card-title">
+                  Inherits props from Timer, but isn't nested??!
+                </p>
+                <p>WHOOOOOOOOOOOA!</p>
+                <p>props:</p>
+                <code>
+                  <pre class="propObjects"></pre>
+                </code>
+              </div>
+            </div>
             </div>
               
             <!-- NAME COMPONENT -->
@@ -207,25 +196,26 @@
               >
                 <div class="card-body">
                   <strong class="card-title">What's Your Favorite Show?</strong>
+
                   <div class="form-group">
-                    <label for="show">
-                      controls text after this input
+                    <label for="controlled">
+                      controlled from below
                     </label>
-                      <textarea id="show" class="form-control" data-action="input->Name.handleInput">Regular Show</textarea>
+                      <textarea id="controlled" class="form-control above-controlled"></textarea>
                   </div>
                   <code data-bind="state:Name.name"></code>
                   <div class="form-group">
-                    <label for="controlled">
-                      controlled from above
+                    <label for="show">
+                      Controls the text and input above
                     </label>
-                      <textarea id="controlled" class="form-control above-controlled"></textarea>
+                      <textarea id="show" class="form-control" data-action="input->Name.handleInput">Regular Show</textarea>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           
-          <!-- ASYNC COMPONENT -->
+          <!-- ASYNC COMPONENTS -->
           <div class="row" id="async"></div>
         </div>
       </div>

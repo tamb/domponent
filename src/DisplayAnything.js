@@ -7,11 +7,12 @@ export default class DisplayAnything extends Exponent {
     this.displayProps();
   }
 
-  propsDidUpdate(oldProps) {
+  propsDidUpdate() {
       this.displayProps();
     
   }
+
   displayProps() {
-    this.objects.textContent = `isTopcounterEven: ${this.props.isTopCounterEven}`
+    this.objects.innerHTML = JSON.stringify(this.props, null, 4);
   }
 }

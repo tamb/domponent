@@ -21,6 +21,12 @@ body{
     margin-bottom: .5rem;
   }
 
+  .custom-nav{
+    .btn{
+      margin-bottom: 0;
+    }
+  }
+
   .custom-nav__body{
       display: flex;
       align-items: center;
@@ -29,7 +35,6 @@ body{
       img{
           max-width: 100%;
       }
-
   }
 
   .card {
