@@ -23,8 +23,8 @@ export default function(id) {
     
   </div>
     </div>
-  <div class="col-md-6>
-    <div class="card" data-props="theSecond<-Time:seconds|theMinute<-Time:minutes|theHour<-Time:hours" data-component="DisplayAnything">
+  <div class="col-md-6">
+    <div id="async-props" class="card" data-props="theSecond<-Time:seconds|theMinute<-Time:minutes|theHour<-Time:hours" data-component="DisplayAnything">
       <div class="card-body">
         <p class="card-title">
           Asynchronously inherits props
