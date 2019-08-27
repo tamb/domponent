@@ -23,6 +23,20 @@ export default function(id) {
     
   </div>
     </div>
+  <div class="col-md-6>
+    <div class="card" data-props="theSecond<-Time:seconds|theMinute<-Time:minutes|theHour<-Time:hours" data-component="DisplayAnything">
+      <div class="card-body">
+        <p class="card-title">
+          Asynchronously inherits props
+        </p>
+        <p>WHOOOOOOOOOOOA!</p>
+        <p>props:</p>
+        <code>
+          <pre class="propObjects"></pre>
+        </code>
+      </div>
+    </div>
+  </div>
   `;
   async.insertAdjacentHTML("beforeend", component);
 }
