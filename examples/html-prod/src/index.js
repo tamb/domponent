@@ -33,7 +33,3 @@ setTimeout(() => {
   App.createComponent(document.getElementById("id2"), ()=>feather.replace());
 }, 1000);
 
-setTimeout(() => {
-  domInsert("id3");
-  App.createComponent(document.getElementById("id3"), ()=>feather.replace());
-}, 3000);
