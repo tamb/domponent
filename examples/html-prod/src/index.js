@@ -31,5 +31,6 @@ window.DomponentApp = App;
 setTimeout(() => {
   domInsert("id2");
   App.createComponent(document.getElementById("id2"), ()=>feather.replace());
+  App.createComponent(document.getElementById("async-props"), ()=>feather.replace());
 }, 1000);
 
