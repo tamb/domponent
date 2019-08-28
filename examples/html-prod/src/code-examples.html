@@ -1,0 +1,70 @@
+<pre>
+<code class="language-html">
+ &#x3C;!-- Counter -->
+ &#x3C;!-- css classes have been removed-->
+  &#x3C;<span class="el">div</span> data-component="Counter">
+   &#x3C;p data-bind="state:Counter.count">0&#x3C;/p>
+    &#x3C;button data-action="click->Counter.increment">
+    +1
+    &#x3C;/button>
+    &#x3C;button data-action="click->Counter.decrement">
+    -1
+    &#x3C;/button>
+  &#x3C;/div>
+</code>
+</pre>
+
+<pre><code class="language-html">&#x3C;!-- Navigation -->
+    &#x3C;!-- css classes have been removed-->
+    
+    &#x3C;div data-component="Navigation" data-state='{"opened": false}'>
+      &#x3C;button data-action="click->Navigation.toggle">
+        &#x3C;span data-ref="open">
+          &#x3C;i data-feather="menu">&#x3C;/i>
+        &#x3C;/span>
+        &#x3C;span data-ref="close" style="display:none;">
+          &#x3C;i data-feather="x">&#x3C;/i>
+        &#x3C;/span>
+      &#x3C;/button>
+      &#x3C;div>
+        &#x3C;div data-ref="menu">
+          &#x3C;figure>
+            &#x3C;img
+              src="https://media.giphy.com/media/HSSr7JbPxLJfO/giphy.gif"
+              alt="rock out!"
+            />
+            &#x3C;figcaption class="text-center text-bold">
+              Domponent rocks!
+            &#x3C;/figcaption>
+          &#x3C;/figure>
+        &#x3C;/div>
+      &#x3C;/div>
+    &#x3C;/div>
+    </code></pre>
+<pre><code class="language-html">&#x3C;!-- Timer -->
+    &#x3C;!-- css classes have been removed-->
+    
+    &#x3C;div data-component="Timer" data-key="Time">
+      &#x3C;strong>Current Time:&#x3C;/strong>
+      &#x3C;span data-bind="state:Timer.hours">n/a&#x3C;/span>:
+      &#x3C;span data-bind="state:Timer.minutes">n/a&#x3C;/span>:
+      &#x3C;span data-bind="state:Timer.seconds">n/a&#x3C;/span>
+    &#x3C;/div>
+    </code></pre>
+<pre><code class="language-html">&#x3C;!-- DisplayAnthing -->
+    &#x3C;!-- css classes have been removed -->
+    
+    &#x3C;div
+      data-props="theSecond&#x3C;-Time:seconds|theMinute&#x3C;-Time:minutes|theHour&#x3C;-Time:hours"
+      data-component="DisplayAnything"
+    >
+      &#x3C;p>
+        Inherits props from Timer, but isn't nested??!
+      &#x3C;/p>
+      &#x3C;p>WHOOOOOOOOOOOA!&#x3C;/p>
+      &#x3C;p>props:&#x3C;/p>
+      &#x3C;code>
+        &#x3C;pre data-ref="propObjects">&#x3C;/pre>
+      &#x3C;/code>
+    &#x3C;/div>
+    </code></pre>

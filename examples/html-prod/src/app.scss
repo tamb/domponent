@@ -41,6 +41,14 @@ body{
     background-color: $beak;
     color: $eye;
     margin-bottom: 1rem;
+    position: relative;
+  }
+
+  .show-code{
+    background-color: $light-stripes;
+    svg{
+      color: $beak;
+    }
   }
 
   header{
@@ -74,10 +82,25 @@ body{
   .custom-nav{
     background-color: $dark;
     color: $light-stripes;
+    &__toggle{
+      svg{
+
+        color: $light-stripes;
+      }
+    }
   }
 
-  .custom-nav svg{
-    color: $light-stripes;
+  .language-html{
+    .el{
+      color: #2f6f9f;
+    }
+    .attr{
+      color: #4f9fcf;
+
+      &-val{
+        color: #d44950;
+      }
+    }
   }
 
   @media screen and (min-width: 768px){

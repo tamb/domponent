@@ -1,6 +1,6 @@
 import { Init } from 'domponent'
 import Counter from "./Counter";
-import CurrentTime from "./CurrentTime";
+import Timer from "./Timer";
 import DisplayAnything from "./DisplayAnything";
 import Name from "./Name";
 import HoverLetter from './HoverLetter';
@@ -16,7 +16,7 @@ const App = new Init({
   selector: document.getElementById("root"),
   components: {
     Counter,
-    CurrentTime,
+    Timer,
     DisplayAnything,
     Name,
     HoverLetter,
