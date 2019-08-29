@@ -5,6 +5,7 @@ export const attributeEnum = {
     INITIALSTATE: 'data-state',
     INITIALPROPS: 'data-props',
     KEY: 'data-key',
+    REF: 'data-ref',
 }
 
 export const datasetEnum = {
@@ -13,7 +14,8 @@ export const datasetEnum = {
     props: 'props',
     action: 'action',
     state: 'state',
-    bind: 'bind'
+    bind: 'bind',
+    ref: 'ref'
 };
 
 export const relationalStringEnum = {

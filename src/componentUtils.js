@@ -219,3 +219,9 @@ export function createPropObjects() {
     return null;
   }
 }
+
+export function createRefs(){
+  scopeElements.call(this, `[data-${this.$app.$datasets.ref}]`).forEach(element => {
+    this[element.getAttribute(`data-${this.$app.$datasets.ref}`)] = element;
+  });
+}
