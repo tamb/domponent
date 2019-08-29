@@ -71,6 +71,7 @@ __And you're good to go!!__
   - [data-bind](#data-bind)
   - [data-action](#data-action)
   - [data-state](#data-state)
+  - [data-ref](#data-ref)
   - [data-key](#data-key)
   - [data-props](#data-props)
 - [Extending the Component class](#extending-the-component-class-)
@@ -148,6 +149,16 @@ example:
 ```
 
 That's right.  `data-state` takes any valid JSON object.
+
+#### `data-ref`
+If you need to reference DOM elements, you can use `data-ref` like so:
+
+```html
+<div data-ref="Counter.myElement"></div>
+```
+You need to preface which component the element is on.
+
+You can then access the element in `Counter` using `this.myElement` within the Component instance.
 
 #### `data-key`
 This is totally optional.  It's a _unique_ string for _each_ component instance.  

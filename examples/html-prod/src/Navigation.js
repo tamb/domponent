@@ -4,12 +4,8 @@ export default class Navigation extends Component {
   constructor(conf) {
     super(conf);
     this.styleID = "collapse-comp-styles";
-    this.menu = this.$root.querySelector('[data-ref="menu"]');
-    this.open = this.$root.querySelector('[data-ref="open"]');
-    this.close = this.$root.querySelector('[data-ref="close"]');
 
     this.changeNav = this.changeNav.bind(this);
-    console.log()
     if (!document.getElementById(this.styleID)) {
       const style = `<style id="${this.styleID}">
             .fold {
