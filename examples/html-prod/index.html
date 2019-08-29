@@ -27,7 +27,7 @@
       data-component="Navigation"
       data-state='{"opened": false}'
     >
-      <button class="btn btn-lg" data-action="click->Navigation.toggle">
+      <button class="btn btn-lg custom-nav__toggle" data-action="click->Navigation.toggle">
         <span data-ref="Navigation.open">
           <i data-feather="menu"></i>
         </span>
@@ -46,21 +46,6 @@
               Domponent rocks!
             </figcaption>
           </figure>
-          <pre>
-<code class="language-html">
-  &#x3C;!-- Counter -->
-  &#x3C;!-- css classes have been removed-->
-    &#x3C;div data-component="Counter">
-      &#x3C;p data-bind="state:Counter.count">0&#x3C;/p>
-      &#x3C;button data-action="click->Counter.increment">
-        +1
-      &#x3C;/button>
-      &#x3C;button data-action="click->Counter.decrement">
-        -1
-      &#x3C;/button>
-    &#x3C;/div>
-</code>
-</pre>
         </div>
       </div>
     </div>
