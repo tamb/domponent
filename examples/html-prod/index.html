@@ -28,15 +28,15 @@
       data-state='{"opened": false}'
     >
       <button class="btn btn-lg" data-action="click->Navigation.toggle">
-        <span data-ref="open">
+        <span data-ref="Navigation.open">
           <i data-feather="menu"></i>
         </span>
-        <span data-ref="close" style="display:none;">
+        <span data-ref="Navigation.close" style="display:none;">
           <i data-feather="x"></i>
         </span>
       </button>
       <div class="custom-nav__body">
-        <div class="fold" data-ref="menu">
+        <div class="fold" data-ref="Navigation.menu">
           <figure>
             <img
               src="https://media.giphy.com/media/HSSr7JbPxLJfO/giphy.gif"
@@ -52,7 +52,7 @@
     <div class="container">
       <header class="text-center">
         <h1 data-component="HoverLetter">
-          🔌&lt;<span data-ref="letters">DOMponent</span> /&gt;
+          🔌&lt;<span data-ref="HoverLetter.letters">DOMponent</span> /&gt;
         </h1>
         <strong>Build components with the HTML you already have.</strong>
       </header>
@@ -126,9 +126,11 @@
                     <div class="card-body">
                       <p>This is a child exponent. There is not state.</p>
                       <p>props:</p>
-                      <code>
-                        <pre data-ref="objects"></pre>
-                      </code>
+                     
+                        <pre>
+                          <code data-ref="DisplayAnything.objects"></code>
+                        </pre>
+                      
                     </div>
                   </div>
 
@@ -197,9 +199,9 @@
                   </p>
                   <p>WHOOOOOOOOOOOA!</p>
                   <p>props:</p>
-                  <code>
-                    <pre data-ref="objects"></pre>
-                  </code>
+                  <pre>
+                      <code data-ref="DisplayAnything.objects"></code>
+                    </pre>
                 </div>
               </div>
             </div>
