@@ -60,6 +60,10 @@
       <div class="row">
         <!-- COUNTERS and EXPONENT -->
         <div class="col-md-6">
+          <div data-component="ShowCode">
+            <button data-action="click->ShowCode.toggle">
+              <i data-feather="code"></i>
+            </button>
           <div
             class="card"
             data-component="Counter"
@@ -86,7 +90,7 @@
                 <i aria-label="add" data-feather="plus-circle"></i>
               </button>
 <!-- prettier-ignore-start -->
-<pre>
+<pre data-ref="foldable" class="fold">
 <code class="language-html">
 &#x3C;!-- Counter -->
 &#x3C;!-- css classes have been removed-->
@@ -102,6 +106,7 @@
 </code>
 </pre>
 <!-- prettier-ignore-end -->
+</div>
               <div
                 data-component="Counter"
                 class="card"

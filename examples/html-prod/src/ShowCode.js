@@ -19,4 +19,7 @@ export default class Fold extends Component {
       document.head.insertAdjacentHTML("beforeend", style);
     }
   }
+  toggle(){
+    this.foldable.classList.toggle('show');
+  }
 }
