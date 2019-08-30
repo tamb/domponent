@@ -31,9 +31,12 @@ export default function(id) {
         </p>
         <p>WHOOOOOOOOOOOA!</p>
         <p>props:</p>
-        <code>
-          <pre class="propObjects"></pre>
-        </code>
+        
+          <pre>
+            <code data-ref="DisplayAnything.objects">
+            </code>  
+          </pre>
+        
       </div>
     </div>
   </div>

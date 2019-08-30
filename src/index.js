@@ -1,10 +1,11 @@
 import { Init } from 'domponent'
 import Counter from "./Counter";
-import CurrentTime from "./CurrentTime";
+import Timer from "./Timer";
 import DisplayAnything from "./DisplayAnything";
 import Name from "./Name";
 import HoverLetter from './HoverLetter';
 import Navigation from './Navigation';
+import ShowCode from './ShowCode';
 import domInsert from "./domInsert";
 
 import './app.scss';
@@ -16,11 +17,12 @@ const App = new Init({
   selector: document.getElementById("root"),
   components: {
     Counter,
-    CurrentTime,
+    Timer,
     DisplayAnything,
     Name,
     HoverLetter,
-    Navigation
+    Navigation,
+    ShowCode,
   },
   appCreated: () => console.log("app created")
 });
@@ -33,4 +35,3 @@ setTimeout(() => {
   App.createComponent(document.getElementById("id2"), ()=>feather.replace());
   App.createComponent(document.getElementById("async-props"), ()=>feather.replace());
 }, 1000);
-

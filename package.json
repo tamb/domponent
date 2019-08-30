@@ -8,15 +8,18 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "domponent": "file:../../domponent-1.0.0-beta.1.tgz"
+    "domponent": "file:../../domponent-1.0.0-beta.3.tgz"
   },
   "devDependencies": {
     "@babel/core": "7.2.0",
     "css-loader": "^3.2.0",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
+    "remark-html": "^10.0.0",
+    "remark-parse": "^7.0.1",
     "sass-loader": "^7.3.1",
     "style-loader": "^1.0.0",
+    "unified": "^8.3.2",
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.6"
   },

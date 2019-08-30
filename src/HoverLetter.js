@@ -3,7 +3,6 @@ import { Exponent } from "domponent";
 export default class HoverLetter extends Exponent {
   constructor(conf) {
     super(conf);
-    this.letters = this.$root.querySelector('[data-ref="letters"]');
     this.styleID = "hover-letter__style";
     this.splitWord();
   }

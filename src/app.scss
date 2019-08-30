@@ -5,9 +5,19 @@ $beak: #5e5e61;
 $light-stripes: #fefefe;
 $eye: #ffffff; 
 
+
 body{
     background-color: $body;
     color: $dark;
+  }
+  .code-toggle-btn{
+    position: absolute;
+    top: 0;
+    right:0;
+    background: $dark;
+    svg{
+      color: $light-stripes;
+    }
   }
   .dark{
     color:$dark;
@@ -41,6 +51,14 @@ body{
     background-color: $beak;
     color: $eye;
     margin-bottom: 1rem;
+    position: relative;
+  }
+
+  .show-code{
+    background-color: $light-stripes;
+    svg{
+      color: $beak;
+    }
   }
 
   header{
@@ -74,10 +92,24 @@ body{
   .custom-nav{
     background-color: $dark;
     color: $light-stripes;
+    &__toggle{
+      svg{
+        color: $light-stripes;
+      }
+    }
   }
 
-  .custom-nav svg{
-    color: $light-stripes;
+  .language-html{
+    .el{
+      color: #2f6f9f;
+    }
+    .attr{
+      color: #4f9fcf;
+
+      &-val{
+        color: #d44950;
+      }
+    }
   }
 
   @media screen and (min-width: 768px){

@@ -27,16 +27,19 @@
       data-component="Navigation"
       data-state='{"opened": false}'
     >
-      <button class="btn btn-lg" data-action="click->Navigation.toggle">
-        <span data-ref="open">
+      <button
+        class="btn btn-lg custom-nav__toggle"
+        data-action="click->Navigation.toggle"
+      >
+        <span data-ref="Navigation.open">
           <i data-feather="menu"></i>
         </span>
-        <span data-ref="close" style="display:none;">
+        <span data-ref="Navigation.close" style="display:none;">
           <i data-feather="x"></i>
         </span>
       </button>
       <div class="custom-nav__body">
-        <div class="fold" data-ref="menu">
+        <div class="fold" data-ref="Navigation.menu">
           <figure>
             <img
               src="https://media.giphy.com/media/HSSr7JbPxLJfO/giphy.gif"
@@ -49,44 +52,73 @@
         </div>
       </div>
     </div>
+
     <div class="container">
+      <!-- HOVERLETTERS-->
       <header class="text-center">
         <h1 data-component="HoverLetter">
-          🔌&lt;<span data-ref="letters">DOMponent</span> /&gt;
+          🔌&lt;<span data-ref="HoverLetter.letters">DOMponent</span> /&gt;
         </h1>
         <strong>Build components with the HTML you already have.</strong>
       </header>
+
       <div class="row">
         <!-- COUNTERS and EXPONENT -->
         <div class="col-md-6">
-          <div
-            class="card"
-            data-component="Counter"
-            data-state='{"count":19, "isEven": false}'
-            data-key="parentCounter"
-          >
-            <div class="card-body">
-              <strong
-                class="card-title"
-                data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen"
-              >
-                Regular Counter
-              </strong>
-              <div>count: <span data-bind="state:Counter.count"></span></div>
-              <button
-                type="button"
-                data-action="click->Counter.decrement"
-                class="btn btn-danger"
-              >
-                <i aria-label="subtract" data-feather="minus-circle"></i>
-              </button>
-              <button
-                type="button"
-                data-action="click->Counter.increment"
-                class="btn btn-success"
-              >
-                <i aria-label="add" data-feather="plus-circle"></i>
-              </button>
+            <div
+              class="card"
+              data-component="Counter"
+              data-state='{"count":19, "isEven": false}'
+              data-key="parentCounter"
+            >
+              <div class="card-body" data-component="ShowCode">
+                  <button class="code-toggle-btn btn" data-action="click->ShowCode.toggle">
+                      <i data-feather="code"></i>
+                    </button>
+                <strong class="card-title">
+                  Regular Counter
+                </strong>
+                <div>
+                  count: <span data-bind="state:Counter.count"></span>
+                  <p>
+
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  data-action="click->Counter.decrement"
+                  class="btn btn-danger"
+                >
+                  <i aria-label="subtract" data-feather="minus-circle"></i>
+                </button>
+                <button
+                  type="button"
+                  data-action="click->Counter.increment"
+                  class="btn btn-success"
+                >
+                  <i aria-label="add" data-feather="plus-circle"></i>
+                </button>
+<!-- prettier-ignore-start -->
+
+<pre data-ref="ShowCode.foldable" class="fold">
+<code class="language-html">
+&#x3C;!-- Counter -->
+&#x3C;!-- css classes have been removed-->
+<span class="el">&#x3C;div</span> <span class="attr">data-component=</span><span class="attr-val">"Counter"</span><span class="el">></span>
+  <span class="el">&#x3C;p</span> <span class="attr">data-bind=</span><span class="attr-val">"state:Counter.count"</span><span class="el">></span>0<span class="el">&#x3C;/p></span>
+  <span class="el">&#x3C;button</span> <span class="attr">data-action=</span><span class="attr-val">"click->Counter.increment"</span><span class="el">></span>
+    +1
+  <span class="el">&#x3C;/button></span>
+  <span class="el">&#x3C;button</span> <span class="attr">data-action=</span><span class="attr-val">"click->Counter.decrement"</span><span class="el">></span>
+    -1
+  <span class="el">&#x3C;/button></span>
+<span class="el">&#x3C;/div></span>
+</code>
+</pre>
+<!-- prettier-ignore-end -->
+              </div>
+
+              <!-- Nested Counter -->
               <div
                 data-component="Counter"
                 class="card"
@@ -126,9 +158,10 @@
                     <div class="card-body">
                       <p>This is a child exponent. There is not state.</p>
                       <p>props:</p>
-                      <code>
-                        <pre class="propObjects"></pre>
-                      </code>
+
+                      <pre>
+                          <code data-ref="DisplayAnything.objects"></code>
+                        </pre>
                     </div>
                   </div>
 
@@ -169,18 +202,17 @@
                 </div>
               </div>
             </div>
-          </div>
         </div>
 
         <div class="col-md-6">
           <div class="row">
             <div class="col-md-6">
-              <div class="card" data-component="CurrentTime" data-key="Time">
+              <div class="card" data-component="Timer" data-key="Time">
                 <div class="card-body">
                   <strong class="card-title">Current Time:</strong>
-                  <span data-bind="state:CurrentTime.hours">n/a</span>:
-                  <span data-bind="state:CurrentTime.minutes">n/a</span>:
-                  <span data-bind="state:CurrentTime.seconds">n/a</span>
+                  <span data-bind="state:Timer.hours">n/a</span>:
+                  <span data-bind="state:Timer.minutes">n/a</span>:
+                  <span data-bind="state:Timer.seconds">n/a</span>
                 </div>
               </div>
             </div>
@@ -197,9 +229,9 @@
                   </p>
                   <p>WHOOOOOOOOOOOA!</p>
                   <p>props:</p>
-                  <code>
-                    <pre class="propObjects"></pre>
-                  </code>
+                  <pre>
+                      <code data-ref="DisplayAnything.objects"></code>
+                    </pre>
                 </div>
               </div>
             </div>
@@ -270,6 +302,10 @@ Regular Show</textarea
     >
       <i aria-hidden="true" data-feather="github"></i>
     </a>
+
+    <!-- <button aria-label="see code" type="button" class="btn btn-sm show-code">
+      <i data-feather="code"></i>
+    </button> -->
 
     <script src="dist/main.js"></script>
   </body>
