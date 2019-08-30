@@ -5,12 +5,16 @@
   "keywords": [
     "component",
     "ui",
+    "stimulus",
+    "vue",
     "react",
     "reactive",
     "lifecyle",
     "server-side",
     "html",
-    "data"
+    "data",
+    "state",
+    "props"
   ],
   "private": false,
   "repository": {
