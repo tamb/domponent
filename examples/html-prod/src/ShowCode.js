@@ -1,8 +1,9 @@
 import { Component } from "domponent";
 
-export default class Fold extends Component {
+export default class ShowCode extends Component {
   constructor(conf) {
     super(conf);
+    this.styleID =  "collapse-comp-styles";
     if (!document.getElementById(this.styleID)) {
       const style = `<style id="${this.styleID}">
                   .fold {
@@ -20,6 +21,7 @@ export default class Fold extends Component {
     }
   }
   toggle(){
+    console.log(this)
     this.foldable.classList.toggle('show');
   }
 }

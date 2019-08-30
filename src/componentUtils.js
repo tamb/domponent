@@ -9,12 +9,6 @@ import {
 
 import { eventOptions } from "./enums";
 
-export function scopeElements(selector) {
-  return [...this.$root.querySelectorAll(selector)].filter(el => {
-    return el.closest(`[data-${this.$app.$datasets.component}]`) === this.$root;
-  });
-}
-
 export function createStateObjects() {
   const nodes = scopeElements.call(
     this,
@@ -223,5 +217,11 @@ export function createPropObjects() {
 export function createRefs(){
   scopeElements.call(this, `[data-${this.$app.$datasets.ref}]`).forEach(element => {
     this[splitFromComponent(element.getAttribute(`data-${this.$app.$datasets.ref}`))[1]] = element;
+  });
+}
+
+export function scopeElements(selector) {
+  return [...this.$root.querySelectorAll(selector)].filter(el => {
+    return el.closest(`[data-${this.$app.$datasets.component}="${this.$root.getAttribute('data-'+this.$app.$datasets.component)}"]`) === this.$root;
   });
 }
