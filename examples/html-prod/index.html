@@ -38,8 +38,8 @@
           <i data-feather="x"></i>
         </span>
       </button>
-      <div class="custom-nav__body">
-        <div class="fold" data-ref="Navigation.menu">
+        <div class="fold custom-nav__body" data-ref="Navigation.menu" data-component="ShowCode">
+            
           <figure>
             <img
               src="https://media.giphy.com/media/HSSr7JbPxLJfO/giphy.gif"
@@ -48,9 +48,32 @@
             <figcaption class="text-center text-bold">
               Domponent rocks!
             </figcaption>
+            <button
+            class="code-toggle-btn btn"
+            data-action="click->ShowCode.toggle"
+          >
+            <i data-feather="code"></i>
+          </button>
           </figure>
+          <!-- prettier-ignore-start -->
+
+          <pre data-ref="ShowCode.foldable" class="fold">
+                            <code class="language-html">
+                            &#x3C;!-- Counter -->
+                            &#x3C;!-- css classes have been removed-->
+                            <span class="el">&#x3C;div</span> <span class="attr">data-component=</span><span class="attr-val">"Counter"</span><span class="el">></span>
+                              <span class="el">&#x3C;p</span> <span class="attr">data-bind=</span><span class="attr-val">"state:Counter.count"</span><span class="el">></span>0<span class="el">&#x3C;/p></span>
+                              <span class="el">&#x3C;button</span> <span class="attr">data-action=</span><span class="attr-val">"click->Counter.increment"</span><span class="el">></span>
+                                +1
+                              <span class="el">&#x3C;/button></span>
+                              <span class="el">&#x3C;button</span> <span class="attr">data-action=</span><span class="attr-val">"click->Counter.decrement"</span><span class="el">></span>
+                                -1
+                              <span class="el">&#x3C;/button></span>
+                            <span class="el">&#x3C;/div></span>
+                            </code>
+                            </pre>
+          <!-- prettier-ignore-end -->
         </div>
-      </div>
     </div>
 
     <div class="container">
@@ -213,7 +236,14 @@
                 class="card"
                 data-state='{"name":"Regular Show"}'
               >
-                <div class="card-body">
+                <div data-component="ShowCode" class="card-body">
+                  <button
+                    class="code-toggle-btn btn"
+                    data-action="click->ShowCode.toggle"
+                  >
+                    <i data-feather="code"></i>
+                  </button>
+
                   <strong class="card-title">What's Your Favorite Show?</strong>
 
                   <div class="form-group">
@@ -238,11 +268,29 @@
               Regular Show</textarea
                     >
                   </div>
+
+                  <!-- prettier-ignore-start -->
+                  <pre data-ref="ShowCode.foldable" class="fold">
+<code class="language-html">
+&#x3C;!-- Counter -->
+&#x3C;!-- css classes have been removed-->
+<span class="el">&#x3C;div</span> <span class="attr">data-component=</span><span class="attr-val">"Counter"</span><span class="el">></span>
+<span class="el">&#x3C;p</span> <span class="attr">data-bind=</span><span class="attr-val">"state:Counter.count"</span><span class="el">></span>0<span class="el">&#x3C;/p></span>
+<span class="el">&#x3C;button</span> <span class="attr">data-action=</span><span class="attr-val">"click->Counter.increment"</span><span class="el">></span>
+ +1
+<span class="el">&#x3C;/button></span>
+<span class="el">&#x3C;button</span> <span class="attr">data-action=</span><span class="attr-val">"click->Counter.decrement"</span><span class="el">></span>
+ -1
+ <span class="el">&#x3C;/button></span>
+ <span class="el">&#x3C;/div></span>
+ </code>
+ </pre>
+                  <!-- prettier-ignore-end -->
                 </div>
               </div>
             </div>
             <div class="col-md-12">
-              <div class="card" data-component="Timer" data-key="Time">
+              <div class="card" data-component="Timer" data-key="MyTimeKey">
                 <div class="card-body">
                   <strong class="card-title">Current Time:</strong>
                   <span data-bind="state:Timer.hours">n/a</span>:
@@ -263,8 +311,8 @@
 &#x3C;!-- Timer -->
 &#x3C;!-- css classes have been removed-->
 <span class="el">&#x3C;div</span> <span class="attr">data-component=</span><span class="attr-val">"Timer"</span><span class="el">></span>
-  <span class="el">&#x3C;span</span> <span class="attr">data-bind=</span><span class="attr-val">"state:Timer.hours"</span><span class="el">></span>n/a<span class="el">&#x3C;/p></span>
-  <span class="el">&#x3C;span</span> <span class="attr">data-bind=</span><span class="attr-val">"state:Timer.minutes"</span><span class="el">></span>n/a<span class="el">&#x3C;/span></span>
+  <span class="el">&#x3C;span</span> <span class="attr">data-bind=</span><span class="attr-val">"state:Timer.hours"</span><span class="el">></span>n/a<span class="el">&#x3C;/span>:</span>
+  <span class="el">&#x3C;span</span> <span class="attr">data-bind=</span><span class="attr-val">"state:Timer.minutes"</span><span class="el">></span>n/a<span class="el">&#x3C;/span>:</span>
   <span class="el">&#x3C;span</span> <span class="attr">data-bind=</span><span class="attr-val">"state:Timer.seconds"</span><span class="el">></span>n/a<span class="el">&#x3C;/span></span>
 <span class="el">&#x3C;/div></span>
      </code>
@@ -278,7 +326,7 @@
             <div class="col-md-12">
               <div
                 class="card"
-                data-props="theSecond<-Time:seconds|theMinute<-Time:minutes|theHour<-Time:hours"
+                data-props="theSecond<-MyTimeKey:seconds|theMinute<-MyTimeKey:minutes|theHour<-MyTimeKey:hours"
                 data-component="DisplayAnything"
               >
                 <div class="card-body">

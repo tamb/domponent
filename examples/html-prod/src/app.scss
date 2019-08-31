@@ -61,9 +61,23 @@ body{
   }
 
   .custom-nav__body{
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position: relative;
+      text-align: center;
+      figure{
+        text-align: center;
+        position: relative;
+        width: fit-content;
+        display: inline-block;
+        .code-toggle-btn{
+          background: $light-stripes;
+          border: 3px solid $body;
+          svg{
+            color: $dark;
+          }
+        }
+      }
+
+      
 
       img{
           max-width: 100%;
@@ -140,10 +154,5 @@ body{
   @media screen and (min-width: 768px){
     h1{
       font-size: 2.4rem;
-    }
-
-    .github-link{
-      bottom: none;
-      top: .5rem;
     }
   }
