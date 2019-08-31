@@ -1,11 +1,11 @@
 import { Init } from 'domponent'
-import Counter from "./Counter";
-import Timer from "./Timer";
-import DisplayAnything from "./DisplayAnything";
-import Name from "./Name";
-import HoverLetter from './HoverLetter';
-import Navigation from './Navigation';
-import ShowCode from './ShowCode';
+import Counter from "./Counter/Counter";
+import Timer from "./Timer/Timer";
+import DisplayAnything from "./DisplayAnything/DisplayAnything";
+import Name from "./Name/Name";
+import HoverLetter from './HoverLetter/HoverLetter';
+import Navigation from './Navigation/Navigation';
+import ShowCode from './ShowCode/ShowCode';
 import domInsert from "./domInsert";
 
 import './app.scss';
