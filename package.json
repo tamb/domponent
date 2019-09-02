@@ -21,7 +21,7 @@
     "type": "git",
     "url": "https://github.com/tamb/domponent.git"
   },
-  "homepage": "https://github.com/tamb/domponent",
+  "homepage": "https://tamb.github.io/domponent/",
   "main": "dist/domponent.production.min.js",
   "unpkg": "dist/domponent.production.min.js",
   "scripts": {
