@@ -2,7 +2,7 @@ import { Init } from 'domponent'
 import Counter from "./Counter/Counter";
 import Timer from "./Timer/Timer";
 import DisplayAnything from "./DisplayAnything/DisplayAnything";
-import Name from "./Name/Name";
+import FavoriteShow from "./FavoriteShow/FavoriteShow";
 import HoverLetter from './HoverLetter/HoverLetter';
 import Navigation from './Navigation/Navigation';
 import ShowCode from './ShowCode/ShowCode';
@@ -19,7 +19,7 @@ const App = new Init({
     Counter,
     Timer,
     DisplayAnything,
-    Name,
+    FavoriteShow,
     HoverLetter,
     Navigation,
     ShowCode,

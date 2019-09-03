@@ -8,9 +8,9 @@ export default class Exponent extends Scope {
     this.connecting();
     this.props = {};
     this.$d = new Set();
+    createRefs.call(this);
     this.$p = createPropObjects.call(this);
     bindListeners.call(this);
-    createRefs.call(this);
     wait? null : this.connected();
   }
 

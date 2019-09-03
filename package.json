@@ -25,10 +25,11 @@
   "main": "dist/domponent.production.min.js",
   "unpkg": "dist/domponent.production.min.js",
   "scripts": {
-    "deploy": "node clean.js && rollup -c rollup.config.js && npm pack && cd examples/html-prod && npm install && webpack && cd ../../ && gh-pages -d examples/html-prod",
+    "deploy": "node clean.js && rollup -c rollup.config.js && npm pack && cd examples/html-prod && npm install --force && webpack && cd ../../ && gh-pages -d examples/html-prod",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c rollup.config.js",
-    "build:html-prod": "node clean.js && rollup -c rollup.config.js && npm pack && cd examples/html-prod && npm install && npm start"
+    "build:html-prod": "node clean.js && rollup -c rollup.config.js && npm pack && cd examples/html && npm install && npm start",
+    "build:html-dev": "node clean.js && rollup -c rollup.config.js && npm pack && cd examples/html && npm install && npm run start:dev" 
   },
   "files": [
     "dist"

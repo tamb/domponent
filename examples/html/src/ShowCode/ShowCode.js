@@ -1,6 +1,6 @@
-import { Component } from "domponent";
+import { Exponent } from "domponent";
 
-export default class ShowCode extends Component {
+export default class ShowCode extends Exponent {
   constructor(conf) {
     super(conf);
     this.styleID =  "collapse-comp-styles";

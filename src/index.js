@@ -31,8 +31,8 @@ function Init(config) {
         }
       }
       /* START.DEV */
-      console.log(`🤓 -- "Dom here. Your data attribute suffixes are: 
-      ${JSON.stringify(dataSet, null, 2)}
+      console.log(`🤓 -- "Dom here. Your data attribute suffixes are in this object: 
+      `, dataSet, `
       Coolio.  We should hang out some time!"`);
       /* END.DEV */
       return dataSet;
@@ -52,8 +52,7 @@ function Init(config) {
         } catch (err) {
           console.error(`🤓 -- "You messed up creating a component instance for component 
           ${key} 
-          on $root 
-          ${el}"`);
+          on $root element "`, el);
       }
       /* END.DEV */
       cb ? cb() : null;

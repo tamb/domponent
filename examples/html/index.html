@@ -38,26 +38,29 @@
           <i data-feather="x"></i>
         </span>
       </button>
-        <div class="fold custom-nav__body" data-ref="Navigation.menu" data-component="ShowCode">
-            
-          <figure>
-            <img
-              src="https://media.giphy.com/media/HSSr7JbPxLJfO/giphy.gif"
-              alt="rock out!"
-            />
-            <figcaption class="text-center text-bold">
-              Domponent rocks!
-            </figcaption>
-            <button
+      <div
+        class="fold custom-nav__body"
+        data-ref="Navigation.menu"
+        data-component="ShowCode"
+      >
+        <figure>
+          <img
+            src="https://media.giphy.com/media/HSSr7JbPxLJfO/giphy.gif"
+            alt="rock out!"
+          />
+          <figcaption class="text-center text-bold">
+            Domponent rocks!
+          </figcaption>
+          <button
             class="code-toggle-btn btn"
             data-action="click->ShowCode.toggle"
           >
             <i data-feather="code"></i>
           </button>
-          </figure>
-          <!-- prettier-ignore-start -->
+        </figure>
+        <!-- prettier-ignore-start -->
 
-          <pre data-ref="ShowCode.foldable" class="fold">
+        <pre data-ref="ShowCode.foldable" class="fold">
                             <code class="language-html">
                             &#x3C;!-- Counter -->
                             &#x3C;!-- css classes have been removed-->
@@ -72,8 +75,8 @@
                             <span class="el">&#x3C;/div></span>
                             </code>
                             </pre>
-          <!-- prettier-ignore-end -->
-        </div>
+        <!-- prettier-ignore-end -->
+      </div>
     </div>
 
     <div class="container">
@@ -232,9 +235,9 @@
             <!-- NAME COMPONENT -->
             <div class="col-12">
               <div
-                data-component="Name"
+                data-component="FavoriteShow"
                 class="card"
-                data-state='{"name":"Regular Show"}'
+                data-state='{"show":"Regular Show"}'
               >
                 <div data-component="ShowCode" class="card-body">
                   <button
@@ -251,11 +254,12 @@
                       controlled from below
                     </label>
                     <textarea
+                      data-ref="secondInput"
                       id="controlled"
-                      class="form-control above-controlled"
+                      class="form-control"
                     ></textarea>
                   </div>
-                  <code data-bind="state:Name.name"></code>
+                  <code data-bind="state:FavoriteShow.show"></code>
                   <div class="form-group">
                     <label for="show">
                       Controls the text and input above
@@ -265,7 +269,7 @@
                       class="form-control"
                       data-action="input->Name.handleInput"
                     >
-              Regular Show</textarea
+Regular Show</textarea
                     >
                   </div>
 
