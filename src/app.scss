@@ -5,18 +5,41 @@ $beak: #5e5e61;
 $light-stripes: #fefefe;
 $eye: #ffffff; 
 
+@keyframes shake {
+  1% {
+    transform: rotate(20deg)
+    scale(1.1);
+  }
+  
+  2% {
+    transform: rotate(-20deg) scale(1.2);  }
+
+  3% {
+    transform: rotate(10deg) scale(1);  }
+
+  5%{
+    transform: rotate(-5deg) scale(.95);  }
+  7%{
+    transform: rotate(0deg) scale(1);
+  }
+
+}
 
 body{
     background-color: $body;
     color: $dark;
   }
   .code-toggle-btn{
+    animation: shake 15s ease-in-out;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
     position: absolute;
     top: 0;
     right:0;
     background: $dark;
     svg{
       color: $light-stripes;
+      animation: jingle 5s infinite;
     }
   }
   .dark{
@@ -38,9 +61,23 @@ body{
   }
 
   .custom-nav__body{
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position: relative;
+      text-align: center;
+      figure{
+        text-align: center;
+        position: relative;
+        width: fit-content;
+        display: inline-block;
+        .code-toggle-btn{
+          background: $light-stripes;
+          border: 3px solid $body;
+          svg{
+            color: $dark;
+          }
+        }
+      }
+
+      
 
       img{
           max-width: 100%;
@@ -56,6 +93,7 @@ body{
 
   .show-code{
     background-color: $light-stripes;
+    
     svg{
       color: $beak;
     }
@@ -73,6 +111,7 @@ body{
     padding: 0.5rem;
     display: block;
     margin-bottom: 0.5rem;
+    overflow: scroll;
   }
 
   .github-link{
@@ -115,10 +154,5 @@ body{
   @media screen and (min-width: 768px){
     h1{
       font-size: 2.4rem;
-    }
-
-    .github-link{
-      bottom: none;
-      top: .5rem;
     }
   }

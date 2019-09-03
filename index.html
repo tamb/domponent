@@ -38,18 +38,44 @@
           <i data-feather="x"></i>
         </span>
       </button>
-      <div class="custom-nav__body">
-        <div class="fold" data-ref="Navigation.menu">
-          <figure>
-            <img
-              src="https://media.giphy.com/media/HSSr7JbPxLJfO/giphy.gif"
-              alt="rock out!"
-            />
-            <figcaption class="text-center text-bold">
-              Domponent rocks!
-            </figcaption>
-          </figure>
-        </div>
+      <div
+        class="fold custom-nav__body"
+        data-ref="Navigation.menu"
+        data-component="ShowCode"
+      >
+        <figure>
+          <img
+            src="https://media.giphy.com/media/HSSr7JbPxLJfO/giphy.gif"
+            alt="rock out!"
+          />
+          <figcaption class="text-center text-bold">
+            Domponent rocks!
+          </figcaption>
+          <!-- <button
+            class="code-toggle-btn btn"
+            data-action="click->ShowCode.toggle"
+          >
+            <i data-feather="code"></i>
+          </button> -->
+        </figure>
+        <!-- prettier-ignore-start -->
+
+        <pre data-ref="ShowCode.foldable" class="fold">
+                            <code class="language-html">
+                            &#x3C;!-- Counter -->
+                            &#x3C;!-- css classes have been removed-->
+                            <span class="el">&#x3C;div</span> <span class="attr">data-component=</span><span class="attr-val">"Counter"</span><span class="el">></span>
+                              <span class="el">&#x3C;p</span> <span class="attr">data-bind=</span><span class="attr-val">"state:Counter.count"</span><span class="el">></span>0<span class="el">&#x3C;/p></span>
+                              <span class="el">&#x3C;button</span> <span class="attr">data-action=</span><span class="attr-val">"click->Counter.increment"</span><span class="el">></span>
+                                +1
+                              <span class="el">&#x3C;/button></span>
+                              <span class="el">&#x3C;button</span> <span class="attr">data-action=</span><span class="attr-val">"click->Counter.decrement"</span><span class="el">></span>
+                                -1
+                              <span class="el">&#x3C;/button></span>
+                            <span class="el">&#x3C;/div></span>
+                            </code>
+                            </pre>
+        <!-- prettier-ignore-end -->
       </div>
     </div>
 
@@ -65,42 +91,43 @@
       <div class="row">
         <!-- COUNTERS and EXPONENT -->
         <div class="col-md-6">
-            <div
-              class="card"
-              data-component="Counter"
-              data-state='{"count":19, "isEven": false}'
-              data-key="parentCounter"
-            >
-              <div class="card-body" data-component="ShowCode">
-                  <button class="code-toggle-btn btn" data-action="click->ShowCode.toggle">
-                      <i data-feather="code"></i>
-                    </button>
-                <strong class="card-title">
-                  Regular Counter
-                </strong>
-                <div>
-                  count: <span data-bind="state:Counter.count"></span>
-                  <p>
+          <div
+            class="card"
+            data-component="Counter"
+            data-state='{"count":19, "isEven": false}'
+            data-key="parentCounter"
+          >
+            <div class="card-body" data-component="ShowCode">
+              <button
+                class="code-toggle-btn btn"
+                data-action="click->ShowCode.toggle"
+              >
+                <i data-feather="code"></i>
+              </button>
+              <strong class="card-title">
+                Regular Counter
+              </strong>
+              <div>
+                count: <span data-bind="state:Counter.count"></span>
+                <p></p>
+              </div>
+              <button
+                type="button"
+                data-action="click->Counter.decrement"
+                class="btn btn-danger"
+              >
+                <i aria-label="subtract" data-feather="minus-circle"></i>
+              </button>
+              <button
+                type="button"
+                data-action="click->Counter.increment"
+                class="btn btn-success"
+              >
+                <i aria-label="add" data-feather="plus-circle"></i>
+              </button>
+              <!-- prettier-ignore-start -->
 
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  data-action="click->Counter.decrement"
-                  class="btn btn-danger"
-                >
-                  <i aria-label="subtract" data-feather="minus-circle"></i>
-                </button>
-                <button
-                  type="button"
-                  data-action="click->Counter.increment"
-                  class="btn btn-success"
-                >
-                  <i aria-label="add" data-feather="plus-circle"></i>
-                </button>
-<!-- prettier-ignore-start -->
-
-<pre data-ref="ShowCode.foldable" class="fold">
+              <pre data-ref="ShowCode.foldable" class="fold">
 <code class="language-html">
 &#x3C;!-- Counter -->
 &#x3C;!-- css classes have been removed-->
@@ -115,9 +142,7 @@
 <span class="el">&#x3C;/div></span>
 </code>
 </pre>
-<!-- prettier-ignore-end -->
-              </div>
-
+              <!-- prettier-ignore-end -->
               <!-- Nested Counter -->
               <div
                 data-component="Counter"
@@ -160,8 +185,8 @@
                       <p>props:</p>
 
                       <pre>
-                          <code data-ref="DisplayAnything.objects"></code>
-                        </pre>
+            <code data-ref="DisplayAnything.objects"></code>
+          </pre>
                     </div>
                   </div>
 
@@ -202,25 +227,110 @@
                 </div>
               </div>
             </div>
+          </div>
         </div>
 
         <div class="col-md-6">
           <div class="row">
-            <div class="col-md-6">
-              <div class="card" data-component="Timer" data-key="Time">
+            <!-- NAME COMPONENT -->
+            <div class="col-12">
+              <div
+                data-component="FavoriteShow"
+                class="card"
+                data-state='{"show":"Regular Show"}'
+              >
+                <div data-component="ShowCode" class="card-body">
+                  <!-- <button
+                    class="code-toggle-btn btn"
+                    data-action="click->ShowCode.toggle"
+                  >
+                    <i data-feather="code"></i>
+                  </button> -->
+
+                  <strong class="card-title">What's Your Favorite Show?</strong>
+
+                  <div class="form-group">
+                    <label for="controlled">
+                      controlled from below
+                    </label>
+                    <textarea
+                      data-ref="FavoriteShow.secondInput"
+                      id="controlled"
+                      class="form-control"
+                    ></textarea>
+                  </div>
+                  <code data-bind="state:FavoriteShow.show"></code>
+                  <div class="form-group">
+                    <label for="show">
+                      Controls the text and input above
+                    </label>
+                    <textarea
+                      id="show"
+                      class="form-control"
+                      data-action="input->FavoriteShow.handleInput"
+                    >
+Regular Show</textarea
+                    >
+                  </div>
+
+                  <!-- prettier-ignore-start -->
+                  <pre data-ref="ShowCode.foldable" class="fold">
+<code class="language-html">
+&#x3C;!-- Counter -->
+&#x3C;!-- css classes have been removed-->
+<span class="el">&#x3C;div</span> <span class="attr">data-component=</span><span class="attr-val">"Counter"</span><span class="el">></span>
+<span class="el">&#x3C;p</span> <span class="attr">data-bind=</span><span class="attr-val">"state:Counter.count"</span><span class="el">></span>0<span class="el">&#x3C;/p></span>
+<span class="el">&#x3C;button</span> <span class="attr">data-action=</span><span class="attr-val">"click->Counter.increment"</span><span class="el">></span>
+ +1
+<span class="el">&#x3C;/button></span>
+<span class="el">&#x3C;button</span> <span class="attr">data-action=</span><span class="attr-val">"click->Counter.decrement"</span><span class="el">></span>
+ -1
+ <span class="el">&#x3C;/button></span>
+ <span class="el">&#x3C;/div></span>
+ </code>
+ </pre>
+                  <!-- prettier-ignore-end -->
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="card" data-component="Timer" data-key="MyTimeKey">
                 <div class="card-body">
                   <strong class="card-title">Current Time:</strong>
                   <span data-bind="state:Timer.hours">n/a</span>:
                   <span data-bind="state:Timer.minutes">n/a</span>:
                   <span data-bind="state:Timer.seconds">n/a</span>
+
+                  <!-- prettier-ignore-start -->
+
+                  <div data-component="ShowCode">
+                    <button
+                      class="code-toggle-btn btn"
+                      data-action="click->ShowCode.toggle"
+                    >
+                      <i data-feather="code"></i>
+                    </button>
+                    <pre data-ref="ShowCode.foldable" class="fold">
+    <code class="language-html">
+&#x3C;!-- Timer -->
+&#x3C;!-- css classes have been removed-->
+<span class="el">&#x3C;div</span> <span class="attr">data-component=</span><span class="attr-val">"Timer"</span><span class="el">></span>
+  <span class="el">&#x3C;span</span> <span class="attr">data-bind=</span><span class="attr-val">"state:Timer.hours"</span><span class="el">></span>n/a<span class="el">&#x3C;/span>:</span>
+  <span class="el">&#x3C;span</span> <span class="attr">data-bind=</span><span class="attr-val">"state:Timer.minutes"</span><span class="el">></span>n/a<span class="el">&#x3C;/span>:</span>
+  <span class="el">&#x3C;span</span> <span class="attr">data-bind=</span><span class="attr-val">"state:Timer.seconds"</span><span class="el">></span>n/a<span class="el">&#x3C;/span></span>
+<span class="el">&#x3C;/div></span>
+     </code>
+    </pre>
+                  </div>
+                  <!-- prettier-ignore-end -->
                 </div>
               </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-12">
               <div
                 class="card"
-                data-props="theSecond<-Time:seconds|theMinute<-Time:minutes|theHour<-Time:hours"
+                data-props="theSecond<-MyTimeKey:seconds|theMinute<-MyTimeKey:minutes|theHour<-MyTimeKey:hours"
                 data-component="DisplayAnything"
               >
                 <div class="card-body">
@@ -232,42 +342,6 @@
                   <pre>
                       <code data-ref="DisplayAnything.objects"></code>
                     </pre>
-                </div>
-              </div>
-            </div>
-
-            <!-- NAME COMPONENT -->
-            <div class="col-12">
-              <div
-                data-component="Name"
-                class="card"
-                data-state='{"name":"Regular Show"}'
-              >
-                <div class="card-body">
-                  <strong class="card-title">What's Your Favorite Show?</strong>
-
-                  <div class="form-group">
-                    <label for="controlled">
-                      controlled from below
-                    </label>
-                    <textarea
-                      id="controlled"
-                      class="form-control above-controlled"
-                    ></textarea>
-                  </div>
-                  <code data-bind="state:Name.name"></code>
-                  <div class="form-group">
-                    <label for="show">
-                      Controls the text and input above
-                    </label>
-                    <textarea
-                      id="show"
-                      class="form-control"
-                      data-action="input->Name.handleInput"
-                    >
-Regular Show</textarea
-                    >
-                  </div>
                 </div>
               </div>
             </div>
