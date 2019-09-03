@@ -15,6 +15,6 @@ module.exports = (env, argv) => {
         domponent: 'domponent/dist/domponent.development.js'
       }
     }: {},
-    devtool: argv.mode === 'development'? 'source-map': null,
+    devtool: argv.mode === 'development'? 'source-map': false,
   };
 };

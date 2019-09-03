@@ -51,12 +51,12 @@
           <figcaption class="text-center text-bold">
             Domponent rocks!
           </figcaption>
-          <button
+          <!-- <button
             class="code-toggle-btn btn"
             data-action="click->ShowCode.toggle"
           >
             <i data-feather="code"></i>
-          </button>
+          </button> -->
         </figure>
         <!-- prettier-ignore-start -->
 
@@ -240,12 +240,12 @@
                 data-state='{"show":"Regular Show"}'
               >
                 <div data-component="ShowCode" class="card-body">
-                  <button
+                  <!-- <button
                     class="code-toggle-btn btn"
                     data-action="click->ShowCode.toggle"
                   >
                     <i data-feather="code"></i>
-                  </button>
+                  </button> -->
 
                   <strong class="card-title">What's Your Favorite Show?</strong>
 
@@ -254,7 +254,7 @@
                       controlled from below
                     </label>
                     <textarea
-                      data-ref="secondInput"
+                      data-ref="FavoriteShow.secondInput"
                       id="controlled"
                       class="form-control"
                     ></textarea>
@@ -267,7 +267,7 @@
                     <textarea
                       id="show"
                       class="form-control"
-                      data-action="input->Name.handleInput"
+                      data-action="input->FavoriteShow.handleInput"
                     >
 Regular Show</textarea
                     >
