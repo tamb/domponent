@@ -1,6 +1,6 @@
 {
   "name": "domponent",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-rc.1",
   "description": "Build components with the HTML you already have.",
   "keywords": [
     "component",
@@ -25,7 +25,7 @@
   "main": "dist/domponent.production.min.js",
   "unpkg": "dist/domponent.production.min.js",
   "scripts": {
-    "deploy": "node clean.js && rollup -c rollup.config.js && npm pack && cd examples/html-prod && npm install --force && webpack && cd ../../ && gh-pages -d examples/html-prod",
+    "deploy": "node clean.js && rollup -c rollup.config.js && npm pack && cd examples/html && npm install && webpack --mode=production && cd ../../ && gh-pages -d examples/html",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c rollup.config.js",
     "build:html-prod": "node clean.js && rollup -c rollup.config.js && npm pack && cd examples/html && npm install && npm start",

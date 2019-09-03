@@ -52,7 +52,7 @@ function Init(config) {
         } catch (err) {
           console.error(`🤓 -- "You messed up creating a component instance for component 
           ${key} 
-          on $root element "`, el);
+          on $root element "`, el, err);
       }
       /* END.DEV */
       cb ? cb() : null;

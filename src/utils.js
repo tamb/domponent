@@ -24,12 +24,30 @@ export function splitMultipleValues(string) {
   return string.trim().split(relationalStringEnum.MULTIPLE_VALUES);
 }
 export function splitPropsPassedIn(string) {
+      /* START.DEV */
+      if(!string.includes('<-')){
+        console.error(`🤓 -- "You have bad syntax on this data- value: ${string}.  
+        You are not inheriting props correctly.  It should look like this 'myProp<-MyComponent.myStateField'`);
+      }
+      /* END.DEV */
   return string.trim().split(relationalStringEnum.INHERITS_FROM);
 }
 export function splitMethodCalls(string) {
+    /* START.DEV */
+    if(!string.includes('->')){
+      console.error(`🤓 -- "You have bad syntax on this data- value: ${string}.  
+      You are missing an arrow in your method call.  It should look like this 'DOMEvent->MyComponent.myMethod'`);
+    }
+    /* END.DEV */
   return string.trim().split(relationalStringEnum.METHOD_CALL);
 }
 export function splitFromComponent(string) {
+  /* START.DEV */
+  if(!string.includes('.')){
+    console.error(`🤓 -- "You have bad syntax on this data- value: ${string}.  
+    You need to have a period (.) like 'MyComponent.myField'`);
+  }
+  /* END.DEV */
   return string.trim().split(relationalStringEnum.FROM_COMPONENT);
 }
 export function splitList(string){

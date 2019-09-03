@@ -65,6 +65,7 @@ __And you're good to go!!__
 ------
 ## Docs 📖
 - [Purpose](#purpose-️)
+- [Demo](#demo-)
 - [Install](#install-)
 - [Data API](#data-API-)
   - [data-component](#data-component)
@@ -82,7 +83,7 @@ __And you're good to go!!__
 - [Init Function](#init-function-)
 - [Adding and Removing Components](#adding-and-removing-components-)
 - [Namespacing Data Attributes](#namespacing-data-attributes-)
-- [Demo](#demo-)
+- [Development Mode](#development-mode-)
 - [Component Lifecycle](#component-lifecycle-)
 
 ### Purpose ✔️
@@ -94,6 +95,35 @@ DOMponent does not handle client-side rendering out of the box, does not create 
 It's not meant to handle routing or entire application state.  It's meant to take HTML fragments (Thymeleaf, Rails, Pug, whatever template engine you use) and create reusable functionality in the form of Components.  
 
 <hr/>
+
+### Demo 🤖
+[https://tamb.github.io/domponent/](https://tamb.github.io/domponent/)
+
+__Download__
+1. `git clone` this repo
+2. `npm install`
+
+__Basic HTML__ 😉
+1. _make sure you have FireFox_ 🔥🦊🔥
+2. `npm run build:html-dev` or `npm run build:html-prod`
+
+<!-- __Pug Syntax Example__ 🐶
+coming soon...
+
+__Thymeleaf Syntax Example__ 🍃
+coming soon...
+
+__Ruby on Rails Syntax Example__ 💎
+coming soon...
+
+__Mustache Syntax Example__ 👺
+coming soon...
+
+__Razor Syntax Example__ ⚔️
+coming soon... -->
+
+<hr/>
+
 
 ### Install 📥
 #### npm
@@ -327,31 +357,21 @@ This means that your HTML will look like this:
 ```
 <hr/>
 
-### Demo 🤖
-[https://tamb.github.io/domponent/](https://tamb.github.io/domponent/)
+### Development Mode 🤓
+When developing with Domponent, using the development build adds helpful errors and logs
+to your console from Development Dom (this guy->) 🤓
 
-__Download__
-1. `git clone` this repo
-2. `npm install`
+The easiest way to use this is with Webpack Aliases:
+```js
+resolve: argv.mode === 'development'? {
+      alias: {
+        domponent: 'domponent/dist/domponent.development.js'
+      }
+    }: {},
 
-__Basic HTML__ 😉
-1. _make sure you have FireFox_ 🔥🦊🔥
-2. `npm run build:html-dev` or `npm run build:html-prod`
+```
+This way your development build of webpack will swap out the production version of Domponent for the version sprinkled with help from Dom.
 
-__Pug Syntax Example__ 🐶
-coming soon...
-
-__Thymeleaf Syntax Example__ 🍃
-coming soon...
-
-__Ruby on Rails Syntax Example__ 💎
-coming soon...
-
-__Mustache Syntax Example__ 👺
-coming soon...
-
-__Razor Syntax Example__ ⚔️
-coming soon...
 
 <hr/>
 
