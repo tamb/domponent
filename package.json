@@ -29,7 +29,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c rollup.config.js",
     "build:html-prod": "node clean.js && rollup -c rollup.config.js && npm pack && cd examples/html && npm install && npm start",
-    "build:html-dev": "node clean.js && rollup -c rollup.config.js && npm pack && cd examples/html && npm install && npm run start:dev" 
+    "build:html-dev": "node clean.js && rollup -c rollup.config.js && npm pack && cd examples/html && npm install && npm run start:dev"
   },
   "files": [
     "dist"
@@ -39,9 +39,17 @@
   "dependencies": {},
   "devDependencies": {
     "gh-pages": "^2.1.1",
+    "husky": "^3.0.5",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.1",
     "rimraf": "^2.6.3",
     "rollup": "^1.18.0",
     "rollup-plugin-strip-code": "^0.2.7",
     "rollup-plugin-terser": "^5.1.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   }
 }
