@@ -1,4 +1,5 @@
-import { Component } from 'domponent';
+import { Component } from "domponent";
+import "./Counter.scss";
 
 export default class Counter extends Component {
   constructor(conf) {
@@ -16,7 +17,7 @@ export default class Counter extends Component {
     const largerCount = parseInt(this.state.count + 1, 10);
     newState.count = largerCount;
     newState.isEven = largerCount % 2 === 0;
-    this.setState(newState, ()=>console.log('Single Callback', this));
+    this.setState(newState, () => console.log("Single Callback", this));
   }
 
   decrement(e) {

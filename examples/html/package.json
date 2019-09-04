@@ -5,8 +5,8 @@
   "main": "index.html",
   "scripts": {
     "build": "webpack --production",
-    "start": "concurrently \"webpack --watch --progress\" \"http-server -a localhost -p 1234\" \"open http://localhost:1234/\" \"node open.js\"",
-    "start:dev": "concurrently \"webpack --mode=development --watch --progress\" \"http-server -a localhost -p 1234\" \"open http://localhost:1234/\" \"node open.js\""
+    "start": "concurrently \"webpack --watch\" \"http-server -a localhost -p 1234\" \"open http://localhost:1234/\" \"node open.js\"",
+    "start:dev": "concurrently \"webpack --mode=development --watch\" \"http-server -a localhost -p 1234\" \"open http://localhost:1234/\" \"node open.js\""
   },
   "dependencies": {
     "domponent": "file:../../domponent-1.0.0-rc.1.tgz"

@@ -1,158 +1,64 @@
-$body: #009DDC;
-$belly: #cee8f5;
-$dark: #2A2D34; 
-$beak: #5e5e61; 
-$light-stripes: #fefefe;
-$eye: #ffffff; 
+@import "_colors.scss";
 
-@keyframes shake {
-  1% {
-    transform: rotate(20deg)
-    scale(1.1);
-  }
-  
-  2% {
-    transform: rotate(-20deg) scale(1.2);  }
-
-  3% {
-    transform: rotate(10deg) scale(1);  }
-
-  5%{
-    transform: rotate(-5deg) scale(.95);  }
-  7%{
-    transform: rotate(0deg) scale(1);
-  }
-
+body {
+  background-color: $body;
+  color: $dark;
 }
 
-body{
-    background-color: $body;
-    color: $dark;
-  }
-  .code-toggle-btn{
-    animation: shake 15s ease-in-out;
-    animation-delay: 2s;
-    animation-iteration-count: infinite;
-    position: absolute;
-    top: 0;
-    right:0;
-    background: $dark;
-    svg{
-      color: $light-stripes;
-      animation: jingle 5s infinite;
-    }
-  }
-  .dark{
-    color:$dark;
-  }
-  [data-component="Counter"].even {
-    background-color: $light-stripes;
-    color: $dark;
-  }
+.dark {
+  color: $dark;
+}
 
-  .btn{
-    margin-bottom: .5rem;
+.btn {
+  margin-bottom: 0.5rem;
+}
+
+.card {
+  background-color: $beak;
+  color: $eye;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.show-code {
+  background-color: $light-stripes;
+
+  svg {
+    color: $beak;
   }
+}
 
-  .custom-nav{
-    .btn{
-      margin-bottom: 0;
-    }
+header {
+  margin: 1rem 0;
+}
+h1 {
+  font-size: 1.8rem;
+}
+
+code {
+  background-color: $light-stripes;
+  padding: 0.5rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  overflow: scroll;
+}
+
+.github-link {
+  position: fixed;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $light-stripes;
+  border-radius: 50%;
+  box-shadow: -2px 3px 5px black;
+}
+
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 2.4rem;
   }
-
-  .custom-nav__body{
-      position: relative;
-      text-align: center;
-      figure{
-        text-align: center;
-        position: relative;
-        width: fit-content;
-        display: inline-block;
-        .code-toggle-btn{
-          background: $light-stripes;
-          border: 3px solid $body;
-          svg{
-            color: $dark;
-          }
-        }
-      }
-
-      
-
-      img{
-          max-width: 100%;
-      }
-  }
-
-  .card {
-    background-color: $beak;
-    color: $eye;
-    margin-bottom: 1rem;
-    position: relative;
-  }
-
-  .show-code{
-    background-color: $light-stripes;
-    
-    svg{
-      color: $beak;
-    }
-  }
-
-  header{
-    margin: 1rem 0;
-  }
-  h1{
-    font-size: 1.8rem;
-  }
-
-  code {
-    background-color: $light-stripes;
-    padding: 0.5rem;
-    display: block;
-    margin-bottom: 0.5rem;
-    overflow: scroll;
-  }
-
-  .github-link{
-    position: fixed;
-    bottom: .5rem;
-    right: .5rem;
-    height: 3rem;
-    width: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $light-stripes;
-    border-radius: 50%;
-    box-shadow: -2px 3px 5px black;
-  }
-
-  .custom-nav{
-    background-color: $dark;
-    color: $light-stripes;
-    &__toggle{
-      svg{
-        color: $light-stripes;
-      }
-    }
-  }
-
-  .language-html{
-    .el{
-      color: #2f6f9f;
-    }
-    .attr{
-      color: #4f9fcf;
-
-      &-val{
-        color: #d44950;
-      }
-    }
-  }
-
-  @media screen and (min-width: 768px){
-    h1{
-      font-size: 2.4rem;
-    }
-  }
+}
