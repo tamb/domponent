@@ -10,12 +10,12 @@ const {
   updateDOM
 } = require("./utils");
 
-test("No keys match ", () => {
+test("No keys match in a set of 100k", () => {
   const keys = new Set();
-  for (let i = 0; i < 10000; i++) {
+  for (let i = 0; i < 100000; i++) {
     keys.add(createKey());
   }
-  expect(keys.size).toBe(10000);
+  expect(keys.size).toBe(100000);
 });
 
 test("String with pipe to trim and split", () => {
