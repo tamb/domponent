@@ -1,5 +1,7 @@
 /node_modules
 .cache
-/example/.cache
+/examples/.cache
 /dist
 /**/node_modules
+/**/dist
+*tgz

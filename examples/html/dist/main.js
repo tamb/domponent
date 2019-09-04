@@ -50,7 +50,11 @@
       return Object.prototype.hasOwnProperty.call(t, e);
     }),
     (s.p = ""),
+<<<<<<< HEAD
     s((s.s = 5));
+=======
+    s((s.s = 2));
+>>>>>>> rebase to master
 })([
   function(t, e, s) {
     !(function(t) {
@@ -87,6 +91,7 @@
         t.textContent = e;
       }
       function a(t) {
+<<<<<<< HEAD
         return t.trim().split(s.KEY_VALUE);
       }
       function r(t) {
@@ -98,11 +103,40 @@
       function p() {
         (this.$b = []),
           h.call(this, `[data-${this.$app.$datasets.action}]`).forEach(t => {
+=======
+        return t
+          .trim()
+          .split(s.KEY_VALUE)
+          .map(t => t.trim());
+      }
+      function r(t) {
+        return t
+          .trim()
+          .split(s.MULTIPLE_VALUES)
+          .map(t => t.trim());
+      }
+      function c(t) {
+        return t
+          .trim()
+          .split(s.FROM_COMPONENT)
+          .map(t => t.trim());
+      }
+      function l() {
+        (this.$b = []),
+          d.call(this, `[data-${this.$app.$datasets.action}]`).forEach(t => {
+>>>>>>> rebase to master
             const e = r(t.getAttribute(`data-${this.$app.$datasets.action}`)),
               o = { el: t, actions: [] };
             e.forEach(e => {
               const i = (function(t) {
+<<<<<<< HEAD
                   return e.trim().split(s.METHOD_CALL);
+=======
+                  return e
+                    .trim()
+                    .split(s.METHOD_CALL)
+                    .map(t => t.trim());
+>>>>>>> rebase to master
                 })(),
                 a = i[0],
                 r = c(i[1]);
@@ -110,7 +144,14 @@
                 let e = {};
                 if (r[2]) {
                   const t = (function(t) {
+<<<<<<< HEAD
                     return r[2].trim().split(s.LIST);
+=======
+                    return r[2]
+                      .trim()
+                      .split(s.LIST)
+                      .map(t => t.trim());
+>>>>>>> rebase to master
                   })();
                   for (let s in n) e[n[s]] = t.includes(n[s]);
                 }
@@ -122,7 +163,11 @@
               this.$b.push(o);
           }, this);
       }
+<<<<<<< HEAD
       function l(t) {
+=======
+      function p(t) {
+>>>>>>> rebase to master
         this.$d.forEach(e => {
           (function(t) {
             this.propsWillUpdate();
@@ -141,28 +186,48 @@
           }.call(this.$app.registeredComponents[e], t));
         });
       }
+<<<<<<< HEAD
       function d() {
+=======
+      function h() {
+>>>>>>> rebase to master
         const t = this.$root.getAttribute(`data-${this.$app.$datasets.props}`);
         if (t) {
           const e = {};
           return (
             r(t).forEach(t => {
               const n = (function(t) {
+<<<<<<< HEAD
                   return t.trim().split(s.INHERITS_FROM);
+=======
+                  return t
+                    .trim()
+                    .split(s.INHERITS_FROM)
+                    .map(t => t.trim());
+>>>>>>> rebase to master
                 })(t),
                 o = a(n[1]),
                 i = n[0],
                 r = this.$app.registeredComponents[o[0]],
                 c = o[1];
               r.$d.add(this.$key);
+<<<<<<< HEAD
               const p = [
                 ...h.call(this, `[${this.$app.$datasets.bind}^="props:${i}"]`)
+=======
+              const l = [
+                ...d.call(this, `[${this.$app.$datasets.bind}^="props:${i}"]`)
+>>>>>>> rebase to master
               ];
               (this.props[i] = r.state[c]),
                 (e[i] = {
                   parentComponent: r,
                   parentComponentKey: c,
+<<<<<<< HEAD
                   els: p.length > 0 ? p : null
+=======
+                  els: l.length > 0 ? l : null
+>>>>>>> rebase to master
                 });
             }, this),
             e
@@ -170,7 +235,11 @@
         }
         return null;
       }
+<<<<<<< HEAD
       function h(t) {
+=======
+      function d(t) {
+>>>>>>> rebase to master
         return [...this.$root.querySelectorAll(t)].filter(
           t =>
             t.closest(
@@ -189,14 +258,23 @@
             (this.props = {}),
             (this.$d = new Set()),
             function() {
+<<<<<<< HEAD
               h.call(this, `[data-${this.$app.$datasets.ref}]`).forEach(t => {
+=======
+              d.call(this, `[data-${this.$app.$datasets.ref}]`).forEach(t => {
+>>>>>>> rebase to master
                 this[
                   c(t.getAttribute(`data-${this.$app.$datasets.ref}`))[1]
                 ] = t;
               });
             }.call(this),
+<<<<<<< HEAD
             (this.$p = d.call(this)),
             p.call(this),
+=======
+            (this.$p = h.call(this)),
+            l.call(this),
+>>>>>>> rebase to master
             !e && this.connected();
         }
         connecting() {}
@@ -210,7 +288,11 @@
           super(t, !0),
             (this.state = {}),
             (this.$s = function() {
+<<<<<<< HEAD
               const t = h.call(
+=======
+              const t = d.call(
+>>>>>>> rebase to master
                 this,
                 `[data-${this.$app.$datasets.bind}^="state:"]`
               );
@@ -254,7 +336,11 @@
                   i(s.el, t[e]);
                 }));
           var n;
+<<<<<<< HEAD
           this.$d.size > 0 && l.call(this, s),
+=======
+          this.$d.size > 0 && p.call(this, s),
+>>>>>>> rebase to master
             (n = e) && n(),
             this.stateDidUpdate();
         }
@@ -324,17 +410,23 @@
     })(e);
   },
   function(t, e, s) {},
+<<<<<<< HEAD
   function(t, e, s) {},
   function(t, e, s) {},
   function(t, e, s) {},
+=======
+>>>>>>> rebase to master
   function(t, e, s) {
     "use strict";
     s.r(e);
     var n = s(0);
     s(1);
+<<<<<<< HEAD
     s(2);
     s(3);
     s(4);
+=======
+>>>>>>> rebase to master
     feather.replace(), console.time("appCreation");
     const o = new n.Init({
       selector: document.getElementById("root"),
@@ -437,9 +529,21 @@
         },
         Navigation: class extends n.Component {
           constructor(t) {
+<<<<<<< HEAD
             super(t),
               (this.styleID = "collapse-comp-styles"),
               (this.changeNav = this.changeNav.bind(this));
+=======
+            if (
+              (super(t),
+              (this.styleID = "collapse-comp-styles"),
+              (this.changeNav = this.changeNav.bind(this)),
+              !document.getElementById(this.styleID))
+            ) {
+              const t = `<style id="${this.styleID}">\n            .fold {\n              display: block;\n              max-height: 0px;\n              overflow: hidden;\n              transition: max-height .5s cubic-bezier(0, 1, 0, 1);\n            }\n            .fold.show {\n                max-height: 99em;\n                transition: max-height .5s ease-in-out;\n              }\n        </style>`;
+              document.head.insertAdjacentHTML("beforeend", t);
+            }
+>>>>>>> rebase to master
           }
           toggle() {
             this.setState({ opened: !this.state.opened }, this.changeNav);
@@ -456,7 +560,18 @@
         },
         ShowCode: class extends n.Exponent {
           constructor(t) {
+<<<<<<< HEAD
             super(t);
+=======
+            if (
+              (super(t),
+              (this.styleID = "collapse-comp-styles"),
+              !document.getElementById(this.styleID))
+            ) {
+              const t = `<style id="${this.styleID}">\n                  .fold {\n                    display: block;\n                    max-height: 0px;\n                    overflow: hidden;\n                    transition: max-height .5s cubic-bezier(0, 1, 0, 1);\n                  }\n                  .fold.show {\n                      max-height: 99em;\n                      transition: max-height .5s ease-in-out;\n                    }\n              </style>`;
+              document.head.insertAdjacentHTML("beforeend", t);
+            }
+>>>>>>> rebase to master
           }
           toggle() {
             console.log(this), this.foldable.classList.toggle("show");
