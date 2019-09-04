@@ -1,0 +1,6 @@
+@import "../colors";
+
+[data-component="Counter"].even {
+  background-color: $light-stripes;
+  color: $dark;
+}

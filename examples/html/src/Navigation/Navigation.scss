@@ -1,0 +1,56 @@
+@import "../_colors";
+
+.fold {
+  display: block;
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+  &.show {
+    max-height: 99em;
+    transition: max-height 0.5s ease-in-out;
+  }
+}
+
+.custom-nav {
+  background-color: $dark;
+  color: $light-stripes;
+
+  &__toggle {
+    svg {
+      color: $light-stripes;
+    }
+  }
+
+  &__code,
+  &__code.fold {
+    text-align: left;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  }
+
+  &__body {
+    position: relative;
+    text-align: center;
+    figure {
+      text-align: center;
+      position: relative;
+      width: fit-content;
+      display: inline-block;
+      .code-toggle-btn {
+        background: $light-stripes;
+        border: 3px solid $body;
+        svg {
+          color: $dark;
+        }
+      }
+    }
+
+    img {
+      max-width: 100%;
+    }
+  }
+  .btn {
+    margin-bottom: 0;
+  }
+}
