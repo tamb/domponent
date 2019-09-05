@@ -13,7 +13,6 @@
   max-height: 99em;
   transition: max-height 0.5s ease-in-out;
 }
-
 .custom-nav {
   background-color: #2a2d34;
   color: #fefefe;
@@ -69,7 +68,6 @@
     transform: rotate(0deg) scale(1);
   }
 }
-
 .fold {
   display: block;
   max-height: 0px;
@@ -80,7 +78,6 @@
   max-height: 99em;
   transition: max-height 0.5s ease-in-out;
 }
-
 .code-toggle-btn {
   animation: shake 15s ease-in-out;
   animation-delay: 2s;
@@ -94,11 +91,9 @@
   color: #fefefe;
   animation: jingle 5s infinite;
 }
-
 .language-html .el {
   color: #2f6f9f;
 }
-
 .language-html .attr {
   color: #4f9fcf;
 }
@@ -110,37 +105,30 @@ body {
   background-color: #009ddc;
   color: #2a2d34;
 }
-
 .dark {
   color: #2a2d34;
 }
-
 .btn {
   margin-bottom: 0.5rem;
 }
-
 .card {
   background-color: #5e5e61;
-  color: #ffffff;
+  color: #fff;
   margin-bottom: 1rem;
   position: relative;
 }
-
 .show-code {
   background-color: #fefefe;
 }
 .show-code svg {
   color: #5e5e61;
 }
-
 header {
   margin: 1rem 0;
 }
-
 h1 {
   font-size: 1.8rem;
 }
-
 code {
   background-color: #fefefe;
   padding: 0.5rem;
@@ -148,7 +136,6 @@ code {
   margin-bottom: 0.5rem;
   overflow: scroll;
 }
-
 .github-link {
   position: fixed;
   bottom: 0.5rem;
@@ -162,11 +149,8 @@ code {
   border-radius: 50%;
   box-shadow: -2px 3px 5px black;
 }
-
 @media screen and (min-width: 768px) {
   h1 {
     font-size: 2.4rem;
   }
 }
-
-/*# sourceMappingURL=main.css.map*/
