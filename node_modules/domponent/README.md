@@ -99,13 +99,11 @@ It's not meant to handle routing or entire application state.  It's meant to tak
 ### Demo 🤖
 [https://tamb.github.io/domponent/](https://tamb.github.io/domponent/)
 
-__Download__
+__Local Demo__ 😉
 1. `git clone` this repo
-2. `npm install`
-
-__Basic HTML__ 😉
-1. _make sure you have FireFox_ 🔥🦊🔥
-2. `npm run build:html-dev` or `npm run build:html-prod`
+2. `npm install` 
+3. _make sure you have FireFox_ 🔥🦊🔥
+4. `npm run build:html-dev` or `npm run build:html-prod`
 
 <!-- __Pug Syntax Example__ 🐶
 coming soon...

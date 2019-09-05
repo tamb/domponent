@@ -51,31 +51,37 @@
           <figcaption class="text-center text-bold">
             Domponent rocks!
           </figcaption>
-          <!-- <button
+          <button
             class="code-toggle-btn btn"
             data-action="click->ShowCode.toggle"
           >
             <i data-feather="code"></i>
-          </button> -->
+          </button>
         </figure>
-        <!-- prettier-ignore-start -->
-
-        <pre data-ref="ShowCode.foldable" class="fold">
-                            <code class="language-html">
-                            &#x3C;!-- Counter -->
-                            &#x3C;!-- css classes have been removed-->
-                            <span class="el">&#x3C;div</span> <span class="attr">data-component=</span><span class="attr-val">"Counter"</span><span class="el">></span>
-                              <span class="el">&#x3C;p</span> <span class="attr">data-bind=</span><span class="attr-val">"state:Counter.count"</span><span class="el">></span>0<span class="el">&#x3C;/p></span>
-                              <span class="el">&#x3C;button</span> <span class="attr">data-action=</span><span class="attr-val">"click->Counter.increment"</span><span class="el">></span>
-                                +1
-                              <span class="el">&#x3C;/button></span>
-                              <span class="el">&#x3C;button</span> <span class="attr">data-action=</span><span class="attr-val">"click->Counter.decrement"</span><span class="el">></span>
-                                -1
-                              <span class="el">&#x3C;/button></span>
-                            <span class="el">&#x3C;/div></span>
-                            </code>
-                            </pre>
-        <!-- prettier-ignore-end -->
+        <div class="custom-nav__code fold" data-ref="ShowCode.foldable">
+          <!-- prettier-ignore-start -->
+          <pre>
+<code class="language-html">
+&#x3C;!-- Navigation -->
+&#x3C;!-- css classes have been removed -->
+            
+<span class="el">&#x3C;div </span><span class="attr">data-component=</span><span class="attr-val">"Navigation"</span> <span class="attr">data-state=</span><span class="attr-val">'{"opened":false}'</span><span class="el">></span>
+  <span class="el">&#x3C;button </span><span class="attr">data-action=</span><span class="attr-val">"click->Navigation.toggle"</span><span class="el">></span>
+    <span class="el">&#x3C;span </span><span class="attr">data-ref=</span><span class="attr-val">"open"</span><span class="el">></span>
+      <span class="el">&#x3C;i></span>open icon<span class="el">&#x3C;/i></span>
+    <span class="el">&#x3C;/span></span>
+    <span class="el">&#x3C;span </span><span class="attr">data-ref=</span><span class="attr-val">"close"</span><span class="el">></span>
+      <span class="el">&#x3C;i></span>close icon<span class="el">&#x3C;/i></span>
+    <span class="el">&#x3C;/span></span>
+  <span class="el">&#x3C;/button></span>
+  <span class="el">&#x3C;div </span><span class="attr">data-ref=</span><span class="attr-val">"menu"</span><span class="el">></span>
+    &#x3C;!-- That Regular Show image you see -->
+  <span class="el">&#x3C;/div></span>
+<span class="el">&#x3C;/div></span>
+</code>
+</pre>
+          <!-- prettier-ignore-end -->
+        </div>
       </div>
     </div>
 
@@ -127,11 +133,13 @@
               </button>
               <!-- prettier-ignore-start -->
 
-              <pre data-ref="ShowCode.foldable" class="fold">
-<code class="language-html">
+              <pre
+                data-ref="ShowCode.foldable"
+                class="fold"
+              > <code class="language-html">
 &#x3C;!-- Counter -->
-&#x3C;!-- css classes have been removed-->
-<span class="el">&#x3C;div</span> <span class="attr">data-component=</span><span class="attr-val">"Counter"</span><span class="el">></span>
+&#x3C;!-- css classes have been removed -->
+<span class="el">&#x3C;div</span> <span class="attr">data-component=</span><span class="attr-val">"Counter"</span> <span class="attr">data-key=</span><span class="attr-val">"parentCounter"</span><span class="el">></span>
   <span class="el">&#x3C;p</span> <span class="attr">data-bind=</span><span class="attr-val">"state:Counter.count"</span><span class="el">></span>0<span class="el">&#x3C;/p></span>
   <span class="el">&#x3C;button</span> <span class="attr">data-action=</span><span class="attr-val">"click->Counter.increment"</span><span class="el">></span>
     +1
@@ -140,8 +148,7 @@
     -1
   <span class="el">&#x3C;/button></span>
 <span class="el">&#x3C;/div></span>
-</code>
-</pre>
+</code></pre>
               <!-- prettier-ignore-end -->
               <!-- Nested Counter -->
               <div
@@ -277,7 +284,7 @@ Regular Show</textarea
                   <pre data-ref="ShowCode.foldable" class="fold">
 <code class="language-html">
 &#x3C;!-- Counter -->
-&#x3C;!-- css classes have been removed-->
+&#x3C;!-- css classes have been removed -->
 <span class="el">&#x3C;div</span> <span class="attr">data-component=</span><span class="attr-val">"Counter"</span><span class="el">></span>
 <span class="el">&#x3C;p</span> <span class="attr">data-bind=</span><span class="attr-val">"state:Counter.count"</span><span class="el">></span>0<span class="el">&#x3C;/p></span>
 <span class="el">&#x3C;button</span> <span class="attr">data-action=</span><span class="attr-val">"click->Counter.increment"</span><span class="el">></span>
@@ -313,7 +320,7 @@ Regular Show</textarea
                     <pre data-ref="ShowCode.foldable" class="fold">
     <code class="language-html">
 &#x3C;!-- Timer -->
-&#x3C;!-- css classes have been removed-->
+&#x3C;!-- css classes have been removed -->
 <span class="el">&#x3C;div</span> <span class="attr">data-component=</span><span class="attr-val">"Timer"</span><span class="el">></span>
   <span class="el">&#x3C;span</span> <span class="attr">data-bind=</span><span class="attr-val">"state:Timer.hours"</span><span class="el">></span>n/a<span class="el">&#x3C;/span>:</span>
   <span class="el">&#x3C;span</span> <span class="attr">data-bind=</span><span class="attr-val">"state:Timer.minutes"</span><span class="el">></span>n/a<span class="el">&#x3C;/span>:</span>
