@@ -184,16 +184,40 @@
 
                   <div
                     class="card"
-                    data-props="isTopCounterEven<-parentCounter:isEven"
+                    data-props="isTopCounterEven<-parentCounter:isEven|topCount<-parentCounter:count"
                     data-component="DisplayAnything"
                   >
-                    <div class="card-body">
-                      <p>This is a child exponent. There is not state.</p>
+                    <div class="card-body" data-component="ShowCode">
+                      <button
+                        class="code-toggle-btn btn"
+                        data-action="click->ShowCode.toggle"
+                      >
+                        <i data-feather="code"></i>
+                      </button>
+                      <p>This is a child Exponent. There is no state.</p>
                       <p>props:</p>
 
                       <pre>
-            <code data-ref="DisplayAnything.objects"></code>
-          </pre>
+                        <code class="code" data-ref="DisplayAnything.objects"></code>
+                      </pre>
+                      <!-- prettier-ignore-start -->
+                      <pre><code class="language-html fold" data-ref="ShowCode.foldable">
+&#x3C;!-- DisplayAnthing -->
+&#x3C;!-- css classes have been removed -->
+                         
+  <span class="el">&#x3C;div </span><span class="attr">data-props=</span><span class="attr-val">"isTopCounterEven&#x3C;-parentCounter:isEven|topCount<-parentCounter:count"</span> 
+    <span class="attr">data-component=</span><span class="attr-val">"DisplayAnything"</span><span class="el">></span>
+    <span class="el">&#x3C;p></span>
+      This is a child Exponent. There is no state.
+    <span class="el">&#x3C;/p></span>
+    <span class="el">&#x3C;p></span>props:<span class="el">&#x3C;/p></span>
+    <span class="el">&#x3C;pre></span>
+      <span class="el">&#x3C;code</span> <span class="attr">data-ref=</span><span class="attr-val">"DisplayAnything.objects"</span><span class="el">></span>
+      <span class="el">&#x3C;/code></span>
+    <span class="el">&#x3C;/pre></span>
+  <span class="el">&#x3C;/div></span>
+</code></pre>
+                      <!-- prettier-ignore-end -->
                     </div>
                   </div>
 
@@ -347,7 +371,7 @@ Regular Show</textarea
                   <p>WHOOOOOOOOOOOA!</p>
                   <p>props:</p>
                   <pre>
-                      <code data-ref="DisplayAnything.objects"></code>
+                      <code class="code" data-ref="DisplayAnything.objects"></code>
                     </pre>
                 </div>
               </div>

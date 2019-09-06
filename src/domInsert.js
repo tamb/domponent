@@ -33,7 +33,7 @@ export default function(id) {
         <p>props:</p>
         
           <pre>
-            <code data-ref="DisplayAnything.objects">
+            <code class="code" data-ref="DisplayAnything.objects">
             </code>  
           </pre>
         
