@@ -132,11 +132,39 @@
                 <i aria-label="add" data-feather="plus-circle"></i>
               </button>
               <!-- prettier-ignore-start -->
-
-              <pre
+              <div
                 data-ref="ShowCode.foldable"
-                class="fold"
-              > <code class="language-html">
+                data-component="Tabs"
+                data-tab-length="2"
+                class="tabs fold"
+                data-state='{"activeTab": 0}'
+              >
+                <ol class="tabs__list">
+                  <li>
+                    <button
+                      class="tabs__tab"
+                      data-ref="Tabs.tab0"
+                      data-action="click->Tabs.changeActiveTab"
+                      data-tab-number="0"
+                    >
+                      HTML
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      class="tabs__tab"
+                      data-ref="Tabs.tab1"
+                      data-action="click->Tabs.changeActiveTab"
+                      data-tab-number="1"
+                    >
+                      JS
+                    </button>
+                  </li>
+                </ol>
+
+                <div data-ref="Tabs.tabPane0" class="tabs__tab-pane">
+                  <!-- prettier-ignore-start -->
+                  <pre><code class="language-html">
 &#x3C;!-- Counter -->
 &#x3C;!-- css classes have been removed -->
 <span class="el">&#x3C;div</span> <span class="attr">data-component=</span><span class="attr-val">"Counter"</span> <span class="attr">data-key=</span><span class="attr-val">"parentCounter"</span><span class="el">></span>
@@ -145,11 +173,62 @@
     +1
   <span class="el">&#x3C;/button></span>
   <span class="el">&#x3C;button</span> <span class="attr">data-action=</span><span class="attr-val">"click->Counter.decrement"</span><span class="el">></span>
-    -1
+  -1
   <span class="el">&#x3C;/button></span>
 <span class="el">&#x3C;/div></span>
 </code></pre>
-              <!-- prettier-ignore-end -->
+                  <!-- prettier-ignore-end -->
+                </div>
+                <div data-ref="Tabs.tabPane1" class="tabs__tab-pane">
+                  <!-- prettier-ignore-start -->
+                  <pre>
+  <code>
+import "./Counter.scss";
+
+export default class Counter extends Component {
+  constructor(conf) {
+    super(conf);
+    this.state = {
+      count: parseInt(this.state.count) || 0,
+      isEven: this.state.isEven
+    };
+    this.setState(this.state);
+    this.setEven();
+  }
+      
+  increment(e) {
+    const newState = {};
+    const largerCount = parseInt(this.state.count + 1, 10);
+    newState.count = largerCount;
+    newState.isEven = largerCount % 2 === 0;
+    this.setState(newState, () => console.log("Single Callback", this));
+  }
+      
+  decrement(e) {
+    const newState = {};
+    const fewerCount = parseInt(this.state.count - 1, 10);
+    newState.count = fewerCount;
+    newState.isEven = fewerCount % 2 === 0;
+    this.setState(newState);
+  }
+      
+  stateDidUpdate() {
+    this.setEven();
+  }
+      
+  setEven() {
+    if (this.state.isEven) {
+      this.$root.classList.add("even");
+    } else {
+      this.$root.classList.remove("even");
+    }
+  }
+}
+  </code>
+</pre>
+                  <!-- prettier-ignore-end -->
+                </div>
+              </div>
               <!-- Nested Counter -->
               <div
                 data-component="Counter"
