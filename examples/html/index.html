@@ -187,13 +187,37 @@
                     data-props="isTopCounterEven<-parentCounter:isEven"
                     data-component="DisplayAnything"
                   >
-                    <div class="card-body">
-                      <p>This is a child exponent. There is not state.</p>
+                    <div class="card-body" data-component="ShowCode">
+                      <button
+                        class="code-toggle-btn btn"
+                        data-action="click->ShowCode.toggle"
+                      >
+                        <i data-feather="code"></i>
+                      </button>
+                      <p>This is a child exponent. There is no state.</p>
                       <p>props:</p>
 
                       <pre>
-            <code data-ref="DisplayAnything.objects"></code>
-          </pre>
+                        <code data-ref="DisplayAnything.objects"></code>
+                      </pre>
+                      <!-- prettier-ignore-start -->
+                      <pre><code class="language-html">
+&#x3C;!-- DisplayAnthing -->
+&#x3C;!-- css classes have been removed -->
+                         
+  &#x3C;div data-props="theSecond&#x3C;-Time:seconds|theMinute&#x3C;-Time:minutes|theHour&#x3C;-Time:hours"
+            data-component="DisplayAnything">
+    &#x3C;p>
+      Inherits props from Timer, but isn't nested??!
+    &#x3C;/p>
+                            &#x3C;p>WHOOOOOOOOOOOA!&#x3C;/p>
+                            &#x3C;p>props:&#x3C;/p>
+                            &#x3C;code>
+                              &#x3C;pre data-ref="propObjects">&#x3C;/pre>
+                            &#x3C;/code>
+                          &#x3C;/div>
+                          </code></pre>
+                      <!-- prettier-ignore-end -->
                     </div>
                   </div>
 
