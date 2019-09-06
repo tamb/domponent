@@ -225,7 +225,6 @@
       try {
         /* END.DEV */
         this.$b.forEach(binding => {
-          console.log("binding", binding);
           binding.actions.forEach(action => {
             binding.el.removeEventListener(
               action.event,
