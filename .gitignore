@@ -2,6 +2,6 @@
 .cache
 /examples/.cache
 /**/node_modules
-/**/dist
+/examples/**/dist
 examples/html/dist
 *tgz
