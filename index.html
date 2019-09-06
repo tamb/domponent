@@ -61,7 +61,7 @@
         <div class="custom-nav__code fold" data-ref="ShowCode.foldable">
           <!-- prettier-ignore-start -->
           <pre>
-<code class="language-html">
+<code class="language">
 &#x3C;!-- Navigation -->
 &#x3C;!-- css classes have been removed -->
             
@@ -162,9 +162,9 @@
                   </li>
                 </ol>
 
+                <!-- prettier-ignore-start -->
                 <div data-ref="Tabs.tabPane0" class="tabs__tab-pane">
-                  <!-- prettier-ignore-start -->
-                  <pre><code class="language-html">
+                  <pre><code class="language">
 &#x3C;!-- Counter -->
 &#x3C;!-- css classes have been removed -->
 <span class="el">&#x3C;div</span> <span class="attr">data-component=</span><span class="attr-val">"Counter"</span> <span class="attr">data-key=</span><span class="attr-val">"parentCounter"</span><span class="el">></span>
@@ -177,12 +177,10 @@
   <span class="el">&#x3C;/button></span>
 <span class="el">&#x3C;/div></span>
 </code></pre>
-                  <!-- prettier-ignore-end -->
                 </div>
                 <div data-ref="Tabs.tabPane1" class="tabs__tab-pane">
-                  <!-- prettier-ignore-start -->
-                  <pre>
-  <code>
+                  <pre><code class="language">
+import { Component } from 'domponent';
 import "./Counter.scss";
 
 export default class Counter extends Component {
@@ -224,8 +222,7 @@ export default class Counter extends Component {
     }
   }
 }
-  </code>
-</pre>
+</code></pre>
                   <!-- prettier-ignore-end -->
                 </div>
               </div>
@@ -279,24 +276,78 @@ export default class Counter extends Component {
                       <pre>
                         <code class="code" data-ref="DisplayAnything.objects"></code>
                       </pre>
-                      <!-- prettier-ignore-start -->
-                      <pre><code class="language-html fold" data-ref="ShowCode.foldable">
+                      <div
+                        data-component="Tabs"
+                        data-ref="ShowCode.foldable"
+                        class="tabs fold"
+                        data-state='{"activeTab": 0}'
+                        data-tab-length="2"
+                      >
+                        <ol class="tabs__list">
+                          <li>
+                            <button
+                              class="tabs__tab"
+                              data-ref="Tabs.tab0"
+                              data-action="click->Tabs.changeActiveTab"
+                              data-tab-number="0"
+                            >
+                              HTML
+                            </button>
+                          </li>
+                          <li>
+                            <button
+                              class="tabs__tab"
+                              data-ref="Tabs.tab1"
+                              data-action="click->Tabs.changeActiveTab"
+                              data-tab-number="1"
+                            >
+                              JS
+                            </button>
+                          </li>
+                        </ol>
+                        <!-- prettier-ignore-start -->
+                        <div data-ref="Tabs.tabPane0" class="tabs__tab-pane">
+                          <pre><code class="language">
 &#x3C;!-- DisplayAnthing -->
 &#x3C;!-- css classes have been removed -->
-                         
-  <span class="el">&#x3C;div </span><span class="attr">data-props=</span><span class="attr-val">"isTopCounterEven&#x3C;-parentCounter:isEven|topCount<-parentCounter:count"</span> 
-    <span class="attr">data-component=</span><span class="attr-val">"DisplayAnything"</span><span class="el">></span>
+                                 
+<span class="el">&#x3C;div </span><span class="attr">data-props=</span><span class="attr-val">"isTopCounterEven&#x3C;-parentCounter:isEven|topCount<-parentCounter:count"</span> 
+  <span class="attr">data-component=</span><span class="attr-val">"DisplayAnything"</span><span class="el">></span>
     <span class="el">&#x3C;p></span>
       This is a child Exponent. There is no state.
     <span class="el">&#x3C;/p></span>
-    <span class="el">&#x3C;p></span>props:<span class="el">&#x3C;/p></span>
-    <span class="el">&#x3C;pre></span>
-      <span class="el">&#x3C;code</span> <span class="attr">data-ref=</span><span class="attr-val">"DisplayAnything.objects"</span><span class="el">></span>
-      <span class="el">&#x3C;/code></span>
-    <span class="el">&#x3C;/pre></span>
-  <span class="el">&#x3C;/div></span>
+  <span class="el">&#x3C;p></span>props:<span class="el">&#x3C;/p></span>
+  <span class="el">&#x3C;pre></span>
+    <span class="el">&#x3C;code</span> <span class="attr">data-ref=</span><span class="attr-val">"DisplayAnything.objects"</span><span class="el">></span>
+    <span class="el">&#x3C;/code></span>
+  <span class="el">&#x3C;/pre></span>
+<span class="el">&#x3C;/div></span>
 </code></pre>
-                      <!-- prettier-ignore-end -->
+                        </div>
+
+                        <div data-ref="Tabs.tabPane1" class="tabs__tab-pane">
+                          <pre><code class="language">
+import { Exponent } from "domponent";
+import "./DisplayAnything.scss";
+    
+export default class DisplayAnything extends Exponent {
+  constructor(el) {
+    super(el);
+    this.displayProps();
+  }
+    
+  propsDidUpdate() {
+    this.displayProps();
+  }
+    
+  displayProps() {
+    this.objects.innerHTML = JSON.stringify(this.props, null, 1);
+  }
+}
+</code></pre>
+                        </div>
+                        <!-- prettier-ignore-end -->
+                      </div>
                     </div>
                   </div>
 
@@ -350,12 +401,12 @@ export default class Counter extends Component {
                 data-state='{"show":"Regular Show"}'
               >
                 <div data-component="ShowCode" class="card-body">
-                  <!-- <button
+                  <button
                     class="code-toggle-btn btn"
                     data-action="click->ShowCode.toggle"
                   >
                     <i data-feather="code"></i>
-                  </button> -->
+                  </button>
 
                   <strong class="card-title">What's Your Favorite Show?</strong>
 
@@ -382,24 +433,51 @@ export default class Counter extends Component {
 Regular Show</textarea
                     >
                   </div>
+                  <div
+                    data-component="Tabs"
+                    data-state='{"activeTab": 0}'
+                    class="tabs"
+                    data-tab-length="2"
+                  >
+                    <div data-ref="ShowCode.foldable" class="fold">
+                      <ol class="tabs__list">
+                        <li>
+                          <button
+                            class="tabs__tab"
+                            data-ref="Tabs.tab0"
+                            data-action="click->Tabs.changeActiveTab"
+                            data-tab-number="0"
+                          >
+                            HTML
+                          </button>
+                        </li>
+                        <li>
+                          <button
+                            class="tabs__tab"
+                            data-ref="Tabs.tab1"
+                            data-action="click->Tabs.changeActiveTab"
+                            data-tab-number="1"
+                          >
+                            JS
+                          </button>
+                        </li>
+                      </ol>
 
-                  <!-- prettier-ignore-start -->
-                  <pre data-ref="ShowCode.foldable" class="fold">
-<code class="language-html">
-&#x3C;!-- Counter -->
-&#x3C;!-- css classes have been removed -->
-<span class="el">&#x3C;div</span> <span class="attr">data-component=</span><span class="attr-val">"Counter"</span><span class="el">></span>
-<span class="el">&#x3C;p</span> <span class="attr">data-bind=</span><span class="attr-val">"state:Counter.count"</span><span class="el">></span>0<span class="el">&#x3C;/p></span>
-<span class="el">&#x3C;button</span> <span class="attr">data-action=</span><span class="attr-val">"click->Counter.increment"</span><span class="el">></span>
- +1
-<span class="el">&#x3C;/button></span>
-<span class="el">&#x3C;button</span> <span class="attr">data-action=</span><span class="attr-val">"click->Counter.decrement"</span><span class="el">></span>
- -1
- <span class="el">&#x3C;/button></span>
- <span class="el">&#x3C;/div></span>
- </code>
- </pre>
-                  <!-- prettier-ignore-end -->
+                      <!-- prettier-ignore-start -->
+                      <div class="tabs__tab-pane" data-ref="Tabs.tabPane0">
+                        <pre><code class="language">
+  HTML Soon
+</code></pre>
+                      </div>
+                      <div class="tabs__tab-pane" data-ref="Tabs.tabPane1">
+                        <pre><code class="language">
+  JS Soon
+</code></pre>
+                      </div>
+
+                      <!-- prettier-ignore-end -->
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -421,7 +499,7 @@ Regular Show</textarea
                       <i data-feather="code"></i>
                     </button>
                     <pre data-ref="ShowCode.foldable" class="fold">
-    <code class="language-html">
+    <code class="language">
 &#x3C;!-- Timer -->
 &#x3C;!-- css classes have been removed -->
 <span class="el">&#x3C;div</span> <span class="attr">data-component=</span><span class="attr-val">"Timer"</span><span class="el">></span>

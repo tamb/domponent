@@ -23,7 +23,7 @@
 
     position: relative;
     z-index: 100;
-    margin-bottom: -2px;
+    margin-bottom: -1px;
     &.open,
     &.open:hover,
     &.open:focus {
@@ -37,8 +37,5 @@
     &.open {
       display: block;
     }
-  }
-  pre {
-    background-color: $eye;
   }
 }
