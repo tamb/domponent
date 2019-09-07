@@ -68,3 +68,18 @@
       &#x3C;/code>
     &#x3C;/div>
     </code></pre>
+
+<pre><code class="language-html">&#x3C;div data-component="FavoriteShow" data-state='{"show":"Regular Show"}'>
+      &#x3C;strong class="card-title">What's Your Favorite Show?&#x3C;/strong>
+      &#x3C;label for="controlled">
+        controlled from below
+      &#x3C;/label>
+      &#x3C;textarea data-ref="FavoriteShow.secondInput">&#x3C;/textarea>
+      &#x3C;code data-bind="state:FavoriteShow.show">&#x3C;/code>
+      &#x3C;label for="show">
+        Controls the text and input above
+      &#x3C;/label>
+      &#x3C;textarea data-action="input->FavoriteShow.handleInput">Regular Show&#x3C;/textarea>
+    &#x3C;/div>
+    
+    </code></pre>

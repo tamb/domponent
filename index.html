@@ -466,15 +466,41 @@ Regular Show</textarea
                       <!-- prettier-ignore-start -->
                       <div class="tabs__tab-pane" data-ref="Tabs.tabPane0">
                         <pre><code class="language">
-  HTML Soon
-</code></pre>
-                      </div>
-                      <div class="tabs__tab-pane" data-ref="Tabs.tabPane1">
-                        <pre><code class="language">
-  JS Soon
+
+<span class="el">&#x3C;div </span><span class="attr">data-component=</span><span class="attr-val">"FavoriteShow"</span> <span class="attr">data-state=</span><span class="attr-val">'{"show":"Regular Show"}'</span><span class="el">></span>
+  <span class="el">&#x3C;strong></span>What's Your Favorite Show?<span class="el">&#x3C;/strong></span>
+  <span class="el">  &#x3C;</span><span class="el">label></span>
+    controlled from below
+  <span class="el">&#x3C;/label></span>
+  <span class="el">&#x3C;textarea </span><span class="attr">data-ref=</span><span class="attr-val">"FavoriteShow.secondInput"</span><span class="el">>&#x3C;/textarea></span>
+  <span class="el">&#x3C;code </span><span class="attr">data-bind=</span><span class="attr-val">"state:FavoriteShow.show"</span><span class="el">>&#x3C;/code></span>
+  <span class="el">&#x3C;label></span>
+    Controls the text and input above
+  <span class="el">&#x3C;/label></span>
+  <span class="el">&#x3C;textarea </span><span class="attr">data-action=</span><span class="attr-val">"input->FavoriteShow.handleInput"</span><span class="el">></span>Regular Show<span class="el">&#x3C;/textarea></span>
+<span class="el">&#x3C;/div> </span>                  
 </code></pre>
                       </div>
 
+                      <div class="tabs__tab-pane" data-ref="Tabs.tabPane1">
+                        <pre><code class="language">
+import { Component } from "domponent";
+
+export default class FavoriteShow extends Component {
+  constructor(conf) {
+    super(conf);      
+  }
+    
+  handleInput(event) {
+    this.setState({ show: event.target.value });
+  }
+    
+  stateDidUpdate() {
+    this.secondInput.value = this.state.show;
+  }
+}
+</code></pre>
+                      </div>
                       <!-- prettier-ignore-end -->
                     </div>
                   </div>

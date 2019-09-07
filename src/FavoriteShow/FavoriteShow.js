@@ -9,7 +9,6 @@ export default class FavoriteShow extends Component {
   }
 
   handleInput(event) {
-    console.log(event)
     this.setState({ show: event.target.value });
   }
 
