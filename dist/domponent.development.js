@@ -165,9 +165,12 @@
         return $s;
       }
       /* START.DEV */
-      if(nodes.length === 0){
-        console.warn(`🤓 -- "You are creating state but not binding it to any DOM elements.  Is this intended? 
-    If not, check your binding syntax from within this root element `, this.$root);
+      if (nodes.length === 0) {
+        console.warn(
+          `🤓 -- "You are creating state but not binding it to any DOM elements.  Is this intended? 
+    If not, check your binding syntax from within this root element `,
+          this.$root
+        );
       }
       /* END.DEV */
       return null;
@@ -314,15 +317,27 @@
       }
     }
 
-    function createRefs(){
-      scopeElements.call(this, `[data-${this.$app.$datasets.ref}]`).forEach(element => {
-        this[splitFromComponent(element.getAttribute(`data-${this.$app.$datasets.ref}`))[1]] = element;
-      });
+    function createRefs() {
+      scopeElements
+        .call(this, `[data-${this.$app.$datasets.ref}]`)
+        .forEach(element => {
+          this[
+            splitFromComponent(
+              element.getAttribute(`data-${this.$app.$datasets.ref}`)
+            )[1]
+          ] = element;
+        });
     }
 
     function scopeElements(selector) {
       return [...this.$root.querySelectorAll(selector)].filter(el => {
-        return el.closest(`[data-${this.$app.$datasets.component}="${this.$root.getAttribute('data-'+this.$app.$datasets.component)}"]`) === this.$root;
+        return (
+          el.closest(
+            `[data-${this.$app.$datasets.component}="${this.$root.getAttribute(
+          "data-" + this.$app.$datasets.component
+        )}"]`
+          ) === this.$root
+        );
       });
     }
 
