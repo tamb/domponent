@@ -7,6 +7,7 @@ import HoverLetter from "./HoverLetter/HoverLetter";
 import Navigation from "./Navigation/Navigation";
 import ShowCode from "./ShowCode/ShowCode";
 import Tabs from "./Tabs/Tabs";
+import AddHighlight from "./AddHighlight/AddHighlight";
 import domInsert from "./domInsert";
 
 import "./app.scss";
@@ -24,7 +25,8 @@ const App = new Init({
     HoverLetter,
     Navigation,
     ShowCode,
-    Tabs
+    Tabs,
+    AddHighlight
   },
   appCreated: () => console.log("app created")
 });

@@ -38,6 +38,7 @@
           <i data-feather="x"></i>
         </span>
       </button>
+
       <div
         class="fold custom-nav__body"
         data-ref="Navigation.menu"
@@ -52,12 +53,21 @@
             Domponent rocks!
           </figcaption>
           <button
-            class="code-toggle-btn btn"
+            class="code-toggle-btn one btn"
             data-action="click->ShowCode.toggle"
           >
             <i data-feather="code"></i>
           </button>
         </figure>
+        <span data-component="AddHighlight" class="add-highlight">
+          <button
+            type="button"
+            class="btn btn-warning"
+            data-action="click->AddHighlight.toggle"
+          >
+            Highlight Components
+          </button>
+        </span>
         <div class="custom-nav__code fold" data-ref="ShowCode.foldable">
           <!-- prettier-ignore-start -->
           <pre>
@@ -105,7 +115,7 @@
           >
             <div class="card-body" data-component="ShowCode">
               <button
-                class="code-toggle-btn btn"
+                class="code-toggle-btn two btn"
                 data-action="click->ShowCode.toggle"
               >
                 <i data-feather="code"></i>
@@ -265,7 +275,7 @@ export default class Counter extends Component {
                   >
                     <div class="card-body" data-component="ShowCode">
                       <button
-                        class="code-toggle-btn btn"
+                        class="code-toggle-btn three btn"
                         data-action="click->ShowCode.toggle"
                       >
                         <i data-feather="code"></i>
@@ -402,7 +412,7 @@ export default class DisplayAnything extends Exponent {
               >
                 <div data-component="ShowCode" class="card-body">
                   <button
-                    class="code-toggle-btn btn"
+                    class="code-toggle-btn four btn"
                     data-action="click->ShowCode.toggle"
                   >
                     <i data-feather="code"></i>
@@ -466,6 +476,8 @@ Regular Show</textarea
                       <!-- prettier-ignore-start -->
                       <div class="tabs__tab-pane" data-ref="Tabs.tabPane0">
                         <pre><code class="language">
+&#x3C;!-- FavoriteShow -->
+&#x3C;!-- css classes have been removed -->
 
 <span class="el">&#x3C;div </span><span class="attr">data-component=</span><span class="attr-val">"FavoriteShow"</span> <span class="attr">data-state=</span><span class="attr-val">'{"show":"Regular Show"}'</span><span class="el">></span>
   <span class="el">&#x3C;strong></span>What's Your Favorite Show?<span class="el">&#x3C;/strong></span>
@@ -485,6 +497,7 @@ Regular Show</textarea
                       <div class="tabs__tab-pane" data-ref="Tabs.tabPane1">
                         <pre><code class="language">
 import { Component } from "domponent";
+import './FavoriteShow.scss';
 
 export default class FavoriteShow extends Component {
   constructor(conf) {
@@ -515,28 +528,96 @@ export default class FavoriteShow extends Component {
                   <span data-bind="state:Timer.minutes">n/a</span>:
                   <span data-bind="state:Timer.seconds">n/a</span>
 
-                  <!-- prettier-ignore-start -->
-
                   <div data-component="ShowCode">
                     <button
-                      class="code-toggle-btn btn"
+                      class="code-toggle-btn five btn"
                       data-action="click->ShowCode.toggle"
                     >
                       <i data-feather="code"></i>
                     </button>
-                    <pre data-ref="ShowCode.foldable" class="fold">
-    <code class="language">
+                    <div
+                      data-component="Tabs"
+                      data-tab-length="2"
+                      data-ref="ShowCode.foldable"
+                      class="tabs fold"
+                      data-state='{"activeTab":0}'
+                    >
+                      <!-- prettier-ignore-start -->
+                      <ol class="tabs__list">
+                        <li>
+                          <button
+                            class="tabs__tab"
+                            data-ref="Tabs.tab0"
+                            data-action="click->Tabs.changeActiveTab"
+                            data-tab-number="0"
+                          >
+                            HTML
+                          </button>
+                        </li>
+                        <li>
+                          <button
+                            class="tabs__tab"
+                            data-ref="Tabs.tab1"
+                            data-action="click->Tabs.changeActiveTab"
+                            data-tab-number="1"
+                          >
+                            JS
+                          </button>
+                        </li>
+                      </ol>
+                      <div data-ref="Tabs.tabPane0" class="tabs__tab-pane">
+                        <pre><code class="language">
 &#x3C;!-- Timer -->
 &#x3C;!-- css classes have been removed -->
+        
 <span class="el">&#x3C;div</span> <span class="attr">data-component=</span><span class="attr-val">"Timer"</span><span class="el">></span>
   <span class="el">&#x3C;span</span> <span class="attr">data-bind=</span><span class="attr-val">"state:Timer.hours"</span><span class="el">></span>n/a<span class="el">&#x3C;/span>:</span>
   <span class="el">&#x3C;span</span> <span class="attr">data-bind=</span><span class="attr-val">"state:Timer.minutes"</span><span class="el">></span>n/a<span class="el">&#x3C;/span>:</span>
   <span class="el">&#x3C;span</span> <span class="attr">data-bind=</span><span class="attr-val">"state:Timer.seconds"</span><span class="el">></span>n/a<span class="el">&#x3C;/span></span>
 <span class="el">&#x3C;/div></span>
-     </code>
-    </pre>
+</code></pre>
+                      </div>
+
+                      <div data-ref="Tabs.tabPane1" class="tabs__tab-pane">
+                        <pre><code class="language">
+import { Component } from "domponent";
+import './Timer.scss';
+    
+export default class CurrentTime extends Component {
+  constructor(el) {
+    super(el);
+    this.state = {
+      hours: "",
+      seconds: "",
+      minutes: ""
+    };
+    
+    setInterval(() => {
+      this.changeTime();
+    }, 1000);
+  }
+    
+  padDate(num) {
+    if (num < 10) {
+      return `0${num}`;
+    }
+    return num;
+  }
+    
+  changeTime() {
+    const date = new Date();
+    this.setState({
+      seconds: this.padDate(date.getSeconds()),
+      hours: this.padDate(date.getHours()),
+      minutes: this.padDate(date.getMinutes())
+    });
+  }
+}
+</code></pre>
+                      </div>
+                    </div>
+                    <!-- prettier-ignore-end -->
                   </div>
-                  <!-- prettier-ignore-end -->
                 </div>
               </div>
             </div>
