@@ -72,3 +72,20 @@
   </code>
 </div>
 ```
+
+```html
+<div data-component="FavoriteShow" data-state='{"show":"Regular Show"}'>
+  <strong class="card-title">What's Your Favorite Show?</strong>
+  <label for="controlled">
+    controlled from below
+  </label>
+  <textarea data-ref="FavoriteShow.secondInput"></textarea>
+  <code data-bind="state:FavoriteShow.show"></code>
+  <label for="show">
+    Controls the text and input above
+  </label>
+  <textarea data-action="input->FavoriteShow.handleInput">
+Regular Show</textarea
+  >
+</div>
+```
