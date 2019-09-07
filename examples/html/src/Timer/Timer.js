@@ -1,4 +1,4 @@
-import { Component } from 'domponent';
+import { Component } from "domponent";
 
 export default class CurrentTime extends Component {
   constructor(el) {
@@ -14,12 +14,19 @@ export default class CurrentTime extends Component {
     }, 1000);
   }
 
+  padDate(num) {
+    if (num < 10) {
+      return `0${num}`;
+    }
+    return num;
+  }
+
   changeTime() {
     const date = new Date();
     this.setState({
-      seconds: date.getSeconds(),
-      hours: date.getHours(),
-      minutes: date.getMinutes()
+      seconds: this.padDate(date.getSeconds()),
+      hours: this.padDate(date.getHours()),
+      minutes: this.padDate(date.getMinutes())
     });
   }
 }

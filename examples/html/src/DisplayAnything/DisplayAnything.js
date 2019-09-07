@@ -1,4 +1,5 @@
-import { Exponent } from 'domponent';
+import { Exponent } from "domponent";
+import "./DisplayAnything.scss";
 
 export default class DisplayAnything extends Exponent {
   constructor(el) {
@@ -7,7 +8,7 @@ export default class DisplayAnything extends Exponent {
   }
 
   propsDidUpdate() {
-      this.displayProps();
+    this.displayProps();
   }
 
   displayProps() {

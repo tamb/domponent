@@ -45,7 +45,9 @@
   }
 }
 
-.language-html {
+.language {
+  padding: 0 0.5rem;
+  overflow: scroll;
   .el {
     color: #2f6f9f;
   }
