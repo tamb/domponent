@@ -91,6 +91,7 @@ new Init(config);
 - [Namespacing Data Attributes](#namespacing-data-attributes-)
 - [Development Mode](#development-mode-)
 - [Component Lifecycle](#component-lifecycle-)
+- [Who Uses Domponent](#who-uses-domponent-)
 
 ### Purpose ✔️
 
@@ -448,3 +449,7 @@ This way your development build of webpack will swap out the production version 
 ### Component Lifecycle 🕵️‍♂️
 
 ![updating component](https://raw.githubusercontent.com/tamb/domponent/master/domponent-lifecycle.jpg)
+
+<hr/>
+### Who Uses Domponent
+Submit an Issue with the `Uses` Label and include a logo to add. 
