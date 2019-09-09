@@ -451,5 +451,6 @@ This way your development build of webpack will swap out the production version 
 ![updating component](https://raw.githubusercontent.com/tamb/domponent/master/domponent-lifecycle.jpg)
 
 <hr/>
+
 ### Who Uses Domponent 🧰
 Submit an Issue with the `Uses` Label and include a logo to add. 
