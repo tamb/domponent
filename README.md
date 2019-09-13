@@ -79,6 +79,7 @@ new Init(config);
   - [data-action](#data-action)
   - [data-state](#data-state)
   - [data-ref](#data-ref)
+  - [data-ref-array](#data-ref-array)
   - [data-key](#data-key)
   - [data-props](#data-props)
 - [Extending the Component class](#extending-the-component-class-)
@@ -213,6 +214,13 @@ If you need to reference DOM elements, you can use `data-ref` like so:
 You need to preface which component the element is on.
 
 You can then access the element in `Counter` using `this.myElement` within the Component instance.
+
+#### `data-ref-array`
+You can create an array of elements in your component this way:
+```html
+<div data-ref-array="Counter.elements"></div>
+<div data-ref-array="Counter.elements"></div>
+```
 
 #### `data-key`
 
