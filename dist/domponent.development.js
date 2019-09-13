@@ -331,6 +331,18 @@
         });
     }
 
+    function createRefArrays(){
+      scopeElements
+        .call(this, `[data-${this.$app.$datasets.ref_array}]`)
+        .forEach(element => {
+          const key = splitFromComponent(
+            element.getAttribute(`data-${this.$app.$datasets.ref_array}`)
+          )[1];
+          this[key] = new Array();
+          this[key].push(element);
+        });
+    }
+
     function scopeElements(selector) {
       return [...this.$root.querySelectorAll(selector)].filter(el => {
         return (
@@ -350,6 +362,7 @@
         this.props = {};
         this.$d = new Set();
         createRefs.call(this);
+        createRefArrays.call(this);
         this.$p = createPropObjects.call(this);
         bindListeners.call(this);
         wait? null : this.connected();

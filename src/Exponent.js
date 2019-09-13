@@ -1,6 +1,6 @@
 import Scope from "./Scope";
 
-import { createPropObjects, bindListeners, createRefs } from './componentUtils'
+import { createPropObjects, bindListeners, createRefs, createRefArrays } from './componentUtils'
 
 export default class Exponent extends Scope {
   constructor(config, wait = false) {
@@ -9,6 +9,7 @@ export default class Exponent extends Scope {
     this.props = {};
     this.$d = new Set();
     createRefs.call(this);
+    createRefArrays.call(this);
     this.$p = createPropObjects.call(this);
     bindListeners.call(this);
     wait? null : this.connected();
