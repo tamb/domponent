@@ -1,4 +1,5 @@
 import { Component } from "domponent";
+import "./Timer.scss";
 
 export default class CurrentTime extends Component {
   constructor(el) {

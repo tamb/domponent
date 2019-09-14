@@ -3,6 +3,10 @@
 body {
   background-color: $body;
   color: $dark;
+
+  &.highlight [data-component] {
+    box-shadow: 2px 2px 8px yellowgreen;
+  }
 }
 
 .dark {
