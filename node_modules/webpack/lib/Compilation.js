@@ -37,11 +37,11 @@ const compareLocations = require("./compareLocations");
 const { Logger, LogType } = require("./logging/Logger");
 const ErrorHelpers = require("./ErrorHelpers");
 const buildChunkGraph = require("./buildChunkGraph");
+const WebpackError = require("./WebpackError");
 
 /** @typedef {import("./Module")} Module */
 /** @typedef {import("./Compiler")} Compiler */
 /** @typedef {import("webpack-sources").Source} Source */
-/** @typedef {import("./WebpackError")} WebpackError */
 /** @typedef {import("./DependenciesBlockVariable")} DependenciesBlockVariable */
 /** @typedef {import("./dependencies/SingleEntryDependency")} SingleEntryDependency */
 /** @typedef {import("./dependencies/MultiEntryDependency")} MultiEntryDependency */
@@ -102,6 +102,21 @@ const buildChunkGraph = require("./buildChunkGraph");
  * @property {any[]} args
  * @property {number} time
  * @property {string[]=} trace
+ */
+
+/**
+ * @typedef {Object} AssetInfo
+ * @property {boolean=} immutable true, if the asset can be long term cached forever (contains a hash)
+ * @property {number=} size size in bytes, only set after asset has been emitted
+ * @property {boolean=} development true, when asset is only used for development and doesn't count towards user-facing assets
+ * @property {boolean=} hotModuleReplacement true, when asset ships data for updating an existing application (HMR)
+ */
+
+/**
+ * @typedef {Object} Asset
+ * @property {string} name the filename of the asset
+ * @property {Source} source source of the asset
+ * @property {AssetInfo} info info about the asset
  */
 
 /**
@@ -204,6 +219,25 @@ const addAllToSet = (set, otherSet) => {
 	for (const item of otherSet) {
 		set.add(item);
 	}
+};
+
+/**
+ * @param {Source} a a source
+ * @param {Source} b another source
+ * @returns {boolean} true, when both sources are equal
+ */
+const isSourceEqual = (a, b) => {
+	if (a === b) return true;
+	// TODO webpack 5: check .buffer() instead, it's called anyway during emit
+	/** @type {Buffer|string} */
+	let aSource = a.source();
+	/** @type {Buffer|string} */
+	let bSource = b.source();
+	if (aSource === bSource) return true;
+	if (typeof aSource === "string" && typeof bSource === "string") return false;
+	if (!Buffer.isBuffer(aSource)) aSource = Buffer.from(aSource, "utf-8");
+	if (!Buffer.isBuffer(bSource)) bSource = Buffer.from(bSource, "utf-8");
+	return aSource.equals(bSource);
 };
 
 class Compilation extends Tapable {
@@ -446,6 +480,7 @@ class Compilation extends Tapable {
 		this.entries = [];
 		/** @private @type {{name: string, request: string, module: Module}[]} */
 		this._preparedEntrypoints = [];
+		/** @type {Map<string, Entrypoint>} */
 		this.entrypoints = new Map();
 		/** @type {Chunk[]} */
 		this.chunks = [];
@@ -465,6 +500,8 @@ class Compilation extends Tapable {
 		this.additionalChunkAssets = [];
 		/** @type {CompilationAssets} */
 		this.assets = {};
+		/** @type {Map<string, AssetInfo>} */
+		this.assetsInfo = new Map();
 		/** @type {WebpackError[]} */
 		this.errors = [];
 		/** @type {WebpackError[]} */
@@ -1233,6 +1270,7 @@ class Compilation extends Tapable {
 		this.namedChunkGroups.clear();
 		this.additionalChunkAssets.length = 0;
 		this.assets = {};
+		this.assetsInfo.clear();
 		for (const module of this.modules) {
 			module.unseal();
 		}
@@ -1963,13 +2001,107 @@ class Compilation extends Tapable {
 		this.hash = this.fullHash.substr(0, hashDigestLength);
 	}
 
+	/**
+	 * @param {string} file file name
+	 * @param {Source} source asset source
+	 * @param {AssetInfo} assetInfo extra asset information
+	 * @returns {void}
+	 */
+	emitAsset(file, source, assetInfo = {}) {
+		if (this.assets[file]) {
+			if (!isSourceEqual(this.assets[file], source)) {
+				// TODO webpack 5: make this an error instead
+				this.warnings.push(
+					new WebpackError(
+						`Conflict: Multiple assets emit different content to the same filename ${file}`
+					)
+				);
+				this.assets[file] = source;
+				this.assetsInfo.set(file, assetInfo);
+				return;
+			}
+			const oldInfo = this.assetsInfo.get(file);
+			this.assetsInfo.set(file, Object.assign({}, oldInfo, assetInfo));
+			return;
+		}
+		this.assets[file] = source;
+		this.assetsInfo.set(file, assetInfo);
+	}
+
+	/**
+	 * @param {string} file file name
+	 * @param {Source | function(Source): Source} newSourceOrFunction new asset source or function converting old to new
+	 * @param {AssetInfo | function(AssetInfo | undefined): AssetInfo} assetInfoUpdateOrFunction new asset info or function converting old to new
+	 */
+	updateAsset(
+		file,
+		newSourceOrFunction,
+		assetInfoUpdateOrFunction = undefined
+	) {
+		if (!this.assets[file]) {
+			throw new Error(
+				`Called Compilation.updateAsset for not existing filename ${file}`
+			);
+		}
+		if (typeof newSourceOrFunction === "function") {
+			this.assets[file] = newSourceOrFunction(this.assets[file]);
+		} else {
+			this.assets[file] = newSourceOrFunction;
+		}
+		if (assetInfoUpdateOrFunction !== undefined) {
+			const oldInfo = this.assetsInfo.get(file);
+			if (typeof assetInfoUpdateOrFunction === "function") {
+				this.assetsInfo.set(file, assetInfoUpdateOrFunction(oldInfo || {}));
+			} else {
+				this.assetsInfo.set(
+					file,
+					Object.assign({}, oldInfo, assetInfoUpdateOrFunction)
+				);
+			}
+		}
+	}
+
+	getAssets() {
+		/** @type {Asset[]} */
+		const array = [];
+		for (const assetName of Object.keys(this.assets)) {
+			if (Object.prototype.hasOwnProperty.call(this.assets, assetName)) {
+				array.push({
+					name: assetName,
+					source: this.assets[assetName],
+					info: this.assetsInfo.get(assetName) || {}
+				});
+			}
+		}
+		return array;
+	}
+
+	/**
+	 * @param {string} name the name of the asset
+	 * @returns {Asset | undefined} the asset or undefined when not found
+	 */
+	getAsset(name) {
+		if (!Object.prototype.hasOwnProperty.call(this.assets, name))
+			return undefined;
+		return {
+			name,
+			source: this.assets[name],
+			info: this.assetsInfo.get(name) || {}
+		};
+	}
+
 	createModuleAssets() {
 		for (let i = 0; i < this.modules.length; i++) {
 			const module = this.modules[i];
 			if (module.buildInfo.assets) {
+				const assetsInfo = module.buildInfo.assetsInfo;
 				for (const assetName of Object.keys(module.buildInfo.assets)) {
 					const fileName = this.getPath(assetName);
-					this.assets[fileName] = module.buildInfo.assets[assetName];
+					this.emitAsset(
+						fileName,
+						module.buildInfo.assets[assetName],
+						assetsInfo ? assetsInfo.get(assetName) : undefined
+					);
 					this.hooks.moduleAsset.call(module, fileName);
 				}
 			}
@@ -2003,7 +2135,12 @@ class Compilation extends Tapable {
 					const cacheName = fileManifest.identifier;
 					const usedHash = fileManifest.hash;
 					filenameTemplate = fileManifest.filenameTemplate;
-					file = this.getPath(filenameTemplate, fileManifest.pathOptions);
+					const pathAndInfo = this.getPathWithInfo(
+						filenameTemplate,
+						fileManifest.pathOptions
+					);
+					file = pathAndInfo.path;
+					const assetInfo = pathAndInfo.info;
 
 					// check if the same filename was already written by another chunk
 					const alreadyWritten = alreadyWrittenFiles.get(file);
@@ -2051,12 +2188,7 @@ class Compilation extends Tapable {
 							};
 						}
 					}
-					if (this.assets[file] && this.assets[file] !== source) {
-						throw new Error(
-							`Conflict: Multiple assets emit to the same filename ${file}`
-						);
-					}
-					this.assets[file] = source;
+					this.emitAsset(file, source, assetInfo);
 					chunk.files.push(file);
 					this.hooks.chunkAsset.call(chunk, file);
 					alreadyWrittenFiles.set(file, {
@@ -2082,6 +2214,17 @@ class Compilation extends Tapable {
 		data = data || {};
 		data.hash = data.hash || this.hash;
 		return this.mainTemplate.getAssetPath(filename, data);
+	}
+
+	/**
+	 * @param {string} filename used to get asset path with hash
+	 * @param {TODO=} data // TODO: figure out this param type
+	 * @returns {{ path: string, info: AssetInfo }} interpolated path and asset info
+	 */
+	getPathWithInfo(filename, data) {
+		data = data || {};
+		data.hash = data.hash || this.hash;
+		return this.mainTemplate.getAssetPathWithInfo(filename, data);
 	}
 
 	/**

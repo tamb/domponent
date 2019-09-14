@@ -11,7 +11,6 @@ export default class Tabs extends Component {
   }
 
   connected() {
-    this.tabLength = parseInt(this.$root.dataset.tabLength);
     this.setTabs();
   }
 
@@ -20,22 +19,19 @@ export default class Tabs extends Component {
   }
 
   changeActiveTab(event) {
-    console.log(this);
     const tab = event.target;
     const tabNumber = tab.dataset.tabNumber;
     this.setState({ activeTab: parseInt(tabNumber) });
   }
 
   setTabs() {
-    for (let i = 0; i < this.tabLength; i++) {
-      const tab = this[`tab${i}`];
-      const tabPane = this[`tabPane${i}`];
+    for (let i = 0; i < this.tabPane.length; i++) {
       if (i === this.state.activeTab) {
-        tab.classList.add("open");
-        tabPane.classList.add("open");
+        this.tab[i].classList.add("open");
+        this.tabPane[i].classList.add("open");
       } else {
-        tab.classList.remove("open");
-        tabPane.classList.remove("open");
+        this.tab[i].classList.remove("open");
+        this.tabPane[i].classList.remove("open");
       }
     }
   }
