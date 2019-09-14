@@ -228,6 +228,24 @@ export function createRefs() {
     });
 }
 
+export function createRefArrays() {
+  let prevKey = null;
+  scopeElements
+    .call(this, `[data-${this.$app.$datasets.ref_array}]`)
+    .forEach(element => {
+      const key = splitFromComponent(
+        element.getAttribute(`data-${this.$app.$datasets.ref_array}`)
+      )[1];
+      if (key === prevKey) {
+        this[key].push(element);
+      } else {
+        prevKey = key;
+        this[key] = [];
+        this[key].push(element);
+      }
+    });
+}
+
 export function scopeElements(selector) {
   return [...this.$root.querySelectorAll(selector)].filter(el => {
     return (
