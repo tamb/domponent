@@ -216,11 +216,15 @@ You need to preface which component the element is on.
 You can then access the element in `Counter` using `this.myElement` within the Component instance.
 
 #### `data-ref-array`
+
 You can create an array of elements in your component this way:
+
 ```html
 <div data-ref-array="Counter.elements"></div>
 <div data-ref-array="Counter.elements"></div>
 ```
+
+You can access the array of elements in your component with `this.elements`.
 
 #### `data-key`
 
@@ -461,4 +465,5 @@ This way your development build of webpack will swap out the production version 
 <hr/>
 
 ### Who Uses Domponent 🧰
-Submit an Issue with the `Uses` Label and include a logo to add. 
+
+Submit an Issue with the `Uses` Label and include a logo to add.
