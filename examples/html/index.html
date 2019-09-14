@@ -135,7 +135,6 @@
               <div
                 data-ref="ShowCode.foldable"
                 data-component="Tabs"
-                data-tab-length="2"
                 class="tabs fold"
                 data-state='{"activeTab": 0}'
               >
@@ -143,7 +142,7 @@
                   <li>
                     <button
                       class="tabs__tab"
-                      data-ref="Tabs.tab0"
+                      data-ref-array="Tabs.tab"
                       data-action="click->Tabs.changeActiveTab"
                       data-tab-number="0"
                     >
@@ -153,7 +152,7 @@
                   <li>
                     <button
                       class="tabs__tab"
-                      data-ref="Tabs.tab1"
+                      data-ref-array="Tabs.tab"
                       data-action="click->Tabs.changeActiveTab"
                       data-tab-number="1"
                     >
@@ -163,7 +162,7 @@
                 </ol>
 
                 <!-- prettier-ignore-start -->
-                <div data-ref="Tabs.tabPane0" class="tabs__tab-pane">
+                <div data-ref-array="Tabs.tabPane" class="tabs__tab-pane">
                   <pre><code class="language">
 &#x3C;!-- Counter -->
 &#x3C;!-- css classes have been removed -->
@@ -178,7 +177,7 @@
 <span class="el">&#x3C;/div></span>
 </code></pre>
                 </div>
-                <div data-ref="Tabs.tabPane1" class="tabs__tab-pane">
+                <div data-ref-array="Tabs.tabPane" class="tabs__tab-pane">
                   <pre><code class="language">
 import { Component } from 'domponent';
 import "./Counter.scss";
@@ -287,7 +286,7 @@ export default class Counter extends Component {
                           <li>
                             <button
                               class="tabs__tab"
-                              data-ref="Tabs.tab0"
+                              data-ref-array="Tabs.tab"
                               data-action="click->Tabs.changeActiveTab"
                               data-tab-number="0"
                             >
@@ -297,7 +296,7 @@ export default class Counter extends Component {
                           <li>
                             <button
                               class="tabs__tab"
-                              data-ref="Tabs.tab1"
+                              data-ref-array="Tabs.tab"
                               data-action="click->Tabs.changeActiveTab"
                               data-tab-number="1"
                             >
@@ -306,7 +305,10 @@ export default class Counter extends Component {
                           </li>
                         </ol>
                         <!-- prettier-ignore-start -->
-                        <div data-ref="Tabs.tabPane0" class="tabs__tab-pane">
+                        <div
+                          data-ref-array="Tabs.tabPane"
+                          class="tabs__tab-pane"
+                        >
                           <pre><code class="language">
 &#x3C;!-- DisplayAnthing -->
 &#x3C;!-- css classes have been removed -->
@@ -325,7 +327,10 @@ export default class Counter extends Component {
 </code></pre>
                         </div>
 
-                        <div data-ref="Tabs.tabPane1" class="tabs__tab-pane">
+                        <div
+                          data-ref-array="Tabs.tabPane"
+                          class="tabs__tab-pane"
+                        >
                           <pre><code class="language">
 import { Exponent } from "domponent";
 import "./DisplayAnything.scss";
@@ -444,7 +449,7 @@ Regular Show</textarea
                         <li>
                           <button
                             class="tabs__tab"
-                            data-ref="Tabs.tab0"
+                            data-ref-array="Tabs.tab"
                             data-action="click->Tabs.changeActiveTab"
                             data-tab-number="0"
                           >
@@ -454,7 +459,7 @@ Regular Show</textarea
                         <li>
                           <button
                             class="tabs__tab"
-                            data-ref="Tabs.tab1"
+                            data-ref-array="Tabs.tab"
                             data-action="click->Tabs.changeActiveTab"
                             data-tab-number="1"
                           >
@@ -464,7 +469,7 @@ Regular Show</textarea
                       </ol>
 
                       <!-- prettier-ignore-start -->
-                      <div class="tabs__tab-pane" data-ref="Tabs.tabPane0">
+                      <div class="tabs__tab-pane" data-ref-array="Tabs.tabPane">
                         <pre><code class="language">
 
 <span class="el">&#x3C;div </span><span class="attr">data-component=</span><span class="attr-val">"FavoriteShow"</span> <span class="attr">data-state=</span><span class="attr-val">'{"show":"Regular Show"}'</span><span class="el">></span>
@@ -482,7 +487,7 @@ Regular Show</textarea
 </code></pre>
                       </div>
 
-                      <div class="tabs__tab-pane" data-ref="Tabs.tabPane1">
+                      <div class="tabs__tab-pane" data-ref-array="Tabs.tabPane">
                         <pre><code class="language">
 import { Component } from "domponent";
 

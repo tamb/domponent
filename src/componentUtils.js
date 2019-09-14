@@ -228,15 +228,21 @@ export function createRefs() {
     });
 }
 
-export function createRefArrays(){
+export function createRefArrays() {
+  let prevKey = null;
   scopeElements
     .call(this, `[data-${this.$app.$datasets.ref_array}]`)
     .forEach(element => {
       const key = splitFromComponent(
         element.getAttribute(`data-${this.$app.$datasets.ref_array}`)
       )[1];
-      this[key] = new Array();
-      this[key].push(element);
+      if (key === prevKey) {
+        this[key].push(element);
+      } else {
+        prevKey = key;
+        this[key] = [];
+        this[key].push(element);
+      }
     });
 }
 

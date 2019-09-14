@@ -10,8 +10,11 @@ export default class Tabs extends Component {
     };
   }
 
+  connecting() {
+    console.log(this);
+  }
+
   connected() {
-    this.tabLength = parseInt(this.$root.dataset.tabLength);
     this.setTabs();
   }
 
@@ -20,7 +23,6 @@ export default class Tabs extends Component {
   }
 
   changeActiveTab(event) {
-    console.log(this);
     const tab = event.target;
     const tabNumber = tab.dataset.tabNumber;
     this.setState({ activeTab: parseInt(tabNumber) });
