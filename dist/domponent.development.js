@@ -329,10 +329,9 @@
             )[1]
           ] = element;
         });
-
     }
 
-    function createRefArrays(){
+    function createRefArrays() {
       let prevKey = null;
       scopeElements
         .call(this, `[data-${this.$app.$datasets.ref_array}]`)
@@ -340,7 +339,7 @@
           const key = splitFromComponent(
             element.getAttribute(`data-${this.$app.$datasets.ref_array}`)
           )[1];
-          if(key === prevKey){
+          if (key === prevKey) {
             this[key].push(element);
           } else {
             prevKey = key;

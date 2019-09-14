@@ -78,7 +78,7 @@
             <li>
               <button
                 class="tabs__tab"
-                data-ref="Tabs.tab0"
+                data-ref-array="Tabs.tab"
                 data-action="click->Tabs.changeActiveTab"
                 data-tab-number="0"
               >
@@ -88,7 +88,7 @@
             <li>
               <button
                 class="tabs__tab"
-                data-ref="Tabs.tab1"
+                data-ref-array="Tabs.tab"
                 data-action="click->Tabs.changeActiveTab"
                 data-tab-number="1"
               >
@@ -97,7 +97,7 @@
             </li>
           </ol>
           <!-- prettier-ignore-start -->
-          <div data-ref="Tabs.tabPane0" class="tabs__tab-pane">
+          <div data-ref-array="Tabs.tabPane" class="tabs__tab-pane">
             <pre><code class="language">
 &#x3C;!-- Navigation -->
 &#x3C;!-- css classes have been removed -->
@@ -118,7 +118,7 @@
 </code>
 </pre>
           </div>
-          <div data-ref="Tabs.tabPane1" class="tabs__tab-pane">
+          <div data-ref-array="Tabs.tabPane" class="tabs__tab-pane">
             <pre><code class="language"> 
 import { Component } from "domponent";
 import "./Navigation.scss";
@@ -611,7 +611,7 @@ export default class FavoriteShow extends Component {
                         <li>
                           <button
                             class="tabs__tab"
-                            data-ref="Tabs.tab0"
+                            data-ref-array="Tabs.tab"
                             data-action="click->Tabs.changeActiveTab"
                             data-tab-number="0"
                           >
@@ -621,7 +621,7 @@ export default class FavoriteShow extends Component {
                         <li>
                           <button
                             class="tabs__tab"
-                            data-ref="Tabs.tab1"
+                            data-ref-array="Tabs.tab"
                             data-action="click->Tabs.changeActiveTab"
                             data-tab-number="1"
                           >
@@ -629,7 +629,7 @@ export default class FavoriteShow extends Component {
                           </button>
                         </li>
                       </ol>
-                      <div data-ref="Tabs.tabPane0" class="tabs__tab-pane">
+                      <div data-ref-array="Tabs.tabPane" class="tabs__tab-pane">
                         <pre><code class="language">
 &#x3C;!-- Timer -->
 &#x3C;!-- css classes have been removed -->
@@ -642,7 +642,7 @@ export default class FavoriteShow extends Component {
 </code></pre>
                       </div>
 
-                      <div data-ref="Tabs.tabPane1" class="tabs__tab-pane">
+                      <div data-ref-array="Tabs.tabPane" class="tabs__tab-pane">
                         <pre><code class="language">
 import { Component } from "domponent";
 import './Timer.scss';
