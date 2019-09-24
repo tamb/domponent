@@ -88,6 +88,11 @@ export function bindListeners() {
   this.$b = [];
   scopeElements
     .call(this, `[data-${this.$app.$datasets.action}]`)
+    .concat(
+      this.$root.getAttribute(`data-${this.$app.$datasets.action}`)
+        ? [this.$root]
+        : []
+    ) // TODO shift this to the front of the array so it makes sense DOM-wise
     .forEach(el => {
       const actions = splitMultipleValues(
         el.getAttribute(`data-${this.$app.$datasets.action}`)
