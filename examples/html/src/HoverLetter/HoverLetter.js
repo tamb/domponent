@@ -24,6 +24,9 @@ export default class HoverLetter extends Exponent {
       this.placeStyles();
     }
   }
+  toggleColor() {
+    this.$root.classList.toggle("white");
+  }
 
   placeStyles() {
     const style = `<style id="${this.styleID}">
@@ -35,6 +38,9 @@ export default class HoverLetter extends Exponent {
         .hoverable:hover,
         .hoverable:focus{
             transform: scale(1.4);
+        }
+        .white{
+          color: #ffffff;
         }
     </style>`;
     document.head.insertAdjacentHTML("beforeend", style);

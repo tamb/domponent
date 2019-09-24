@@ -157,7 +157,10 @@ export default class Navigation extends Component {
     <div class="container">
       <!-- HOVERLETTERS-->
       <header class="text-center">
-        <h1 data-component="HoverLetter">
+        <h1
+          data-component="HoverLetter"
+          data-action="click->HoverLetter.toggleColor"
+        >
           🔌&lt;<span data-ref="HoverLetter.letters">DOMponent</span> /&gt;
         </h1>
         <strong>Build components with the HTML you already have.</strong>
