@@ -464,6 +464,6 @@ This way your development build of webpack will swap out the production version 
 
 <hr/>
 
-### Who Uses Domponent 🧰
+### Who Uses Domponent 🛠️
 
 Submit an Issue with the `Uses` Label and include a logo to add.
