@@ -46,18 +46,45 @@ code {
   overflow: scroll;
 }
 
-.github-link {
+.links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
   position: fixed;
+  z-index: 9999;
   bottom: 0.5rem;
   right: 0.5rem;
-  height: 3rem;
-  width: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: $light-stripes;
-  border-radius: 50%;
-  box-shadow: -2px 3px 5px black;
+  .github-link {
+    height: 3rem;
+    width: 3rem;
+    margin-top: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $light-stripes;
+    border-radius: 50%;
+    box-shadow: -2px 3px 5px black;
+  }
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    position: relative;
+    bottom: unset;
+    right: unset;
+    .github-link {
+      background-color: transparent;
+      border-radius: 0;
+      box-shadow: none;
+      margin-top: 0;
+      display: block;
+      margin: 0 0.5rem;
+      width: auto;
+      color: $dark;
+      &.docs-link {
+        bottom: 0;
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 768px) {

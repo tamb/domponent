@@ -9,7 +9,7 @@
     "start:dev": "concurrently \"webpack --mode=development --watch\" \"http-server -a localhost -p 1234\" \"open http://localhost:1234/\" \"node open.js\""
   },
   "dependencies": {
-    "domponent": "file:../../domponent-1.1.0.tgz"
+    "domponent": "file:../../domponent-1.1.1.tgz"
   },
   "devDependencies": {
     "@babel/core": "7.2.0",
