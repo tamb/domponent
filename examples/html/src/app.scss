@@ -5,7 +5,8 @@ body {
   color: $dark;
 
   &.highlight [data-component] {
-    box-shadow: 2px 2px 8px yellowgreen;
+    border: 2px dotted gold;
+    border-radius: 3px;
   }
 }
 

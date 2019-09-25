@@ -1,9 +1,13 @@
 @import "../_colors";
 
 .fold {
-  display: block;
   max-height: 0px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
   transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
   &.show {
     max-height: 99em;
@@ -23,10 +27,17 @@
 
   &__code,
   &__code.fold {
+    overflow-x: scroll;
     text-align: left;
     display: flex;
-    align-content: center;
+    align-items: center;
     justify-content: center;
+    button {
+      width: 33vw;
+      @media screen and (min-width: 768px) {
+        width: 10vw;
+      }
+    }
   }
 
   &__body {
