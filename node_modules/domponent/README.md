@@ -2,7 +2,7 @@
 
 **Build components with the HTML you already have.**
 <br/>
-**<2kb gzipped and <5kb minified! 👌**
+**<2kb gzipped and 5kb minified! 👌**
 
 [![](https://data.jsdelivr.com/v1/package/npm/domponent/badge)](https://www.jsdelivr.com/package/npm/domponent)
 [![](https://img.shields.io/npm/dw/domponent)](https://www.npmjs.com/package/domponent)
