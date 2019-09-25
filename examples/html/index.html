@@ -158,10 +158,12 @@ export default class Navigation extends Component {
       <!-- HOVERLETTERS-->
       <header class="text-center">
         <h1
+          class=" d-flex justify-content-center"
           data-component="HoverLetter"
           data-action="click->HoverLetter.toggleColor"
         >
-          🔌&lt;<span data-ref="HoverLetter.letters">DOMponent</span> /&gt;
+          <div>🔌</div>
+          &lt;<span data-ref="HoverLetter.letters">DOMponent</span> /&gt;
         </h1>
         <strong>Build components with the HTML you already have.</strong>
         <div class="links">
