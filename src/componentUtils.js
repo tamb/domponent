@@ -86,13 +86,11 @@ export function initState() {
 
 export function bindListeners() {
   this.$b = [];
-  scopeElements
-    .call(this, `[data-${this.$app.$datasets.action}]`)
-    .concat(
-      this.$root.getAttribute(`data-${this.$app.$datasets.action}`)
-        ? [this.$root]
-        : []
-    ) // TODO shift this to the front of the array so it makes sense DOM-wise -- can be done by wrapping scopeElements call in concat and creating arrya of $root first
+  let arr = this.$root.getAttribute(`data-${this.$app.$datasets.action}`)
+    ? [this.$root]
+    : [];
+  arr
+    .concat(scopeElements.call(this, `[data-${this.$app.$datasets.action}]`))
     .forEach(el => {
       const actions = splitMultipleValues(
         el.getAttribute(`data-${this.$app.$datasets.action}`)
