@@ -34,6 +34,8 @@
   }
   &__tab-pane {
     display: none;
+    max-width: 100%;
+    overflow-x: scroll;
     &.open {
       display: block;
     }
