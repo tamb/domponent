@@ -389,12 +389,19 @@ It then exposes the following methods:
 - {Element} a DOM element to create the component instance
 - {Function} optional callback function
 
+```js
+  App.createComponent(document.getElementById("added-html"), callback);
+```
 ##### `register`
 
 @params
 
 - {Component} a component definition
 - {Function} optional callback function
+
+```js
+  App.register(NewComponent, callback);
+```
 
 #### Deleting components
 
@@ -405,12 +412,21 @@ It then exposes the following methods:
 - {String} - key of the component _instance_ you want to delete, can be assigned via `data-key` or accessed inside component via `this.$key`
 - {Function} optional callback function
 
+```js
+  App.createComponent('my-component-instance-key', callback);
+```
+
 ##### `unregister`
 
 @params:
 
 - {String} - The name of the key you used to register your component on app Init.
 - {Function} optional callback function
+
+```js
+  App.unregister('NewComponent', callback);
+```
+
   <hr/>
 
 ### Namespacing data attributes 📇
