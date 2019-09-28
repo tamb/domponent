@@ -1,5 +1,6 @@
 import { terser } from "rollup-plugin-terser";
-import stripCode from 'rollup-plugin-strip-code';
+import babel from "rollup-plugin-babel";
+import stripCode from "rollup-plugin-strip-code";
 
 export default [
   {
@@ -31,4 +32,37 @@ export default [
       name: "Domponent"
     }
   },
+  {
+    input: "./src/index.js",
+    output: {
+      file: "dist/domponent.es5.js",
+      format: "umd",
+      name: "Domponent"
+    },
+    plugins: [
+      babel({
+        exclude: "node_modules/**"
+      }),
+      terser({
+        compress: true,
+        ecma: 5,
+        compress: {
+          drop_console: true
+        }
+      })
+    ]
+  },
+  {
+    input: "./src/index.js",
+    output: {
+      file: "dist/domponent.es5.dev.js",
+      format: "umd",
+      name: "Domponent"
+    },
+    plugins: [
+      babel({
+        exclude: "node_modules/**"
+      })
+    ]
+  }
 ];
