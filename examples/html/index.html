@@ -195,6 +195,32 @@ export default class Navigation extends Component {
       </header>
 
       <div class="row">
+        <div class="col-12" data-component="ShowCode">
+          <button
+            type="button"
+            class="btn btn-block"
+            data-action="click->ShowCode.toggle"
+          >
+            Show the Todo Example
+          </button>
+          <div class="fold" data-ref="Showcode.foldable">
+            <iframe
+              src="https://codesandbox.io/embed/domponent-todo-with-undo-redo-sp3s2?fontsize=14"
+              title="domponent-todo-with-undo-redo"
+              allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+              style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+              sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+            ></iframe>
+            <small
+              >Note: This example uses a state management system called
+              substate. But all the UI is being manipulated with Domponent
+              &#x1F913;</small
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
         <!-- COUNTERS and EXPONENT -->
         <div class="col-md-6">
           <div
