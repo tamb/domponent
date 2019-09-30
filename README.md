@@ -465,11 +465,13 @@ This way your development build of webpack will swap out the production version 
 
 <hr/>
 
-### Syntax Examples
+### Syntax Examples 🔤
 You can write your component HTML for various templating engines and _include_ them as partials/fragments/whatever your engine refers to as "chunks of HTML".
 
+Here are some examples of how you might use Domponent.
+
 __Pug Syntax Example__ 🐶
-```html
+```js
 // counter.pug
 div(data-component="Counter" data-state=`
   {
