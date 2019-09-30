@@ -131,6 +131,15 @@ npm install --save domponent
 
 **You can use an ES5 version by importing this file** `domponent/dist/domponent.es5.js`
 
+If you're not using a transpiler, it's recommended to use the ES5 UMD.  So here's the JSDelvr link:
+```js
+// production
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/domponent@1.1.2/dist/domponent.es5.min.js"></script>
+
+// development
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/domponent@1.1.2/dist/domponent.es5.dev.min.js"></script>
+```
+
 <hr/>
 
 
