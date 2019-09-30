@@ -488,7 +488,7 @@ __Thymeleaf Syntax Example__ 🍃
 ```html
 // counter.html
 <div data-component="Counter" th:fragment="Counter">
-  <p data-bind="state:Counter.count" th:data-state='{"count":${count}}' th:text="${count}"></p>
+  <p data-bind="state:Counter.count" th:data-state='{"count":${count}, "isEven": ${count % 2 == 0}}' th:text="${count}"></p>
   <button data-action="click->Counter.increment">
     +1
   </button>
@@ -497,6 +497,20 @@ __Thymeleaf Syntax Example__ 🍃
   </button>
 </div>
 ```
+__Razor Syntax Example__ ⚔️
+```html
+// counter.html
+<div data-component="Counter">
+  <p data-bind="state:Counter.count" th:data-state='{"count":@(count), "isEven": @(count % 2 == 0)}' th:text="${count}"></p>
+  <button data-action="click->Counter.increment">
+    +1
+  </button>
+  <button data-action="click->Counter.decrement">
+    -1
+  </button>
+</div>
+```
+
 <!--
 __Ruby on Rails Syntax Example__ 💎
 coming soon...
@@ -504,7 +518,7 @@ coming soon...
 __Mustache Syntax Example__ 👺
 coming soon...
 
-__Razor Syntax Example__ ⚔️
+
 coming soon... -->
 
 <hr/>
