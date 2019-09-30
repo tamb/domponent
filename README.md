@@ -501,7 +501,7 @@ __Razor Syntax Example__ ⚔️
 ```html
 // counter.html
 <div data-component="Counter">
-  <p data-bind="state:Counter.count" th:data-state='{"count":@(count), "isEven": @(count % 2 == 0)}' th:text="${count}"></p>
+  <p data-bind="state:Counter.count" data-state='{"count":@(count), "isEven": @(count % 2 == 0)}'>@count</p>
   <button data-action="click->Counter.increment">
     +1
   </button>
