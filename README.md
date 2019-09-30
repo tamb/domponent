@@ -23,7 +23,6 @@
   <button data-action="click->Counter.decrement">
     -1
   </button>
-  <div></div>
 </div>
 ```
 
@@ -91,6 +90,7 @@ new Init(config);
 - [Adding and Removing Components](#adding-and-removing-components-)
 - [Namespacing Data Attributes](#namespacing-data-attributes-)
 - [Development Mode](#development-mode-)
+- [Syntax Examples](#syntax-examples-)
 - [Component Lifecycle](#component-lifecycle-)
 - [Who Uses Domponent](#who-uses-domponent-)
 
@@ -119,21 +119,6 @@ Todo List: https://codesandbox.io/embed/domponent-todo-with-undo-redo-sp3s2?font
 2. `npm install`
 3. `npm run build:html-dev` or `npm run build:html-prod`
 
-<!-- __Pug Syntax Example__ 🐶
-coming soon...
-
-__Thymeleaf Syntax Example__ 🍃
-coming soon...
-
-__Ruby on Rails Syntax Example__ 💎
-coming soon...
-
-__Mustache Syntax Example__ 👺
-coming soon...
-
-__Razor Syntax Example__ ⚔️
-coming soon... -->
-
 <hr/>
 
 ### Install 📥
@@ -144,7 +129,10 @@ coming soon... -->
 npm install --save domponent
 ```
 
+**You can use an ES5 version by importing this file** `domponent/dist/domponent.es5.js`
+
 <hr/>
+
 
 ### data API 💽
 
@@ -474,6 +462,48 @@ resolve: argv.mode === 'development'? {
 ```
 
 This way your development build of webpack will swap out the production version of Domponent for the version sprinkled with help from Dom.
+
+<hr/>
+
+### Syntax Examples
+You can write your component HTML for various templating engines and _include_ them as partials/fragments/whatever your engine refers to as "chunks of HTML".
+
+__Pug Syntax Example__ 🐶
+```html
+// counter.pug
+div(data-component="Counter" data-state=`
+  {
+    "count": count,
+    "isEven": count % 2 === 0 
+  }
+`)
+  p(data-bind="state:Counter.count") #{count}
+  button(data-action="click->Counter.increment") +1
+  button(data-action="click->Counter.decrement") -1
+```
+
+__Thymeleaf Syntax Example__ 🍃
+```html
+// counter.html
+<div data-component="Counter" th:fragment="Counter">
+  <p data-bind="state:Counter.count" th:data-state='{"count":${count}}' th:text="${count}"></p>
+  <button data-action="click->Counter.increment">
+    +1
+  </button>
+  <button data-action="click->Counter.decrement">
+    -1
+  </button>
+</div>
+```
+<!--
+__Ruby on Rails Syntax Example__ 💎
+coming soon...
+
+__Mustache Syntax Example__ 👺
+coming soon...
+
+__Razor Syntax Example__ ⚔️
+coming soon... -->
 
 <hr/>
 
