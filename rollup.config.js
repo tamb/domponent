@@ -35,7 +35,7 @@ export default [
   {
     input: "./src/index.js",
     output: {
-      file: "dist/domponent.es5.js",
+      file: "dist/domponent.es5.min.js",
       format: "umd",
       name: "Domponent"
     },
