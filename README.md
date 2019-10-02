@@ -283,7 +283,7 @@ class Counter extends Component {
 
 <hr/>
 
-### Managing Component State 🕹️
+### Managing Component State  🕹️
 
 Don't mutate the state directly. Call `this.setState`
 
