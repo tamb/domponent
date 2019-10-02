@@ -49,7 +49,7 @@ export default class Counter extends Component {
 3. Initialize the App ⚡
 
 ```js
-import Init from "domponent";
+import { Init } from "domponent";
 import Counter from "./Counter.js";
 
 const config = {
