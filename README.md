@@ -82,7 +82,7 @@ new Init(config);
   - [data-key](#data-key)
   - [data-props](#data-props)
 - [Extending the Component class](#extending-the-component-class-)
-- [Manage Component State](#managing-component-state-)
+- [Managing Component State](#managing-component-state-)
 - [Lifecycle Methods](#lifecycle-methods-)
 - [Stateless Components](#stateless-components-)
 - [Component Fields](#component-fields-)
