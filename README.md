@@ -91,8 +91,8 @@ new Init(config);
 - [Namespacing Data Attributes](#namespacing-data-attributes-)
 - [Development Mode](#development-mode-)
 - [Syntax Examples](#syntax-examples-)
-- [Component Lifecycle](#component-lifecycle-)
-- [Who Uses Domponent](#who-uses-domponent-)
+- [Component Lifecycle](#component-lifecycle-%EF%B8%8F%EF%B8%8F)
+- [Who Uses Domponent](#who-uses-domponent-%EF%B8%8F)
 
 ### Purpose ✔️
 
