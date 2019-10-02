@@ -82,7 +82,7 @@ new Init(config);
   - [data-key](#data-key)
   - [data-props](#data-props)
 - [Extending the Component class](#extending-the-component-class-)
-- [Managing Component State](#managing-component-state-)
+- [Managing Component State](#managing-component-state-%EF%B8%8F)
 - [Lifecycle Methods](#lifecycle-methods-)
 - [Stateless Components](#stateless-components-)
 - [Component Fields](#component-fields-)
@@ -283,7 +283,7 @@ class Counter extends Component {
 
 <hr/>
 
-### Managing Component State  🕹️
+### Managing Component State 🕹️
 
 Don't mutate the state directly. Call `this.setState`
 
