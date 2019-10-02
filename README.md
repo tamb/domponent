@@ -413,7 +413,7 @@ App.register(NewComponent, callback);
 - {Function} optional callback function
 
 ```js
-App.createComponent("my-component-instance-key", callback);
+App.deleteComponent("my-component-instance-key", callback);
 ```
 
 ##### `unregister`
