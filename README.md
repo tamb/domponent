@@ -504,7 +504,7 @@ div(data-component="Counter" data-state=`
 <div data-component="Counter" th:fragment="Counter">
   <p
     data-bind="state:Counter.count"
-    th:data-state='{"count":${count}, "isEven": ${count % 2 == 0}}'
+    th:data-state='|{"count":${count}, "isEven": ${count % 2 == 0}}|'
     th:text="${count}"
   ></p>
   <button data-action="click->Counter.increment">
