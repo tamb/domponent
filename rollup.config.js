@@ -35,7 +35,7 @@ export default [
   {
     input: "./src/index.js",
     output: {
-      file: "dist/domponent.production.es5.min.js",
+      file: "dist/domponent.es5.min.js",
       format: "umd",
       name: "Domponent"
     },
@@ -44,7 +44,6 @@ export default [
         exclude: "node_modules/**"
       }),
       terser({
-        compress: true,
         ecma: 5,
         compress: {
           drop_console: true
@@ -55,13 +54,17 @@ export default [
   {
     input: "./src/index.js",
     output: {
-      file: "dist/domponent.es5.dev.js",
+      file: "dist/domponent.es5.dev.min.js",
       format: "umd",
       name: "Domponent"
     },
     plugins: [
       babel({
         exclude: "node_modules/**"
+      }),
+      terser({
+        compress: true,
+        ecma: 5,
       })
     ]
   }
