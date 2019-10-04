@@ -296,6 +296,7 @@ module.exports = create({
     allowTransparency: null,
     autoCorrect: null,
     autoSave: null,
+    disablePictureInPicture: boolean,
     prefix: null,
     property: null,
     results: number,

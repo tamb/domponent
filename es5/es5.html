@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      body {
+        background-color: #009ddc;
+      }
+    </style>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/domponent@1.1.2/dist/domponent.es5.min.js"
+      defer
+    ></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        var Counter = Domponent.Component;
+
+        Counter.prototype.increment = function() {
+          this.setState({ count: this.state.count + 1 });
+        };
+
+        Counter.prototype.decrement = function() {
+          this.setState({ count: this.state.count - 1 });
+        };
+
+        Counter.prototype.stateDidUpdate = function() {
+          console.log("update", this);
+        };
+
+        var App = new Domponent.Init({
+          selector: document.body,
+          components: {
+            Counter: Counter
+          }
+        });
+      });
+    </script>
+
+    <title>ES5| Domponent</title>
+  </head>
+  <body id="root">
+    <div class="container">
+      <div class="row">
+        <div
+          class="col-12 d-flex flex-column justify-items-center align-content-center mt-3 mb-3"
+        >
+          <h1 class=" d-flex justify-content-center">
+            <div>🔌</div>
+            &lt;<span>DOMponent</span> /&gt;
+          </h1>
+          <div class="w-100 d-none d-md-block"></div>
+          <div class="d-flex justify-content-center align-items-center">
+            <a
+              target="_blank"
+              class="text-dark p-1"
+              aria-label="github"
+              href="https://github.com/tamb/domponent"
+            >
+              <span>GitHub</span>
+            </a>
+            <span>|</span>
+            <a
+              target="_blank"
+              aria-label="documentation"
+              class="text-dark p-1 docs-link"
+              href="https://github.com/tamb/domponent/blob/master/README.md"
+            >
+              <span>Docs</span>
+            </a>
+            <span>|</span>
+            <a class="text-dark p-1" aria-label="Home" href="/">
+              <span class="d-none d-md-block">Home</span>
+            </a>
+          </div>
+          <div class="w-100 d-none d-md-block"></div>
+          <p class="text-center">View the page source for code!</p>
+        </div>
+
+        <div
+          class="col-12 d-flex justify-content-center align-content-center mt-3"
+        >
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title">A Counter in ES5</h2>
+              <div
+                class="card-text d-flex justify-content-center align-content-center"
+              >
+                <div data-component="Counter" data-state='{"count": 0}'>
+                  <p class="text-center" data-bind="state:Counter.count">0</p>
+                  <button
+                    type="button"
+                    class="btn btn-warning"
+                    data-action="click->Counter.decrement"
+                  >
+                    -1
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-success"
+                    data-action="click->Counter.increment"
+                  >
+                    +1
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
