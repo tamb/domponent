@@ -17,11 +17,11 @@
 ```html
 <div data-component="Counter">
   <p data-bind="state:Counter.count">0</p>
-  <button data-action="click->Counter.increment">
-    +1
-  </button>
   <button data-action="click->Counter.decrement">
     -1
+  </button>
+  <button data-action="click->Counter.increment">
+    +1
   </button>
 </div>
 ```
