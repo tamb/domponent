@@ -129,16 +129,16 @@ Todo List: https://codesandbox.io/embed/domponent-todo-with-undo-redo-sp3s2?font
 npm install --save domponent
 ```
 
-**You can use an ES5 version by importing this file** `domponent/dist/domponent.es5.js`
+**You can use an ES5 version by importing this file** `domponent/dist/domponent.es5.production.min.js`
 
 If you're not using a transpiler, it's recommended to use the ES5 UMD. So here's the JSDelvr link:
 
 ```js
 // production
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/domponent@1.1.2/dist/domponent.production.es5.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/domponent@VERSION/dist/domponent.es5.production.min.js" defer></script>
 
 // development
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/domponent@1.1.2/dist/domponent.es5.dev.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/domponent@VERSION/dist/domponent.es5.development.min.js" defer></script>
 ```
 
 <hr/>
