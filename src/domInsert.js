@@ -4,17 +4,19 @@ export default function(id) {
   const isEven = number % 2 === 0;
   const component = `
     <div class="col-md-6">
-    <div id="${id}" data-component="Counter" class="card" data-state='{"count":${number},"isEven":${isEven}}'>
+    <div id="${id}" data-component="Counter" class="card ${
+    isEven ? "even" : ""
+  }" data-state='{"count":${number},"isEven":${isEven}}'>
     <div class="card-body">
     <strong class="card-title" data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen">Async Counter</strong>
-    <div>count: <span data-bind="state:Counter.count"></span></div>
+    <div>count: <span data-bind="state:Counter.count">${number}</span></div>
     <button type="button" data-action="click->Counter.decrement" class="btn btn-danger">
       <i aria-label="subtract" data-feather="minus-circle"></i>
     </button>
     
     <button
       type="button"
-      data-action="click->Counter.increment|mouseover->Counter.goBlue|mouseout->Counter.goGreen"
+      data-action="click->Counter.increment"
       class="btn btn-success"
     >
       <i aria-label="add" data-feather="plus-circle"></i>

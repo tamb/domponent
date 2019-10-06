@@ -198,6 +198,9 @@ export default class Navigation extends Component {
             href="./es5/es5.html"
           >
             <span class="d-none d-md-block">ES5</span>
+            <span class="d-sm-none">
+              <i aria-hidden="true" data-feather="shield"></i>
+            </span>
           </a>
         </div>
       </header>
@@ -248,7 +251,7 @@ export default class Navigation extends Component {
                 Regular Counter
               </strong>
               <div>
-                count: <span data-bind="state:Counter.count"></span>
+                count: <span data-bind="state:Counter.count">19</span>
                 <p></p>
               </div>
               <button
@@ -362,7 +365,7 @@ export default class Counter extends Component {
               <!-- Nested Counter -->
               <div
                 data-component="Counter"
-                class="card"
+                class="card even"
                 data-state='{"count": 6, "isEven":true}'
               >
                 <div class="card-body">
@@ -374,7 +377,7 @@ export default class Counter extends Component {
                   </strong>
                   <p>I retain my scope. No memory leaks. ;)</p>
                   <div>
-                    count: <span data-bind="state:Counter.count"></span>
+                    count: <span data-bind="state:Counter.count">6</span>
                   </div>
                   <button
                     type="button"
@@ -492,7 +495,7 @@ export default class DisplayAnything extends Exponent {
 
                   <div
                     data-component="Counter"
-                    class="card"
+                    class="card even"
                     data-state='{"count":0, "isEven": true}'
                   >
                     <div class="card-body">
@@ -503,7 +506,7 @@ export default class DisplayAnything extends Exponent {
                         Counter where the increment button is bound just once.
                       </strong>
                       <div>
-                        count: <span data-bind="state:Counter.count"></span>
+                        count: <span data-bind="state:Counter.count">0</span>
                       </div>
                       <button
                         type="button"
@@ -532,7 +535,7 @@ export default class DisplayAnything extends Exponent {
 
         <div class="col-md-6">
           <div class="row">
-            <!-- NAME COMPONENT -->
+            <!-- SHOW COMPONENT -->
             <div class="col-12">
               <div
                 data-component="FavoriteShow"
@@ -557,9 +560,11 @@ export default class DisplayAnything extends Exponent {
                       data-ref="FavoriteShow.secondInput"
                       id="controlled"
                       class="form-control"
-                    ></textarea>
+                    >
+Regular Show</textarea
+                    >
                   </div>
-                  <code data-bind="state:FavoriteShow.show"></code>
+                  <code data-bind="state:FavoriteShow.show">Regular Show</code>
                   <div class="form-group">
                     <label for="show">
                       Controls the text and input above
@@ -613,8 +618,8 @@ Regular Show</textarea
   <span class="el">  &#x3C;</span><span class="el">label></span>
     controlled from below
   <span class="el">&#x3C;/label></span>
-  <span class="el">&#x3C;textarea </span><span class="attr">data-ref=</span><span class="attr-val">"FavoriteShow.secondInput"</span><span class="el">>&#x3C;/textarea></span>
-  <span class="el">&#x3C;code </span><span class="attr">data-bind=</span><span class="attr-val">"state:FavoriteShow.show"</span><span class="el">>&#x3C;/code></span>
+  <span class="el">&#x3C;textarea </span><span class="attr">data-ref=</span><span class="attr-val">"FavoriteShow.secondInput"</span><span class="el">>Regular Show&#x3C;/textarea></span>
+  <span class="el">&#x3C;code </span><span class="attr">data-bind=</span><span class="attr-val">"state:FavoriteShow.show"</span><span class="el">>Regular Show&#x3C;/code></span>
   <span class="el">&#x3C;label></span>
     Controls the text and input above
   <span class="el">&#x3C;/label></span>

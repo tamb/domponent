@@ -8,6 +8,10 @@ export default class FavoriteShow extends Component {
     };
   }
 
+  connected() {
+    this.setState(this.state);
+  }
+
   handleInput(event) {
     this.setState({ show: event.target.value });
   }
