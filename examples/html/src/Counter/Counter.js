@@ -8,8 +8,6 @@ export default class Counter extends Component {
       count: parseInt(this.state.count) || 0,
       isEven: this.state.isEven
     };
-    this.setState(this.state);
-    this.setEven();
   }
 
   increment(e) {
@@ -38,6 +36,7 @@ export default class Counter extends Component {
 
   stateDidUpdate() {
     this.setEven();
+    console.log("counter updated");
   }
 
   setEven() {
