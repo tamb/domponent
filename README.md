@@ -228,7 +228,7 @@ You can access the array of elements in your component with `this.elements`.
 #### `data-key`
 
 This is totally optional. It's a _unique_ string for _each_ component instance.  
-This is internally to bind props. Therefore you must know the `$key` of the component you are receiving props from.
+This is used internally to bind props. Therefore you must know the `$key` of the component you are receiving props from.
 
 ```html
 <div data-component="Counter" data-key="aUniqueKey">
