@@ -135,7 +135,7 @@ If you're not using a transpiler, it's recommended to use the ES5 UMD. So here's
 
 ```js
 // production
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/domponent@1.1.2/dist/domponent.es5.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/domponent@1.1.2/dist/domponent.production.es5.min.js"></script>
 
 // development
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/domponent@1.1.2/dist/domponent.es5.dev.min.js"></script>
@@ -478,9 +478,9 @@ This way your development build of webpack will swap out the production version 
 
 You can write your component HTML for various templating engines and _include_ them as partials/fragments/whatever your engine refers to as "chunks of HTML".
 
-Here are some examples of how you might use Domponent.  
+Here are some examples of how you might use Domponent.
 
-__Note:__ Despite these syntax differences in the markup, remember that the component is simply a JS class ✌️
+**Note:** Despite these syntax differences in the markup, remember that the component is simply a JS class ✌️
 
 **Pug Syntax Example** 🐶
 
