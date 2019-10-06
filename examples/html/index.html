@@ -365,7 +365,7 @@ export default class Counter extends Component {
               <!-- Nested Counter -->
               <div
                 data-component="Counter"
-                class="card"
+                class="card even"
                 data-state='{"count": 6, "isEven":true}'
               >
                 <div class="card-body">
@@ -495,7 +495,7 @@ export default class DisplayAnything extends Exponent {
 
                   <div
                     data-component="Counter"
-                    class="card"
+                    class="card even"
                     data-state='{"count":0, "isEven": true}'
                   >
                     <div class="card-body">
@@ -535,7 +535,7 @@ export default class DisplayAnything extends Exponent {
 
         <div class="col-md-6">
           <div class="row">
-            <!-- NAME COMPONENT -->
+            <!-- SHOW COMPONENT -->
             <div class="col-12">
               <div
                 data-component="FavoriteShow"
@@ -560,9 +560,11 @@ export default class DisplayAnything extends Exponent {
                       data-ref="FavoriteShow.secondInput"
                       id="controlled"
                       class="form-control"
-                    ></textarea>
+                    >
+Regular Show</textarea
+                    >
                   </div>
-                  <code data-bind="state:FavoriteShow.show"></code>
+                  <code data-bind="state:FavoriteShow.show">Regular Show</code>
                   <div class="form-group">
                     <label for="show">
                       Controls the text and input above
