@@ -183,7 +183,7 @@
         `data-${this.$app.$datasets.state}`
       );
       if (stateAttr) {
-        this.setState(JSON.parse(stateAttr));
+        this.state = JSON.parse(stateAttr);
       }
     }
 
