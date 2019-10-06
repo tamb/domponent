@@ -35,7 +35,7 @@ export default [
   {
     input: "./src/index.js",
     output: {
-      file: "dist/domponent.es5.min.js",
+      file: "dist/domponent.es5.production.min.js",
       format: "umd",
       name: "Domponent"
     },
@@ -54,7 +54,7 @@ export default [
   {
     input: "./src/index.js",
     output: {
-      file: "dist/domponent.es5.dev.min.js",
+      file: "dist/domponent.es5.development.min.js",
       format: "umd",
       name: "Domponent"
     },
@@ -64,7 +64,7 @@ export default [
       }),
       terser({
         compress: true,
-        ecma: 5,
+        ecma: 5
       })
     ]
   }
