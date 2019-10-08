@@ -179,7 +179,7 @@ example:
 </button>
 ```
 
-You can pass `eventListener` options in as well separated by a comma `,`.
+You can pass `eventListener` options in as well.  Options must be after a `.` after the class method.  The options must be separated by a comma `,`.
 
 ```html
 <button
