@@ -291,7 +291,7 @@ Don't mutate the state directly. Call `this.setState`
 setState(stateObject, callbackFunction);
 ```
 
-This follows React's setState - although it's implemented differently.
+This is similar in concept to React's setState - although it's implemented differently.
 
 <hr/>
 
