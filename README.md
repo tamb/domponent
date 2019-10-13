@@ -499,6 +499,7 @@ mixin counter(count)
 
 // usage
 +counter(101119)
++counter(61316)
 ```
 
 **Thymeleaf Syntax Example** 🍃
@@ -520,9 +521,10 @@ mixin counter(count)
 </div>
 
 // usage
-<th:block th:replace="./counter.html  :: Counter(count: 12)" />
-```
+<th:block th:replace="./counter.html  :: Counter(count: 1289)" />
+<th:block th:replace="./counter.html  :: Counter(count: 491)" />```
 
+<!-- 
 **Razor Syntax Example** ⚔️
 
 ```html
@@ -542,7 +544,7 @@ mixin counter(count)
   </button>
 </div>
 ```
-
+-->
 <!--
 __Ruby on Rails Syntax Example__ 💎
 coming soon...
