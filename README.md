@@ -486,7 +486,6 @@ Here are some examples of how you might use Domponent.
 
 ```js
 // counter.pug
-
 mixin counter
  div(data-component="Counter" data-state=`
     {
