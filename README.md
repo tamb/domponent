@@ -496,6 +496,9 @@ mixin counter
    p(data-bind="state:Counter.count") #{count}
    button(data-action="click->Counter.increment") +1
    button(data-action="click->Counter.decrement") -1
+
+// usage
++counter
 ```
 
 **Thymeleaf Syntax Example** 🍃
