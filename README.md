@@ -486,15 +486,17 @@ Here are some examples of how you might use Domponent.
 
 ```js
 // counter.pug
-div(data-component="Counter" data-state=`
-  {
-    "count": count,
-    "isEven": count % 2 === 0
-  }
-`)
-  p(data-bind="state:Counter.count") #{count}
-  button(data-action="click->Counter.increment") +1
-  button(data-action="click->Counter.decrement") -1
+
+mixin counter
+ div(data-component="Counter" data-state=`
+    {
+      "count": count,
+      "isEven": count % 2 === 0
+    }
+  `)
+   p(data-bind="state:Counter.count") #{count}
+   button(data-action="click->Counter.increment") +1
+   button(data-action="click->Counter.decrement") -1
 ```
 
 **Thymeleaf Syntax Example** 🍃
