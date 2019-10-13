@@ -522,9 +522,10 @@ mixin counter(count)
 
 // usage
 <th:block th:replace="./counter.html  :: Counter(count: 1289)" />
-<th:block th:replace="./counter.html  :: Counter(count: 491)" />```
+<th:block th:replace="./counter.html  :: Counter(count: 491)" />
+```
 
-<!-- 
+<!--
 **Razor Syntax Example** ⚔️
 
 ```html
