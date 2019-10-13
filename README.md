@@ -514,6 +514,9 @@ div(data-component="Counter" data-state=`
     -1
   </button>
 </div>
+
+// usage
+<th:block th:replace="./counter.html  :: Counter(count: 12)" />
 ```
 
 **Razor Syntax Example** ⚔️
