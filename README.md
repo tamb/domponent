@@ -486,7 +486,7 @@ Here are some examples of how you might use Domponent.
 
 ```js
 // counter.pug
-mixin counter
+mixin counter(count)
  div(data-component="Counter" data-state=`
     {
       "count": count,
@@ -498,7 +498,7 @@ mixin counter
    button(data-action="click->Counter.decrement") -1
 
 // usage
-+counter
++counter(101119)
 ```
 
 **Thymeleaf Syntax Example** 🍃
