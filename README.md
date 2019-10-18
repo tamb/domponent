@@ -506,10 +506,11 @@ mixin counter(count)
 
 ```html
 // counter.html
-<div data-component="Counter" th:fragment="Counter">
+<div data-component="Counter" 
+     th:fragment="Counter"
+     th:data-state='|{"count":${count}, "isEven": ${count % 2 == 0}}|'>
   <p
     data-bind="state:Counter.count"
-    th:data-state='|{"count":${count}, "isEven": ${count % 2 == 0}}|'
     th:text="${count}"
   ></p>
   <button data-action="click->Counter.increment">
