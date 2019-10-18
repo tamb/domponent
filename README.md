@@ -1,6 +1,6 @@
 # 🔌\<DOMponent />
 
-**Build components with the HTML you already have.**
+**Build UI Components with the HTML You Already Have.**
 <br/>
 **<2kb gzipped and 5kb minified! 👌**
 
