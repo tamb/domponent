@@ -10,9 +10,8 @@ import {
 export default class Component extends Exponent {
   constructor(config) {
     super(config, true);
-    this.state = {};
-    this.$s = createStateObjects.call(this);
     initState.call(this);
+    this.$s = createStateObjects.call(this);
     this.connected();
   }
 
@@ -25,13 +24,13 @@ export default class Component extends Exponent {
     this.stateWillUpdate();
     const propsToUpdate = [];
     /* START.DEV */
-    try{
-    /* END.DEV */
+    try {
+      /* END.DEV */
       for (let stateKey in newState) {
         if (newState[stateKey] !== this.state[stateKey]) {
           propsToUpdate.push(stateKey);
           this.state[stateKey] = newState[stateKey];
-          if(this.$s){
+          if (this.$s) {
             if (this.$s[stateKey]) {
               this.$s[stateKey].forEach(stateObj => {
                 updateDOM(stateObj.el, newState[stateKey]);
@@ -40,10 +39,15 @@ export default class Component extends Exponent {
           }
         }
       }
-    /* START.DEV */  
+      /* START.DEV */
     } catch (err) {
-      console.error(`🤓 -- "Whoops, pal!  You ran into this error while updating state: 
-      `, err, ` within this root element `, this.$root);
+      console.error(
+        `🤓 -- "Whoops, pal!  You ran into this error while updating state: 
+      `,
+        err,
+        ` within this root element `,
+        this.$root
+      );
     }
     /* END.DEV */
     if (this.$d.size > 0) {
