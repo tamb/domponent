@@ -8,7 +8,7 @@ export default function(id) {
     isEven ? "even" : ""
   }" data-state='{"count":${number},"isEven":${isEven}}'>
     <div class="card-body">
-    <strong class="card-title" data-action="mousedown->Counter.goBlue|mouseup->Counter.goGreen">Async Counter</strong>
+    <strong class="card-title">Async Counter</strong>
     <div>count: <span data-bind="state:Counter.count">${number}</span></div>
     <button type="button" data-action="click->Counter.decrement" class="btn btn-danger">
       <i aria-label="subtract" data-feather="minus-circle"></i>

@@ -183,7 +183,8 @@
         `data-${this.$app.$datasets.state}`
       );
       if (stateAttr) {
-        this.state = JSON.parse(stateAttr);
+        this.state = this.state || {};
+        this.state = Object.assign(this.state, JSON.parse(stateAttr));
       }
     }
 
@@ -389,9 +390,8 @@
     class Component extends Exponent {
       constructor(config) {
         super(config, true);
-        this.state = {};
-        this.$s = createStateObjects.call(this);
         initState.call(this);
+        this.$s = createStateObjects.call(this);
         this.connected();
       }
 
