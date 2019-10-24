@@ -1,8 +1,8 @@
 # 🔌\<DOMponent />
 
-**Build components with the HTML you already have.**
+**Build UI Components with the HTML You Already Have.**
 <br/>
-**<2kb gzipped and 5kb minified! 👌**
+**2kb gzipped and 5kb minified! 👌**
 
 [![](https://data.jsdelivr.com/v1/package/npm/domponent/badge)](https://www.jsdelivr.com/package/npm/domponent)
 [![](https://img.shields.io/npm/dw/domponent)](https://www.npmjs.com/package/domponent)
@@ -179,7 +179,7 @@ example:
 </button>
 ```
 
-You can pass `eventListener` options in as well separated by a comma `,`.
+You can pass `eventListener` options in as well. Options must be after a `.` after the class method. The options must be separated by a comma `,`.
 
 ```html
 <button
@@ -228,7 +228,7 @@ You can access the array of elements in your component with `this.elements`.
 #### `data-key`
 
 This is totally optional. It's a _unique_ string for _each_ component instance.  
-This is internally to bind props. Therefore you must know the `$key` of the component you are receiving props from.
+This is used internally to bind props. Therefore you must know the `$key` of the component you are receiving props from.
 
 ```html
 <div data-component="Counter" data-key="aUniqueKey">
@@ -291,7 +291,7 @@ Don't mutate the state directly. Call `this.setState`
 setState(stateObject, callbackFunction);
 ```
 
-This follows React's setState - although it's implemented differently.
+This is similar in concept to React's setState - although it's implemented differently.
 
 <hr/>
 
@@ -486,27 +486,32 @@ Here are some examples of how you might use Domponent.
 
 ```js
 // counter.pug
-div(data-component="Counter" data-state=`
-  {
-    "count": count,
-    "isEven": count % 2 === 0
-  }
-`)
-  p(data-bind="state:Counter.count") #{count}
-  button(data-action="click->Counter.increment") +1
-  button(data-action="click->Counter.decrement") -1
+mixin counter(count)
+ div(data-component="Counter" data-state=`
+    {
+      "count": count,
+      "isEven": count % 2 === 0
+    }
+  `)
+   p(data-bind="state:Counter.count") #{count}
+   button(data-action="click->Counter.increment") +1
+   button(data-action="click->Counter.decrement") -1
+
+// usage
++counter(101119)
++counter(61316)
 ```
 
 **Thymeleaf Syntax Example** 🍃
 
 ```html
 // counter.html
-<div data-component="Counter" th:fragment="Counter">
-  <p
-    data-bind="state:Counter.count"
-    th:data-state='|{"count":${count}, "isEven": ${count % 2 == 0}}|'
-    th:text="${count}"
-  ></p>
+<div
+  data-component="Counter"
+  th:fragment="Counter"
+  th:data-state='|{"count":${count}, "isEven": ${count % 2 == 0}}|'
+>
+  <p data-bind="state:Counter.count" th:text="${count}"></p>
   <button data-action="click->Counter.increment">
     +1
   </button>
@@ -514,8 +519,13 @@ div(data-component="Counter" data-state=`
     -1
   </button>
 </div>
+
+// usage
+<th:block th:replace="./counter.html  :: Counter(count: 1289)" />
+<th:block th:replace="./counter.html  :: Counter(count: 491)" />
 ```
 
+<!--
 **Razor Syntax Example** ⚔️
 
 ```html
@@ -535,7 +545,7 @@ div(data-component="Counter" data-state=`
   </button>
 </div>
 ```
-
+-->
 <!--
 __Ruby on Rails Syntax Example__ 💎
 coming soon...

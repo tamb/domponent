@@ -6,8 +6,15 @@ export default class Counter extends Component {
     super(conf);
     this.state = {
       count: parseInt(this.state.count) || 0,
-      isEven: this.state.isEven
+      isEven: this.state.count
+        ? this.state.count % 2 === 0
+          ? true
+          : false
+        : true,
+      stateFieldFromDOM: this.state.stateFieldFromDOM || "default cat",
+      stateFieldDefault: "default iPhone 11"
     };
+    this.setState(this.state);
   }
 
   increment(e) {
@@ -26,17 +33,17 @@ export default class Counter extends Component {
     this.setState(newState);
   }
 
-  goBlue(e) {
-    e.target.style.color = "blue";
-  }
+  // connecting() {
+  //   console.log("Connecting:", this.state);
+  // }
 
-  goGreen(e) {
-    e.target.style.color = "green";
-  }
+  // connected() {
+  //   console.log("Connected:", this.state);
+  // }
 
   stateDidUpdate() {
     this.setEven();
-    console.log("counter updated");
+    console.log("state updated", this.state);
   }
 
   setEven() {
