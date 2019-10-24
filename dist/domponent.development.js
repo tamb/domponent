@@ -184,6 +184,8 @@
       );
       if (stateAttr) {
         this.state = JSON.parse(stateAttr);
+      } else {
+        this.state = {};
       }
     }
 

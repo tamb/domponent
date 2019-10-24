@@ -6,9 +6,9 @@ export default class Counter extends Component {
     super(conf);
     this.state = {
       count: parseInt(this.state.count) || 0,
-      isEven: this.state.count % 2 === 0,
-      stateFieldFromDOM: this.state.stateFieldFromDOM || "cat",
-      stateFieldDefault: "iPhone 11"
+      isEven: this.state.count % 2 === 0 || true,
+      stateFieldFromDOM: this.state.stateFieldFromDOM || "default cat",
+      stateFieldDefault: "default iPhone 11"
     };
     this.setState(this.state);
   }

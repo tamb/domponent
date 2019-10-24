@@ -771,7 +771,30 @@ export default class CurrentTime extends Component {
           </div>
 
           <!-- ASYNC COMPONENTS -->
-          <div class="row" id="async"></div>
+          <div class="row" id="async">
+            <div data-component="Counter" class="card">
+              <div class="card-body">
+                <strong class="card-title">
+                  Counter that uses all default state
+                </strong>
+                <div>count: <span data-bind="state:Counter.count">0</span></div>
+                <button
+                  type="button"
+                  data-action="click->Counter.decrement"
+                  class="btn btn-danger"
+                >
+                  <i aria-label="subtract" data-feather="minus-circle"></i>
+                </button>
+                <button
+                  type="button"
+                  data-action="click->Counter.increment"
+                  class="btn btn-success"
+                >
+                  <i aria-label="add" data-feather="plus-circle"></i>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
