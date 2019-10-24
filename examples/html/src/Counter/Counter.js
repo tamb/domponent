@@ -6,7 +6,11 @@ export default class Counter extends Component {
     super(conf);
     this.state = {
       count: parseInt(this.state.count) || 0,
-      isEven: this.state.count % 2 === 0 || true,
+      isEven: this.state.count
+        ? this.state.count % 2 === 0
+          ? true
+          : false
+        : true,
       stateFieldFromDOM: this.state.stateFieldFromDOM || "default cat",
       stateFieldDefault: "default iPhone 11"
     };
@@ -29,17 +33,17 @@ export default class Counter extends Component {
     this.setState(newState);
   }
 
-  connecting() {
-    console.log("Connecting:", this.state);
-  }
+  // connecting() {
+  //   console.log("Connecting:", this.state);
+  // }
 
-  connected() {
-    console.log("Connected:", this.state);
-  }
+  // connected() {
+  //   console.log("Connected:", this.state);
+  // }
 
   stateDidUpdate() {
     this.setEven();
-    console.log(this.state);
+    console.log("state updated", this.state);
   }
 
   setEven() {
