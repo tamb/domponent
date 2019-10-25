@@ -18,7 +18,8 @@ module.exports = (env, argv) => {
     plugins: [
       new MiniCssExtractPlugin(),
       new HtmlWebpackPlugin({
-        template: "src/index.pug"
+        template: "src/index.pug",
+        minify: false
       })
     ],
     resolve:
