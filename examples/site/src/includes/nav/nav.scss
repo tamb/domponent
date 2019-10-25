@@ -1,0 +1,16 @@
+.navi {
+  display: flex;
+  padding: 1rem 1.5rem;
+  ol,
+  ul {
+    flex: 1;
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    list-style-type: none;
+    li {
+      margin: 0 1rem;
+    }
+  }
+}
