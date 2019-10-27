@@ -1,0 +1,7 @@
+.tags {
+  display: flex;
+  flex-direction: column;
+  &__headline {
+    font-size: 1rem;
+  }
+}
