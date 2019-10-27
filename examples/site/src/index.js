@@ -5,3 +5,7 @@ import "./includes/nav/nav";
 import "./includes/tags/tags";
 import "./includes/header/header";
 import "./includes/btn/btn";
+
+import feather from "feather-icons";
+
+feather.replace();
