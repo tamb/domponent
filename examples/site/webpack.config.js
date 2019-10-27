@@ -12,6 +12,19 @@ module.exports = (env, argv) => {
         {
           test: /\.pug$/,
           use: "pug-loader"
+        },
+        {
+          test: /\.(gif|png|jpe?g|svg)$/i,
+          use: [
+            {
+              loader: "file-loader",
+              options: {
+                name: "icons/[name].[ext]"
+                // bypassOnDebug: true, // webpack@1.x
+                // disable: true, // webpack@2.x and newer
+              }
+            }
+          ]
         }
       ]
     },
