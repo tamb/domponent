@@ -1,6 +1,10 @@
 .tags {
   display: flex;
   margin-top: 1rem;
+  flex-direction: column;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
 
   &__tag {
     padding: 0.75rem;
@@ -33,6 +37,8 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    margin-top: 0.2em;
+
     & > a {
       flex: 1;
     }
