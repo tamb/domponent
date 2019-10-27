@@ -1,0 +1,39 @@
+@import "colors.scss";
+
+body {
+  background-color: $eye;
+}
+
+.container {
+  padding: 0 10vw;
+}
+
+a {
+  color: $body;
+}
+
+@keyframes color_change {
+  0% {
+    color: blue;
+  }
+  25% {
+    color: orange;
+  }
+  50% {
+    color: rgb(206, 202, 1);
+  }
+  75% {
+    color: rgb(20, 182, 20);
+  }
+  100% {
+    color: red;
+  }
+}
+
+.colorize {
+  -webkit-animation: color_change 7s infinite alternate;
+  -moz-animation: color_change 7s infinite alternate;
+  -ms-animation: color_change 7s infinite alternate;
+  -o-animation: color_change 7s infinite alternate;
+  animation: color_change 7s infinite alternate;
+}
