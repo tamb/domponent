@@ -6,11 +6,6 @@
     padding: 0.75rem;
     flex: 1;
     margin: 0 1rem;
-    transition: all 0.5s;
-    &:hover {
-      box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
-      transform: scale(1.1);
-    }
   }
 
   &__headline {
@@ -32,5 +27,17 @@
   &__words {
     display: flex;
     flex-direction: column;
+  }
+
+  .images {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    & > a {
+      flex: 1;
+    }
+    img {
+      width: 50%;
+    }
   }
 }
