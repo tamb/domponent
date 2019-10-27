@@ -4,8 +4,18 @@
   &__links {
     margin-top: 0.75rem;
     display: flex;
-    & > * {
-      margin-right: 1rem;
+    justify-content: space-evenly;
+    @media screen and (min-width: 768px) {
+      justify-content: unset;
     }
+    & > * {
+      @media screen and (min-width: 768px) {
+        margin-right: 1rem;
+      }
+    }
+  }
+  text-align: center;
+  @media screen and (min-width: 768px) {
+    text-align: left;
   }
 }

@@ -5,7 +5,10 @@ body {
 }
 
 .container {
-  padding: 0 10vw;
+  padding: 0 2vw;
+  @media screen and (min-width: 768px) {
+    padding: 0 10vw;
+  }
 }
 
 a {
