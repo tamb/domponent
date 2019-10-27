@@ -1,7 +1,36 @@
 .tags {
   display: flex;
-  flex-direction: column;
+  margin-top: 1rem;
+
+  &__tag {
+    padding: 0.75rem;
+    flex: 1;
+    margin: 0 1rem;
+    transition: all 0.5s;
+    &:hover {
+      box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+      transform: scale(1.1);
+    }
+  }
+
   &__headline {
-    font-size: 1rem;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+    position: relative;
+    &:hover::after,
+    &:focus::after {
+      content: "#";
+      position: absolute;
+      left: -0.65rem;
+      top: 0;
+      font-size: 1rem;
+    }
+  }
+
+  &__words {
+    display: flex;
+    flex-direction: column;
   }
 }

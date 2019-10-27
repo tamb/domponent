@@ -1,0 +1,32 @@
+@import "../../colors.scss";
+
+.btn {
+  padding: 0.5em;
+  border-radius: 3px;
+  border: 1px solid $body;
+  display: block;
+  text-decoration: none;
+  &--large {
+    padding: 1.5em;
+  }
+  &--primary {
+    background-color: $body;
+    color: $light-stripes;
+    &:hover,
+    &:focus {
+      background-color: $belly;
+      color: $dark;
+    }
+  }
+
+  &--secondary {
+    background-color: $beak;
+    color: $light-stripes;
+    border-color: $beak;
+    &:hover,
+    &:focus {
+      background-color: $light-stripes;
+      color: $beak;
+    }
+  }
+}

@@ -1,6 +1,18 @@
+@import "../../colors.scss";
+
 .navi {
   display: flex;
   padding: 1rem 1.5rem;
+  align-items: center;
+  .home {
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-decoration: none;
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
   ol,
   ul {
     flex: 1;
@@ -11,6 +23,9 @@
     list-style-type: none;
     li {
       margin: 0 1rem;
+      a {
+        color: $body;
+      }
     }
   }
 }
