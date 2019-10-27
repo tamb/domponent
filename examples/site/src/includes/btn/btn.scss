@@ -4,7 +4,9 @@
   padding: 0.5em;
   border-radius: 3px;
   border: 1px solid $body;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
   &--large {
     padding: 1.5em;

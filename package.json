@@ -29,7 +29,8 @@
     "test": "jest",
     "build": "npm test && rollup -c rollup.config.js",
     "build:html-prod": "npm test && node clean.js && rollup -c rollup.config.js && npm pack && cd examples/html && npm install && npm start",
-    "build:html-dev": "node clean.js && rollup -c rollup.config.js && npm pack && cd examples/html && npm install && npm run start:dev"
+    "build:html-dev": "node clean.js && rollup -c rollup.config.js && npm pack && cd examples/html && npm install && npm run start:dev",
+    "site": "cd examples/site && npm run start"
   },
   "files": [
     "dist"
