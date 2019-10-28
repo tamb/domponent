@@ -314,6 +314,7 @@ The following are methods you can use to access components at various points in 
 ### Stateless Components 😐
 
 Extend the `Exponent` class to create a component with _only_ `props`
+This is slightly lighterweight than a `Component`.  Quicker to wire up and takes up less memory.
 
 ```
 import { Exponent } from 'domponent'
