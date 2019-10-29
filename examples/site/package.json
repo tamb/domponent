@@ -13,6 +13,11 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.6.4",
+    "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-inferno": "^6.1.0",
     "concurrently": "^5.0.0",
     "css-loader": "^3.2.0",
     "file-loader": "^4.2.0",
@@ -32,6 +37,10 @@
   "dependencies": {
     "domponent": "^1.1.5",
     "feather-icons": "^4.24.1",
-    "normalize-scss": "^7.0.1"
+    "inferno": "^7.3.2",
+    "normalize-scss": "^7.0.1",
+    "preact": "^10.0.4",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
   }
 }
