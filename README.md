@@ -122,6 +122,7 @@ Unlike KnockoutJS, DOMponent is
 * performs as fast as InfernoJS
 
 _Knockout_
+
 HTML
 ```html
 <p>First name: <input data-bind="value: firstName" /></p>
@@ -145,12 +146,13 @@ ko.applyBindings(new ViewModel("Planet", "Earth")); /
 ```
 
 _DOMponent_
+
 HTML
 ```html
 <div data-component="Hello">
   <p>First name: <input data-action="input->Hello.setFirstName" /></p>
-  <p>Last name: <input data-action="input->Hello.setLastName/></p>
-  <h2>Hello, <span data-bind="state:Hello.fullname"> </span>!</h2>
+  <p>Last name: <input data-action="input->Hello.setLastName"/></p>
+  <h2>Hello, <span data-bind="state:Hello.fullName"> </span>!</h2>
 </div>
 ```
 JS
