@@ -108,7 +108,7 @@ module.exports = (env, argv) => {
         new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
           template: "src/benchmarks/domponent/domponent.pug",
-          filename: "dist/benchmarks/domponent/domponent.html",
+          filename: "pages/domponent.html",
           minify: false
         })
       ]
@@ -162,7 +162,15 @@ module.exports = (env, argv) => {
             ]
           }
         ]
-      }
+      },
+      plugins: [
+        new MiniCssExtractPlugin(),
+        new HtmlWebpackPlugin({
+          template: "src/benchmarks/domponent/domponent.pug",
+          filename: "pages/react.html",
+          minify: false
+        })
+      ]
     },
 
     // benchmark preact
@@ -206,13 +214,15 @@ module.exports = (env, argv) => {
             ]
           }
         ]
-      }
-      // resolve: {
-      //   alias: {
-      //     react: "preact/compat",
-      //     "react-dom": "preact/compat"
-      //   }
-      // }
+      },
+      plugins: [
+        new MiniCssExtractPlugin(),
+        new HtmlWebpackPlugin({
+          template: "src/benchmarks/domponent/domponent.pug",
+          filename: "pages/preact.html",
+          minify: false
+        })
+      ]
     },
 
     // benchmark inferno
@@ -270,7 +280,15 @@ module.exports = (env, argv) => {
             ]
           }
         ]
-      }
+      },
+      plugins: [
+        new MiniCssExtractPlugin(),
+        new HtmlWebpackPlugin({
+          template: "src/benchmarks/domponent/domponent.pug",
+          filename: "pages/inferno.html",
+          minify: false
+        })
+      ]
     }
   ];
 };
