@@ -56,7 +56,7 @@ module.exports = (env, argv) => {
     {
       mode: "production",
       entry: {
-        "benchmark/domponent": path.resolve(
+        "benchmark/domponent.benchmark": path.resolve(
           __dirname,
           "src/benchmarks/domponent/"
         )
@@ -108,7 +108,7 @@ module.exports = (env, argv) => {
         new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
           template: "src/benchmarks/domponent/domponent.pug",
-          filename: "pages/domponent.html",
+          filename: "benchmark/domponent.html",
           minify: false
         })
       ]
@@ -118,7 +118,10 @@ module.exports = (env, argv) => {
     {
       mode: "production",
       entry: {
-        "benchmark/react": path.resolve(__dirname, "src/benchmarks/react/")
+        "benchmark/react.benchmark": path.resolve(
+          __dirname,
+          "src/benchmarks/react/"
+        )
       },
       output: {
         filename: "[name].bundle.js"
@@ -166,8 +169,8 @@ module.exports = (env, argv) => {
       plugins: [
         new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
-          template: "src/benchmarks/domponent/domponent.pug",
-          filename: "pages/react.html",
+          template: "src/benchmarks/react/react.pug",
+          filename: "benchmark/react.html",
           minify: false
         })
       ]
@@ -177,7 +180,10 @@ module.exports = (env, argv) => {
     {
       mode: "production",
       entry: {
-        "benchmark/preact": path.resolve(__dirname, "src/benchmarks/preact/")
+        "benchmark/preact.benchmark": path.resolve(
+          __dirname,
+          "src/benchmarks/preact/"
+        )
       },
       output: {
         filename: "[name].bundle.js"
@@ -218,8 +224,8 @@ module.exports = (env, argv) => {
       plugins: [
         new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
-          template: "src/benchmarks/domponent/domponent.pug",
-          filename: "pages/preact.html",
+          template: "src/benchmarks/preact/preact.pug",
+          filename: "benchmark/preact.html",
           minify: false
         })
       ]
@@ -229,7 +235,10 @@ module.exports = (env, argv) => {
     {
       mode: "production",
       entry: {
-        "benchmark/inferno": path.resolve(__dirname, "src/benchmarks/inferno/")
+        "benchmark/inferno.benchmark": path.resolve(
+          __dirname,
+          "src/benchmarks/inferno/"
+        )
       },
       output: {
         filename: "[name].bundle.js"
@@ -284,8 +293,8 @@ module.exports = (env, argv) => {
       plugins: [
         new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
-          template: "src/benchmarks/domponent/domponent.pug",
-          filename: "pages/inferno.html",
+          template: "src/benchmarks/inferno/inferno.pug",
+          filename: "benchmark/inferno.html",
           minify: false
         })
       ]
