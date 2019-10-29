@@ -105,8 +105,23 @@ This library sets up a clean and modern way to turn prerendered HTML into UI com
 DOMponent does not handle client-side rendering out of the box, does not create virtual DOM, does not diff DOM (though it does diff state and props).
 It's not meant to handle routing or entire application state. It's meant to take HTML fragments (Thymeleaf, Rails, Pug, whatever template engine you use) and create reusable functionality in the form of Components.
 
-<hr/>
+#### Differences to KnockoutJS
 
+DOMponent is similar to Knockout in some ways.  
+* it is template language-agnostic
+* the syntax looks similar
+* ... that's kinda about it.
+
+Unlike KnockoutJS, DOMponent is 
+* component-driven
+* has customizable syntax 
+* is only 5kb (that's a 51kb savings)
+* is highly declarative
+* allows for highly specific DOM references
+* performs as fast as InfernoJS
+
+<hr/>
+ 
 ### Demo 🤖
 
 [https://tamb.github.io/domponent/](https://tamb.github.io/domponent/)
