@@ -14,12 +14,13 @@
     text-align: center;
     justify-content: center;
     @media screen and (min-width: 768px) {
-      width: 25%;
+      width: 33%;
     }
     &__btns {
       display: flex;
       align-items: center;
       justify-content: space-around;
+      margin-bottom: 1rem;
     }
 
     p {
@@ -32,7 +33,7 @@
     font-size: 0.7rem;
     width: 100%;
     @media screen and (min-width: 768px) {
-      width: 75%;
+      width: 67%;
       font-size: 1.2rem;
     }
   }
@@ -47,8 +48,11 @@
       color: #4f9fcf;
 
       &-val {
-        color: $belly;
+        color: rgb(253, 196, 90);
       }
+    }
+    .punc {
+      color: $green;
     }
   }
 }
