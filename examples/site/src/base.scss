@@ -2,10 +2,13 @@
 
 body {
   background-color: $eye;
+  letter-spacing: 1px;
 }
 
 .container {
   padding: 0 2vw;
+  margin: 0 auto;
+  max-width: 1120px;
   @media screen and (min-width: 768px) {
     padding: 0 10vw;
   }
@@ -34,6 +37,16 @@ a {
   }
   100% {
     color: red;
+  }
+}
+
+.section {
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+
+  &--green {
+    background-color: $green;
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.4);
   }
 }
 
