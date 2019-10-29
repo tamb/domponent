@@ -118,8 +118,66 @@ Unlike KnockoutJS, DOMponent is
 * is only 5kb (that's a 51kb savings)
 * is highly declarative
 * allows for highly specific DOM references
+* has lifecycle methods
 * performs as fast as InfernoJS
 
+_Knockout_
+HTML
+```html
+<p>First name: <input data-bind="value: firstName" /></p>
+<p>Last name: <input data-bind="value: lastName" /></p>
+<h2>Hello, <span data-bind="text: fullName"> </span>!</h2>
+```
+JS
+```js
+// Here's my data model
+var ViewModel = function(first, last) {
+    this.firstName = ko.observable(first);
+    this.lastName = ko.observable(last);
+ 
+    this.fullName = ko.pureComputed(function() {
+        // Knockout tracks dependencies automatically. It knows that fullName depends on firstName and lastName, because these get called when evaluating fullName.
+        return this.firstName() + " " + this.lastName();
+    }, this);
+};
+ 
+ko.applyBindings(new ViewModel("Planet", "Earth")); /
+```
+
+_DOMponent_
+HTML
+```html
+<div data-component="Hello">
+  <p>First name: <input data-action="input->Hello.setFirstName" /></p>
+  <p>Last name: <input data-action="input->Hello.setLastName/></p>
+  <h2>Hello, <span data-bind="state:Hello.fullname"> </span>!</h2>
+</div>
+```
+JS
+```js
+import { Component } from "domponent";
+
+export default class Hello extends Component {
+  constructor(conf) {
+    super(conf);      
+  }
+    
+  setFirstName(event) {
+    this.setState({ firstName: event.target.value }, ()=> {
+       this.setFullName();
+    });
+  }
+   setLastName(event) {
+    this.setState({ lastName: event.target.value }, ()=> {
+       this.setFullName();
+    });
+  }
+
+  setFullName(){
+    this.setState({fullName: `${this.state.firstName} ${this.state.lastName}`})
+  }
+}
+```
 <hr/>
  
 ### Demo 🤖
