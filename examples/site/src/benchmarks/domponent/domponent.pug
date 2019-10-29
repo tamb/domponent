@@ -1,0 +1,16 @@
+extends ../../layout
+
+block content
+    h2 Pug and Domponent
+    #root
+        -for (var i = 0; i < 1000; i++) {
+        div(data-component="Wave" data-state=`{
+          "count": 0,
+          "width": 0
+        }`)
+          
+          p(data-bind="state:wave.count")=i
+         
+        - }
+
+    script(src="../../domponentwave.bundle.js")
