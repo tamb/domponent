@@ -131,25 +131,23 @@ HTML
 ```
 JS
 ```js
-// Here's my data model
 var ViewModel = function(first, last) {
     this.firstName = ko.observable(first);
     this.lastName = ko.observable(last);
  
     this.fullName = ko.pureComputed(function() {
-        // Knockout tracks dependencies automatically. It knows that fullName depends on firstName and lastName, because these get called when evaluating fullName.
         return this.firstName() + " " + this.lastName();
     }, this);
 };
  
-ko.applyBindings(new ViewModel("Planet", "Earth")); /
+ko.applyBindings(new ViewModel("Planet", "Earth")); 
 ```
 
 _DOMponent_
 
 HTML
 ```html
-<div data-component="Hello">
+<div data-component="Hello" data-state="{"firstName": "Planet", "lastName": "Earth"}">
   <p>First name: <input data-action="input->Hello.setFirstName" /></p>
   <p>Last name: <input data-action="input->Hello.setLastName"/></p>
   <h2>Hello, <span data-bind="state:Hello.fullName"> </span>!</h2>
