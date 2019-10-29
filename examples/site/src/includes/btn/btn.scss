@@ -4,11 +4,16 @@
   padding: 0.5em;
   min-width: 3rem;
   border-radius: 3px;
-  border: 1px solid $body;
+  border: 2px solid $body;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  &:hover,
+  &:focus {
+    background-color: $light-stripes;
+    border: 2px solid $dark;
+  }
   &--large {
     padding: 1.5em;
   }

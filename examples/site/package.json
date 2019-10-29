@@ -30,6 +30,7 @@
     "webpack-cli": "^3.3.9"
   },
   "dependencies": {
+    "domponent": "^1.1.5",
     "feather-icons": "^4.24.1",
     "normalize-scss": "^7.0.1"
   }
