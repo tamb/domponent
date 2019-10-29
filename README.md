@@ -107,13 +107,13 @@ It's not meant to handle routing or entire application state. It's meant to take
 
 #### Differences to KnockoutJS
 
-DOMponent is similar to Knockout in some ways.  
+DOMponent is similar to Knockout in some ways:  
 * it is template language-agnostic
 * the syntax looks similar
 * ... that's kinda about it.
 
-Unlike KnockoutJS, DOMponent is 
-* component-driven
+Unlike KnockoutJS, DOMponent:
+* is component-driven
 * has customizable syntax 
 * is only 5kb (that's a 51kb savings)
 * is highly declarative
