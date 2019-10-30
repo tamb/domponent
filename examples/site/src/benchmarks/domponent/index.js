@@ -49,6 +49,11 @@ class Wave extends Component {
   }
 }
 
+const stopEvent = new Event("stopall");
+setTimeout(function() {
+  document.dispatchEvent(stopEvent);
+}, 60000);
+
 document.addEventListener("DOMContentLoaded", () => {
   const app = new Init({
     selector: document.getElementById("root"),

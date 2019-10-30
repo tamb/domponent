@@ -2,8 +2,28 @@ extends ../../layout
 
 block content
     h2 Benchmarks
+
+    p These benchmarks measure the performance of 1000 components rerendering every 1 millisecond.
+    p Each component constains a div and p elements as well as a text node.
+    p You can click the links below and view the speed of the performance yourself.
+    p As for actual measurements, here's what we test:
+    ul
+      li The components rerender for 1 minute
+      li We run this for 10 separate iterations
+      li We display the highest number of rerenders per minute on average
+      li The lowest number of rerenders per minute on average
+      li The average number of rerenders on average
+      li The highest number of rerenders of all iterations
+      li The lowest number of rerenders of all iterations
+    
+    nav
+      ul
+        li
+          a(href="benchmarks/domponent.html") domponent
+        li
+          a(href="benchmarks/react.html") react
+        li
+          a(href="benchmarks/inferno.html") inferno
+        li
+          a(href="benchmarks/preact.html") preact
     #root
-      a(href="benchmarks/domponent.html") domponent
-      a(href="benchmarks/react.html") react
-      a(href="benchmarks/preact.html") preact
-      a(href="benchmarks/inferno.html") inferno
