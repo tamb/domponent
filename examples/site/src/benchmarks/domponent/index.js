@@ -1,5 +1,8 @@
-// import { Component, Init } from 'domponent/dist/domponent.es5.production.min.js';
-import { Component, Init } from "domponent";
+import {
+  Component,
+  Init
+} from "domponent/dist/domponent.es5.production.min.js";
+// import { Component, Init } from "domponent";
 
 import { INTERVAL } from "../consts.js";
 
@@ -47,7 +50,7 @@ class Wave extends Component {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  var app = new Init({
+  const app = new Init({
     selector: document.getElementById("root"),
     components: {
       Wave

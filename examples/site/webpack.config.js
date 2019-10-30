@@ -52,11 +52,68 @@ module.exports = (env, argv) => {
       devtool: argv.mode === "development" ? "source-map" : false
     },
 
-    // benchmark domponent
+    // benchmarks hub
+    {
+      mode: "production",
+
+      output: {
+        filename: "[name].bundle.js"
+      },
+      module: {
+        rules: [
+          {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: {
+              loader: "babel-loader",
+              options: {
+                presets: ["@babel/preset-env"]
+              }
+            }
+          },
+          {
+            test: /\.s[ac]ss$/i,
+            use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+          },
+          {
+            test: /\.pug$/,
+            use: {
+              loader: "pug-loader",
+              options: {
+                pretty: true
+              }
+            }
+          },
+          {
+            test: /\.(gif|png|jpe?g|svg)$/i,
+            use: [
+              {
+                loader: "file-loader",
+                options: {
+                  name: "icons/[name].[ext]"
+                  // bypassOnDebug: true, // webpack@1.x
+                  // disable: true, // webpack@2.x and newer
+                }
+              }
+            ]
+          }
+        ]
+      },
+      plugins: [
+        new MiniCssExtractPlugin(),
+        new HtmlWebpackPlugin({
+          template: "src/benchmarks/benchmarks/benchmarks.pug",
+          filename: "benchmarks/benchmarks.html",
+          minify: false
+        })
+      ]
+    },
+
+    // benchmarks domponent
     {
       mode: "production",
       entry: {
-        "benchmark/domponent.benchmark": path.resolve(
+        "benchmarks/domponent.benchmarks": path.resolve(
           __dirname,
           "src/benchmarks/domponent/"
         )
@@ -108,17 +165,17 @@ module.exports = (env, argv) => {
         new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
           template: "src/benchmarks/domponent/domponent.pug",
-          filename: "benchmark/domponent.html",
+          filename: "benchmarks/domponent.html",
           minify: false
         })
       ]
     },
 
-    // benchmark react
+    // benchmarks react
     {
       mode: "production",
       entry: {
-        "benchmark/react.benchmark": path.resolve(
+        "benchmarks/react.benchmarks": path.resolve(
           __dirname,
           "src/benchmarks/react/"
         )
@@ -170,17 +227,17 @@ module.exports = (env, argv) => {
         new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
           template: "src/benchmarks/react/react.pug",
-          filename: "benchmark/react.html",
+          filename: "benchmarks/react.html",
           minify: false
         })
       ]
     },
 
-    // benchmark preact
+    // benchmarks preact
     {
       mode: "production",
       entry: {
-        "benchmark/preact.benchmark": path.resolve(
+        "benchmarks/preact.benchmarks": path.resolve(
           __dirname,
           "src/benchmarks/preact/"
         )
@@ -225,17 +282,17 @@ module.exports = (env, argv) => {
         new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
           template: "src/benchmarks/preact/preact.pug",
-          filename: "benchmark/preact.html",
+          filename: "benchmarks/preact.html",
           minify: false
         })
       ]
     },
 
-    // benchmark inferno
+    // benchmarks inferno
     {
       mode: "production",
       entry: {
-        "benchmark/inferno.benchmark": path.resolve(
+        "benchmarks/inferno.benchmarks": path.resolve(
           __dirname,
           "src/benchmarks/inferno/"
         )
@@ -294,7 +351,7 @@ module.exports = (env, argv) => {
         new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
           template: "src/benchmarks/inferno/inferno.pug",
-          filename: "benchmark/inferno.html",
+          filename: "benchmarks/inferno.html",
           minify: false
         })
       ]
