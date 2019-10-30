@@ -6,6 +6,8 @@ import {
 
 import { INTERVAL } from "../consts.js";
 
+window.globalCounts = [];
+
 class Wave extends Component {
   constructor(conf) {
     super(conf);
@@ -19,7 +21,7 @@ class Wave extends Component {
 
   connected() {
     document.addEventListener("stopEvent", () => {
-      console.log(this.state.reps);
+      globalCounts.push(this.state.reps);
     });
     this.$root.style.height = "20px";
     this.$root.style.width = "1px";

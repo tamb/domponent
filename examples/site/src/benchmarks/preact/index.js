@@ -4,6 +4,8 @@ import { Component, Fragment, h, render } from "preact";
 
 import { INTERVAL, AMOUNT } from "../consts.js";
 
+window.globalCounts = [];
+
 class Twirl extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +19,7 @@ class Twirl extends Component {
 
   componentDidMount() {
     document.addEventListener("stopEvent", () => {
-      console.log(this.state.reps);
+      globalCounts.push(this.state.reps);
     });
     setInterval(() => {
       if (this.state.expanding) {
