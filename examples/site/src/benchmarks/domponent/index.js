@@ -12,11 +12,15 @@ class Wave extends Component {
     this.state = {
       expanding: true,
       width: this.state.width || 0,
-      count: this.state.count || 0
+      count: this.state.count || 0,
+      reps: 0
     };
   }
 
   connected() {
+    document.addEventListener("stopEvent", () => {
+      console.log(this.state.reps);
+    });
     this.$root.style.height = "20px";
     this.$root.style.width = "1px";
     this.$root.style.border = "1px solid";
@@ -36,7 +40,7 @@ class Wave extends Component {
           { width: --this.state.width, count: this.state.count - 1 },
           () => {
             if (this.state.width === 0) {
-              this.setState({ expanding: true });
+              this.setState({ expanding: true, reps: this.state.reps + 1 });
             }
           }
         );
