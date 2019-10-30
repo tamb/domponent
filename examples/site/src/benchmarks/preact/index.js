@@ -22,7 +22,11 @@ class Twirl extends Component {
     setInterval(() => {
       if (this.state.expanding) {
         this.setState(
-          { width: ++this.state.width, count: this.state.count + 1 },
+          {
+            width: ++this.state.width,
+            count: this.state.count + 1,
+            reps: this.state.reps + 1
+          },
           () => {
             if (this.state.width >= 250) {
               this.setState({ expanding: false });
@@ -31,10 +35,14 @@ class Twirl extends Component {
         );
       } else {
         this.setState(
-          { width: --this.state.width, count: this.state.count - 1 },
+          {
+            width: --this.state.width,
+            count: this.state.count - 1,
+            reps: this.state.reps + 1
+          },
           () => {
             if (this.state.width === 0) {
-              this.setState({ expanding: true, reps: this.state.reps + 1 });
+              this.setState({ expanding: true });
             }
           }
         );
@@ -73,7 +81,7 @@ const App = function() {
   );
 };
 
-const stopEvent = new Event("stopall");
+const stopEvent = new Event("stopEvent");
 setTimeout(function() {
   document.dispatchEvent(stopEvent);
 }, 60000);
