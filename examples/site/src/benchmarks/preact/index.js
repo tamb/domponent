@@ -10,11 +10,15 @@ class Twirl extends Component {
     this.state = {
       expanding: true,
       width: props.width || 1,
-      count: props.count || 0
+      count: props.count || 0,
+      reps: 0
     };
   }
 
   componentDidMount() {
+    document.addEventListener("stopEvent", () => {
+      console.log(this.state.reps);
+    });
     setInterval(() => {
       if (this.state.expanding) {
         this.setState(
@@ -30,7 +34,7 @@ class Twirl extends Component {
           { width: --this.state.width, count: this.state.count - 1 },
           () => {
             if (this.state.width === 0) {
-              this.setState({ expanding: true });
+              this.setState({ expanding: true, reps: this.state.reps + 1 });
             }
           }
         );

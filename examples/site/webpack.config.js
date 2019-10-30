@@ -54,6 +54,9 @@ module.exports = (env, argv) => {
 
     // benchmarks hub
     {
+      entry: {
+        benchmarks: path.resolve(__dirname, "src/benchmarks/benchmarks")
+      },
       mode: "production",
 
       output: {
