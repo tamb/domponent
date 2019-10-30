@@ -68,6 +68,11 @@ const App = function() {
   );
 };
 
+const stopEvent = new Event("stopall");
+setTimeout(function() {
+  document.dispatchEvent(stopEvent);
+}, 60000);
+
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(<App />, document.getElementById("root"));
 });
