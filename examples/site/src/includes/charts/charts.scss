@@ -1,0 +1,50 @@
+.chart-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.chart {
+  display: flex;
+  flex-direction: column;
+}
+
+.graph {
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  background: white;
+  position: relative;
+  border-top: 0;
+  border-right: 0;
+}
+
+.bar {
+  border: 1px solid black;
+  border-bottom: 0;
+  height: 10px;
+  position: absolute;
+  bottom: 0;
+  width: 20%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.react {
+  left: 4%;
+  background-color: lightgray;
+}
+
+.domponent {
+  left: 28%;
+  background-color: #61dafb;
+}
+
+.preact {
+  left: 52%;
+}
+
+.inferno {
+  left: 76%;
+}

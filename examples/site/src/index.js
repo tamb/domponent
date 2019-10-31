@@ -6,6 +6,7 @@ import "./includes/tags/tags";
 import "./includes/header/header";
 import "./includes/btn/btn";
 import "./includes/markup/markup";
+import "./includes/charts/charts";
 import {
   Init,
   Component
