@@ -601,7 +601,6 @@ mixin counter(count)
 
 
 **Razor Syntax Example** ⚔️
-
 coming soon...
 <!--
 ```html
