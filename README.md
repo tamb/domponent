@@ -601,6 +601,7 @@ mixin counter(count)
 
 
 **Razor Syntax Example** ⚔️
+
 coming soon...
 <!--
 ```html
@@ -629,7 +630,6 @@ __Mustache Syntax Example__ 👺
 coming soon...
 
 
-coming soon... 
 
 <hr/>
 
