@@ -599,9 +599,10 @@ mixin counter(count)
 <th:block th:replace="./counter.html  :: Counter(count: 491)" />
 ```
 
-<!--
-**Razor Syntax Example** ⚔️
 
+**Razor Syntax Example** ⚔️
+coming soon...
+<!--
 ```html
 // counter.html
 <div data-component="Counter">
@@ -620,7 +621,7 @@ mixin counter(count)
 </div>
 ```
 -->
-<!--
+
 __Ruby on Rails Syntax Example__ 💎
 coming soon...
 
@@ -628,7 +629,7 @@ __Mustache Syntax Example__ 👺
 coming soon...
 
 
-coming soon... -->
+coming soon... 
 
 <hr/>
 
