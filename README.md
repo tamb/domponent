@@ -119,7 +119,7 @@ Unlike KnockoutJS, DOMponent:
 * is highly declarative
 * allows for highly specific DOM references
 * has lifecycle methods
-* performs as fast as InfernoJS
+* performs insanely fast
 
 _Knockout_
 
