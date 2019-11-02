@@ -174,6 +174,68 @@ module.exports = (env, argv) => {
       ]
     },
 
+    // benchmarks domponent
+    {
+      mode: "production",
+      entry: {
+        "benchmarks/knockout.benchmarks": path.resolve(
+          __dirname,
+          "src/benchmarks/knockout/"
+        )
+      },
+      output: {
+        filename: "[name].bundle.js"
+      },
+      module: {
+        rules: [
+          {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: {
+              loader: "babel-loader",
+              options: {
+                presets: ["@babel/preset-env"]
+              }
+            }
+          },
+          {
+            test: /\.s[ac]ss$/i,
+            use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+          },
+          {
+            test: /\.pug$/,
+            use: {
+              loader: "pug-loader",
+              options: {
+                pretty: true
+              }
+            }
+          },
+          {
+            test: /\.(gif|png|jpe?g|svg)$/i,
+            use: [
+              {
+                loader: "file-loader",
+                options: {
+                  name: "icons/[name].[ext]"
+                  // bypassOnDebug: true, // webpack@1.x
+                  // disable: true, // webpack@2.x and newer
+                }
+              }
+            ]
+          }
+        ]
+      },
+      plugins: [
+        new MiniCssExtractPlugin(),
+        new HtmlWebpackPlugin({
+          template: "src/benchmarks/knockout/knockout.pug",
+          filename: "benchmarks/knockout.html",
+          minify: false
+        })
+      ]
+    },
+
     // benchmarks react
     {
       mode: "production",
