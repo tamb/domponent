@@ -31,6 +31,7 @@
     "pug-loader": "^2.4.0",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
+    "vue-loader": "^15.7.1",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9"
   },
@@ -38,9 +39,11 @@
     "domponent": "^1.1.5",
     "feather-icons": "^4.24.1",
     "inferno": "^7.3.2",
+    "knockout": "^3.5.0",
     "normalize-scss": "^7.0.1",
     "preact": "^10.0.4",
     "react": "^16.11.0",
-    "react-dom": "^16.11.0"
+    "react-dom": "^16.11.0",
+    "vue": "^2.6.10"
   }
 }

@@ -535,7 +535,9 @@ See ya soon!"`);
           createComponent: (el, cb) => this._cc(el, cb),
           deleteComponent: (el, cb) => this._dc(el, cb),
           register: (name, C, cb) => this._rc(name, C, cb),
-          unregister: (name, cb) => this._urc(name, cb)
+          unregister: (name, cb) => this._urc(name, cb),
+          createdComponents: this.registeredComponents,
+          components: this.components
         };
       }
 

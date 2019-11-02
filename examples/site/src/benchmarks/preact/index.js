@@ -6,7 +6,7 @@ import { INTERVAL, AMOUNT } from "../consts.js";
 
 window.globalCounts = [];
 
-class Twirl extends Component {
+class Wave extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -77,7 +77,7 @@ const App = function() {
   return (
     <Fragment>
       {arr.map((a, i) => (
-        <Twirl key={i} count={0} width={0} />
+        <Wave key={i} count={0} width={0} />
       ))}
     </Fragment>
   );
