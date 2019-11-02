@@ -136,7 +136,7 @@ var ViewModel = function(first, last) {
     this.lastName = ko.observable(last);
  
     this.fullName = ko.pureComputed(function() {
-        return this.firstName() + " " + this.lastName();
+        return `${this.firstName()} ${this.lastName()}`;
     }, this);
 };
  
