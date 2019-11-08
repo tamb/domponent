@@ -9,23 +9,20 @@ block content
     p As for actual measurements, here's what we test:
     ul
       li The components rerender for 1 minute
-      li We run this for 10 separate iterations
-      li We display the highest number of rerenders per minute on average
-      li The lowest number of rerenders per minute on average
-      li The average number of rerenders on average
-      li The highest number of rerenders of all iterations
-      li The lowest number of rerenders of all iterations
+      li We take the average number of iterations a component goes through (That's an entire state change and rerender)
     
     nav
       ul
         li
-          a(href="./benchmarks.html") benchmarks
+          a(href="./benchmarks.html") all benchmarks
         li
           a(href="./domponent.html") domponent
         li
           a(href="./knockout.html") knockout
         li
           a(href="./react.html") react
+        li
+          a(href="./vue.html") vue
         li
           a(href="./inferno.html") inferno
         li

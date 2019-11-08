@@ -1,5 +1,6 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const path = require("path");
 
 module.exports = (env, argv) => {
@@ -174,7 +175,7 @@ module.exports = (env, argv) => {
       ]
     },
 
-    // benchmarks domponent
+    // benchmarks knockout
     {
       mode: "production",
       entry: {
@@ -417,6 +418,73 @@ module.exports = (env, argv) => {
         new HtmlWebpackPlugin({
           template: "src/benchmarks/inferno/inferno.pug",
           filename: "benchmarks/inferno.html",
+          minify: false
+        })
+      ]
+    },
+
+    // benchmarks vue
+    {
+      mode: "production",
+      entry: {
+        "benchmarks/vue.benchmarks": path.resolve(
+          __dirname,
+          "src/benchmarks/vue/"
+        )
+      },
+      output: {
+        filename: "[name].bundle.js"
+      },
+      module: {
+        rules: [
+          {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: {
+              loader: "babel-loader",
+              options: {
+                presets: ["@babel/preset-env"]
+              }
+            }
+          },
+          {
+            test: /\.vue$/,
+            use: ["vue-loader"]
+          },
+          {
+            test: /\.s[ac]ss$/i,
+            use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+          },
+          {
+            test: /\.pug$/,
+            use: {
+              loader: "pug-loader",
+              options: {
+                pretty: true
+              }
+            }
+          },
+          {
+            test: /\.(gif|png|jpe?g|svg)$/i,
+            use: [
+              {
+                loader: "file-loader",
+                options: {
+                  name: "icons/[name].[ext]"
+                  // bypassOnDebug: true, // webpack@1.x
+                  // disable: true, // webpack@2.x and newer
+                }
+              }
+            ]
+          }
+        ]
+      },
+      plugins: [
+        new MiniCssExtractPlugin(),
+        new VueLoaderPlugin(),
+        new HtmlWebpackPlugin({
+          template: "src/benchmarks/vue/vue.pug",
+          filename: "benchmarks/vue.html",
           minify: false
         })
       ]
