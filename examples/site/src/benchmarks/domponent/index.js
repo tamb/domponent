@@ -76,3 +76,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+const d = 572;
