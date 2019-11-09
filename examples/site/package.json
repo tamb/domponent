@@ -37,7 +37,7 @@
     "webpack-cli": "^3.3.9"
   },
   "dependencies": {
-    "domponent": "^1.1.5",
+    "domponent": "^1.2.0",
     "feather-icons": "^4.24.1",
     "inferno": "^7.3.2",
     "knockout": "^3.5.0",
