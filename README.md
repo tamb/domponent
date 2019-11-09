@@ -450,6 +450,11 @@ It then exposes the following methods:
 - deleteComponent
 - register
 - unregister
+
+And the following objects:
+
+- component - all base classes for components in the app
+- createdComponents - all instances of app components
   <hr/>
 
 ### Adding and removing components 🤼
