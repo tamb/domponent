@@ -83,3 +83,13 @@ a {
   -o-animation: bg_color_change 10s infinite alternate;
   animation: bg_color_change 10s infinite alternate;
 }
+
+.footnote {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: yellow;
+  padding: 1rem;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.5);
+}

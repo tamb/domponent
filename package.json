@@ -25,7 +25,7 @@
   "main": "dist/domponent.production.min.js",
   "unpkg": "dist/domponent.production.min.js",
   "scripts": {
-    "deploy": "npm test && node clean.js && rollup -c rollup.config.js && npm pack && cd examples/e2e && npm install && webpack --mode=production && cd ../../ && gh-pages -d examples/html",
+    "deploy": "npm test && node clean.js && rollup -c rollup.config.js && npm pack && cd examples/site && npm install && webpack --mode=production && cd ../../ && gh-pages -d examples/site/dist",
     "test": "jest",
     "build": "npm test && rollup -c rollup.config.js",
     "build:e2e-prod": "npm test && node clean.js && rollup -c rollup.config.js && npm pack && cd examples/e2e && npm install && npm start",
