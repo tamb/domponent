@@ -1,0 +1,58 @@
+@import "../../colors.scss";
+.counter-preview {
+  background-color: $dark;
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
+  .counter {
+    background-color: $eye;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    @media screen and (min-width: 768px) {
+      width: 33%;
+    }
+    &__btns {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 2rem;
+    }
+  }
+  code,
+  pre {
+    background-color: $dark;
+    font-size: 0.6rem;
+    width: 100%;
+    @media screen and (min-width: 768px) {
+      width: 67%;
+      font-size: 1.2rem;
+    }
+  }
+  .language {
+    padding: 0 0.5rem;
+    overflow: scroll;
+    color: $light-stripes;
+    .el {
+      color: #d44950;
+    }
+    .attr {
+      color: #4f9fcf;
+
+      &-val {
+        color: rgb(253, 196, 90);
+      }
+    }
+    .punc {
+      color: $green;
+    }
+  }
+}

@@ -1,0 +1,85 @@
+@import "colors.scss";
+
+body {
+  background-color: $eye;
+  letter-spacing: 1px;
+}
+
+.container {
+  padding: 0 2vw;
+  margin: 0 auto;
+  max-width: 1120px;
+  @media screen and (min-width: 768px) {
+    padding: 0 10vw;
+  }
+}
+
+a {
+  color: $body;
+}
+
+.dark-text {
+  color: $dark;
+}
+
+@keyframes color_change {
+  0% {
+    color: blue;
+  }
+  25% {
+    color: orange;
+  }
+  50% {
+    color: rgb(206, 202, 1);
+  }
+  75% {
+    color: rgb(20, 182, 20);
+  }
+  100% {
+    color: red;
+  }
+}
+
+@keyframes bg_color_change {
+  0% {
+    background-color: blue;
+  }
+  25% {
+    background-color: orange;
+  }
+  50% {
+    background-color: rgb(206, 202, 1);
+  }
+  75% {
+    background-color: rgb(20, 182, 20);
+  }
+  100% {
+    background-color: red;
+  }
+}
+
+.section {
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+
+  &--green {
+    background-color: $green;
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.colorize {
+  -webkit-animation: color_change 7s infinite alternate;
+  -moz-animation: color_change 7s infinite alternate;
+  -ms-animation: color_change 7s infinite alternate;
+  -o-animation: color_change 7s infinite alternate;
+  animation: color_change 7s infinite alternate;
+}
+
+.bg-colorize {
+  -webkit-animation: bg_color_change 10s infinite alternate;
+  -moz-animation: bg_color_change 10s infinite alternate;
+  -ms-animation: bg_color_change 10s infinite alternate;
+  -o-animation: bg_color_change 10s infinite alternate;
+  animation: bg_color_change 10s infinite alternate;
+}

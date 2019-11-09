@@ -1,0 +1,30 @@
+extends ../../layout
+
+block content
+    h2 Benchmarks
+
+    p These benchmarks measure the performance of 1000 components rerendering every 1 millisecond.
+    p Each component constains a div and p elements as well as a text node.
+    p You can click the links below and view the speed of the performance yourself.
+    p As for actual measurements, here's what we test:
+    ul
+      li The components rerender for 1 minute
+      li We take the average number of iterations a component goes through (That's an entire state change and rerender)
+    
+    nav
+      ul
+        li
+          a(href="./benchmarks.html") all benchmarks
+        li
+          a(href="./domponent.html") domponent
+        li
+          a(href="./knockout.html") knockout
+        li
+          a(href="./react.html") react
+        li
+          a(href="./vue.html") vue
+        li
+          a(href="./inferno.html") inferno
+        li
+          a(href="./preact.html") preact
+    #root

@@ -1,43 +1,43 @@
-import { Init } from "domponent";
-import Counter from "./Counter/Counter";
-import Timer from "./Timer/Timer";
-import DisplayAnything from "./DisplayAnything/DisplayAnything";
-import FavoriteShow from "./FavoriteShow/FavoriteShow";
-import HoverLetter from "./HoverLetter/HoverLetter";
-import Navigation from "./Navigation/Navigation";
-import ShowCode from "./ShowCode/ShowCode";
-import Tabs from "./Tabs/Tabs";
-import AddHighlight from "./AddHighlight/AddHighlight";
-import domInsert from "./domInsert";
+import "normalize-scss/fork-versions/default/_normalize.scss";
+import "./fonts.scss";
+import "./base.scss";
+import "./includes/nav/nav";
+import "./includes/tags/tags";
+import "./includes/header/header";
+import "./includes/btn/btn";
+import "./includes/markup/markup";
+import "./includes/charts/charts";
+import {
+  Init,
+  Component
+} from "domponent/dist/domponent.es5.production.min.js";
 
-import "./app.scss";
+import feather from "feather-icons";
 
 feather.replace();
 
-console.time("appCreation");
-const App = new Init({
-  selector: document.getElementById("root"),
-  components: {
-    Counter,
-    Timer,
-    DisplayAnything,
-    FavoriteShow,
-    HoverLetter,
-    Navigation,
-    ShowCode,
-    Tabs,
-    AddHighlight
-  },
-  appCreated: () => console.log("app created")
+class Counter extends Component {
+  constructor(el) {
+    super(el);
+    this.state = {
+      count: 0
+    };
+  }
+
+  increment() {
+    this.setState({ count: this.state.count + 1 });
+  }
+
+  decrement() {
+    this.setState({ count: this.state.count - 1 });
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  const app = new Init({
+    selector: document.querySelector(".counter-preview"),
+    components: {
+      Counter
+    }
+  });
 });
-console.timeEnd("appCreation");
-
-window.DomponentApp = App;
-
-setTimeout(() => {
-  domInsert("id2");
-  App.createComponent(document.getElementById("id2"), () => feather.replace());
-  App.createComponent(document.getElementById("async-props"), () =>
-    feather.replace()
-  );
-}, 1000);

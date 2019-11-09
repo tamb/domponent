@@ -23,7 +23,7 @@
  * 
  */
 /**
- * bluebird build version 3.7.0
+ * bluebird build version 3.7.1
  * Features enabled: core, race, call_get, generators, map, nodeify, promisify, props, reduce, settle, some, using, timers, filter, any, each
 */
 !function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.Promise=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof _dereq_=="function"&&_dereq_;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof _dereq_=="function"&&_dereq_;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
@@ -672,23 +672,7 @@ var deferUnhandledRejectionCheck;
         promises.length = 0;
     }
 
-    if (util.isNode) {
-        deferUnhandledRejectionCheck = (function() {
-            var timers = _dereq_("timers");
-            var timerSetTimeout = timers.setTimeout;
-            var timer = timerSetTimeout(unhandledRejectionCheck, 1);
-            timer.unref();
-
-            return function(promise) {
-                promises.push(promise);
-                if (typeof timer.refresh === "function") {
-                    timer.refresh();
-                } else {
-                    timerSetTimeout(unhandledRejectionCheck, 1).unref();
-                }
-            };
-        })();
-    } else if (typeof document === "object" && document.createElement) {
+    if (typeof document === "object" && document.createElement) {
         deferUnhandledRejectionCheck = (function() {
             var iframeSetTimeout;
 
@@ -1678,7 +1662,7 @@ return {
 };
 };
 
-},{"./errors":12,"./es5":13,"./util":36,"timers":undefined}],10:[function(_dereq_,module,exports){
+},{"./errors":12,"./es5":13,"./util":36}],10:[function(_dereq_,module,exports){
 "use strict";
 module.exports = function(Promise) {
 function returner() {
@@ -3639,7 +3623,7 @@ _dereq_("./synchronous_inspection")(Promise);
 _dereq_("./join")(
     Promise, PromiseArray, tryConvertToPromise, INTERNAL, async);
 Promise.Promise = Promise;
-Promise.version = "3.7.0";
+Promise.version = "3.7.1";
 _dereq_('./call_get.js')(Promise);
 _dereq_('./generators.js')(Promise, apiRejection, INTERNAL, tryConvertToPromise, Proxyable, debug);
 _dereq_('./map.js')(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);

@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="en"><head><!-- Required meta tags --><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Source+Code+Pro|VT323&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Syncopate&amp;display=swap" rel="stylesheet"><title>Domponent</title><link href="index.css" rel="stylesheet"></head><body class="font-normal"><nav class="navi"><a class="dark-text font-retro home" href="/">&lt;<span class="colorize">D</span></a><ol><li><a href="https://github.com/tamb/domponent#domponent-">docs</a></li><li><a href="#">sandbox</a></li><li><a href="https://github.com/tamb/domponent">github</a></li></ol></nav><div class="container"><div class="header"><h1 class="font-retro">&lt;<span class="colorize">DOM</span>ponent/></h1><div>build UI components with the HTML you already have</div><div class="header__links"><a class="btn btn--large btn--primary" href="https://github.com/tamb/domponent/blob/master/README.md" target="_blank">Get going!</a><a class="btn btn--large btn--secondary" href="https://github.com/tamb/domponent" target="_blank"> <i data-feather="github"> </i>Github &#x1F31F; </a></div></div><div class="tags section"><section class="tags__tag"><a class="tags__headline" href="#components">declarative UI</a><span class="tags__words">Use with any template language</span><div class="images"><a href="https://pugjs.org/api/getting-started.html" alt="pug" rel="noopener noreferrer" target="_blank"><img src="icons/pug.png"></a><a href="https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html" alt="thymeleaf" rel="noopener noreferrer" target="_blank"><img src="icons/thymeleaf.png"></a><a href="https://handlebars-draft.knappi.org/" alt="handlebars" rel="noopener noreferrer" target="_blank"><img src="icons/handlebars.svg"></a><a href="https://docs.microsoft.com/en-us/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-3.0&amp;tabs=visual-studio" alt="razor" rel="noopener noreferrer" target="_blank"><img src="icons/blazor.png"></a></div></section><section class="tags__tag"><a class="tags__headline" href="#SEO">SEO friendly</a><span class="tags__words"></span>progressively enhances the HTML you already have. No need to go all isomorphic</section><section class="tags__tag"><a class="tags__headline" href="#speed">vanilla fast</a><span class="tags__words">Blazing fast performance at ~2kb<a href="benchmarks/benchmarks.html">See our benchmarks</a></span></section><section class="tags__tag"><a class="tags__headline" href="#reactive">familiar API</a><span class="tags__words"></span>based off of Reacts API and comes with a bevy of hooks to create streamed and async components</section></div></div><div class="section section--green" id="components">
+  <div class="container">
+    <div class="counter-preview">
+      <pre><code class="language">
+  <span>&#x3C;<span class="el">div</span></span> <span class="attr">data-component=</span><span class="attr-val">"Counter"</span><span>></span>
+    <span>&#x3C;</span><span class="el">p</span> <span class="attr">data-bind=</span><span class="attr-val">"state<span class="punc">:</span>Counter<span class="punc">.</span>count"</span>> 0 &#x3C;/<span class="el">p</span>>
+    &#x3C;<span class="el">button</span> <span class="attr">data-action=</span><span class="attr-val">"click<span class="punc">-></span>Counter<span class="punc">.</span>decrement"</span><span>></span>
+    -1
+    &#x3C;/<span class="el">button</span>>
+    &#x3C;<span class="el">button</span> <span class="attr">data-action=</span><span class="attr-val">"click<span class="punc">-></span>Counter<span class="punc">.</span>increment"</span>>
+    +1
+    &#x3C;/<span class="el">button</span>>
+  <span>&#x3C;/<span class="el">div</span>></span>
+    </code></pre>
+      <div data-component="Counter" class="counter">
+        <p data-bind="state:Counter.count">0</p>
+        <div class="counter__btns">
+          <button
+            type="button"
+            class="btn btn--large"
+            data-action="click->Counter.decrement"
+          >
+            -1
+          </button>
+          <button
+            type="button"
+            class="btn btn--large"
+            data-action="click->Counter.increment"
+          >
+            +1
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section"><div class="chart-container" id="speed"><div class="chart"><p>100 Components</p><div class="graph"><div class="bar" data-count="5520" data-full="10000"> <span class="library-title">React</span></div><div class="bar bg-colorize" data-count="7733​" data-full="10000"> <span class="library-title">Domponent</span></div><div class="bar" data-count="6527" data-full="10000"> <span class="library-title">Knockout</span></div><div class="bar" data-count="5634" data-full="10000"> <span class="library-title">Vue</span></div></div></div><div class="chart"><p>1000 Components</p><div class="graph"><div class="bar" data-count="157" data-full="1000"> <span class="library-title">React</span></div><div class="bar bg-colorize" data-count="671" data-full="1000"> <span class="library-title">Domponent</span></div><div class="bar" data-count="507" data-full="1000"> <span class="library-title">Knockout</span></div><div class="bar" data-count="479" data-full="1000"> <span class="library-title">Vue</span></div></div></div></div></div><script type="text/javascript" src="index.js"></script></body></html>

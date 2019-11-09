@@ -184,6 +184,8 @@
       );
       if (stateAttr) {
         this.state = JSON.parse(stateAttr);
+      } else {
+        this.state = {};
       }
     }
 
@@ -389,9 +391,8 @@
     class Component extends Exponent {
       constructor(config) {
         super(config, true);
-        this.state = {};
-        this.$s = createStateObjects.call(this);
         initState.call(this);
+        this.$s = createStateObjects.call(this);
         this.connected();
       }
 
@@ -404,13 +405,13 @@
         this.stateWillUpdate();
         const propsToUpdate = [];
         /* START.DEV */
-        try{
-        /* END.DEV */
+        try {
+          /* END.DEV */
           for (let stateKey in newState) {
             if (newState[stateKey] !== this.state[stateKey]) {
               propsToUpdate.push(stateKey);
               this.state[stateKey] = newState[stateKey];
-              if(this.$s){
+              if (this.$s) {
                 if (this.$s[stateKey]) {
                   this.$s[stateKey].forEach(stateObj => {
                     updateDOM$1(stateObj.el, newState[stateKey]);
@@ -419,10 +420,15 @@
               }
             }
           }
-        /* START.DEV */  
+          /* START.DEV */
         } catch (err) {
-          console.error(`🤓 -- "Whoops, pal!  You ran into this error while updating state: 
-      `, err, ` within this root element `, this.$root);
+          console.error(
+            `🤓 -- "Whoops, pal!  You ran into this error while updating state: 
+      `,
+            err,
+            ` within this root element `,
+            this.$root
+          );
         }
         /* END.DEV */
         if (this.$d.size > 0) {

@@ -4,7 +4,7 @@
 
 If need this for Electron, use [`shell.openItem()`](https://electronjs.org/docs/api/shell#shellopenitemfullpath) instead.
 
-Note: The original [`open` package](https://github.com/pwnall/node-open) was recently deprecated in favor of this package, and we got the name, so this package is now named `open` instead of `opn`. If you're upgrading from the original `open` package (`open@0.0.5` or lower), keep in mind that the API is different.
+Note: The original [`open` package](https://github.com/pwnall/node-open) was previously deprecated in favor of this package, and we got the name, so this package is now named `open` instead of `opn`. If you're upgrading from the original `open` package (`open@0.0.5` or lower), keep in mind that the API is different.
 
 #### Why?
 
@@ -29,17 +29,17 @@ $ npm install open
 const open = require('open');
 
 (async () => {
-	// Opens the image in the default image viewer and waits for the opened app to quit
-	await open('unicorn.png', {wait: true}); 
+	// Opens the image in the default image viewer and waits for the opened app to quit.
+	await open('unicorn.png', {wait: true});
 	console.log('The image viewer app quit');
 
-	// Opens the URL in the default browser
+	// Opens the URL in the default browser.
 	await open('https://sindresorhus.com');
 
-	// Opens the URL in a specified browser
+	// Opens the URL in a specified browser.
 	await open('https://sindresorhus.com', {app: 'firefox'});
 
-	// Specify app arguments
+	// Specify app arguments.
 	await open('https://sindresorhus.com', {app: ['google chrome', '--incognito']});
 })();
 ```
@@ -92,6 +92,42 @@ Specify the app to open the `target` with, or an array with the app and app argu
 The app name is platform dependent. Don't hard code it in reusable modules. For example, Chrome is `google chrome` on macOS, `google-chrome` on Linux and `chrome` on Windows.
 
 You may also pass in the app's full path. For example on WSL, this can be `/mnt/c/Program Files (x86)/Google/Chrome/Application/chrome.exe` for the Windows installation of Chrome.
+
+##### url
+
+Type: `boolean`<br>
+Default: `false`
+
+Uses `encodeURI` to encode the target before executing it.<br>
+We do not recommend using it on targets that are not URLs.
+
+Especially useful when dealing with the [double-quotes on Windows](#double-quotes-on-windows) caveat.
+
+
+## Caveats
+
+### Double-quotes on Windows
+
+TL;DR: All double-quotes are stripped from the `target` and do not get to your desired destination (on Windows!).
+
+Due to specific behaviors of Window's Command Prompt (`cmd.exe`) regarding ampersand (`&`) characters breaking commands and URLs, double-quotes are now a special case.
+
+The solution ([#146](https://github.com/sindresorhus/open/pull/146)) to this and other problems was to leverage the fact that `cmd.exe` interprets a double-quoted argument as a plain text argument just by quoting it (like Node.js already does). Unfortunately, `cmd.exe` can only do **one** of two things: handle them all **OR** not handle them at all. As per its own documentation:
+
+>*If /C or /K is specified, then the remainder of the command line after the switch is processed as a command line, where the following logic is used to process quote (") characters:*
+>
+>    1.  *If all of the following conditions are met, then quote characters on the command line are preserved:*
+>        - *no /S switch*
+>        - *exactly two quote characters*
+>        - *no special characters between the two quote characters, where special is one of: &<>()@^|*
+>        - *there are one or more whitespace characters between the two quote characters*
+>        - *the string between the two quote characters is the name of an executable file.*
+>
+>    2.  *Otherwise, old behavior is to see if the first character is a quote character and if so, strip the leading character and remove the last quote character on the command line, preserving any text after the last quote character.*
+
+The option that solved all of the problems was the second one, and for additional behavior consistency we're also now using the `/S` switch, so we **always** get the second option. The caveat is that this built-in double-quotes handling ends up stripping all of them from the command line and so far we weren't able to find an escaping method that works (if you do, please feel free to contribute!).
+
+To make this caveat somewhat less impactful (at least for URLs), check out the [url option](#url). Double-quotes will be "preserved" when using it with an URL.
 
 
 ## Related

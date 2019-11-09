@@ -1,0 +1,24 @@
+// Scripting
+//
+// Style guide: base.scripting
+
+// Canvas
+//
+// Style guide: base.scripting.canvas
+
+canvas {
+  // Add the correct display in IE 9-.
+  display: inline-block;
+}
+
+// Template
+//
+// Some older browsers do not hide elements the web components' `template`
+// element.
+//
+// Style guide: base.scripting.template
+
+template {
+  // Add the correct display in IE.
+  display: none;
+}

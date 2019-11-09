@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Source+Code+Pro|VT323&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Syncopate&amp;display=swap" rel="stylesheet">
+    <title>Domponent</title>
+  <link href="../benchmarks.css" rel="stylesheet"></head>
+  <body class="font-normal">
+    <h2>Benchmarks</h2>
+    <p>These benchmarks measure the performance of 1000 components rerendering every 1 millisecond.</p>
+    <p>Each component constains a div and p elements as well as a text node.</p>
+    <p>You can click the links below and view the speed of the performance yourself.</p>
+    <p>As for actual measurements, here's what we test:</p>
+    <ul>
+      <li>The components rerender for 1 minute</li>
+      <li>We take the average number of iterations a component goes through (That's an entire state change and rerender)</li>
+    </ul>
+    <nav>
+      <ul>
+        <li><a href="./benchmarks.html">all benchmarks</a></li>
+        <li><a href="./domponent.html">domponent</a></li>
+        <li><a href="./knockout.html">knockout</a></li>
+        <li><a href="./react.html">react</a></li>
+        <li><a href="./vue.html">vue</a></li>
+        <li><a href="./inferno.html">inferno</a></li>
+        <li><a href="./preact.html">preact</a></li>
+      </ul>
+    </nav>
+    <div id="root"></div>
+  <script type="text/javascript" src="../benchmarks.bundle.js"></script></body>
+</html>
