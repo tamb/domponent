@@ -40,6 +40,24 @@ a {
   }
 }
 
+@keyframes bg_color_change {
+  0% {
+    background-color: blue;
+  }
+  25% {
+    background-color: orange;
+  }
+  50% {
+    background-color: rgb(206, 202, 1);
+  }
+  75% {
+    background-color: rgb(20, 182, 20);
+  }
+  100% {
+    background-color: red;
+  }
+}
+
 .section {
   padding-top: 10vh;
   padding-bottom: 10vh;
@@ -56,4 +74,12 @@ a {
   -ms-animation: color_change 7s infinite alternate;
   -o-animation: color_change 7s infinite alternate;
   animation: color_change 7s infinite alternate;
+}
+
+.bg-colorize {
+  -webkit-animation: bg_color_change 7s infinite alternate;
+  -moz-animation: bg_color_change 7s infinite alternate;
+  -ms-animation: bg_color_change 7s infinite alternate;
+  -o-animation: bg_color_change 7s infinite alternate;
+  animation: bg_color_change 7s infinite alternate;
 }

@@ -1,6 +1,8 @@
 import ko from "knockout";
 import { AMOUNT, INTERVAL } from "../consts";
 
+window.globalCounts = [];
+
 ko.components.register("wave-component", {
   viewModel: function(params) {
     this.count = ko.observable(0);
@@ -52,3 +54,8 @@ var viewModel = function() {
 
 var model = new viewModel();
 ko.applyBindings(model);
+
+const stopEvent = new Event("stopEvent");
+setTimeout(function() {
+  document.dispatchEvent(stopEvent);
+}, 60000);

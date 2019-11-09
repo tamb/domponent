@@ -20,7 +20,7 @@ export default {
   },
   mounted() {
     document.addEventListener("stopEvent", () => {
-      globalCounts.push(this.state.reps);
+      globalCounts.push(this.reps);
     });
     this.$refs.rootEl.style.height = "20px";
     this.$refs.rootEl.style.width = "1px";
