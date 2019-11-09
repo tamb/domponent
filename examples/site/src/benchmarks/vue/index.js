@@ -8,4 +8,7 @@ const app = new Vue({
   el: "#root"
 });
 
-console.log(app);
+const stopEvent = new Event("stopEvent");
+setTimeout(function() {
+  document.dispatchEvent(stopEvent);
+}, 60000);
