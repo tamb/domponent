@@ -10,11 +10,14 @@ module.exports = (env, argv) => {
       ]
     },
     plugins: [new MiniCssExtractPlugin()],
-    resolve: argv.mode === 'development'? {
-      alias: {
-        domponent: 'domponent/dist/domponent.development.js'
-      }
-    }: {},
-    devtool: argv.mode === 'development'? 'source-map': false,
+    resolve:
+      argv.mode === "development"
+        ? {
+            alias: {
+              domponent: "domponent/dist/domponent.development.js"
+            }
+          }
+        : {},
+    devtool: argv.mode === "development" ? "source-map" : false
   };
 };
