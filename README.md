@@ -367,6 +367,29 @@ setState(stateObject, callbackFunction);
 
 This is similar in concept to React's setState - although it's implemented differently.
 
+You can add default states to your JS component and override them in the DOM
+```js
+export default class Counter extends Component {
+  constructor(conf) {
+    super(conf);
+    this.state = {
+      count: parseInt(this.state.count) || 0,
+      isEven: this.state.count
+        ? this.state.count % 2 === 0
+          ? true
+          : false
+        : true,
+      stateFieldFromDOM: this.state.stateFieldFromDOM || "default cat",
+      stateFieldDefault: "default iPhone 11"
+    };
+    this.setState(this.state);
+  }
+```
+```
+<div data-component="Counter" data-state="{"count": 4, "isEven":true, "stateFieldFromDOM": "some value here"}"
+```
+The above state fields will override the default JS state fields.
+
 <hr/>
 
 ### LifeCycle Methods 🌳
