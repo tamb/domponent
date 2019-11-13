@@ -1,4 +1,5 @@
 import "normalize-scss/fork-versions/default/_normalize.scss";
+import jump from "jump.js";
 import "./fonts.scss";
 import "./base.scss";
 import "./includes/nav/nav";
@@ -34,6 +35,15 @@ class Counter extends Component {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll(`[data-action="click.jump"]`).forEach(el => {
+    el.addEventListener("click", e => {
+      e.preventDefault;
+      const anchor = e.target;
+      console.log(anchor);
+      jump(anchor.href);
+    });
+  });
+
   const app = new Init({
     selector: document.querySelector(".counter-preview"),
     components: {
