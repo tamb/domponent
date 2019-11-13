@@ -12,14 +12,14 @@
             a(href="https://docs.microsoft.com/en-us/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-3.0&tabs=visual-studio" alt="razor" rel="noopener noreferrer" target="_blank")
                 img(src='icons/blazor.png')
     section.tags__tag
-        a(href="#SEO").tags__headline SEO friendly
+        a(href="#SEO" data-action="click.jump").tags__headline SEO friendly
         span.tags__words
         | progressively enhances the HTML you already have. No need to go all isomorphic
     section.tags__tag
-        a(href="#speed").tags__headline vanilla fast
+        a(href="#speed" data-action="click.jump").tags__headline vanilla fast
         span.tags__words Blazing fast performance at ~2kb
-            a(href='benchmarks/benchmarks.html') See our benchmarks
+        a(href="#benchmarks" data-action="click.jump") See our benchmarks
     section.tags__tag
-        a(href="#reactive").tags__headline familiar API
+        a(href="#api" data-action="click.jump").tags__headline familiar API
         span.tags__words
         | based off of Reacts API and comes with a bevy of hooks to create streamed and async components
