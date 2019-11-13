@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
       e.preventDefault;
       const anchor = e.target;
       console.log(anchor);
-      jump(anchor.href);
+      jump(anchor.getAttribute("href"));
     });
   });
 

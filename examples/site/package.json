@@ -40,6 +40,7 @@
     "domponent": "^1.0.0",
     "feather-icons": "^4.24.1",
     "inferno": "^7.3.2",
+    "jump.js": "^1.0.2",
     "knockout": "^3.5.0",
     "normalize-scss": "^7.0.1",
     "preact": "^10.0.4",
