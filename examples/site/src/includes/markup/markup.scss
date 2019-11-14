@@ -38,7 +38,9 @@
     }
   }
   .language {
-    padding: 0 0.5rem;
+    @media screen and (min-width: 768px) {
+      padding: 0 0.5rem;
+    }
     overflow: scroll;
     color: $light-stripes;
     .el {

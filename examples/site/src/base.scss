@@ -5,6 +5,10 @@ body {
   letter-spacing: 1px;
 }
 
+h2 {
+  text-align: center;
+}
+
 .container {
   padding: 0 2vw;
   margin: 0 auto;
@@ -12,6 +16,12 @@ body {
   @media screen and (min-width: 768px) {
     padding: 0 10vw;
   }
+}
+
+p.section-description {
+  padding: 0 1rem;
+  margin: 0;
+  text-align: center;
 }
 
 a {
