@@ -1,0 +1,1 @@
+import "./seo.scss";

@@ -1,0 +1,37 @@
+.section-seo {
+  background-color: #009ddc;
+}
+.trifecta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+
+  svg {
+    height: 4rem;
+    width: 4rem;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+
+    &.top {
+      width: 100%;
+      padding: 1rem 5rem;
+    }
+    &.left {
+      width: 50%;
+    }
+    &.right {
+      width: 50%;
+    }
+    p {
+      max-width: 50%;
+      text-align: center;
+    }
+  }
+}

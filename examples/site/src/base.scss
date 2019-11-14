@@ -72,7 +72,8 @@ a {
   padding-top: 10vh;
   padding-bottom: 10vh;
 
-  &--green {
+  &--green,
+  &--shadow {
     background-color: $green;
     box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.4);
   }
