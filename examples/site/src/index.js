@@ -8,6 +8,7 @@ import "./includes/header/header";
 import "./includes/btn/btn";
 import "./includes/markup/markup";
 import "./includes/charts/charts";
+import "./includes/seo/seo";
 import {
   Init,
   Component
