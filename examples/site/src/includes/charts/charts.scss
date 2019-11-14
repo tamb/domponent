@@ -27,12 +27,20 @@
 .bar {
   border: 1px solid black;
   border-bottom: 0;
+  background-color: rgb(167, 174, 180);
   display: flex;
   align-items: flex-end;
   justify-content: center;
   font-size: 0.9em;
   position: relative;
   flex: 0.1;
+
+  &:hover::before,
+  &:focus::before {
+    content: attr(data-count);
+    position: absolute;
+    top: -1.1rem;
+  }
 }
 
 .library-title {

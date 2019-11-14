@@ -1,24 +1,29 @@
-.section
+.section.chart-section
+    h2 insane performance
+    p.section-description each component contains 3 nodes with styles rerendered according to the components state update.  
+    p.section-description each update happens at 1ms intervals.
     .chart-container#benchmarks
         .chart
             p 100 Components
             .graph
-                .bar(data-count="5520" data-full="10000") 
+                .bar(data-count="157" data-full="1000" tabindex=0) 
                     span.library-title React
-                .bar.bg-colorize(data-count="7733​" data-full="10000") 
+                .bar.bg-colorize(data-count="671" data-full="1000" tabindex=0) 
                     span.library-title Domponent
-                .bar(data-count="6527" data-full="10000") 
+                .bar(data-count="507" data-full="1000" tabindex=0) 
                     span.library-title Knockout
-                .bar(data-count="5634" data-full="10000") 
+                .bar(data-count="479" data-full="1000" tabindex=0) 
                     span.library-title Vue
+            
         .chart
             p 1000 Components
             .graph
-                .bar(data-count="157" data-full="1000") 
+                .bar(data-count="5520" data-full="10000" tabindex=0) 
                     span.library-title React
-                .bar.bg-colorize(data-count="671" data-full="1000") 
+                .bar.bg-colorize(data-count="7733​" data-full="10000" tabindex=0) 
                     span.library-title Domponent
-                .bar(data-count="507" data-full="1000") 
+                .bar(data-count="6527" data-full="10000" tabindex=0) 
                     span.library-title Knockout
-                .bar(data-count="479" data-full="1000") 
+                .bar(data-count="5634" data-full="10000" tabindex=0) 
                     span.library-title Vue
+            
