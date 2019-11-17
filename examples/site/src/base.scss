@@ -1,5 +1,15 @@
 @import "colors.scss";
 
+.disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.5;
+  &:hover,
+  &:focus {
+    cursor: not-allowed;
+  }
+}
+
 body {
   background-color: $eye;
   letter-spacing: 1px;
@@ -21,6 +31,7 @@ h2 {
 p.section-description {
   padding: 0 1rem;
   margin: 0;
+  margin-bottom: 0.5rem;
   text-align: center;
 }
 
