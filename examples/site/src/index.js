@@ -9,6 +9,7 @@ import "./includes/btn/btn";
 import "./includes/markup/markup";
 import "./includes/charts/charts";
 import "./includes/seo/seo";
+import "./includes/api/api";
 import {
   Init,
   Component
