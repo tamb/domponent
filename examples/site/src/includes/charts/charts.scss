@@ -3,11 +3,18 @@
   align-items: center;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .chart {
   display: flex;
   flex-direction: column;
+
+  &-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .graph {
