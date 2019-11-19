@@ -451,7 +451,7 @@ See ya soon!"`);
     // generates the App
     function Init(config) {
       // components and their instances
-      this.components = config.components;
+      this.components = config.components || {};
       this.registeredComponents = {};
 
       // renaming data attributes to avoid collisions
