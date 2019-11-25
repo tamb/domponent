@@ -478,6 +478,8 @@ And the following objects:
 
 - component - all base classes for components in the app
 - createdComponents - all instances of app components
+
+You can also exclude the `components` object of the configuration and create an app without any components to begin with.  
   <hr/>
 
 ### Adding and removing components 🤼
