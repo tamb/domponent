@@ -29,6 +29,13 @@
   justify-content: space-evenly;
   align-items: flex-end;
   margin-bottom: 7rem;
+
+  .y-axis {
+    position: absolute;
+    left: -17%;
+    transform: rotate(-90deg);
+    top: 50%;
+  }
 }
 
 .bar {

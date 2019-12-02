@@ -19,6 +19,19 @@ import feather from "feather-icons";
 
 feather.replace();
 
+class HoverBuddy extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  highlight() {
+    console.log("here");
+  }
+  removeHighlight() {
+    console.log("gone");
+  }
+}
+
 class Counter extends Component {
   constructor(el) {
     super(el);
@@ -47,9 +60,12 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   const app = new Init({
-    selector: document.querySelector(".counter-preview"),
+    selector: document.body,
     components: {
-      Counter
+      Counter,
+      HoverBuddy
     }
   });
+
+  console.log(app);
 });
