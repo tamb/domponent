@@ -37,15 +37,15 @@
     "webpack-cli": "^3.3.9"
   },
   "dependencies": {
-    "domponent": "^1.0.0",
+    "domponent": "1.2.2",
     "feather-icons": "^4.24.1",
     "inferno": "^7.3.2",
     "jump.js": "^1.0.2",
-    "knockout": "^3.5.0",
+    "knockout": "3.5.0",
     "normalize-scss": "^7.0.1",
-    "preact": "^10.0.4",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
-    "vue": "^2.6.10"
+    "preact": "10.0.4",
+    "react": "16.11.0",
+    "react-dom": "16.11.0",
+    "vue": "2.6.10"
   }
 }
