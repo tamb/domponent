@@ -30,7 +30,8 @@
     "build": "npm test && rollup -c rollup.config.js",
     "e2e-prod": "npm test && node clean.js && rollup -c rollup.config.js && npm pack && cd examples/e2e && npm install && npm start",
     "e2e-dev": "node clean.js && rollup -c rollup.config.js && npm pack && cd examples/e2e && npm install && npm run start:dev",
-    "site": "cd examples/site && npm run start"
+    "site": "cd examples/site && npm run start",
+    "site-dev": "cd examples/site && npm run start:dev"
   },
   "files": [
     "dist"

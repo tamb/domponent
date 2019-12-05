@@ -48,6 +48,10 @@
   position: relative;
   flex: 0.1;
 
+  p {
+    margin: 0;
+  }
+
   &:hover::before,
   &:focus::before {
     content: attr(data-count);
@@ -57,7 +61,7 @@
 }
 
 .library-title {
-  transform: rotate(-45deg) translateX(-2em);
+  transform: rotate(-45deg) translateX(-3em);
   transform-origin: right;
   position: absolute;
 }

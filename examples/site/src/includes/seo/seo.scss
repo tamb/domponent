@@ -4,9 +4,13 @@
 }
 .trifecta {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
+  flex-direction: column;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+  }
 
   svg {
     height: 4rem;
@@ -15,24 +19,38 @@
 
   &__item {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 1rem 0;
+    justify-content: space-around;
+    align-items: center;
+    @media screen and (min-width: 768px) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 
     &.top {
-      width: 100%;
-      padding: 1rem 5rem;
+      @media screen and (min-width: 768px) {
+        width: 100%;
+        padding: 1rem 5rem;
+      }
     }
-    &.left {
-      width: 50%;
+    @media screen and (min-width: 768px) {
+      &.left {
+        width: 50%;
+      }
     }
-    &.right {
-      width: 50%;
+
+    @media screen and (min-width: 768px) {
+      &.right {
+        width: 50%;
+      }
     }
+
     p {
       max-width: 50%;
-      text-align: center;
+      @media screen and (min-width: 768px) {
+        text-align: center;
+      }
     }
   }
 }

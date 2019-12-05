@@ -1,5 +1,8 @@
 import "normalize-scss/fork-versions/default/_normalize.scss";
 import jump from "jump.js";
+import { Init, Component } from "domponent/dist/domponent.development.js";
+import feather from "feather-icons";
+
 import "./fonts.scss";
 import "./base.scss";
 import "./includes/nav/nav";
@@ -10,12 +13,6 @@ import "./includes/markup/markup";
 import "./includes/charts/charts";
 import "./includes/seo/seo";
 import "./includes/api/api";
-import {
-  Init,
-  Component
-} from "domponent/dist/domponent.es5.production.min.js";
-
-import feather from "feather-icons";
 
 feather.replace();
 
@@ -24,11 +21,18 @@ class HoverBuddy extends Component {
     super(props);
   }
 
-  highlight() {
-    console.log("here");
+  highlight(e) {
+    console.log(this);
+    const refName = e.target.dataset.refArray;
+    if (refName) {
+      this[refName].forEach(el => el.classList.add("same"));
+    }
   }
-  removeHighlight() {
-    console.log("gone");
+  removeHighlight(e) {
+    const refName = e.target.dataset.refArray;
+    if (refName) {
+      this[refName].forEach(el => el.classList.remove("same"));
+    }
   }
 }
 
