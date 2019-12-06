@@ -115,7 +115,7 @@ DOMponent is similar to Knockout in some ways:
 Unlike KnockoutJS, DOMponent:
 * is component-driven
 * has option for namespaced components
-* has declarative scope
+* can isolate scope
 * is only 5kb (that's a 51kb savings)
 * is highly declarative
 * allows for highly specific DOM references
