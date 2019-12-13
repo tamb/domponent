@@ -562,7 +562,11 @@ This means that your HTML will look like this:
 
 ### Mixins 🎨
 
-You can use a super tiny and battle-tested library like `mixin-deep`, `merge-deep`, or `mixin-object` to inherit functions and properties within the component definition.  Pick which microlibrary best suits you and enjoy the full power of JS inheritance. 
+You can use a super tiny and battle-tested library like `mixin-deep`, `merge-deep`, or `mixin-object` to inherit functions and properties within the component definition.  Pick which microlibrary best suits you and enjoy the full power of JS inheritance.
+
+https://www.npmjs.com/package/mixin-deep
+https://www.npmjs.com/package/merge-deep
+https://www.npmjs.com/package/mixin-object
 
 <hr/>
 
