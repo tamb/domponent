@@ -89,6 +89,7 @@ new Init(config);
 - [Init Function](#init-function-)
 - [Adding and Removing Components](#adding-and-removing-components-)
 - [Namespacing Data Attributes](#namespacing-data-attributes-)
+- [Mixins](#mixins-)
 - [Development Mode](#development-mode-)
 - [Syntax Examples](#syntax-examples-)
 - [Component Lifecycle](#component-lifecycle-%EF%B8%8F%EF%B8%8F)
@@ -556,6 +557,12 @@ This means that your HTML will look like this:
   ...
 </div>
 ```
+
+<hr/>
+
+### Mixins 🎨
+
+You can use a super tiny and battle-tested library like `mixin-deep`, `merge-deep`, or `mixin-object` to inherit functions and properties within the component definition.  Pick which microlibrary best suits you and enjoy the full power of JS inheritance. 
 
 <hr/>
 
