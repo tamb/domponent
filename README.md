@@ -3,9 +3,10 @@
 **Build UI Components with the HTML You Already Have.**
 <br/>
 **2kb gzipped and 5kb minified! 👌**
-
+<!--
 [![](https://data.jsdelivr.com/v1/package/npm/domponent/badge)](https://www.jsdelivr.com/package/npm/domponent)
 [![](https://img.shields.io/npm/dw/domponent)](https://www.npmjs.com/package/domponent)
+-->
 [![](https://img.shields.io/bundlephobia/minzip/domponent?color=green)](https://www.npmjs.com/package/domponent)
 [![](https://img.shields.io/github/license/tamb/domponent?color=informational)](https://www.github.com/tamb/domponent)
 [![](https://img.shields.io/npm/v/domponent)](https://www.npmjs.com/package/domponent)
