@@ -20,6 +20,10 @@ export default class Component extends Exponent {
   stateWillUpdate() {}
   stateDidUpdate() {}
 
+  // TODO - add dev note that if # of fields being watched is fewer than 2,
+  // use stateDidUpdate and stateWillUpdate for performance reasons
+  // log out the component name as well
+
   // public setters
   setState(newState = this.state, fn) {
     this.stateWillUpdate();
