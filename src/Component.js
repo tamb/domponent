@@ -29,6 +29,12 @@ export default class Component extends Exponent {
       for (let stateKey in newState) {
         if (newState[stateKey] !== this.state[stateKey]) {
           propsToUpdate.push(stateKey);
+          if (this.$watchers[stateKey]) {
+            this.$watchers[stateKey].pre(
+              newState[stateKey],
+              this.state[stateKey]
+            );
+          }
           this.state[stateKey] = newState[stateKey];
           if (this.$s) {
             if (this.$s[stateKey]) {
@@ -52,6 +58,9 @@ export default class Component extends Exponent {
     /* END.DEV */
     if (this.$d.size > 0) {
       updateDependents.call(this, propsToUpdate);
+    }
+    if (this.$watchers[stateKey]) {
+      this.$watchers[stateKey].post(this.state[stateKey]);
     }
     hasCallback(fn);
     this.stateDidUpdate();
