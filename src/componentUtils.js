@@ -225,7 +225,7 @@ export function createRefs() {
   scopeElements
     .call(this, `[data-${this.$app.$datasets.ref}]`)
     .forEach(element => {
-      this[
+      this.$refs[
         splitFromComponent(
           element.getAttribute(`data-${this.$app.$datasets.ref}`)
         )[1]
@@ -241,12 +241,13 @@ export function createRefArrays() {
       const key = splitFromComponent(
         element.getAttribute(`data-${this.$app.$datasets.ref_array}`)
       )[1];
+      this.$refs[key] ? null : (this.$refs[key] = []);
       if (key === prevKey) {
-        this[key].push(element);
+        this.$refs[key].push(element);
       } else {
         prevKey = key;
-        this[key] = [];
-        this[key].push(element);
+        this.$refs[key] = [];
+        this.$refs[key].push(element);
       }
     });
 }

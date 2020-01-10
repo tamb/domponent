@@ -6,6 +6,6 @@ export default class ShowCode extends Exponent {
     super(conf);
   }
   toggle() {
-    this.foldable.classList.toggle("show");
+    this.$refs.foldable.classList.toggle("show");
   }
 }

@@ -1,6 +1,11 @@
 import Scope from "./Scope";
 
-import { createPropObjects, bindListeners, createRefs, createRefArrays } from './componentUtils'
+import {
+  createPropObjects,
+  bindListeners,
+  createRefs,
+  createRefArrays
+} from "./componentUtils";
 
 export default class Exponent extends Scope {
   constructor(config, wait = false) {
@@ -8,18 +13,18 @@ export default class Exponent extends Scope {
     this.connecting();
     this.props = {};
     this.$d = new Set();
+    this.$refs = {};
     createRefs.call(this);
     createRefArrays.call(this);
     this.$p = createPropObjects.call(this);
     bindListeners.call(this);
-    wait? null : this.connected();
+    wait ? null : this.connected();
   }
 
   // lifecycle methods
-  connecting(){}
-  connected(){}
-  disconnecting(){}
+  connecting() {}
+  connected() {}
+  disconnecting() {}
   propsWillUpdate() {}
   propsDidUpdate() {}
-
 }

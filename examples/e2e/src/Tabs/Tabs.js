@@ -25,13 +25,13 @@ export default class Tabs extends Component {
   }
 
   setTabs() {
-    for (let i = 0; i < this.tabPane.length; i++) {
+    for (let i = 0; i < this.$refs.tabPane.length; i++) {
       if (i === this.state.activeTab) {
-        this.tab[i].classList.add("open");
-        this.tabPane[i].classList.add("open");
+        this.$refs.tab[i].classList.add("open");
+        this.$refs.tabPane[i].classList.add("open");
       } else {
-        this.tab[i].classList.remove("open");
-        this.tabPane[i].classList.remove("open");
+        this.$refs.tab[i].classList.remove("open");
+        this.$refs.tabPane[i].classList.remove("open");
       }
     }
   }

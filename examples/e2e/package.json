@@ -5,11 +5,11 @@
   "main": "index.html",
   "scripts": {
     "build": "webpack --production",
-    "start": "concurrently \"webpack --watch\" \"http-server -a localhost -p 1234\" \"open http://localhost:1234/\" \"node open.js\"",
-    "start:dev": "concurrently \"webpack --mode=development --watch\" \"http-server -a localhost -p 1234\" \"open http://localhost:1234/\" \"node open.js\""
+    "start": "concurrently \"webpack --watch\" \"http-server -a localhost -p 1234\" \"start http://localhost:1234/index.html\" \"node open.js\"",
+    "start:dev": "concurrently \"webpack --mode=development --watch\" \"http-server -a localhost -p 1234\" \"start http://localhost:1234/index.html\" \"node open.js\""
   },
   "dependencies": {
-    "domponent": "file:../../domponent-1.2.2.tgz"
+    "domponent": "file:../../domponent-2.0.0-alpha.0.tgz"
   },
   "devDependencies": {
     "@babel/core": "7.2.0",

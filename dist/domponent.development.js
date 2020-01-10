@@ -328,11 +328,9 @@
       scopeElements
         .call(this, `[data-${this.$app.$datasets.ref}]`)
         .forEach(element => {
-          this[
-            splitFromComponent(
-              element.getAttribute(`data-${this.$app.$datasets.ref}`)
-            )[1]
-          ] = element;
+          this.$refs[splitFromComponent(
+            element.getAttribute(`data-${this.$app.$datasets.ref}`)
+          )[1]] =element;
         });
     }
 
@@ -344,12 +342,14 @@
           const key = splitFromComponent(
             element.getAttribute(`data-${this.$app.$datasets.ref_array}`)
           )[1];
+          this.$refs[key]? null : this.$refs[key] = [];
           if (key === prevKey) {
-            this[key].push(element);
-          } else {
+            this.$refs[key].push(element);
+          }
+           else {
             prevKey = key;
-            this[key] = [];
-            this[key].push(element);
+            this.$refs[key] = [];
+            this.$refs[key].push(element);
           }
         });
     }
@@ -372,6 +372,7 @@
         this.connecting();
         this.props = {};
         this.$d = new Set();
+        this.$refs = {};
         createRefs.call(this);
         createRefArrays.call(this);
         this.$p = createPropObjects.call(this);
