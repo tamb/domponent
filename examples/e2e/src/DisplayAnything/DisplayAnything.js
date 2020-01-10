@@ -12,6 +12,6 @@ export default class DisplayAnything extends Exponent {
   }
 
   displayProps() {
-    this.objects.innerHTML = JSON.stringify(this.props, null, 1);
+    this.$refs.objects.innerHTML = JSON.stringify(this.props, null, 1);
   }
 }
