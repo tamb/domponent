@@ -10,6 +10,7 @@ import {
 export default class Component extends Exponent {
   constructor(config) {
     super(config, true);
+    this.$watchers = this.watch ? this.watch() : {};
     initState.call(this);
     this.$s = createStateObjects.call(this);
     this.connected();
@@ -30,12 +31,20 @@ export default class Component extends Exponent {
         if (newState[stateKey] !== this.state[stateKey]) {
           propsToUpdate.push(stateKey);
           if (this.$watchers[stateKey]) {
-            this.$watchers[stateKey].pre(
-              newState[stateKey],
-              this.state[stateKey]
-            );
+            if (this.$watchers[stateKey].pre) {
+              this.$watchers[stateKey].pre.call(
+                this,
+                newState[stateKey],
+                this.state[stateKey]
+              );
+            }
           }
           this.state[stateKey] = newState[stateKey];
+          if (this.$watchers[stateKey]) {
+            if (this.$watchers[stateKey].post) {
+              this.$watchers[stateKey].post.call(this, this.state[stateKey]);
+            }
+          }
           if (this.$s) {
             if (this.$s[stateKey]) {
               this.$s[stateKey].forEach(stateObj => {
@@ -58,9 +67,6 @@ export default class Component extends Exponent {
     /* END.DEV */
     if (this.$d.size > 0) {
       updateDependents.call(this, propsToUpdate);
-    }
-    if (this.$watchers[stateKey]) {
-      this.$watchers[stateKey].post(this.state[stateKey]);
     }
     hasCallback(fn);
     this.stateDidUpdate();
