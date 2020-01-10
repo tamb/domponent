@@ -15,13 +15,13 @@ export default class Navigation extends Component {
 
   changeNav() {
     if (this.state.opened) {
-      this.menu.classList.add("show");
-      this.open.style.display = "none";
-      this.close.style.display = "block";
+      this.$refs.menu.classList.add("show");
+      this.$refs.open.style.display = "none";
+      this.$refs.close.style.display = "block";
     } else {
-      this.menu.classList.remove("show");
-      this.open.style.display = "block";
-      this.close.style.display = "none";
+      this.$refs.menu.classList.remove("show");
+      this.$refs.open.style.display = "block";
+      this.$refs.close.style.display = "none";
     }
   }
 }

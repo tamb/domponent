@@ -5,3 +5,4 @@
 /examples/**/dist
 examples/html/dist
 *tgz
+/dist

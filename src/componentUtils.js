@@ -239,7 +239,7 @@ export function createRefs() {
       `[data-${this.$app.$datasets.ref}*='${this.$name}${this.$app.$syntax.FROM_COMPONENT}']`
     )
     .forEach(element => {
-      this[
+      this.$refs[
         splitFromComponent.call(
           self,
           element.getAttribute(`data-${this.$app.$datasets.ref}`)
@@ -262,12 +262,13 @@ export function createRefArrays() {
         self,
         element.getAttribute(`data-${this.$app.$datasets.ref_array}`)
       )[1];
+      this.$refs[key] ? null : (this.$refs[key] = []);
       if (key === prevKey) {
-        this[key].push(element);
+        this.$refs[key].push(element);
       } else {
         prevKey = key;
-        this[key] = [];
-        this[key].push(element);
+        this.$refs[key] = [];
+        this.$refs[key].push(element);
       }
     });
 }
