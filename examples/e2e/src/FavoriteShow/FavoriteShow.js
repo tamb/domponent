@@ -17,6 +17,6 @@ export default class FavoriteShow extends Component {
   }
 
   stateDidUpdate() {
-    this.secondInput.value = this.state.show;
+    this.$refs.secondInput.value = this.state.show;
   }
 }
