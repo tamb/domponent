@@ -223,7 +223,7 @@ export function createPropObjects() {
 
 export function createRefs() {
   scopeElements
-    .call(this, `[data-${this.$app.$datasets.ref}]`)
+    .call(this, `[data-${this.$app.$datasets.ref}*='${this.$name}.']`)
     .forEach(element => {
       this[
         splitFromComponent(
@@ -236,7 +236,7 @@ export function createRefs() {
 export function createRefArrays() {
   let prevKey = null;
   scopeElements
-    .call(this, `[data-${this.$app.$datasets.ref_array}]`)
+    .call(this, `[data-${this.$app.$datasets.ref_array}*='${this.$name}.']`)
     .forEach(element => {
       const key = splitFromComponent(
         element.getAttribute(`data-${this.$app.$datasets.ref_array}`)
