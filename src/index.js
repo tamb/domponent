@@ -41,6 +41,26 @@ function Init(config) {
     return dataSet;
   })();
 
+  // custom syntax to avoid collisions
+  this.$syntax = (() => {
+    const syntax = relationalStringEnum;
+    if (config.customSyntax) {
+      for (let key in config.customSyntax) {
+        syntax[key] = config.customSyntax[key];
+      }
+    }
+    /* START.DEV */
+    console.log(
+      `🤓 -- "Dom here. Your custom syntax is in this object: 
+    `,
+      syntax,
+      `
+    Sweet, dude!"`
+    );
+    /* END.DEV */
+    return syntax;
+  })();
+
   // methods to expose
   // create component
   this._cc = (el, cb) => {
