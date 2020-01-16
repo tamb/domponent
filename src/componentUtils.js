@@ -12,7 +12,7 @@ import { eventOptions } from "./enums";
 export function createStateObjects() {
   const nodes = scopeElements.call(
     this,
-    `[data-${this.$app.$datasets.bind}^="state:"]`
+    `[data-${this.$app.$datasets.bind}^="state${this.$app.$syntax.KEY_VALUE}"]`
   );
   if (nodes.length > 0) {
     const $s = {};
@@ -205,7 +205,7 @@ export function createPropObjects() {
       const els = [
         ...scopeElements.call(
           this,
-          `[${this.$app.$datasets.bind}^="props:${propName}"]`
+          `[${this.$app.$datasets.bind}^="props${this.$app.$syntax.KEY_VALUE}${propName}"]`
         )
       ];
       this.props[propName] = parentComponent.state[parentComponentKey];
@@ -223,7 +223,10 @@ export function createPropObjects() {
 
 export function createRefs() {
   scopeElements
-    .call(this, `[data-${this.$app.$datasets.ref}*='${this.$name}.']`)
+    .call(
+      this,
+      `[data-${this.$app.$datasets.ref}*='${this.$name}${this.$app.$syntax.FROM_COMPONENT}']`
+    )
     .forEach(element => {
       this[
         splitFromComponent(
@@ -236,7 +239,10 @@ export function createRefs() {
 export function createRefArrays() {
   let prevKey = null;
   scopeElements
-    .call(this, `[data-${this.$app.$datasets.ref_array}*='${this.$name}.']`)
+    .call(
+      this,
+      `[data-${this.$app.$datasets.ref_array}*='${this.$name}${this.$app.$syntax.FROM_COMPONENT}']`
+    )
     .forEach(element => {
       const key = splitFromComponent(
         element.getAttribute(`data-${this.$app.$datasets.ref_array}`)
