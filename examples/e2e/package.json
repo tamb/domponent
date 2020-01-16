@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "build": "webpack --production",
+    "build": "webpack --production && node open.js",
+    "dev": "webpack --mode=development && node open.js",
     "start": "concurrently \"webpack --watch\" \"http-server -a localhost -p 1234\" \"node open.js\"",
     "start:dev": "concurrently \"webpack --mode=development --watch\" \"http-server -a localhost -p 1234\" \"node open.js\""
   },
   "dependencies": {
-    "domponent": "file:../../domponent-1.2.2.tgz"
+    "domponent": "file:../../domponent-1.2.3.tgz"
   },
   "devDependencies": {
     "@babel/core": "7.2.0",
