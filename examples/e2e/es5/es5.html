@@ -102,7 +102,7 @@
         };
 
         var App = new Domponent.Init({
-          selector: document.body,
+          selector: document.getElementById("root"),
           components: {
             Counter: Counter,
             Copier: Copier
@@ -113,8 +113,9 @@
 
     <title>ES5| Domponent</title>
   </head>
-  <body id="root">
-    <div class="container">
+
+  <body>
+    <div class="container" id="root">
       <div class="row">
         <div
           class="col-12 d-flex flex-column justify-items-center align-content-center mt-3 mb-3"
@@ -207,5 +208,45 @@
         </div>
       </div>
     </div>
+
+    <div class="container" id="root">
+      <div class="row">
+        <div
+          class="col-12 d-flex flex-column justify-items-center align-content-center mt-3 mb-3"
+        >
+          <div id="custom">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title">Custom Syntax</h2>
+                <div
+                  class="card-text d-flex justify-content-center align-content-center"
+                >
+                  <div data-component="Counter" data-state='{"count": 0}'>
+                    <p class="text-center" data-show-me="state:Counter+count">
+                      0
+                    </p>
+                    <button
+                      type="button"
+                      class="btn btn-warning"
+                      data-my-cool-action="click#Counter+decrement"
+                    >
+                      -1
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-success"
+                      data-my-cool-action="click#Counter+increment"
+                    >
+                      +1
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../dist/custom.js"></script>
   </body>
 </html>

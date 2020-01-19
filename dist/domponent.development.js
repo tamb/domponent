@@ -40,6 +40,8 @@
       }
     }
 
+    // import { this.$app.$syntax } from "./enums";
+
     function createKey() {
       return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
         var r = (Math.random() * 16) | 0,
@@ -60,13 +62,13 @@
     function splitKeyValuePairs(string) {
       return string
         .trim()
-        .split(relationalStringEnum.KEY_VALUE)
+        .split(this.$app.$syntax.KEY_VALUE)
         .map(item => item.trim());
     }
     function splitMultipleValues(string) {
       return string
         .trim()
-        .split(relationalStringEnum.MULTIPLE_VALUES)
+        .split(this.$app.$syntax.MULTIPLE_VALUES)
         .map(item => item.trim());
     }
     function splitPropsPassedIn(string) {
@@ -78,7 +80,7 @@
       /* END.DEV */
       return string
         .trim()
-        .split(relationalStringEnum.INHERITS_FROM)
+        .split(this.$app.$syntax.INHERITS_FROM)
         .map(item => item.trim());
     }
     function splitMethodCalls(string) {
@@ -90,7 +92,7 @@
       /* END.DEV */
       return string
         .trim()
-        .split(relationalStringEnum.METHOD_CALL)
+        .split(this.$app.$syntax.METHOD_CALL)
         .map(item => item.trim());
     }
     function splitFromComponent(string) {
@@ -102,20 +104,22 @@
       /* END.DEV */
       return string
         .trim()
-        .split(relationalStringEnum.FROM_COMPONENT)
+        .split(this.$app.$syntax.FROM_COMPONENT)
         .map(item => item.trim());
     }
     function splitList(string) {
       return string
         .trim()
-        .split(relationalStringEnum.LIST)
+        .split(this.$app.$syntax.LIST)
         .map(item => item.trim());
     }
 
     function createStateObjects() {
+      const self = this;
+
       const nodes = scopeElements.call(
         this,
-        `[data-${this.$app.$datasets.bind}^="state:"]`
+        `[data-${this.$app.$datasets.bind}^="state${this.$app.$syntax.KEY_VALUE}"]`
       );
       if (nodes.length > 0) {
         const $s = {};
@@ -124,7 +128,7 @@
           /* START.DEV */
           try {
             /* END.DEV */
-            var states = splitMultipleValues(
+            var states = splitMultipleValues.call(self,
               el.getAttribute(`data-${this.$app.$datasets.bind}`)
             );
             /* START.DEV */
@@ -138,7 +142,7 @@
             /* START.DEV */
             try {
               /* END.DEV */
-              var parts = splitKeyValuePairs(state);
+              var parts = splitKeyValuePairs.call(self, state);
               /* START.DEV */
             } catch (err) {
               console.error(`🤓 -- "There's a problem creating the state.
@@ -149,7 +153,7 @@
             /* START.DEV */
             try {
               /* END.DEV */
-              var stateKey = splitFromComponent(parts[1])[1];
+              var stateKey = splitFromComponent.call(self, parts[1])[1];
               /* START.DEV */
             } catch (err) {
               console.error(`🤓 -- "There's a problem creating the state.
@@ -190,6 +194,7 @@
     }
 
     function bindListeners() {
+      const self = this;
       this.$b = [];
       let arr = this.$root.getAttribute(`data-${this.$app.$datasets.action}`)
         ? [this.$root]
@@ -197,7 +202,7 @@
       arr
         .concat(scopeElements.call(this, `[data-${this.$app.$datasets.action}]`))
         .forEach(el => {
-          const actions = splitMultipleValues(
+          const actions = splitMultipleValues.call(self, 
             el.getAttribute(`data-${this.$app.$datasets.action}`)
           );
           const binding = {
@@ -205,13 +210,13 @@
             actions: []
           };
           actions.forEach(action => {
-            const parts = splitMethodCalls(action);
+            const parts = splitMethodCalls.call(self, action);
             const event = parts[0];
-            const cbFunc = splitFromComponent(parts[1]);
+            const cbFunc = splitFromComponent.call(self, parts[1]);
             if (cbFunc[0] === this.$name) {
               let options = {};
               if (cbFunc[2]) {
-                const arr = splitList(cbFunc[2]);
+                const arr = splitList.call(self, cbFunc[2]);
                 for (let key in eventOptions) {
                   options[eventOptions[key]] = arr.includes(eventOptions[key]);
                 }
@@ -291,13 +296,14 @@
     }
 
     function createPropObjects() {
+      const self = this;
       const attr = this.$root.getAttribute(`data-${this.$app.$datasets.props}`);
       if (attr) {
         const $p = {};
-        const props = splitMultipleValues(attr);
+        const props = splitMultipleValues.call(self, attr);
         props.forEach(prop => {
-          const propStringValues = splitPropsPassedIn(prop);
-          const parentComponentValues = splitKeyValuePairs(propStringValues[1]);
+          const propStringValues = splitPropsPassedIn.call(self, prop);
+          const parentComponentValues = splitKeyValuePairs.call(self, propStringValues[1]);
           const propName = propStringValues[0];
           const parentComponent = this.$app.registeredComponents[
             parentComponentValues[0]
@@ -308,7 +314,7 @@
           const els = [
             ...scopeElements.call(
               this,
-              `[${this.$app.$datasets.bind}^="props:${propName}"]`
+              `[${this.$app.$datasets.bind}^="props${this.$app.$syntax.KEY_VALUE}${propName}"]`
             )
           ];
           this.props[propName] = parentComponent.state[parentComponentKey];
@@ -325,11 +331,16 @@
     }
 
     function createRefs() {
+      const self = this;
+
       scopeElements
-        .call(this, `[data-${this.$app.$datasets.ref}*='${this.$name}.']`)
+        .call(
+          this,
+          `[data-${this.$app.$datasets.ref}*='${this.$name}${this.$app.$syntax.FROM_COMPONENT}']`
+        )
         .forEach(element => {
           this[
-            splitFromComponent(
+            splitFromComponent.call(self,
               element.getAttribute(`data-${this.$app.$datasets.ref}`)
             )[1]
           ] = element;
@@ -338,10 +349,15 @@
 
     function createRefArrays() {
       let prevKey = null;
+      const self = this;
+
       scopeElements
-        .call(this, `[data-${this.$app.$datasets.ref_array}*='${this.$name}.']`)
+        .call(
+          this,
+          `[data-${this.$app.$datasets.ref_array}*='${this.$name}${this.$app.$syntax.FROM_COMPONENT}']`
+        )
         .forEach(element => {
-          const key = splitFromComponent(
+          const key = splitFromComponent.call(self,
             element.getAttribute(`data-${this.$app.$datasets.ref_array}`)
           )[1];
           if (key === prevKey) {
@@ -472,6 +488,26 @@ See ya soon!"`);
         );
         /* END.DEV */
         return dataSet;
+      })();
+
+      // custom syntax to avoid collisions
+      this.$syntax = (() => {
+        const syntax = relationalStringEnum;
+        if (config.customSyntax) {
+          for (let key in config.customSyntax) {
+            syntax[key] = config.customSyntax[key];
+          }
+        }
+        /* START.DEV */
+        console.log(
+          `🤓 -- "Dom here. Your custom syntax is in this object: 
+    `,
+          syntax,
+          `
+    Sweet, dude!"`
+        );
+        /* END.DEV */
+        return syntax;
       })();
 
       // methods to expose
