@@ -128,7 +128,8 @@
           /* START.DEV */
           try {
             /* END.DEV */
-            var states = splitMultipleValues.call(self,
+            var states = splitMultipleValues.call(
+              self,
               el.getAttribute(`data-${this.$app.$datasets.bind}`)
             );
             /* START.DEV */
@@ -202,7 +203,8 @@
       arr
         .concat(scopeElements.call(this, `[data-${this.$app.$datasets.action}]`))
         .forEach(el => {
-          const actions = splitMultipleValues.call(self, 
+          const actions = splitMultipleValues.call(
+            self,
             el.getAttribute(`data-${this.$app.$datasets.action}`)
           );
           const binding = {
@@ -303,7 +305,10 @@
         const props = splitMultipleValues.call(self, attr);
         props.forEach(prop => {
           const propStringValues = splitPropsPassedIn.call(self, prop);
-          const parentComponentValues = splitKeyValuePairs.call(self, propStringValues[1]);
+          const parentComponentValues = splitKeyValuePairs.call(
+            self,
+            propStringValues[1]
+          );
           const propName = propStringValues[0];
           const parentComponent = this.$app.registeredComponents[
             parentComponentValues[0]
@@ -340,7 +345,8 @@
         )
         .forEach(element => {
           this[
-            splitFromComponent.call(self,
+            splitFromComponent.call(
+              self,
               element.getAttribute(`data-${this.$app.$datasets.ref}`)
             )[1]
           ] = element;
@@ -357,7 +363,8 @@
           `[data-${this.$app.$datasets.ref_array}*='${this.$name}${this.$app.$syntax.FROM_COMPONENT}']`
         )
         .forEach(element => {
-          const key = splitFromComponent.call(self,
+          const key = splitFromComponent.call(
+            self,
             element.getAttribute(`data-${this.$app.$datasets.ref_array}`)
           )[1];
           if (key === prevKey) {
