@@ -1,6 +1,10 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = (env, argv) => {
   return {
+    entry: {
+      custom: "./src/custom.js",
+      main: "./src/index.js"
+    },
     module: {
       rules: [
         {

@@ -10,6 +10,8 @@ import {
 import { eventOptions } from "./enums";
 
 export function createStateObjects() {
+  const self = this;
+
   const nodes = scopeElements.call(
     this,
     `[data-${this.$app.$datasets.bind}^="state${this.$app.$syntax.KEY_VALUE}"]`
@@ -21,7 +23,8 @@ export function createStateObjects() {
       /* START.DEV */
       try {
         /* END.DEV */
-        var states = splitMultipleValues(
+        var states = splitMultipleValues.call(
+          self,
           el.getAttribute(`data-${this.$app.$datasets.bind}`)
         );
         /* START.DEV */
@@ -35,7 +38,7 @@ export function createStateObjects() {
         /* START.DEV */
         try {
           /* END.DEV */
-          var parts = splitKeyValuePairs(state);
+          var parts = splitKeyValuePairs.call(self, state);
           /* START.DEV */
         } catch (err) {
           console.error(`🤓 -- "There's a problem creating the state.
@@ -46,7 +49,7 @@ export function createStateObjects() {
         /* START.DEV */
         try {
           /* END.DEV */
-          var stateKey = splitFromComponent(parts[1])[1];
+          var stateKey = splitFromComponent.call(self, parts[1])[1];
           /* START.DEV */
         } catch (err) {
           console.error(`🤓 -- "There's a problem creating the state.
@@ -87,6 +90,7 @@ export function initState() {
 }
 
 export function bindListeners() {
+  const self = this;
   this.$b = [];
   let arr = this.$root.getAttribute(`data-${this.$app.$datasets.action}`)
     ? [this.$root]
@@ -94,7 +98,8 @@ export function bindListeners() {
   arr
     .concat(scopeElements.call(this, `[data-${this.$app.$datasets.action}]`))
     .forEach(el => {
-      const actions = splitMultipleValues(
+      const actions = splitMultipleValues.call(
+        self,
         el.getAttribute(`data-${this.$app.$datasets.action}`)
       );
       const binding = {
@@ -102,13 +107,13 @@ export function bindListeners() {
         actions: []
       };
       actions.forEach(action => {
-        const parts = splitMethodCalls(action);
+        const parts = splitMethodCalls.call(self, action);
         const event = parts[0];
-        const cbFunc = splitFromComponent(parts[1]);
+        const cbFunc = splitFromComponent.call(self, parts[1]);
         if (cbFunc[0] === this.$name) {
           let options = {};
           if (cbFunc[2]) {
-            const arr = splitList(cbFunc[2]);
+            const arr = splitList.call(self, cbFunc[2]);
             for (let key in eventOptions) {
               options[eventOptions[key]] = arr.includes(eventOptions[key]);
             }
@@ -188,13 +193,17 @@ export function updateProps(updatedProps) {
 }
 
 export function createPropObjects() {
+  const self = this;
   const attr = this.$root.getAttribute(`data-${this.$app.$datasets.props}`);
   if (attr) {
     const $p = {};
-    const props = splitMultipleValues(attr);
+    const props = splitMultipleValues.call(self, attr);
     props.forEach(prop => {
-      const propStringValues = splitPropsPassedIn(prop);
-      const parentComponentValues = splitKeyValuePairs(propStringValues[1]);
+      const propStringValues = splitPropsPassedIn.call(self, prop);
+      const parentComponentValues = splitKeyValuePairs.call(
+        self,
+        propStringValues[1]
+      );
       const propName = propStringValues[0];
       const parentComponent = this.$app.registeredComponents[
         parentComponentValues[0]
@@ -222,6 +231,8 @@ export function createPropObjects() {
 }
 
 export function createRefs() {
+  const self = this;
+
   scopeElements
     .call(
       this,
@@ -229,7 +240,8 @@ export function createRefs() {
     )
     .forEach(element => {
       this[
-        splitFromComponent(
+        splitFromComponent.call(
+          self,
           element.getAttribute(`data-${this.$app.$datasets.ref}`)
         )[1]
       ] = element;
@@ -238,13 +250,16 @@ export function createRefs() {
 
 export function createRefArrays() {
   let prevKey = null;
+  const self = this;
+
   scopeElements
     .call(
       this,
       `[data-${this.$app.$datasets.ref_array}*='${this.$name}${this.$app.$syntax.FROM_COMPONENT}']`
     )
     .forEach(element => {
-      const key = splitFromComponent(
+      const key = splitFromComponent.call(
+        self,
         element.getAttribute(`data-${this.$app.$datasets.ref_array}`)
       )[1];
       if (key === prevKey) {

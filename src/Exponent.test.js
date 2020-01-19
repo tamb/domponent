@@ -1,4 +1,5 @@
 import Exponent from "./Exponent";
+import { relationalStringEnum } from "./enums";
 
 describe("Tests Exponent class", () => {
   const componentName = "HelloWorld";
@@ -14,7 +15,8 @@ describe("Tests Exponent class", () => {
   const app = {
     $datasets: {
       component: "component"
-    }
+    },
+    $syntax: relationalStringEnum
   };
 
   const config = {

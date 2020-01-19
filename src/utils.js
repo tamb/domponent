@@ -1,4 +1,4 @@
-import { relationalStringEnum } from "./enums";
+// import { this.$app.$syntax } from "./enums";
 
 export function createKey() {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
@@ -20,13 +20,13 @@ export function hasCallback(cb) {
 export function splitKeyValuePairs(string) {
   return string
     .trim()
-    .split(relationalStringEnum.KEY_VALUE)
+    .split(this.$app.$syntax.KEY_VALUE)
     .map(item => item.trim());
 }
 export function splitMultipleValues(string) {
   return string
     .trim()
-    .split(relationalStringEnum.MULTIPLE_VALUES)
+    .split(this.$app.$syntax.MULTIPLE_VALUES)
     .map(item => item.trim());
 }
 export function splitPropsPassedIn(string) {
@@ -38,7 +38,7 @@ export function splitPropsPassedIn(string) {
   /* END.DEV */
   return string
     .trim()
-    .split(relationalStringEnum.INHERITS_FROM)
+    .split(this.$app.$syntax.INHERITS_FROM)
     .map(item => item.trim());
 }
 export function splitMethodCalls(string) {
@@ -50,7 +50,7 @@ export function splitMethodCalls(string) {
   /* END.DEV */
   return string
     .trim()
-    .split(relationalStringEnum.METHOD_CALL)
+    .split(this.$app.$syntax.METHOD_CALL)
     .map(item => item.trim());
 }
 export function splitFromComponent(string) {
@@ -62,12 +62,12 @@ export function splitFromComponent(string) {
   /* END.DEV */
   return string
     .trim()
-    .split(relationalStringEnum.FROM_COMPONENT)
+    .split(this.$app.$syntax.FROM_COMPONENT)
     .map(item => item.trim());
 }
 export function splitList(string) {
   return string
     .trim()
-    .split(relationalStringEnum.LIST)
+    .split(this.$app.$syntax.LIST)
     .map(item => item.trim());
 }
