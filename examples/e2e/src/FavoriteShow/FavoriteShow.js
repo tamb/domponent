@@ -11,11 +11,13 @@ export default class FavoriteShow extends Component {
   watch() {
     return {
       show: {
-        // pre(newS, oldS){
-        //   console.log("This is a pre watcher", newS, oldS)
-        // },
-        post() {
+        pre(newValue, oldValue) {
+          console.log("This is a pre watcher", newValue);
+          console.log("old", oldValue);
+        },
+        post(newValue) {
           console.log("POST", this);
+          console.log(newValue);
           if (this.state.show.length > 15) {
             alert("max length");
           } else {
