@@ -9,9 +9,7 @@
 [![](https://img.shields.io/npm/dw/domponent)](https://www.npmjs.com/package/domponent)
 -->
 
-[![](https://img.shields.io/bundlephobia/minzip/domponent?color=green)](https://www.npmjs.com/package/domponent)
 [![](https://img.shields.io/github/license/tamb/domponent?color=informational)](https://www.github.com/tamb/domponent)
-[![](https://img.shields.io/npm/v/domponent)](https://www.npmjs.com/package/domponent)
 
 ## How To:
 
@@ -87,13 +85,11 @@ new Init(config);
 - [Extending the Component class](#extending-the-component-class-)
 - [Managing Component State](#managing-component-state-%EF%B8%8F)
 - [Lifecycle Methods](#lifecycle-methods-)
-- [Watchers](#watchers-)
 - [Stateless Components](#stateless-components-)
 - [Component Fields](#component-fields-)
 - [Init Function](#init-function-)
 - [Adding and Removing Components](#adding-and-removing-components-)
 - [Namespacing Data Attributes](#namespacing-data-attributes-)
-- [Custom Syntax](#custom-syntax-)
 - [Development Mode](#development-mode-)
 - [Syntax Examples](#syntax-examples-)
 - [Component Lifecycle](#component-lifecycle-%EF%B8%8F%EF%B8%8F)
@@ -427,25 +423,6 @@ The following are methods you can use to access components at various points in 
 
 <hr/>
 
-### Watchers 👀
-
-`Component` classes have a `watch` method that must return an object. Watchers allow you to hook into specific state value changes during the component lifecyle. This allows your state logic to be isolated instead of clumping it all in with `stateWillUpdate` or `stateDidUpdate`. This is meant to closely mimic watchers in `Vue.JS`.
-
-```js
-watch(){
-  return {
-    myField: {
-      pre(newValue, oldValue){
-        // my logic
-      },
-      post(newValue){
-        // my logic
-      }
-    }
-  }
-}
-```
-
 ### Stateless Components 😐
 
 Extend the `Exponent` class to create a component with _only_ `props`
@@ -595,30 +572,6 @@ This means that your HTML will look like this:
   ...
 </div>
 ```
-
-<hr/>
-
-### Custom Syntax 🔧
-You can optionally customize the syntax you use in your HTML.
-The following items can be customized.
-
-    INHERITS_FROM: '<-',
-    FROM_COMPONENT: '.',
-    KEY_VALUE: ':',
-    MULTIPLE_VALUES: "|",
-    METHOD_CALL: "->",
-    LIST: ","
-
-This means that in your config you can add:
-```js
-{
-   customSyntax: {
-      LIST: "!",
-      METHOD_CALL: "#"
-  }
-}
-```
-And your HTML can use this!
 
 <hr/>
 
