@@ -9,9 +9,7 @@
 [![](https://img.shields.io/npm/dw/domponent)](https://www.npmjs.com/package/domponent)
 -->
 
-[![](https://img.shields.io/bundlephobia/minzip/domponent?color=green)](https://www.npmjs.com/package/domponent)
 [![](https://img.shields.io/github/license/tamb/domponent?color=informational)](https://www.github.com/tamb/domponent)
-[![](https://img.shields.io/npm/v/domponent)](https://www.npmjs.com/package/domponent)
 
 ## How To:
 
@@ -87,7 +85,6 @@ new Init(config);
 - [Extending the Component class](#extending-the-component-class-)
 - [Managing Component State](#managing-component-state-%EF%B8%8F)
 - [Lifecycle Methods](#lifecycle-methods-)
-- [Watchers](#watchers-)
 - [Stateless Components](#stateless-components-)
 - [Component Fields](#component-fields-)
 - [Init Function](#init-function-)
@@ -425,25 +422,6 @@ The following are methods you can use to access components at various points in 
 | stateDidUpdate   | Component          | Child components with inherited props have done their DOM manipulations and state and props have changed |
 
 <hr/>
-
-### Watchers 👀
-
-`Component` classes have a `watch` method that must return an object. Watchers allow you to hook into specific state value changes during the component lifecyle. This allows your state logic to be isolated instead of clumping it all in with `stateWillUpdate` or `stateDidUpdate`. This is meant to closely mimic watchers in `Vue.JS`.
-
-```js
-watch(){
-  return {
-    myField: {
-      pre(newValue, oldValue){
-        // my logic
-      },
-      post(newValue){
-        // my logic
-      }
-    }
-  }
-}
-```
 
 ### Stateless Components 😐
 
