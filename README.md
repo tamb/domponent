@@ -2,7 +2,7 @@
 
 **Build UI Components with the HTML You Already Have.**
 <br/>
-**2kb gzipped and 5kb minified! 👌**
+**2kb gzipped and 6kb minified! 👌**
 
 <!--
 [![](https://data.jsdelivr.com/v1/package/npm/domponent/badge)](https://www.jsdelivr.com/package/npm/domponent)
@@ -123,7 +123,7 @@ Unlike KnockoutJS, DOMponent:
 - is component-driven
 - has option for namespaced components
 - can isolate scope
-- is only 5kb (that's a 51kb savings)
+- is only 6kb (that's a 50kb savings)
 - is highly declarative
 - allows for highly specific DOM references
 - has lifecycle methods
@@ -599,6 +599,7 @@ This means that your HTML will look like this:
 <hr/>
 
 ### Custom Syntax 🔧
+
 You can optionally customize the syntax you use in your HTML.
 The following items can be customized.
 
@@ -610,6 +611,7 @@ The following items can be customized.
     LIST: ","
 
 This means that in your config you can add:
+
 ```js
 {
    customSyntax: {
@@ -618,6 +620,7 @@ This means that in your config you can add:
   }
 }
 ```
+
 And your HTML can use this!
 
 <hr/>
