@@ -573,14 +573,14 @@ The following items can be customized.
     LIST: ","
 
 This means that in your config you can add:
-
+```js
 {
    customSyntax: {
       LIST: "!",
       METHOD_CALL: "#"
   }
 }
-
+```
 And your HTML can use this!
 
 <hr/>
