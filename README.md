@@ -301,8 +301,9 @@ If you need to reference DOM elements, you can use `data-ref` like so:
 ```
 
 You need to preface which component the element is on.
+It is then stored in the components `$refs` object.
 
-You can then access the element in `Counter` using `this.myElement` within the Component instance.
+You can then access the element in `Counter` using `this.$refs.myElement` within the Component instance.
 
 #### `data-ref-array`
 
@@ -312,8 +313,8 @@ You can create an array of elements in your component this way:
 <div data-ref-array="Counter.elements"></div>
 <div data-ref-array="Counter.elements"></div>
 ```
-
-You can access the array of elements in your component with `this.elements`.
+It is then stored in the components `$refs` object.
+You can access the array of elements in your component with `this.$refs.elements`.
 
 #### `data-key`
 
@@ -445,6 +446,10 @@ watch(){
   }
 }
 ```
+
+You can view your watched state fields in the components `$watchers` object.
+
+<hr/>
 
 ### Stateless Components 😐
 
