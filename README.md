@@ -90,6 +90,7 @@ new Init(config);
 - [Init Function](#init-function-)
 - [Adding and Removing Components](#adding-and-removing-components-)
 - [Namespacing Data Attributes](#namespacing-data-attributes-)
+- [Custom Syntax](#custom-syntax-)
 - [Development Mode](#development-mode-)
 - [Syntax Examples](#syntax-examples-)
 - [Component Lifecycle](#component-lifecycle-%EF%B8%8F%EF%B8%8F)
@@ -557,6 +558,30 @@ This means that your HTML will look like this:
   ...
 </div>
 ```
+
+<hr/>
+
+### Custom Syntax 🔧
+You can optionally customize the syntax you use in your HTML.
+The following items can be customized.
+
+    INHERITS_FROM: '<-',
+    FROM_COMPONENT: '.',
+    KEY_VALUE: ':',
+    MULTIPLE_VALUES: "|",
+    METHOD_CALL: "->",
+    LIST: ","
+
+This means that in your config you can add:
+
+{
+   customSyntax: {
+      LIST: "!",
+      METHOD_CALL: "#"
+  }
+}
+
+And your HTML can use this!
 
 <hr/>
 
