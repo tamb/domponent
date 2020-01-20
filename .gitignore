@@ -3,6 +3,5 @@
 /examples/.cache
 /**/node_modules
 /examples/**/dist
-examples/html/dist
 *tgz
 /dist
