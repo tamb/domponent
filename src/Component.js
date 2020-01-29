@@ -43,16 +43,18 @@ export default class Component extends Exponent {
             }
           }
           this.state[stateKey] = newState[stateKey];
-          if (this.$watchers[stateKey]) {
-            if (this.$watchers[stateKey].post) {
-              this.$watchers[stateKey].post.call(this, this.state[stateKey]);
-            }
-          }
+
           if (this.$s) {
             if (this.$s[stateKey]) {
               this.$s[stateKey].forEach(stateObj => {
                 updateDOM(stateObj.el, newState[stateKey]);
               });
+            }
+          }
+
+          if (this.$watchers[stateKey]) {
+            if (this.$watchers[stateKey].post) {
+              this.$watchers[stateKey].post.call(this, this.state[stateKey]);
             }
           }
         }
