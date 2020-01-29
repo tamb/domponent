@@ -97,7 +97,6 @@ new Init(config);
 - [Development Mode](#development-mode-)
 - [Syntax Examples](#syntax-examples-)
 - [Component Lifecycle](#component-lifecycle-%EF%B8%8F%EF%B8%8F)
-- [Who Uses Domponent](#who-uses-domponent-%EF%B8%8F)
 
 ### Purpose ✔️
 
@@ -736,8 +735,3 @@ coming soon...
 
 ![updating component](https://raw.githubusercontent.com/tamb/domponent/master/domponent-lifecycle.jpg)
 
-<hr/>
-
-### Who Uses Domponent 🛠️
-
-Submit an Issue with the `Uses` Label and include a logo to add.
