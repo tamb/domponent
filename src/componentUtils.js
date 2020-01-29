@@ -181,11 +181,25 @@ export function updateProps(updatedProps) {
   for (let key in this.$p) {
     const obj = this.$p[key];
     if (updatedProps.includes(this.$p[key].parentComponentKey)) {
+      if (this.$watchers[key]) {
+        if (this.$watchers[key].pre) {
+          this.$watchers[key].pre.call(
+            this,
+            obj.parentComponent.state[obj.parentComponentKey],
+            this.props[key]
+          );
+        }
+      }
       this.props[key] = obj.parentComponent.state[obj.parentComponentKey];
       if (this.$p[key].els) {
         this.$p[key].els.forEach(el => {
           updateDOM(el, this.props[key]);
         });
+      }
+      if (this.$watchers[key]) {
+        if (this.$watchers[key].post) {
+          this.$watchers[key].post.call(this, this.props[key]);
+        }
       }
     }
   }

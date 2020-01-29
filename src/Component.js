@@ -10,7 +10,6 @@ import {
 export default class Component extends Exponent {
   constructor(config) {
     super(config, true);
-    this.$watchers = this.watch ? this.watch() : {};
     initState.call(this);
     this.$s = createStateObjects.call(this);
     this.connected();

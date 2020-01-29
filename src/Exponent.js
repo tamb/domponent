@@ -18,6 +18,7 @@ export default class Exponent extends Scope {
     createRefArrays.call(this);
     this.$p = createPropObjects.call(this);
     bindListeners.call(this);
+    this.$watchers = this.watch ? this.watch() : {};
     wait ? null : this.connected();
   }
 
