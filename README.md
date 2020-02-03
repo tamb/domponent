@@ -510,6 +510,7 @@ Components or Exponents will be given the following fields.
 | \$root     | element | public  | Component/Exponent | The root DOM Node of the component                  |
 | \$s        | object  | private | Component          | Internal collection of state and its DOM references |
 | state      | object  | public  | Component          | Key/Value pairs of data which can be updated        |
+| $watchers  | object  | public  | Component          | stored change functions and their respective state and prop key |
 
 <hr/>
 
