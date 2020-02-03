@@ -86,6 +86,7 @@ new Init(config);
   - [data-props](#data-props)
 - [Extending the Component class](#extending-the-component-class-)
 - [Managing Component State](#managing-component-state-%EF%B8%8F)
+  - [Rendering HTML from Component State](#rendering-html-from-props-and-state)
 - [Lifecycle Methods](#lifecycle-methods-)
 - [Watchers](#watchers-)
 - [Stateless Components](#stateless-components-)
