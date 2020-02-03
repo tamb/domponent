@@ -410,7 +410,7 @@ export default class Counter extends Component {
 The above state fields will override the default JS state fields.
 
 #### Rendering HTML from props and state
-The value binding from `setState` will always be to textContent.  If you wish to use state/props to render HTML, you can add a watcher for that value and update the `$refs` node that will house the new HTML.  
+The value binding from `setState` will always be to `textContent`.  If you wish to use state/props to render HTML, you can add a watcher for that value and update the `$refs` node that will house the new HTML.  
 
 ```js
 watch(){
