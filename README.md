@@ -68,6 +68,9 @@ new Init(config);
 
 **And you're good to go!!**
 
+
+## Checkout a practical example now:
+https://dev.to/tamb/modern-front-end-with-older-tech-625
 ---
 
 ## Docs 📖
