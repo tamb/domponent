@@ -9,7 +9,11 @@ export function createKey() {
 }
 
 export function updateDOM(el, value) {
-  el.textContent = value;
+  if (el.tagName.toUpperCase() === "INPUT") {
+    el.value = value;
+  } else {
+    el.textContent = value;
+  }
 }
 
 export function hasCallback(cb) {

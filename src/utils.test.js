@@ -92,3 +92,14 @@ test("UpdateDOM will update textContent", () => {
   updateDOM(element, newContent);
   expect(element.textContent).toBe(newContent);
 });
+
+test("UpdateDOM will update value", () => {
+  const newContent = "Super Nelson Mandela!";
+
+  document.body.innerHTML = `
+        <input id="test">
+    `;
+  const element = document.getElementById("test");
+  updateDOM(element, newContent);
+  expect(element.value).toBe(newContent);
+});
