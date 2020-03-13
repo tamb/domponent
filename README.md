@@ -238,6 +238,8 @@ If you're not using a transpiler, it's recommended to use the ES5 UMD. So here's
 
 ### data API 💽
 
+**Note:** Use as much or as little of this library as you want.  You can use this for just `data-component`, `data-ref` and `data-ref-array` attributes and make your DOM selection a lot easier.  You can make stateless components with the `Exponent` class.  The sky's the limit.  At its core, Domponent is a set of utility classes for your HTML.
+
 #### `data-component`
 
 We use this bad boy to match the component name to its corresponding `class` in the `Init` configuration object
