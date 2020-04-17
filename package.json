@@ -1,6 +1,6 @@
 {
   "name": "domponent",
-  "version": "2.0.0-alpha.2",
+  "version": "2.0.0",
   "description": "Build components with the HTML you already have.",
   "keywords": [
     "component",
