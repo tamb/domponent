@@ -450,7 +450,7 @@ The following are methods you can use to access components at various points in 
 
 ### Watchers 👀
 
-`Component` classes have a `watch` method that must return an object. Watchers allow you to hook into specific `state` or `props` value changes during the component lifecyle. This allows your state logic to be isolated instead of clumping it all in with `stateWillUpdate`, `stateDidUpdate`, `propsWillUpdate` or `propsDidUpdate`. This is meant to closely mimic watchers in `Vue.JS`.
+`Component` and `Exponent` classes have a `watch` method that must return an object. Watchers allow you to hook into specific `state` or `props` value changes during the component lifecyle. This allows your state logic to be isolated instead of clumping it all in with `stateWillUpdate`, `stateDidUpdate`, `propsWillUpdate` or `propsDidUpdate`. This is meant to closely mimic watchers in `Vue.JS`.
 _Note_: Do NOT name your `state` and `props` fields the same.  This is bad practice and will break the watchers.
 
 ```js
