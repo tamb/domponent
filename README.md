@@ -101,6 +101,7 @@ https://dev.to/tamb/modern-front-end-with-older-tech-625
 - [Development Mode](#development-mode-)
 - [Syntax Examples](#syntax-examples-)
 - [Component Lifecycle](#component-lifecycle-%EF%B8%8F%EF%B8%8F)
+- [Contact](#contact-)
 
 ### Purpose ✔️
 
@@ -759,3 +760,4 @@ coming soon...
 
 ![updating component](https://raw.githubusercontent.com/tamb/domponent/master/domponent-lifecycle.jpg)
 
+### Contact 🤙
