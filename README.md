@@ -1,4 +1,4 @@
-# 🔌\<DOMponent />
+# 🔌\</> DOMponent
 
 **Build UI Components with the HTML You Already Have.**
 <br/>
