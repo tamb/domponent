@@ -761,3 +761,4 @@ coming soon...
 ![updating component](https://raw.githubusercontent.com/tamb/domponent/master/domponent-lifecycle.jpg)
 
 ### Contact 🤙
+Email:  domponent[at]gmail[dot]com (*Please use the subject `Domponent Support` or we will not respond*)
