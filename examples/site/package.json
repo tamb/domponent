@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --production",
-    "start": "concurrently \"webpack --watch\" \"http-server dist -a localhost -p 1234\" \"open http://localhost:1234/\" \"node open.js\"",
-    "start:dev": "concurrently \"webpack --mode=development --watch\" \"http-server dist -a localhost -p 1234\" \"open http://localhost:1234/\" \"node open.js\""
+    "start": "npm install && concurrently \"webpack --watch\" \"http-server dist -a localhost -p 1234\" \"open http://localhost:1234/\" \"node open.js\"",
+    "start:dev": "npm install && concurrently \"webpack --mode=development --watch\" \"http-server dist -a localhost -p 1234\" \"open http://localhost:1234/\" \"node open.js\""
   },
   "keywords": [],
   "author": "",
@@ -37,7 +37,7 @@
     "webpack-cli": "^3.3.9"
   },
   "dependencies": {
-    "domponent": "1.2.2",
+    "domponent": "2.0.1",
     "feather-icons": "^4.24.1",
     "inferno": "^7.3.2",
     "jump.js": "^1.0.2",
