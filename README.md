@@ -1,4 +1,4 @@
-# 🔌\<DOMponent />
+# 🔌\</> DOMponent
 
 **Build UI Components with the HTML You Already Have.**
 <br/>
@@ -101,6 +101,7 @@ https://dev.to/tamb/modern-front-end-with-older-tech-625
 - [Development Mode](#development-mode-)
 - [Syntax Examples](#syntax-examples-)
 - [Component Lifecycle](#component-lifecycle-%EF%B8%8F%EF%B8%8F)
+- [Contact](#contact-)
 
 ### Purpose ✔️
 
@@ -450,7 +451,7 @@ The following are methods you can use to access components at various points in 
 
 ### Watchers 👀
 
-`Component` classes have a `watch` method that must return an object. Watchers allow you to hook into specific `state` or `props` value changes during the component lifecyle. This allows your state logic to be isolated instead of clumping it all in with `stateWillUpdate`, `stateDidUpdate`, `propsWillUpdate` or `propsDidUpdate`. This is meant to closely mimic watchers in `Vue.JS`.
+`Component` and `Exponent` classes have a `watch` method that must return an object. Watchers allow you to hook into specific `state` or `props` value changes during the component lifecyle. This allows your state logic to be isolated instead of clumping it all in with `stateWillUpdate`, `stateDidUpdate`, `propsWillUpdate` or `propsDidUpdate`. This is meant to closely mimic watchers in `Vue.JS`.
 _Note_: Do NOT name your `state` and `props` fields the same.  This is bad practice and will break the watchers.
 
 ```js
@@ -759,3 +760,6 @@ coming soon...
 
 ![updating component](https://raw.githubusercontent.com/tamb/domponent/master/domponent-lifecycle.jpg)
 
+### Contact 🤙
+* Email:  `domponent [at] gmail [dot] com` (*Please use the subject `Domponent Support` or we will not respond*)
+* Twitter: `@domponent`
