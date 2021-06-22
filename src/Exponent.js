@@ -23,9 +23,9 @@ export default class Exponent extends Scope {
   }
 
   // lifecycle methods
-  connecting() {}
-  connected() {}
-  disconnecting() {}
-  propsWillUpdate() {}
-  propsDidUpdate() {}
+  connecting = () => {}
+  connected = () => {}
+  disconnecting = () => {}
+  propsWillUpdate = () => {}
+  propsDidUpdate = () => {}
 }

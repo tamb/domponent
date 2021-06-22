@@ -1,3 +1,8 @@
+interface IConfig{
+  $root: HTMLElement;
+  $app: 
+}
+
 export default class Scope {
   constructor(config) {
     this.$root = config.element;
