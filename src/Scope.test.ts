@@ -1,3 +1,8 @@
+/// <reference types="jest" />
+/**
+ * @jest-environment jsdom
+ */
+
 import Scope from "./Scope";
 
 describe("Tests Scope class", () => {

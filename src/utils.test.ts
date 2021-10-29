@@ -1,3 +1,8 @@
+/// <reference types="jest" />
+/**
+ * @jest-environment jsdom
+ */
+
 const {
   createKey,
   hasCallback,
@@ -99,7 +104,9 @@ test("UpdateDOM will update value", () => {
   document.body.innerHTML = `
         <input id="test">
     `;
-  const element = document.getElementById("test");
+  const element = document.getElementById("test") as HTMLInputElement;
   updateDOM(element, newContent);
-  expect(element.value).toBe(newContent);
+  if (element.tagName === "INPUT") {
+    expect(element.value).toBe(newContent);
+  }
 });

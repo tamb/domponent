@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": false,
+    "module": "es6",
+    "target": "es5",
+    "allowJs": true,
+    "declaration": true,
+    "esModuleInterop": true
+  },
+  "exclude": ["node_modules/**/*"],
+  "include": ["src/index.ts"],
+  "declarations": true
+}
