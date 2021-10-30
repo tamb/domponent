@@ -4,12 +4,13 @@ import {
   splitMethodCalls,
   splitMultipleValues,
   splitPropsPassedIn,
-  splitList
+  splitList,
+  updateDOM
 } from "./utils";
 
 import { eventOptions } from "./enums";
 
-export function createStateObjects() {
+export function createStateObjects(): any {
   const self = this;
 
   const nodes = scopeElements.call(
@@ -19,7 +20,7 @@ export function createStateObjects() {
   if (nodes.length > 0) {
     const $s = {};
     nodes.forEach(el => {
-      const newStateObject = {};
+      const newStateObject: any = {};
       /* START.DEV */
       try {
         /* END.DEV */
@@ -78,7 +79,7 @@ export function createStateObjects() {
   return null;
 }
 
-export function initState() {
+export function initState(): void {
   const stateAttr = this.$root.getAttribute(
     `data-${this.$app.$datasets.state}`
   );
@@ -89,7 +90,7 @@ export function initState() {
   }
 }
 
-export function bindListeners() {
+export function bindListeners(): void {
   const self = this;
   this.$b = [];
   let arr = this.$root.getAttribute(`data-${this.$app.$datasets.action}`)
@@ -131,7 +132,7 @@ export function bindListeners() {
     }, this);
 }
 
-export function unbindListeners() {
+export function unbindListeners(): void {
   /* START.DEV */
   const me = this;
   try {
@@ -156,7 +157,7 @@ export function unbindListeners() {
   /* END.DEV */
 }
 
-export function updateDependents(updatedProps) {
+export function updateDependents(updatedProps: any): void {
   /* START.DEV */
   const me = this;
   try {
@@ -175,7 +176,7 @@ export function updateDependents(updatedProps) {
   /* END.DEV */
 }
 
-export function updateProps(updatedProps) {
+export function updateProps(updatedProps: any): void {
   this.propsWillUpdate();
   const oldProps = Object.assign({}, this.props);
   for (let key in this.$p) {
@@ -206,7 +207,7 @@ export function updateProps(updatedProps) {
   this.propsDidUpdate(oldProps);
 }
 
-export function createPropObjects() {
+export function createPropObjects(): any {
   const self = this;
   const attr = this.$root.getAttribute(`data-${this.$app.$datasets.props}`);
   if (attr) {
@@ -244,7 +245,7 @@ export function createPropObjects() {
   }
 }
 
-export function createRefs() {
+export function createRefs(): void {
   const self = this;
 
   scopeElements
@@ -262,7 +263,7 @@ export function createRefs() {
     });
 }
 
-export function createRefArrays() {
+export function createRefArrays(): void {
   let prevKey = null;
   const self = this;
 
@@ -287,7 +288,7 @@ export function createRefArrays() {
     });
 }
 
-export function scopeElements(selector) {
+export function scopeElements(selector: string): HTMLElement[] {
   return [...this.$root.querySelectorAll(selector)].filter(el => {
     return (
       el.closest(
