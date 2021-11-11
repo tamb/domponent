@@ -70,7 +70,7 @@ function Init(config) {
       /* END.DEV */
       this.registeredComponents[key] = new config.components[
         el.getAttribute(`data-${this.$datasets.component}`)
-      ]({ element: el, key, app: this });
+      ](el, { key, app: this });
       /* START.DEV */
     } catch (err) {
       console.error(
@@ -133,4 +133,6 @@ function Init(config) {
   };
 }
 
-export { Init, Component, Exponent };
+const Domponent = { Init, Component, Exponent };
+
+export default Domponent;

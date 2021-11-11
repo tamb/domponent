@@ -6,10 +6,13 @@ import {
   initState,
   updateDependents
 } from "./componentUtils";
+import { IScope } from "./interfaces";
 
 export default class Component extends Exponent {
-  constructor(config) {
-    super(config, true);
+  $s: { [key: string]: any };
+  state: { [key: string]: any };
+  constructor(root: HTMLElement, config: IScope) {
+    super(root, config, true);
     initState.call(this);
     this.$s = createStateObjects.call(this);
     this.connected();

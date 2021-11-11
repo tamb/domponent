@@ -24,14 +24,13 @@ describe("Tests Scope class", () => {
 
   const config = {
     app,
-    key,
-    element: document.querySelector(`#${id}`)
+    key
   };
 
-  const MyScope = new Scope(config);
+  const MyScope = new Scope(document.querySelector(`#${id}`), config);
 
   test("Scope is created with proper $root element", () => {
-    expect(MyScope.$root).toBe(config.element);
+    expect(MyScope.$root).toBe(document.querySelector(`#${id}`));
   });
 
   test("Scope is created with proper $app object", () => {

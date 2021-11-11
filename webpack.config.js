@@ -12,60 +12,61 @@ const prod = {
   }
 };
 
-const prodInput = {
-  index: "./src/index.ts"
+const dev = {
+  path: path.resolve(__dirname, "dist"),
+  filename: "main.dev.js",
+  library: {
+    name: "Domponent",
+    type: "umd"
+  }
 };
 
-const demoInput = {
-  index: "./src/demo.ts"
-};
+const prodRules = [
+  {
+    test: /\.tsx?$/,
+    use: "ts-loader",
+    exclude: /node_modules/
+  },
+  {
+    test: /\.ts$/,
+    enforce: "pre",
+    exclude: /(node_modules|bower_components|\.spec\.js)/,
+    use: [
+      {
+        loader: "webpack-strip-block",
+        options: {
+          start: "START.DEV",
+          end: "END.DEV"
+        }
+      }
+    ]
+  }
+];
+
+const devRules = [
+  {
+    test: /\.tsx?$/,
+    use: "ts-loader",
+    exclude: /node_modules/
+  }
+];
+
+const plugins = [new TypescriptDeclarationPlugin()];
 
 module.exports = env => {
-  const plugins = env.demo
-    ? [
-        env.demo
-          ? new HtmlWebpackPlugin({
-              template: "src/index.html"
-            })
-          : null,
-        new TypescriptDeclarationPlugin()
-      ]
-    : [new TypescriptDeclarationPlugin()];
-
   return {
     mode: "production",
-    entry: env.demo ? demoInput : prodInput,
-    output: prod,
+    entry: "./src/index.ts",
+    output: env.mode === "production" ? prod : dev,
     plugins,
     module: {
-      rules: [
-        {
-          test: /\.tsx?$/,
-          use: "ts-loader",
-          exclude: /node_modules/
-        },
-        {
-          test: /\.ts$/,
-          enforce: "pre",
-          exclude: /(node_modules|bower_components|\.spec\.js)/,
-          use: [
-            {
-              loader: "webpack-strip-block",
-              options: {
-                start: "START.DEV",
-                end: "END.DEV"
-              }
-            }
-          ]
-        }
-      ]
+      rules: env.mode === "production" ? prodRules : devRules
     },
     resolve: {
       extensions: [".tsx", ".ts", ".js", ".jsx"]
     },
-    //   plugins: [new TypescriptDeclarationPlugin()],
     optimization: {
-      minimize: true,
+      minimize: env.mode === "production",
       minimizer: [new TerserPlugin()]
     }
   };

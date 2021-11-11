@@ -119,7 +119,7 @@ export function bindListeners(): void {
               options[eventOptions[key]] = arr.includes(eventOptions[key]);
             }
           }
-          const handler = this[cbFunc[1]].bind(this);
+          const handler = this[cbFunc[1]];
           el.addEventListener(event, handler, options);
           binding.actions.push({
             event,

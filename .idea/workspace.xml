@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ec33c166-d21e-4fcd-9a12-14eca4eeb5c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/new-demo/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/new-demo/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/e2e/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/examples/e2e/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/e2e/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/examples/e2e/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/e2e/src/AddHighlight/AddHighlight.js" beforeDir="false" afterPath="$PROJECT_DIR$/examples/e2e/src/AddHighlight/AddHighlight.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/e2e/src/Counter/Counter.js" beforeDir="false" afterPath="$PROJECT_DIR$/examples/e2e/src/Counter/Counter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/e2e/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/examples/e2e/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Exponent.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Exponent.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exponent.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Scope.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Scope.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Scope.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Scope.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/componentUtils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/componentUtils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="20ahEUJPNSgXnQs3WPgyT7emyWD" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/jest" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\tsapo\Github\domponent\node_modules\prettier" />
+    <property name="settings.editor.selected.configurable" value="advanced.settings" />
+    <property name="ts.external.directory.path" value="C:\Users\tsapo\AppData\Local\JetBrains\Toolbox\apps\WebStorm\ch-0\212.5457.55\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager" selected="npm.build">
+    <configuration name="Tests Exponent class.Exponent is created with proper $root element" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/Exponent.test.js" />
+      <test-names>
+        <test-name value="Tests Exponent class" />
+        <test-name value="Exponent is created with proper $root element" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="e2e-dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="e2e-dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.build" />
+        <item itemvalue="npm.e2e-dev" />
+        <item itemvalue="npm.test" />
+        <item itemvalue="Jest.Tests Exponent class.Exponent is created with proper $root element" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ec33c166-d21e-4fcd-9a12-14eca4eeb5c2" name="Changes" comment="" />
+      <created>1636288495838</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1636288495838</updated>
+      <workItem from="1636288498717" duration="86000" />
+      <workItem from="1636502528495" duration="62000" />
+      <workItem from="1636502745965" duration="4587000" />
+      <workItem from="1636551506772" duration="129000" />
+      <workItem from="1636608920323" duration="772000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

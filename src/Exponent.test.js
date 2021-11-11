@@ -39,14 +39,13 @@ describe("Tests Exponent class", () => {
 
   const config = {
     app,
-    key,
-    element: document.querySelector(`#${id}`)
+    key
   };
 
-  const MyExponent = new Exponent(config);
+  const MyExponent = new Exponent(document.querySelector(`#${id}`), config);
 
   test("Exponent is created with proper $root element", () => {
-    expect(MyExponent.$root).toBe(config.element);
+    expect(MyExponent.$root).toBe(document.querySelector(`#${id}`));
   });
 
   test("Exponent is created with proper $app object", () => {

@@ -1,22 +1,17 @@
-interface IScope {
-  element: HTMLElement;
-  app: any;
-  key: string;
-  name: string;
-}
+import { IScope } from "./interfaces";
 
 export default class Scope {
   $root: HTMLElement;
-  $app: any;
-  $key: string;
+  $app?: any;
+  $key?: string;
   $name: string;
 
-  constructor(config: IScope) {
-    this.$root = config.element;
-    this.$app = config.app;
-    this.$key = config.key;
-    this.$name = config.element.getAttribute(
-      `data-${this.$app.$datasets.component}`
-    );
+  constructor(root: HTMLElement, config: IScope) {
+    this.$root = root;
+    if (config) {
+      this.$app = config.app;
+      this.$key = config.key;
+      this.$name = root.getAttribute(`data-${this.$app.$datasets.component}`);
+    }
   }
 }

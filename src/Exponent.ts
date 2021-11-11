@@ -7,9 +7,18 @@ import {
   createRefArrays
 } from "./componentUtils";
 
+import { IScope } from "./interfaces";
+
 export default class Exponent extends Scope {
-  constructor(config, wait = false) {
-    super(config);
+  props: { [key: string]: any };
+  $d: Set<any>;
+  $refs: { [key: string]: any };
+  $p: any;
+  $watchers: any;
+  watch?: Function;
+
+  constructor(root: HTMLElement, config: IScope, wait: boolean = false) {
+    super(root, config);
     this.connecting();
     this.props = {};
     this.$d = new Set();
