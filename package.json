@@ -1,65 +1,25 @@
 {
   "name": "domponent",
-  "version": "2.0.2",
-  "description": "Build components with the HTML you already have.",
-  "keywords": [
-    "component",
-    "ui",
-    "stimulus",
-    "vue",
-    "react",
-    "reactive",
-    "lifecyle",
-    "server-side",
-    "html",
-    "data",
-    "state",
-    "props"
-  ],
-  "private": false,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/tamb/domponent.git"
+  "version": "3.0.0-alpha.1",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
   },
-  "homepage": "https://tamb.github.io/domponent/",
-  "main": "dist/domponent.production.min.js",
-  "unpkg": "dist/domponent.production.min.js",
-  "scripts": {
-    "deploy": "npm test && node clean.js && rollup -c rollup.config.js && npm pack && cd examples/site && npm install && webpack --mode=production && cd ../../ && gh-pages -d examples/site/dist",
-    "test": "jest",
-    "build": "npm test && rollup -c rollup.config.js",
-    "e2e-prod": "npm test && node clean.js && rollup -c rollup.config.js && npm pack && cd examples/e2e && npm install && npm run build",
-    "e2e-dev": "npm test && node clean.js && rollup -c rollup.config.js && npm pack && cd examples/e2e && npm install && npm run dev",
-    "site": "cd examples/site && npm run start",
-    "site-dev": "cd examples/site && npm run start:dev",
-    "publish": "npm run build && npm publish"
-  },
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "author": "tamb",
-  "license": "MIT",
-  "dependencies": {
+  "scripts": {
+    "build": "rslib build",
+    "dev": "rslib build --watch"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.5.5",
-    "@testing-library/jest-dom": "^5.5.0",
-    "gh-pages": "^2.1.1",
-    "husky": "^3.0.5",
-    "jest": "^24.9.0",
-    "open": "^7.0.0",
-    "prettier": "^1.18.2",
-    "pretty-quick": "^1.11.1",
-    "rimraf": "^2.6.3",
-    "rollup": "^4.35.0",
-    "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-strip-code": "^0.2.7",
-    "rollup-plugin-terser": "^5.1.1",
-    "vue-template-compiler": "^2.6.10"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
+    "@rslib/core": "^0.5.4",
+    "@types/node": "^22.8.1",
+    "typescript": "^5.8.2"
   }
 }

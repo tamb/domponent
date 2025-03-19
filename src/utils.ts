@@ -1,28 +1,43 @@
 // import { this.$app.$syntax } from "./enums";
 
-export function createKey() {
-  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
-    var r = (Math.random() * 16) | 0,
-      v = c == "x" ? r : (r & 0x3) | 0x8;
-    return v.toString(16);
-  });
+/**
+ * 
+ * @returns a random UUID string
+ * @description Uses the built-in crypto API to generate a random UUID.
+ * This is a more secure and modern way to generate UUIDs compared to the old method of using Math.random().
+ */
+export function createKey() : string {
+  return window.crypto.randomUUID();
 }
 
-export function updateDOM(el, value) {
+/**
+ * 
+ * @param el - the DOM element to update
+ * @param value - the value to set
+ * @description Updates the text content or value of a DOM element based on its type.
+ * If the element is an input, it sets the value property. Otherwise, it sets the textContent.
+ */
+export function updateDOM(el : HTMLElement | HTMLInputElement, value : string) : void {
   if (el.tagName.toUpperCase() === "INPUT") {
-    el.value = value;
+    (el as HTMLInputElement).value = value;
   } else {
     el.textContent = value;
   }
 }
 
-export function hasCallback(cb) {
+/**
+ * 
+ * @param cb - a callback function
+ * @description Executes the callback function if it is defined and not null.
+ * This is a utility function to safely call callbacks without throwing errors.
+ */
+export function hasCallback(cb : Function | undefined | null) : void {
   cb ? cb() : null;
 }
 
 // string parsing
-export function splitKeyValuePairs(string) {
-  return string
+export function splitKeyValuePairs(str: string) : string[] {
+  return str
     .trim()
     .split(this.$app.$syntax.KEY_VALUE)
     .map(item => item.trim());
