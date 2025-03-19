@@ -4,7 +4,7 @@ import { updateDOM, hasCallback } from "./utils";
 import {
   createStateObjects,
   initState,
-  updateDependents
+  updateDependents,
 } from "./componentUtils";
 
 export default class Component extends Exponent {
@@ -46,7 +46,7 @@ export default class Component extends Exponent {
 
           if (this.$s) {
             if (this.$s[stateKey]) {
-              this.$s[stateKey].forEach(stateObj => {
+              this.$s[stateKey].forEach((stateObj) => {
                 updateDOM(stateObj.el, newState[stateKey]);
               });
             }

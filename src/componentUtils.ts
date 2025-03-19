@@ -287,7 +287,7 @@ export function createRefArrays() {
     });
 }
 
-export function scopeElements(selector) {
+export function scopeElements(this: any, selector : string) {
   return [...this.$root.querySelectorAll(selector)].filter(el => {
     return (
       el.closest(

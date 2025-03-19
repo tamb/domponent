@@ -2,9 +2,7 @@ export interface IComponents {
   [key: string]: () => any;
 }
 
-export interface IComponentInstances {
-  [key: string]: any;
-}
+export type IComponentInstances = WeakMap<HTMLElement, any>;
 
 export interface IDataAttributes {
   action: string;
