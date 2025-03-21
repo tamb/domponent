@@ -15,11 +15,14 @@
   ],
   "scripts": {
     "build": "rslib build",
-    "dev": "rslib build --watch"
+    "dev": "rslib build --watch",
+    "test": "vitest"
   },
   "devDependencies": {
     "@rslib/core": "^0.5.4",
     "@types/node": "^22.8.1",
-    "typescript": "^5.8.2"
+    "jsdom": "^26.0.0",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.9"
   }
 }

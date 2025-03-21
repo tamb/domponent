@@ -32,3 +32,26 @@ export interface IDomponentConfig {
   customSyntax: ICustomSyntax;
   watch?: boolean;
 }
+
+export interface IComponent extends IExponent{
+  state: any;
+  $s: any;
+  $watchers: any;
+  connected: () => void;
+  setState: (newState?: any, fn?: Function) => void;
+  stateWillUpdate: () => void;
+  stateDidUpdate: () => void;
+}
+
+export interface IExponent {
+  config: IDomponentConfig;
+  $app: any;
+  $el: HTMLElement;
+  $components: IComponents;
+  $watchers: any;
+  connected: () => void;
+  disconnected: () => void;
+  propsWillUpdate: () => void;
+  propsDidUpdate: () => void;
+  setProps: (newProps?: any, fn?: Function) => void;
+}

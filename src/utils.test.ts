@@ -1,4 +1,6 @@
-const {
+import { test, expect, vi } from "vitest";
+
+import {
   createKey,
   hasCallback,
   splitFromComponent,
@@ -7,16 +9,17 @@ const {
   splitMethodCalls,
   splitMultipleValues,
   splitPropsPassedIn,
-  updateDOM
-} = require("./utils");
+  updateDOM,
+} from "./utils";
 
-const { relationalStringEnum } = require("./enums");
+import { relationalStringEnum } from "./enums";
+import { IComponent } from "./interfaces";
 
 const app = {
   $app: {
-    $syntax: relationalStringEnum
-  }
-};
+    $syntax: relationalStringEnum,
+  },
+} as IComponent;
 
 test("No keys match in a set of 100k", () => {
   const keys = new Set();
@@ -75,7 +78,7 @@ test("String with back arrow to trim and split", () => {
 });
 
 test("Callback function to fire", () => {
-  const callback = jest.fn();
+  const callback = vi.fn();
   hasCallback(callback);
   expect(callback.mock.calls.length).toBe(1);
 });
@@ -89,8 +92,8 @@ test("UpdateDOM will update textContent", () => {
         </div>
     `;
   const element = document.getElementById("test");
-  updateDOM(element, newContent);
-  expect(element.textContent).toBe(newContent);
+  updateDOM(element as HTMLElement, newContent);
+  expect((element as HTMLElement).textContent).toBe(newContent);
 });
 
 test("UpdateDOM will update value", () => {
@@ -100,6 +103,6 @@ test("UpdateDOM will update value", () => {
         <input id="test">
     `;
   const element = document.getElementById("test");
-  updateDOM(element, newContent);
-  expect(element.value).toBe(newContent);
+  updateDOM(element as HTMLInputElement, newContent);
+  expect((element as HTMLInputElement).value).toBe(newContent);
 });
