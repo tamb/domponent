@@ -27,9 +27,7 @@ export default class Component extends Exponent {
   setState(newState = this.state, fn) {
     this.stateWillUpdate();
     const propsToUpdate = [];
-    /* START.DEV */
-    try {
-      /* END.DEV */
+
       for (let stateKey in newState) {
         if (newState[stateKey] !== this.state[stateKey]) {
           propsToUpdate.push(stateKey);
@@ -59,17 +57,7 @@ export default class Component extends Exponent {
           }
         }
       }
-      /* START.DEV */
-    } catch (err) {
-      console.error(
-        `🤓 -- "Whoops, pal!  You ran into this error while updating state: 
-      `,
-        err,
-        ` within this root element `,
-        this.$root
-      );
-    }
-    /* END.DEV */
+   
     if (this.$d.size > 0) {
       updateDependents.call(this, propsToUpdate);
     }
