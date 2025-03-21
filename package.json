@@ -21,9 +21,7 @@
   "devDependencies": {
     "@rslib/core": "^0.5.4",
     "@types/node": "^22.8.1",
-    "husky": "^9.1.7",
     "jsdom": "^26.0.0",
-    "prettier": "^3.5.3",
     "typescript": "^5.8.2",
     "vitest": "^3.0.9"
   },
