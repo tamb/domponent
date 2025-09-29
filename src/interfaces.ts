@@ -8,11 +8,11 @@ export interface IDataAttributes {
   action: string;
   bind: string;
   component: string;
-  initialState: string;
-  initialProps: string;
+  state: string;
+  props: string;
   key: string;
   ref: string;
-  refArray: string;
+  ref_array: string;
 }
 
 export interface ICustomSyntax {

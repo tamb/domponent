@@ -1,14 +1,14 @@
 import { ICustomSyntax, IDataAttributes } from "./interfaces";
 
 export const defaultDataAttributes: IDataAttributes = {
-  component: "data-component",
-  action: "data-action",
-  bind: "data-bind",
-  initialState: "data-state",
-  initialProps: "data-props",
-  key: "data-key",
-  ref: "data-ref",
-  refArray: "data-ref-array",
+  component: "component",
+  action: "action",
+  bind: "bind",
+  state: "state",
+  props: "props",
+  key: "key",
+  ref: "ref",
+  ref_array: "ref-array",
 };
 
 export const defaultRelationalStrings : ICustomSyntax = {

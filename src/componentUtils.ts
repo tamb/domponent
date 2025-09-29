@@ -4,7 +4,8 @@ import {
   splitMethodCalls,
   splitMultipleValues,
   splitPropsPassedIn,
-  splitList
+  splitList,
+  updateDOM
 } from "./utils";
 
 import { eventOptions } from "./enums";
@@ -83,7 +84,11 @@ export function initState() {
     `data-${this.$app.$datasets.state}`
   );
   if (stateAttr) {
-    this.state = JSON.parse(stateAttr);
+    try {
+      this.state = JSON.parse(stateAttr);
+    } catch (err) {
+      throw new SyntaxError(`Invalid JSON in data-state attribute: ${stateAttr}`);
+    }
   } else {
     this.state = {};
   }
@@ -111,6 +116,11 @@ export function bindListeners() {
         const event = parts[0];
         const cbFunc = splitFromComponent.call(self, parts[1]);
         if (cbFunc[0] === this.$name) {
+          // Check if the method exists on the component
+          if (typeof this[cbFunc[1]] !== 'function') {
+            throw new TypeError(`Method '${cbFunc[1]}' is not defined on component '${this.$name}'`);
+          }
+          
           let options = {};
           if (cbFunc[2]) {
             const arr = splitList.call(self, cbFunc[2]);
@@ -162,7 +172,7 @@ export function updateDependents(updatedProps) {
   try {
     /* END.DEV */
     this.$d.forEach(key => {
-      updateProps.call(this.$app.registeredComponents[key], updatedProps);
+      updateProps.call(this.$app.componentsByKey[key], updatedProps);
     });
     /* START.DEV */
   } catch (err) {
@@ -219,17 +229,15 @@ export function createPropObjects() {
         propStringValues[1]
       );
       const propName = propStringValues[0];
-      const parentComponent = this.$app.registeredComponents[
+      const parentComponent = this.$app.componentsByKey[
         parentComponentValues[0]
       ];
       const parentComponentKey = parentComponentValues[1];
       parentComponent.$d.add(this.$key);
 
+      const selector = `[data-${this.$app.$datasets.bind}^="props${this.$app.$syntax.KEY_VALUE}${propName}"]`;
       const els = [
-        ...scopeElements.call(
-          this,
-          `[${this.$app.$datasets.bind}^="props${this.$app.$syntax.KEY_VALUE}${propName}"]`
-        )
+        ...scopeElements.call(this, selector)
       ];
       this.props[propName] = parentComponent.state[parentComponentKey];
       $p[propName] = {

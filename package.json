@@ -16,10 +16,11 @@
   "scripts": {
     "build": "rslib build",
     "dev": "rslib build --watch",
-    "test": "vitest"
+    "test": "vitest run"
   },
   "devDependencies": {
     "@rslib/core": "^0.5.4",
+    "@testing-library/jest-dom": "^6.8.0",
     "@types/node": "^22.8.1",
     "jsdom": "^26.0.0",
     "typescript": "^5.8.2",

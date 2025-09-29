@@ -23,8 +23,9 @@ import { defaultDataAttributes, defaultRelationalStrings } from "./defaults";
 class DomponentApp {
   components: IComponents;
   registeredComponents: IComponentInstances;
-  dataAttributes: IDataAttributes;
-  customSyntax: ICustomSyntax;
+  componentsByKey: { [key: string]: any } = {};
+  $datasets: IDataAttributes;
+  $syntax: ICustomSyntax;
   observer: MutationObserver | null = null;
 
   constructor({
@@ -37,12 +38,12 @@ class DomponentApp {
     this.components = components || {};
     this.registeredComponents = new WeakMap() as IComponentInstances;
 
-    this.dataAttributes = {
+    this.$datasets = {
       ...defaultDataAttributes,
       ...dataAttributes,
     };
 
-    this.customSyntax = {
+    this.$syntax = {
       ...defaultRelationalStrings,
       ...customSyntax,
     };
@@ -51,7 +52,7 @@ class DomponentApp {
       selector = document.querySelector(selector) as HTMLElement;
     }
     selector
-      .querySelectorAll(`[data-${this.dataAttributes.component}]`)
+      .querySelectorAll(`[data-${this.$datasets.component}]`)
       .forEach((componentEl) => {
         this.createComponent(componentEl as HTMLElement);
       });
@@ -83,16 +84,17 @@ class DomponentApp {
    */
   public createComponent(el: HTMLElement, cb?: Function): void {
     const key =
-      el.getAttribute(`data-${this.dataAttributes.key}`) || createKey();
+      el.getAttribute(`data-${this.$datasets.key}`) || createKey();
     const componentName = el.getAttribute(
-      `data-${this.dataAttributes.component}`
+      `data-${this.$datasets.component}`
     ) as string;
-    const componentInstance = (this.components[componentName] as any)({
+    const componentInstance = new (this.components[componentName] as any)({
       element: el,
       key,
       app: this,
     });
     this.registeredComponents.set(el, componentInstance);
+    this.componentsByKey[key] = componentInstance;
 
     cb ? cb() : null;
   }
@@ -105,7 +107,7 @@ class DomponentApp {
             mutation.addedNodes.forEach((node) => {
               if (node.nodeType === 1) {
                 const el = node as HTMLElement;
-                if (el.hasAttribute(`data-${this.dataAttributes.component}`)) {
+                if (el.hasAttribute(`data-${this.$datasets.component}`)) {
                   this.createComponent(el);
                 }
               }

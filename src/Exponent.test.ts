@@ -1,9 +1,6 @@
+import { describe, test, expect } from "vitest";
 import Exponent from "./Exponent";
-import { relationalStringEnum, datasetEnum } from "./enums";
-
-import { toHaveAttribute } from "@testing-library/jest-dom/matchers";
-
-expect.extend({ toHaveAttribute });
+import { defaultRelationalStrings, defaultDataAttributes } from "./defaults";
 
 describe("Tests Exponent class", () => {
   const componentName = "HelloWorld";
@@ -28,8 +25,8 @@ describe("Tests Exponent class", () => {
   document.body.innerHTML = html;
 
   const app = {
-    $datasets: datasetEnum,
-    $syntax: relationalStringEnum
+    $datasets: defaultDataAttributes,
+    $syntax: defaultRelationalStrings
   };
 
   const config = {
@@ -63,8 +60,7 @@ describe("Tests Exponent class", () => {
   test("Exponent $refs to have img", () => {
     expect(MyExponent.$refs.img).toBeDefined();
     expect(MyExponent.$refs).toHaveProperty("img");
-    expect(MyExponent.$refs.img).toHaveAttribute(
-      "data-ref",
+    expect(MyExponent.$refs.img.getAttribute("data-ref")).toBe(
       `${componentName}.img`
     );
   });
@@ -72,8 +68,7 @@ describe("Tests Exponent class", () => {
   test("Exponent $refs to have icons", () => {
     expect(MyExponent.$refs.icons).toBeDefined();
     expect(MyExponent.$refs).toHaveProperty("icons");
-    expect(MyExponent.$refs.icons[0]).toHaveAttribute(
-      "data-ref-array",
+    expect(MyExponent.$refs.icons[0].getAttribute("data-ref-array")).toBe(
       `${componentName}.icons`
     );
   });

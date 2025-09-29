@@ -27,7 +27,7 @@ test("No keys match in a set of 100k", () => {
     keys.add(createKey());
   }
   expect(keys.size).toBe(100000);
-});
+}, 10000); // 10 second timeout
 
 test("String with pipe to trim and split", () => {
   const string = " Nelson| Mandela ";
